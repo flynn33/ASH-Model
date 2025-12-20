@@ -32,5 +32,5 @@ We welcome forks, issues, and PRs for extensions (e.g., higher-dimensional gener
 ## License
 MIT – Open for academic use and modification.
 
-**Authors**: Flynn (Independent Researcher)  
+**Authors**: Jim Daley (Independent Researcher, Author, Full Stack Developer)  
 **Date**: December 20, 2025
