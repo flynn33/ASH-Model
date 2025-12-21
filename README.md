@@ -20,12 +20,6 @@ This repository serves as the central hub for our research, including the manusc
 - **figures/**: Visuals for hypercubes, adinkras, and distributions.
 - **data/**: Sample outputs (e.g., simulation_results.csv).
 
-## Getting Started
-1. Clone the repo: `git clone https://github.com/yourusername/ash-model-research.git`.
-2. Install SymPy: `pip install sympy`.
-3. Run derivations: `python src/derive_9_properties.py`.
-4. Compile manuscript: Use Overleaf or pdflatex on latex/main.tex.
-
 ## Contributions and Collaboration
 We welcome forks, issues, and PRs for extensions (e.g., higher-dimensional generalizations or stochastic simulations). Contact for co-authorship toward publication.
 
