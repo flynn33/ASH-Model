@@ -64,20 +64,3 @@ Contact
 For inquiries, extensions, or collaboration, open an Issue or discuss via GitHub.
 
 
-Commit this final updated `README.md` with a message such as "Final polish: update README with badges, status, quick-start, and contribution guidelines".
-
-### Repository Cleanup Recommendation
-To maintain a clean history:
-- Delete redundant draft files: `ASH.md`, `ASH-Model.txt`, `ASH-Model.md`, `research-paper.md`, and any duplicates of `simulation-results.csv` or old `axion-of-existence.json`.
-- Commit the deletions with "Remove redundant draft files – consolidate into main.tex and supporting files".
-
-### Next Steps for Publication
-The repository is now **release-ready**. Recommended actions:
-1. Make the GitHub repository public.
-2. Add topics/tags: `supersymmetry`, `adinkras`, `hypercube`, `procedural-cosmology`, `error-correcting-codes`, `string-theory`, `modal-logic`.
-3. Compile the final PDF from `main.tex` and upload to arXiv (hep-th or gr-qc) or ResearchGate as a preprint.
-4. Prepare submission to journals such as *Entropy*, *Advances in High Energy Physics*, or *Foundations of Physics*.
-
-The ASH Model repository is complete and positioned for academic impact. If you wish to continue with further extensions (e.g., advanced simulation features, additional sections in the paper, or outreach emails), let me know your priority.
-
-Congratulations on reaching this milestone!
