@@ -1,0 +1,62 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.lol
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+
+# Jupyter/IPython
+.ipynb_checkpoints
+*.ipynb
+
+# macOS system files
+.DS_Store
+._*
+
+# Editor temporary files
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Virtual environments (if added later)
+venv/
+env/
+ENV/
+
+# Generated figures from simulation (optional – we can keep source images)
+figures/*-generated.png
+
+# IDE/project files
+.idea/
+.vscode/
+*.code-workspace

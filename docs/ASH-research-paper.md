@@ -1,9 +1,8 @@
-***
 
 # Procedural Cosmology in 9 Dimensions: The Adinkra-Stabilized Hypercube Model (ASH Model)
 
 **Author:** James Daley (Independent Researcher, Author, Full Stack Developer)
-**Mathematics and Calculations:** A.I.  
+**Mathematics and Calculations:** x.AI
 **Date:** December 1, 2023
 
 ## Abstract
@@ -54,20 +53,20 @@ $$
 L\_I R\_J + L\_J R\_I = 2\delta\_{IJ} I\_b, \quad R\_I L\_J + R\_J L\_I = 2\delta\_{IJ} I\_f
 $$
 
-**Proof: Garden Algebra for Adinkra Matrices**
+**Proof:Garden Algebra for Adinkra Matrices**
 
 Let
 
-*   ( \sigma\_1 = \begin{pmatrix} 0 & 1 \ 1 & 0 \end{pmatrix} )
-*   ( \sigma\_3 = \begin{pmatrix} 1 & 0 \ 0 & -1 \end{pmatrix} )
-*   ( I\_2 = \begin{pmatrix} 1 & 0 \ 0 & 1 \end{pmatrix} )
+* ( \sigma\_1 = \begin{pmatrix} 0 & 1 \ 1 & 0 \end{pmatrix} )
+* ( \sigma\_3 = \begin{pmatrix} 1 & 0 \ 0 & -1 \end{pmatrix} )
+* ( I\_2 = \begin{pmatrix} 1 & 0 \ 0 & 1 \end{pmatrix} )
 
 Define:
 
-*   ( L\_1 = \sigma\_1 \otimes I\_2 )
-*   ( L\_2 = \sigma\_3 \otimes \sigma\_1 )
-*   ( L\_3 = \sigma\_3 \otimes \sigma\_3 )
-*   ( L\_4 = \sigma\_1 \otimes \sigma\_3 )
+* ( L\_1 = \sigma\_1 \otimes I\_2 )
+* ( L\_2 = \sigma\_3 \otimes \sigma\_1 )
+* ( L\_3 = \sigma\_3 \otimes \sigma\_3 )
+* ( L\_4 = \sigma\_1 \otimes \sigma\_3 )
 
 Each ( L\_I ) is symmetric so ( L\_I^\top = L\_I ). Using Pauli relations ( \sigma\_1^2 = \sigma\_3^2 = I\_2 ) and ( \sigma\_1 \sigma\_3 = -\sigma\_3 \sigma\_1 ), one checks ( L\_I^2 = I\_4 ) and ( L\_I L\_J + L\_J L\_I = 0 ) for ( I \neq J ). Thus the stated relation holds. □
 
@@ -81,7 +80,7 @@ $$
 (\mathcal{T}f)(x) = \frac{1}{|C|} \sum\_{c \in C} f(x \oplus c)
 $$
 
-**Proof: Idempotence and Invariance**
+**Proof:Idempotence and Invariance**
 
 Linearity is immediate. For idempotence, compute:
 
@@ -221,6 +220,6 @@ While speculative, the ASH Model offers a computational framework for visualizin
 
 ## References
 
-*   Almheiri, A., Dong, X., & Harlow, D. (2015). Bulk locality and quantum error correction in AdS/CFT. *Journal of High Energy Physics*, 2015(4), 163.
-*   Cohn, H., & Kumar, A. (2009). Optimality and uniqueness of the Leech lattice among lattices. *Annals of Mathematics*, 170(3), 1003-1050.
-*   Doran, C. F., Gates Jr, S. J., Hübsch, T., Iga, K. M., & Landweber, G. D. (2008). On graph-theoretic identifications of Adinkras, supersymmetry representations and codes. *International Journal of Modern Physics A*, 22(5),
+* Almheiri, A., Dong, X., & Harlow, D. (2015). Bulk locality and quantum error correction in AdS/CFT. *Journal of High Energy Physics*, 2015(4), 163.
+* Cohn, H., & Kumar, A. (2009). Optimality and uniqueness of the Leech lattice among lattices. *Annals of Mathematics*, 170(3), 1003-1050.
+* Doran, C. F., Gates Jr, S. J., Hübsch, T., Iga, K. M., & Landweber, G. D. (2008). On graph-theoretic identifications of Adinkras, supersymmetry representations and codes. *International Journal of Modern Physics A*, 22(5),
