@@ -27,6 +27,14 @@ The LaTeX paper compiles to PDF and includes figures, proofs, and references.
 
 ## Quick Start
 
+### Prerequisites
+
+Use Python 3.10+ and install required packages before running scripts:
+
+```bash
+python -m pip install numpy matplotlib sympy
+```
+
 ### 1. View the Paper
 
 - Compile locally: `cd latex && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex`
@@ -34,9 +42,21 @@ The LaTeX paper compiles to PDF and includes figures, proofs, and references.
 
 ### 2. Run the Simulation
 
+- Visualization-focused simulation (generates histogram figure):
+
 ```bash
 python simulation.py
 ```
+
+- Data-focused simulation (writes CSV output):
+
+```bash
+python src/simulate.py
+```
+
+## Wiki
+
+Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates.
 
 ## Repository Contents
 
