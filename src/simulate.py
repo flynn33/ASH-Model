@@ -30,6 +30,9 @@ def lsystem_branch(branches):
 # Initialize agents in 9D hypercube
 agents = np.random.randint(0, 2, (NUM_AGENTS, DIM))
 
+# Track branches across checkpoints so growth is cumulative
+branches = ["F"]
+
 # Simulation loop
 for t in range(TICKS):
     for i in range(NUM_AGENTS):
@@ -38,7 +41,7 @@ for t in range(TICKS):
 
     # Optional branching every 100 ticks
     if t % 100 == 0:
-        branches = lsystem_branch(["F"])
+        branches = lsystem_branch(branches)
         print(f"Tick {t}: Branch count = {len(branches)}")
 
 # Compute example emergent property: Realm distribution (sum states mod 9)
