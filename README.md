@@ -54,6 +54,10 @@ python simulation.py
 python src/simulate.py
 ```
 
+## Wiki
+
+Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates.
+
 ## Repository Contents
 
 - `latex/main.tex` – Master LaTeX source for the research paper
