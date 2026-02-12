@@ -59,6 +59,14 @@ A pull request template is provided at `.github/pull_request_template.md` and sh
   - Keep notation and formatting consistent with existing manuscript conventions.
   - Keep references and bibliography entries accurate and complete.
 
+
+## Automated Copilot Review
+
+This repository automatically requests a GitHub Copilot review on pull requests when they are opened, updated, or marked ready for review.
+
+- Workflow: `.github/workflows/copilot-review.yml`
+- If Copilot review is not available for a repository plan or organization policy, the workflow exits without failing the pull request checks.
+
 ## Review and Merge Process
 
 - CI checks on pull requests must pass.
