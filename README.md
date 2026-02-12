@@ -36,31 +36,32 @@ The LaTeX paper compiles to PDF and includes figures, proofs, and references.
 
 ```bash
 python simulation.py
+```
 
-Repository Contents
+## Repository Contents
 
-main.tex – Master LaTeX source for the research paper
-references.bib – BibTeX entries (adinkras, lattices, string theory)
-figures/ – Diagrams (hypercube projection, adinkra graph, error illustration, simulation histogram)
-simulation.py – Reproducible Python implementation of core dynamics
-axioms-of-existence.json – Formal modal-logic axioms underpinning the model
-simulation-results.csv – Sample raw data (legacy – to be updated)
+- `latex/main.tex` – Master LaTeX source for the research paper
+- `latex/references.bib` / `latex/bibtex.bib` – BibTeX references
+- `figures/` – Diagrams and generated visualizations
+- `simulation.py` – Reproducible Python implementation of core dynamics
+- `axioms-of-existence.json` – Formal modal-logic axioms underpinning the model
+- `data/simulation-results.csv` – Sample raw data
 
-Citation
+## Citation
 Please cite this work as:
 Daley, J. (2025). "Adinkra-Stabilized Hypercube Model (ASH Model): A Theoretical Framework for 9-Dimensional Procedural Cosmology." Preprint, in preparation.
-Contributing
-Contributions are welcome! Areas for collaboration:
+## Contributing
+Contributions are welcome. Before opening a pull request, review `CONTRIBUTING.md` and run the required checks:
 
-Extensions to quantum amplitudes (QuTiP integration)
-Full (1|N) SUSY multiplet implementations
-Comparative studies in 8D/10D hypercubes
-Tensor network or holographic interpretations
+```bash
+python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py
+python -m json.tool axioms-of-existence.json > /dev/null
+python -m compileall -q simulation.py src
+```
 
-Please open an Issue first to discuss proposed changes.
-License
+## License
 This project is licensed under the MIT License – see LICENSE for details. Academic citation is requested for any use or derivative work.
-Contact
+## Contact
 For inquiries, extensions, or collaboration, open an Issue or discuss via GitHub.
 
 

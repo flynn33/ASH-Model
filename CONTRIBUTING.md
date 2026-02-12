@@ -1,48 +1,74 @@
 # Contributing to the Adinkra-Stabilized Hypercube Model (ASH Model)
 
-Thank you for your interest in contributing to the ASH Model! This project bridges supersymmetry (adinkras), error-correcting codes, high-dimensional geometry, and modal logic in a procedural cosmological framework. Contributions that advance mathematical rigor, simulation capabilities, or theoretical connections are especially welcome.
+Thank you for your interest in improving the ASH Model. This repository combines research artifacts and executable scripts, so contributions should be clear, reproducible, and reviewable.
 
-## Types of Contributions Welcome
+## Contribution Requirements
 
-- **Theoretical Extensions**: New proofs, connections to tensor networks, holographic principles, or quantum information theory.
-- **Simulation Improvements**: Quantum extensions (e.g., QuTiP amplitudes), full SUSY multiplets, L-System fractal branching visualization, higher/lower-dimensional comparisons (8D/10D).
-- **Logical Foundations**: Implementations of the five axioms (e.g., relational checks, Kolmogorov complexity estimation, self-model loops).
-- **Documentation**: Expanded LaTeX sections, additional figures, bibliography updates.
-- **Reproducibility**: Additional scripts, Jupyter notebooks, or Docker configurations.
+1. **Open an Issue first (required)**
+   - Propose the change before implementation so scope and direction can be aligned.
+   - Reference the issue in your pull request (for example: `Closes #123`).
 
-## How to Contribute
+2. **Work from a focused branch**
+   - Use a descriptive branch name, such as:
+     - `feature/<short-description>`
+     - `fix/<short-description>`
+     - `docs/<short-description>`
 
-1. **Discuss First**  
-   Open an **Issue** describing your proposed change (bug fix, new feature, theoretical addition). This ensures alignment with the project's direction.
+3. **Keep changes scoped and documented**
+   - Include only files required for the intended improvement.
+   - Update docs when behavior, commands, or outputs change.
 
-2. **Fork and Branch**  
-   - Fork the repository.  
-   - Create a branch: `git checkout -b feature/your-feature-name` or `bugfix/description`.
+4. **Pass repository checks before opening a PR**
+   - Run the same checks used in CI locally:
 
-3. **Code Style**  
-   - Python: Follow PEP 8. Use type hints where helpful.  
-   - LaTeX: Consistent with existing `main.tex` (amsmath, hyperref, etc.).  
-   - Commit messages: Clear, imperative mood (e.g., "Add L-System branching visualization").
+   ```bash
+   python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py
+   python -m json.tool axioms-of-existence.json > /dev/null
+   python -m compileall -q simulation.py src
+   ```
 
-4. **Testing**  
-   - Ensure `simulation.py` runs without errors.  
-   - Verify `main.tex` compiles cleanly after changes.
+5. **Use clear commit messages**
+   - Write imperative, descriptive messages (example: `Add CI checks for Python and JSON validation`).
 
-5. **Pull Request**  
-   - Target the `main` branch.  
-   - Reference the related Issue.  
-   - Include updates to documentation/README if needed.
+## What to Contribute
 
-## Academic Collaboration
+- **Theoretical extensions**: Proofs, code-theoretic links, tensor/holographic interpretations.
+- **Simulation improvements**: Better performance, new dynamics, additional dimensions, improved output analysis.
+- **Logic/formalism additions**: Better validation of axioms and modal-logic framing.
+- **Documentation/reproducibility**: Better setup docs, examples, notebooks, and consistency updates.
 
-If your contribution involves substantial theoretical development, co-authorship on future versions or related papers can be discussed. Please note this in your Issue or PR.
+## Pull Request Expectations
+
+Each pull request should include:
+
+- A concise summary of the change.
+- A linked issue.
+- A validation section listing commands run and their outcomes.
+- Any known limitations or follow-up work.
+
+A pull request template is provided at `.github/pull_request_template.md` and should be completed.
+
+## Code Style Guidelines
+
+- **Python**
+  - Follow PEP 8 conventions.
+  - Prefer small, composable functions over long script blocks when changing logic.
+  - Add short docstrings for non-trivial functions.
+
+- **LaTeX / docs**
+  - Keep notation and formatting consistent with existing manuscript conventions.
+  - Keep references and bibliography entries accurate and complete.
+
+## Review and Merge Process
+
+- CI checks on pull requests must pass.
+- Maintainers may request revisions for scope, clarity, reproducibility, or scientific framing.
+- Significant theoretical changes may require additional discussion before merge.
 
 ## Code of Conduct
 
-Be respectful and constructive. This project aims to foster interdisciplinary dialogue between physics, mathematics, computer science, and philosophy.
+Be respectful, constructive, and collaborative. The project welcomes interdisciplinary contributions across mathematics, physics, computer science, and philosophy.
 
 ## Questions?
 
-Open an Issue or discuss on GitHub. All contributions will be acknowledged in releases and the manuscript.
-
-Thank you for helping advance the ASH Model!
+Open an issue for clarification or proposal discussion.
