@@ -29,7 +29,7 @@ The LaTeX paper compiles to PDF and includes figures, proofs, and references.
 
 ### 1. View the Paper
 
-- Compile locally: `pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex`
+- Compile locally: `cd latex && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex`
 - Or upload the repository to [Overleaf](https://www.overleaf.com) for instant PDF rendering.
 
 ### 2. Run the Simulation
