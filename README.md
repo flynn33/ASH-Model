@@ -54,6 +54,8 @@ python simulation.py
 python src/simulate.py
 ```
 
+`simulation.py` is the visualization-focused model (histogram output), while `src/simulate.py` is a lightweight data generator that also applies cumulative L-system branching checkpoints.
+
 ## Wiki
 
 Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates.
