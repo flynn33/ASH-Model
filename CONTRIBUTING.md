@@ -65,6 +65,8 @@ A pull request template is provided at `.github/pull_request_template.md` and sh
 This repository automatically requests a GitHub Copilot review on pull requests when they are opened, updated, or marked ready for review.
 
 - Workflow: `.github/workflows/copilot-review.yml`
+- Custom instructions: `.github/copilot-instructions.md`
+- Learn how to get started with Copilot custom instructions: https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions
 - If Copilot review is not available for a repository plan or organization policy, the workflow exits without failing the pull request checks.
 
 ## Review and Merge Process
