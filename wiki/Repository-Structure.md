@@ -15,7 +15,7 @@ This page maps major folders/files to their purpose.
 - `docs/ASH-research-paper.md` — markdown-formatted paper narrative
 - `docs/repository-review.md` — consistency review and follow-up notes
 - `latex/main.tex` — canonical manuscript source
-- `latex/references.bib`, `latex/bibtex.bib` — bibliography
+- `latex/references.bib` — bibliography (used by main.tex)
 
 ## Code and data
 

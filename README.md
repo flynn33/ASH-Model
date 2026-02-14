@@ -63,7 +63,7 @@ Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub
 ## Repository Contents
 
 - `latex/main.tex` – Master LaTeX source for the research paper
-- `latex/references.bib` / `latex/bibtex.bib` – BibTeX references
+- `latex/references.bib` – BibTeX references (active bibliography)
 - `figures/` – Diagrams and generated visualizations
 - `simulation.py` – Reproducible Python implementation of core dynamics
 - `axioms-of-existence.json` – Formal modal-logic axioms underpinning the model
