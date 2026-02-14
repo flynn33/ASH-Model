@@ -13,7 +13,7 @@ OUTPUT_PATH = REPO_ROOT / "data" / "simulation-results.csv"
 
 def adinkra_transform(state):
     """Apply SUSY-inspired adinkra transformation (parity flips)."""
-    code = np.array([1, 1, 0, 0, 1, 0, 1, 0, 1])  # Example doubly-even code extension
+    code = np.array([1, 1, 1, 1, 0, 0, 0, 0, 0])  # Doubly-even code (Hamming weight 4)
     return (state + code) % 2
 
 
@@ -44,8 +44,8 @@ for t in range(TICKS):
         branches = lsystem_branch(branches)
         print(f"Tick {t}: Branch count = {len(branches)}")
 
-# Compute example emergent property: Realm distribution (sum states mod 9)
-realm_sums = np.sum(agents, axis=1) % 9
+# Compute example emergent property: Realm distribution by Hamming weight
+realm_sums = np.sum(agents, axis=1) % 10
 unique, counts = np.unique(realm_sums, return_counts=True)
 print("Realm distribution (bell-curve analog):")
 for realm, count in zip(unique, counts):
