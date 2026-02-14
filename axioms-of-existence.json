@@ -7,7 +7,7 @@
       "id": "A1",
       "name": "Relational_Existence",
       "summary": "An entity exists in a world only if it participates in at least one relation with another entity.",
-      "formal": "Given a world W = (X, R), x ∈ X exists in W iff ∃ y ∈ X such that (x, y) ∈ R or (y, x) ∈ R.",
+      "formal": "Given a world W = (X, R), x ∈ X exists in W iff ∃ y ∈ X with y ≠ x such that (x, y) ∈ R or (y, x) ∈ R.",
       "story_implications": [
         "No truly isolated being; even in hell or void, some relation holds (to Lucifer, to a plane, to a law).",
         "A character entirely cut off from all relations effectively ceases to exist in that world."
@@ -17,7 +17,7 @@
       "id": "A2",
       "name": "Structural_Compressibility",
       "summary": "An entity is a real pattern if its description can be compressed into a shorter rule set than its raw data.",
-      "formal": "For encoding E(x) and Kolmogorov complexity K(x), an entity exists as a distinct pattern if K(x) << |E(x)|.",
+      "formal": "For encoding E(x) with length |E(x)| and Kolmogorov complexity K(x), an entity exists as a distinct pattern if K(x) + c < |E(x)| for some constant c > 0.",
       "story_implications": [
         "Souls are patterned and repeatable across lifetimes.",
         "Pure random chaos has no persistent self.",
@@ -28,7 +28,7 @@
       "id": "A3",
       "name": "Multi_Scale_Persistence",
       "summary": "A real entity persists as a recognizable pattern across time and scale.",
-      "formal": "For coarse-graining operators G_s, x exists robustly if d(G_s(x), G_s'(x)) ≤ ε for s, s' in some interval.",
+      "formal": "For coarse-graining operators G_s and metric d on the pattern space, x exists robustly if d(G_s(x), G_s'(x)) ≤ ε for s, s' in some interval, where ε is a tolerance threshold.",
       "story_implications": [
         "Higher self persists across incarnations.",
         "Angel and mortal aspects of the same being are scale versions of one pattern.",
@@ -39,7 +39,7 @@
       "id": "A4",
       "name": "Energetic_Cost_of_Erasure",
       "summary": "Erasing a structured pattern requires non-zero energy; structure that costs nothing to erase is not physically instantiated.",
-      "formal": "By Landauer's principle, E_erase ≥ k_B T ln 2 * H(x), so H(x) > 0 implies nonzero erasure cost.",
+      "formal": "By Landauer's principle, E_erase ≥ k_B T ln(2) * H(x), where H(x) is the Shannon entropy in bits. Thus H(x) > 0 implies nonzero erasure cost.",
       "story_implications": [
         "Destroying a soul or plane is enormously costly or almost impossible.",
         "Lucifer and the Creator act as guardians of conservation of structure.",
@@ -50,7 +50,7 @@
       "id": "A5",
       "name": "Self_Reference_for_Consciousness",
       "summary": "A system is conscious if it contains a substructure that models itself and updates that model in response to its own state.",
-      "formal": "For system S with state space Σ and subsystem M ⊂ Σ, S is conscious iff there exists decoding π such that π(M(t)) ≈ S(t) and M(t+1) = f(M(t), S(t)).",
+      "formal": "For system S with state space Σ and subsystem M ⊂ Σ, S is conscious iff there exists decoding map π and distance metric d such that d(π(M(t)), S(t)) < δ for some threshold δ, and M(t+1) = f(M(t), S(t)) where f is the update function.",
       "story_implications": [
         "The narrator and Kaelen are conscious because they have internal models (higher self, wolves).",
         "Angels and advanced beings carry more accurate self-models.",

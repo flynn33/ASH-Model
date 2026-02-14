@@ -126,7 +126,7 @@ Compute
 &= \frac{1}{|C|} \sum_{c \in C} \frac{1}{|C|} \sum_{d \in C} f((x \oplus c) \oplus d) \\
 &= \frac{1}{|C|^2} \sum_{c,d \in C} f(x \oplus (c \oplus d)).
 \end{align*}
-As $C$ is linear, $c \oplus d$ runs over all elements of $C$ exactly $|C|$ times for fixed $c$. Thus
+As $C$ is a linear code (and thus a group under $\oplus$), for each fixed $c$, as $d$ ranges over $C$, the value $c \oplus d$ also ranges over all elements of $C$ exactly once. Summing over all $c \in C$, each element $e \in C$ appears exactly $|C|$ times. Thus
 \[
 (\mathcal{T}^2 f)(x) = \frac{1}{|C|^2} \cdot |C| \sum_{e \in C} f(x \oplus e) = \mathcal{T} f(x).
 \]
