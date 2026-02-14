@@ -1,3 +1,13 @@
+"""
+Mathematical properties demonstrating the significance of the number 9.
+
+Verifies five key properties:
+1. Refactorability (tau(9) = 3, and 9 % 3 = 0)
+2. Smallest odd refactorable number > 1
+3. Smallest odd composite number
+4. Digital root invariance for multiples of 9
+5. String theory: 9 spatial dimensions from critical dimension D=10
+"""
 import sympy as sp
 
 # 1. Refactorability of 9

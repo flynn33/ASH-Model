@@ -13,9 +13,11 @@ Use this checklist when updating docs/wiki content.
 ## Review commands
 
 ```bash
-python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py
+python -m pip install numpy  # Install required dependencies
+python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
 python -m json.tool axioms-of-existence.json > /dev/null
-python -m compileall -q simulation.py src
+python -m compileall -q simulation.py src tools
+python tools/audit_simulation_data.py
 ```
 
 ## Maintenance note
