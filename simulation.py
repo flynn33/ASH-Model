@@ -14,6 +14,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameters
+# NOTE: This visualization-focused script uses different parameters than src/simulate.py
+# (which uses 1000 agents/ticks for data generation). Both are valid demonstrations.
 DIM = 9                    # 9-dimensional hypercube
 NUM_AGENTS = 2000          # Number of agents (souls/realms entities)
 TICKS = 2000               # Simulation steps
@@ -21,13 +23,14 @@ NOISE_PROB = 0.01          # Probability of random bit flip per tick per agent
 
 # Sample adinkra-inspired codewords (linear transformations / SUSY generators)
 # These are chosen to mimic raising/lowering operators in adinkra graphs
+# All codewords are doubly-even (Hamming weight ≡ 0 mod 4) for error correction
 CODEWORDS = [
-    np.array([1, 1, 1, 1, 0, 0, 0, 0, 0], dtype=int),
-    np.array([1, 1, 0, 0, 1, 1, 0, 0, 0], dtype=int),
-    np.array([1, 0, 1, 0, 1, 0, 1, 0, 0], dtype=int),
-    np.array([1, 0, 0, 1, 1, 0, 0, 1, 0], dtype=int),
-    np.array([0, 1, 0, 1, 0, 1, 0, 1, 1], dtype=int),
-    np.array([0, 0, 1, 1, 0, 0, 1, 1, 1], dtype=int),
+    np.array([1, 1, 1, 1, 0, 0, 0, 0, 0], dtype=int),  # Weight 4
+    np.array([1, 1, 0, 0, 1, 1, 0, 0, 0], dtype=int),  # Weight 4
+    np.array([1, 0, 1, 0, 1, 0, 1, 0, 0], dtype=int),  # Weight 4
+    np.array([1, 0, 0, 1, 1, 0, 0, 1, 0], dtype=int),  # Weight 4
+    np.array([1, 1, 1, 1, 1, 1, 1, 1, 0], dtype=int),  # Weight 8 (doubly-even: 8 ≡ 0 mod 4)
+    np.array([0, 0, 0, 0, 1, 1, 1, 1, 0], dtype=int),  # Weight 4 (doubly-even: 4 ≡ 0 mod 4)
 ]
 
 def hamming_weight(state):
