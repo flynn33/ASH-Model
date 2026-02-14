@@ -26,8 +26,8 @@ CODEWORDS = [
     np.array([1, 1, 0, 0, 1, 1, 0, 0, 0], dtype=int),
     np.array([1, 0, 1, 0, 1, 0, 1, 0, 0], dtype=int),
     np.array([1, 0, 0, 1, 1, 0, 0, 1, 0], dtype=int),
-    np.array([0, 1, 0, 1, 0, 1, 0, 1, 1], dtype=int),
-    np.array([0, 0, 1, 1, 0, 0, 1, 1, 1], dtype=int),
+    np.array([1, 1, 1, 1, 1, 1, 1, 1, 0], dtype=int),  # Weight 8 (doubly-even: 8 ≡ 0 mod 4)
+    np.array([0, 0, 0, 0, 1, 1, 1, 1, 0], dtype=int),  # Weight 4 (doubly-even: 4 ≡ 0 mod 4)
 ]
 
 def hamming_weight(state):
