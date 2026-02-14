@@ -19,9 +19,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy
+
       - name: Python syntax checks
         run: |
-          python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py
+          python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
 
       - name: JSON validation
         run: |
@@ -29,4 +34,8 @@ jobs:
 
       - name: Bytecode compilation check
         run: |
-          python -m compileall -q simulation.py src
+          python -m compileall -q simulation.py src tools
+
+      - name: Data integrity check
+        run: |
+          python tools/audit_simulation_data.py

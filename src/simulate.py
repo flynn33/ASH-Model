@@ -1,3 +1,10 @@
+"""
+Data-focused simulation for the ASH Model.
+
+Generates CSV data for 1000 agents over 1000 ticks in a 9D hypercube.
+Applies doubly-even adinkra transformations and tracks L-system branching.
+Output: data/simulation-results.csv
+"""
 from pathlib import Path
 
 import numpy as np
