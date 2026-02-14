@@ -12,6 +12,16 @@ This wiki is aligned with the current repository state and provides a practical 
 
 For full manuscript content, see the LaTeX source in `latex/main.tex`.
 
+### Compile LaTeX Paper
+
+To build the research paper locally:
+
+```bash
+cd latex && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+```
+
+Alternatively, upload the repository to [Overleaf](https://www.overleaf.com) for instant PDF rendering.
+
 ## Quick Start
 
 ### Prerequisites
@@ -50,15 +60,19 @@ python src/simulate.py
 Before opening a PR, run:
 
 ```bash
-python -m pip install numpy  # Install required dependencies
+python -m pip install numpy matplotlib sympy  # Install all required dependencies
 python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
 python -m json.tool axioms-of-existence.json > /dev/null
 python -m compileall -q simulation.py src tools
 python tools/audit_simulation_data.py
 ```
 
+> **Note**: Pull requests automatically receive GitHub Copilot code review when opened or updated. See `.github/copilot-instructions.md` for review priorities.
+
 ## Related Pages
 
-- [[Simulation Guide]]
-- [[Repository Structure]]
-- [[Consistency Checklist]]
+- [Simulation Guide](Simulation-Guide.md)
+- [Repository Structure](Repository-Structure.md)
+- [Consistency Checklist](Consistency-Checklist.md)
+
+> **Note**: When these pages are synced to GitHub Wiki, internal links will work as `[[Page Name]]`.
