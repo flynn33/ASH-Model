@@ -60,6 +60,14 @@ python src/simulate.py
 
 Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates.
 
+## Discussions
+
+GitHub Discussions in this repository are supported by repo-grounded automation:
+
+- discussion responders for technical, support, and research/theory questions
+- scheduled topic seeding from wiki and paper headings
+- moderation against the repository code of conduct
+
 ## Repository Contents
 
 - `latex/main.tex` – Master LaTeX source for the research paper
@@ -77,11 +85,16 @@ Contributions are welcome. Before opening a pull request, review `CONTRIBUTING.m
 
 ```bash
 python -m pip install numpy matplotlib sympy  # Install all required dependencies
-python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
+python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
 python -m json.tool axioms-of-existence.json > /dev/null
-python -m compileall -q simulation.py src tools
+python -m compileall -q simulation.py src tools scripts
+python scripts/github/discussion_agent.py --validate-config --root .
+python scripts/github/discussion_topic_agent.py --validate-config --root .
+python scripts/github/discussion_moderation_agent.py --validate-config --root .
 python tools/audit_simulation_data.py
 ```
+
+All contributors and discussion participants must follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## License
 This project is licensed under the MIT License – see LICENSE for details. Academic citation is requested for any use or derivative work.

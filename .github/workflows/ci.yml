@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -26,7 +29,7 @@ jobs:
 
       - name: Python syntax checks
         run: |
-          python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
+          python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
 
       - name: JSON validation
         run: |
@@ -34,7 +37,13 @@ jobs:
 
       - name: Bytecode compilation check
         run: |
-          python -m compileall -q simulation.py src tools
+          python -m compileall -q simulation.py src tools scripts
+
+      - name: Discussion automation validation
+        run: |
+          python scripts/github/discussion_agent.py --validate-config --root .
+          python scripts/github/discussion_topic_agent.py --validate-config --root .
+          python scripts/github/discussion_moderation_agent.py --validate-config --root .
 
       - name: Data integrity check
         run: |

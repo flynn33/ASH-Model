@@ -6,6 +6,7 @@ This page maps major folders/files to their purpose.
 
 - `README.md` — overview, quick start, and contribution checks
 - `CONTRIBUTING.md` — contribution workflow and expectations
+- `CODE_OF_CONDUCT.md` — discussion and collaboration standards
 - `LICENSE` — MIT license
 - `axioms-of-existence.json` — formal modal-logic axiom set
 - `simulation.py` — visualization-focused simulation
@@ -35,5 +36,11 @@ This page maps major folders/files to their purpose.
 
 - `.github/workflows/ci.yml` — continuous integration checks (Python syntax, JSON validation, data audit)
 - `.github/workflows/copilot-review.yml` — automated Copilot code review on PRs
+- `.github/workflows/discussion-agents.yml` — repo-grounded discussion response automation
+- `.github/workflows/discussion-topic-seeder.yml` — scheduled topic creation from wiki and paper headings
+- `.github/workflows/discussion-moderation.yml` — discussion moderation and incident logging
 - `.github/copilot-instructions.md` — custom instructions for Copilot reviews
+- `.github/discussion_agents.json` — discussion responder family routing
+- `.github/discussion_topic_generator.json` — topic seeding sources and family rules
+- `.github/discussion_moderation_policy.json` — moderation policy and enforcement thresholds
 - `.github/pull_request_template.md` — PR template for contributors

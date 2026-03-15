@@ -23,9 +23,12 @@ Thank you for your interest in improving the ASH Model. This repository combines
 
    ```bash
    python -m pip install numpy matplotlib sympy  # Install all required dependencies
-   python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
+   python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
    python -m json.tool axioms-of-existence.json > /dev/null
-   python -m compileall -q simulation.py src tools
+   python -m compileall -q simulation.py src tools scripts
+   python scripts/github/discussion_agent.py --validate-config --root .
+   python scripts/github/discussion_topic_agent.py --validate-config --root .
+   python scripts/github/discussion_moderation_agent.py --validate-config --root .
    python tools/audit_simulation_data.py
    ```
 
@@ -79,7 +82,7 @@ This repository automatically requests a GitHub Copilot review on pull requests 
 
 ## Code of Conduct
 
-Be respectful, constructive, and collaborative. The project welcomes interdisciplinary contributions across mathematics, physics, computer science, and philosophy.
+All contributors must follow the [Code of Conduct](CODE_OF_CONDUCT.md). GitHub Discussions are subject to automated moderation for racist, vulgar, profane, threatening, or harassing content.
 
 ## Questions?
 

@@ -61,9 +61,12 @@ Before opening a PR, run:
 
 ```bash
 python -m pip install numpy matplotlib sympy  # Install all required dependencies
-python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py
+python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
 python -m json.tool axioms-of-existence.json > /dev/null
-python -m compileall -q simulation.py src tools
+python -m compileall -q simulation.py src tools scripts
+python scripts/github/discussion_agent.py --validate-config --root .
+python scripts/github/discussion_topic_agent.py --validate-config --root .
+python scripts/github/discussion_moderation_agent.py --validate-config --root .
 python tools/audit_simulation_data.py
 ```
 

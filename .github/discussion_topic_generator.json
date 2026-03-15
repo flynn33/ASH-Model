@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "max_topics_per_run": 3,
+  "max_topics_per_family_per_run": 1,
+  "family_order": [
+    "technical",
+    "support",
+    "research_theory"
+  ],
+  "seed_marker_prefix": "ash-discussion-seed",
+  "category_preferences": {
+    "technical": [
+      "ideas",
+      "general",
+      "q-a"
+    ],
+    "support": [
+      "q-a",
+      "general",
+      "ideas"
+    ],
+    "research_theory": [
+      "general",
+      "ideas",
+      "q-a"
+    ]
+  },
+  "seed_sources": [
+    {
+      "id": "wiki_home_sections",
+      "kind": "markdown_headings",
+      "source_path": "wiki/Home.md",
+      "heading_level": 2,
+      "title_prefix": "Wiki Section",
+      "body_intro": "This topic was generated from the repository wiki home page."
+    },
+    {
+      "id": "wiki_topics",
+      "kind": "wiki_sync_pages",
+      "source_path": ".github/wiki-sync.json",
+      "title_prefix": "Wiki Topic",
+      "body_intro": "This topic was generated from the repository wiki source mapping."
+    },
+    {
+      "id": "research_topics",
+      "kind": "markdown_headings",
+      "source_path": "docs/ASH-research-paper.md",
+      "heading_level": 2,
+      "title_prefix": "Research Topic",
+      "body_intro": "This topic was generated from the repository research paper narrative."
+    }
+  ]
+}

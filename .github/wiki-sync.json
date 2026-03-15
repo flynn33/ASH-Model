@@ -1,0 +1,20 @@
+{
+  "pages": [
+    {
+      "source": "wiki/Home.md",
+      "destination": "Home.md"
+    },
+    {
+      "source": "wiki/Simulation-Guide.md",
+      "destination": "Simulation-Guide.md"
+    },
+    {
+      "source": "wiki/Repository-Structure.md",
+      "destination": "Repository-Structure.md"
+    },
+    {
+      "source": "wiki/Consistency-Checklist.md",
+      "destination": "Consistency-Checklist.md"
+    }
+  ]
+}
