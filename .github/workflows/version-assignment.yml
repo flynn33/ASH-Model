@@ -1,0 +1,114 @@
+name: Version Assignment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'changelog/CHANGELOG.md'
+
+permissions:
+  contents: write
+
+jobs:
+  assign-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check changelog modified
+        id: check
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q '^changelog/CHANGELOG.md$'; then
+            echo "modified=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "modified=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract version impact
+        if: steps.check.outputs.modified == 'true'
+        id: impact
+        run: |
+          # Extract the newest changelog entry's Version Impact field
+          IMPACT=$(awk '/^## /{found++} found==1 && /^\*\*Version Impact\*\*:/{print; exit}' changelog/CHANGELOG.md \
+            | sed 's/.*: *//' | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
+
+          if [ -z "$IMPACT" ]; then
+            echo "::warning::No Version Impact field found in newest changelog entry"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "impact=$IMPACT" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "Detected version impact: $IMPACT"
+
+      - name: Read current version
+        if: steps.check.outputs.modified == 'true' && steps.impact.outputs.skip != 'true'
+        id: current
+        run: |
+          if [ -f VERSION ]; then
+            VERSION=$(cat VERSION | tr -d '[:space:]')
+          else
+            # Fallback: extract from changelog
+            VERSION=$(grep -oP '## v\K[0-9]+\.[0-9]+\.[0-9]+' changelog/CHANGELOG.md | head -2 | tail -1)
+            if [ -z "$VERSION" ]; then
+              VERSION="0.0.0"
+            fi
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Current version: $VERSION"
+
+      - name: Compute next version
+        if: steps.check.outputs.modified == 'true' && steps.impact.outputs.skip != 'true'
+        id: next
+        run: |
+          CURRENT="${{ steps.current.outputs.version }}"
+          IMPACT="${{ steps.impact.outputs.impact }}"
+
+          MAJOR=$(echo "$CURRENT" | cut -d. -f1)
+          MINOR=$(echo "$CURRENT" | cut -d. -f2)
+          PATCH=$(echo "$CURRENT" | cut -d. -f3)
+
+          case "$IMPACT" in
+            major)
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            patch)
+              PATCH=$((PATCH + 1))
+              ;;
+            none|governance-only)
+              echo "Impact is '$IMPACT' — skipping version bump"
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              exit 0
+              ;;
+            *)
+              echo "::error::Unknown version impact: $IMPACT"
+              exit 1
+              ;;
+          esac
+
+          NEXT="${MAJOR}.${MINOR}.${PATCH}"
+          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "Next version: $NEXT"
+
+      - name: Write and commit version
+        if: steps.check.outputs.modified == 'true' && steps.impact.outputs.skip != 'true' && steps.next.outputs.skip != 'true'
+        run: |
+          NEXT="${{ steps.next.outputs.next }}"
+          echo "$NEXT" > VERSION
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add VERSION
+          git commit -m "chore: bump version to $NEXT"
+          git push

@@ -1,0 +1,124 @@
+name: Wiki Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'docs/**'
+      - 'axioms-of-existence.json'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed canonical files
+        id: changed
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 HEAD)
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CHANGED" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Sync wiki pages
+        run: |
+          CHANGED="${{ steps.changed.outputs.files }}"
+          UPDATED=false
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+
+          mkdir -p wiki
+
+          # README.md → wiki/Home.md
+          if echo "$CHANGED" | grep -q '^README.md$'; then
+            {
+              echo "> **Canonical source**: \`README.md\`"
+              echo "> **Last synced**: $TIMESTAMP"
+              echo ""
+              cat README.md
+            } > wiki/Home.md
+            UPDATED=true
+            echo "Synced README.md → wiki/Home.md"
+          fi
+
+          # docs/ASH-research-paper.md → wiki/Research-Paper.md
+          if echo "$CHANGED" | grep -q '^docs/'; then
+            if [ -f docs/ASH-research-paper.md ]; then
+              {
+                echo "> **Canonical source**: \`docs/ASH-research-paper.md\`"
+                echo "> **Last synced**: $TIMESTAMP"
+                echo ""
+                cat docs/ASH-research-paper.md
+              } > wiki/Research-Paper.md
+              UPDATED=true
+              echo "Synced docs/ASH-research-paper.md → wiki/Research-Paper.md"
+            fi
+          fi
+
+          # axioms-of-existence.json → wiki/Axioms.md
+          if echo "$CHANGED" | grep -q '^axioms-of-existence.json$'; then
+            {
+              echo "> **Canonical source**: \`axioms-of-existence.json\`"
+              echo "> **Last synced**: $TIMESTAMP"
+              echo ""
+              echo "# Axioms of Existence"
+              echo ""
+              echo "The ASH Model is underpinned by five formal axioms expressed in modal-logic Kripke-frame semantics."
+              echo ""
+              python3 -c "
+          import json, sys
+          with open('axioms-of-existence.json') as f:
+              data = json.load(f)
+          if isinstance(data, list):
+              axioms = data
+          elif isinstance(data, dict):
+              axioms = data.get('axioms', data.get('items', [data]))
+          else:
+              axioms = [data]
+          for i, ax in enumerate(axioms, 1):
+              if isinstance(ax, dict):
+                  name = ax.get('name', ax.get('title', f'Axiom {i}'))
+                  desc = ax.get('description', ax.get('statement', ax.get('content', '')))
+                  formal = ax.get('formal', ax.get('formula', ''))
+                  print(f'## {i}. {name}')
+                  print()
+                  if desc:
+                      print(desc)
+                      print()
+                  if formal:
+                      print(f'**Formal**: \`{formal}\`')
+                      print()
+              else:
+                  print(f'## {i}. {ax}')
+                  print()
+          "
+            } > wiki/Axioms.md
+            UPDATED=true
+            echo "Synced axioms-of-existence.json → wiki/Axioms.md"
+          fi
+
+          if [ "$UPDATED" = "true" ]; then
+            echo "WIKI_UPDATED=true" >> "$GITHUB_ENV"
+          else
+            echo "WIKI_UPDATED=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Commit wiki updates
+        if: env.WIKI_UPDATED == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add wiki/
+          if git diff --cached --quiet; then
+            echo "No wiki changes to commit"
+          else
+            git commit -m "docs: sync wiki pages from canonical sources"
+            git push
+          fi

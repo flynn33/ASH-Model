@@ -2,6 +2,11 @@
 - Describe the change and why it is needed.
 - Link to the related issue (required): Closes #
 
+## Change Classification
+- **Change Class**: <!-- feature | bugfix | refactor | docs | governance | release | metadata | breaking-change -->
+- **Release Impact**: <!-- none | patch | minor | major -->
+- **Breaking Change**: <!-- yes | no -->
+
 ## Type of change
 - [ ] Bug fix
 - [ ] Feature

@@ -1,6 +1,6 @@
 # Adinkra-Stabilized Hypercube Model (ASH Model)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Custom](https://img.shields.io/badge/License-Custom-red.svg)](LICENSE)
 [![arXiv](https://img.shields.io/badge/arXiv-in_preparation-red.svg)](https://arxiv.org)
 
 **A Theoretical and Computational Framework for 9-Dimensional Procedural Cosmology**  
@@ -97,7 +97,7 @@ python tools/audit_simulation_data.py
 All contributors and discussion participants must follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## License
-This project is licensed under the MIT License – see LICENSE for details. Academic citation is requested for any use or derivative work.
+This project is licensed under a custom restrictive license — see [LICENSE](LICENSE) for details. Free for educational use and individual experimentation only. All other use is strictly prohibited. Commercial use requires a separate license. Academic citation is required for any use or derivative work.
 ## Contact
 For inquiries, extensions, or collaboration, open an Issue or discuss via GitHub.
 

@@ -1,0 +1,138 @@
+name: Version Tracking
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  track-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed files
+        id: changes
+        uses: tj-actions/changed-files@v44
+
+      - name: Read current version
+        id: current
+        run: |
+          if [ -f VERSION ]; then
+            VERSION=$(cat VERSION | tr -d '[:space:]')
+          else
+            VERSION=$(grep -oP '## v\K[0-9]+\.[0-9]+\.[0-9]+' changelog/CHANGELOG.md | head -1)
+            if [ -z "$VERSION" ]; then
+              VERSION="0.0.0"
+            fi
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Current version: $VERSION"
+
+      - name: Extract PR classification
+        id: classify
+        run: |
+          BODY=$(cat <<'PREOF'
+          ${{ github.event.pull_request.body }}
+          PREOF
+          )
+
+          IMPACT=$(echo "$BODY" | grep -oP '\*\*Release Impact\*\*:\s*\K[a-z]+' | head -1 || true)
+          CLASS=$(echo "$BODY" | grep -oP '\*\*Change Class\*\*:\s*\K[a-z-]+' | head -1 || true)
+          BREAKING=$(echo "$BODY" | grep -oP '\*\*Breaking Change\*\*:\s*\K[a-z]+' | head -1 || true)
+
+          echo "impact=${IMPACT:-unset}" >> "$GITHUB_OUTPUT"
+          echo "class=${CLASS:-unset}" >> "$GITHUB_OUTPUT"
+          echo "breaking=${BREAKING:-unset}" >> "$GITHUB_OUTPUT"
+
+      - name: Compute expected version
+        id: expected
+        run: |
+          CURRENT="${{ steps.current.outputs.version }}"
+          IMPACT="${{ steps.classify.outputs.impact }}"
+
+          MAJOR=$(echo "$CURRENT" | cut -d. -f1)
+          MINOR=$(echo "$CURRENT" | cut -d. -f2)
+          PATCH=$(echo "$CURRENT" | cut -d. -f3)
+
+          case "$IMPACT" in
+            major) NEXT="$((MAJOR+1)).0.0" ;;
+            minor) NEXT="${MAJOR}.$((MINOR+1)).0" ;;
+            patch) NEXT="${MAJOR}.${MINOR}.$((PATCH+1))" ;;
+            none) NEXT="$CURRENT" ;;
+            *) NEXT="unknown" ;;
+          esac
+
+          echo "expected=$NEXT" >> "$GITHUB_OUTPUT"
+          echo "Expected next version: $NEXT"
+
+      - name: Validate changelog entry
+        run: |
+          EXPECTED="${{ steps.expected.outputs.expected }}"
+
+          if echo "${{ steps.changes.outputs.all_changed_files }}" | grep -q 'changelog/CHANGELOG.md'; then
+            if [ "$EXPECTED" != "unknown" ] && [ "$EXPECTED" != "${{ steps.current.outputs.version }}" ]; then
+              if ! grep -q "## v${EXPECTED}" changelog/CHANGELOG.md; then
+                echo "::warning::Changelog does not contain an entry for expected version v${EXPECTED}"
+              fi
+            fi
+          fi
+
+      - name: Validate classification consistency
+        run: |
+          CLASS="${{ steps.classify.outputs.class }}"
+          IMPACT="${{ steps.classify.outputs.impact }}"
+          BREAKING="${{ steps.classify.outputs.breaking }}"
+
+          # Validate change class to impact mapping
+          VALID=true
+          case "$CLASS" in
+            feature)
+              if [ "$IMPACT" != "minor" ] && [ "$IMPACT" != "major" ]; then
+                echo "::warning::Feature changes typically require minor or major impact (got: $IMPACT)"
+              fi
+              ;;
+            bugfix)
+              if [ "$IMPACT" != "patch" ] && [ "$IMPACT" != "minor" ]; then
+                echo "::warning::Bugfix changes typically require patch or minor impact (got: $IMPACT)"
+              fi
+              ;;
+            docs|metadata|governance)
+              if [ "$IMPACT" != "none" ] && [ "$IMPACT" != "patch" ]; then
+                echo "::warning::$CLASS changes typically require none or patch impact (got: $IMPACT)"
+              fi
+              ;;
+            breaking-change)
+              if [ "$IMPACT" != "major" ]; then
+                echo "::error::Breaking changes MUST have major release impact"
+                VALID=false
+              fi
+              ;;
+            refactor)
+              if [ "$IMPACT" != "patch" ] && [ "$IMPACT" != "minor" ]; then
+                echo "::warning::Refactor changes typically require patch or minor impact (got: $IMPACT)"
+              fi
+              ;;
+          esac
+
+          # Hard fail: breaking change without major impact
+          if [ "$BREAKING" = "yes" ] && [ "$IMPACT" != "major" ]; then
+            echo "::error::Breaking change declared but release impact is not major"
+            VALID=false
+          fi
+
+          if [ "$VALID" = "false" ]; then
+            exit 1
+          fi
+
+      - name: Print summary
+        run: |
+          echo "## Version Tracking Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Current Version | ${{ steps.current.outputs.version }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Expected Next | ${{ steps.expected.outputs.expected }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Change Class | ${{ steps.classify.outputs.class }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Release Impact | ${{ steps.classify.outputs.impact }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Breaking Change | ${{ steps.classify.outputs.breaking }} |" >> "$GITHUB_STEP_SUMMARY"

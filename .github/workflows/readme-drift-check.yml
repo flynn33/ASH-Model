@@ -1,0 +1,83 @@
+name: README Drift Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-readme-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed files
+        id: changes
+        uses: tj-actions/changed-files@v44
+
+      - name: Check README drift
+        run: |
+          WARNINGS=0
+          ERRORS=0
+
+          # Check if structural files changed but README did not
+          STRUCTURAL_CHANGE=false
+          README_CHANGED=false
+
+          for f in ${{ steps.changes.outputs.all_changed_files }}; do
+            case "$f" in
+              README.md) README_CHANGED=true ;;
+              *.py|*.json|*.tex|*.yml|*.yaml) STRUCTURAL_CHANGE=true ;;
+            esac
+          done
+
+          # Validate "Repository Contents" section lists actual files
+          if [ -f README.md ]; then
+            # Extract listed files from Repository Contents section
+            LISTED_FILES=$(awk '/^## Repository Contents/,/^## /' README.md \
+              | grep -oP '`\K[^`]+' | grep -E '\.' || true)
+
+            for FILE in $LISTED_FILES; do
+              # Handle files that could be in subdirectories
+              if [ ! -f "$FILE" ] && [ ! -d "$FILE" ]; then
+                echo "::warning::README lists '$FILE' but it does not exist"
+                WARNINGS=$((WARNINGS + 1))
+              fi
+            done
+
+            # Check for new top-level files/dirs not in README
+            for ENTRY in $(ls -1 | grep -vE '^\.|^LICENSE$|^VERSION$|^CONTRIBUTING|^CODE_OF_CONDUCT|^changelog$|^wiki$|^__pycache__$|^\.'); do
+              if ! grep -q "$ENTRY" README.md; then
+                echo "::warning::Top-level entry '$ENTRY' is not mentioned in README.md"
+                WARNINGS=$((WARNINGS + 1))
+              fi
+            done
+
+            # Validate license reference
+            if [ -f LICENSE ]; then
+              if grep -qi 'MIT' LICENSE; then
+                LICENSE_TYPE="MIT"
+              elif grep -qi 'Apache' LICENSE; then
+                LICENSE_TYPE="Apache"
+              elif grep -qi 'custom' LICENSE || grep -qi 'All rights reserved' LICENSE; then
+                LICENSE_TYPE="Custom"
+              else
+                LICENSE_TYPE="Unknown"
+              fi
+
+              if [ "$LICENSE_TYPE" = "Custom" ] && grep -qi 'MIT License' README.md; then
+                echo "::warning::README references MIT License but LICENSE file is custom restrictive"
+                WARNINGS=$((WARNINGS + 1))
+              fi
+            fi
+          fi
+
+          # Summarize
+          TOTAL=$((WARNINGS + ERRORS))
+          echo ""
+          echo "README drift check: $WARNINGS warning(s), $ERRORS error(s)"
+
+          if [ "$TOTAL" -ge 3 ]; then
+            echo "::error::README has $TOTAL discrepancies with the repository — please update README.md"
+            exit 1
+          fi

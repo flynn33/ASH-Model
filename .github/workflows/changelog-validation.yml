@@ -1,0 +1,127 @@
+name: Changelog Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed files
+        id: changes
+        uses: tj-actions/changed-files@v44
+
+      - name: Validate changelog entry
+        run: |
+          # Skip if changelog not modified
+          if ! echo "${{ steps.changes.outputs.all_changed_files }}" | grep -q 'changelog/CHANGELOG.md'; then
+            echo "Changelog not modified — skipping validation"
+            exit 0
+          fi
+
+          ERRORS=0
+
+          # Extract the newest entry (first ## block)
+          ENTRY=$(awk '/^## /{count++} count==1' changelog/CHANGELOG.md)
+
+          if [ -z "$ENTRY" ]; then
+            echo "::error::No changelog entry found"
+            exit 1
+          fi
+
+          echo "Validating newest changelog entry..."
+          echo ""
+
+          # Check required fields
+          # 1. Title (10-120 chars)
+          TITLE=$(echo "$ENTRY" | grep -oP '^\*\*Title\*\*:\s*\K.+' | head -1 || true)
+          if [ -z "$TITLE" ]; then
+            echo "::error::Missing required field: **Title**"
+            ERRORS=$((ERRORS + 1))
+          else
+            TITLE_LEN=${#TITLE}
+            if [ "$TITLE_LEN" -lt 10 ] || [ "$TITLE_LEN" -gt 120 ]; then
+              echo "::error::**Title** must be 10-120 characters (got: $TITLE_LEN)"
+              ERRORS=$((ERRORS + 1))
+            fi
+          fi
+
+          # 2. Change Class (valid enum)
+          CHANGE_CLASS=$(echo "$ENTRY" | grep -oP '^\*\*Change Class\*\*:\s*\K.+' | head -1 | tr -d '[:space:]' || true)
+          VALID_CLASSES="feature bugfix refactor docs governance release metadata breaking-change"
+          if [ -z "$CHANGE_CLASS" ]; then
+            echo "::error::Missing required field: **Change Class**"
+            ERRORS=$((ERRORS + 1))
+          elif ! echo "$VALID_CLASSES" | grep -qw "$CHANGE_CLASS"; then
+            echo "::error::Invalid Change Class: '$CHANGE_CLASS'. Must be one of: $VALID_CLASSES"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # 3. Version Impact (valid enum)
+          VERSION_IMPACT=$(echo "$ENTRY" | grep -oP '^\*\*Version Impact\*\*:\s*\K.+' | head -1 | tr -d '[:space:]' || true)
+          VALID_IMPACTS="none patch minor major"
+          if [ -z "$VERSION_IMPACT" ]; then
+            echo "::error::Missing required field: **Version Impact**"
+            ERRORS=$((ERRORS + 1))
+          elif ! echo "$VALID_IMPACTS" | grep -qw "$VERSION_IMPACT"; then
+            echo "::error::Invalid Version Impact: '$VERSION_IMPACT'. Must be one of: $VALID_IMPACTS"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # 4. Summary (30+ chars)
+          SUMMARY=$(echo "$ENTRY" | grep -oP '^\*\*Summary\*\*:\s*\K.+' | head -1 || true)
+          if [ -z "$SUMMARY" ]; then
+            echo "::error::Missing required field: **Summary**"
+            ERRORS=$((ERRORS + 1))
+          else
+            SUMMARY_LEN=${#SUMMARY}
+            if [ "$SUMMARY_LEN" -lt 30 ]; then
+              echo "::error::**Summary** must be at least 30 characters (got: $SUMMARY_LEN)"
+              ERRORS=$((ERRORS + 1))
+            fi
+          fi
+
+          # 5. Affected Area (non-empty)
+          AFFECTED=$(echo "$ENTRY" | grep -oP '^\*\*Affected Area\*\*:\s*\K.+' | head -1 || true)
+          if [ -z "$AFFECTED" ]; then
+            echo "::error::Missing required field: **Affected Area**"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # Breaking change validation
+          if [ "$CHANGE_CLASS" = "breaking-change" ]; then
+            if [ "$VERSION_IMPACT" != "major" ]; then
+              echo "::error::Breaking changes must have major version impact"
+              ERRORS=$((ERRORS + 1))
+            fi
+            # Check for migration note
+            if ! echo "$ENTRY" | grep -qiE 'migrat|upgrad|breaking|compat'; then
+              echo "::warning::Breaking change entry should include migration notes"
+            fi
+          fi
+
+          # Cross-reference with PR body
+          BODY=$(cat <<'PREOF'
+          ${{ github.event.pull_request.body }}
+          PREOF
+          )
+
+          PR_CLASS=$(echo "$BODY" | grep -oP '\*\*Change Class\*\*:\s*\K[a-z-]+' | head -1 || true)
+          if [ -n "$PR_CLASS" ] && [ -n "$CHANGE_CLASS" ]; then
+            if [ "$PR_CLASS" != "$CHANGE_CLASS" ]; then
+              echo "::warning::PR body Change Class ($PR_CLASS) differs from changelog ($CHANGE_CLASS)"
+            fi
+          fi
+
+          # Final result
+          if [ "$ERRORS" -gt 0 ]; then
+            echo ""
+            echo "::error::Changelog validation failed with $ERRORS error(s)"
+            exit 1
+          fi
+
+          echo "Changelog validation passed"
