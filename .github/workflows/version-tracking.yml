@@ -13,7 +13,7 @@ jobs:
 
       - name: Detect changed files
         id: changes
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v46
 
       - name: Read current version
         id: current
