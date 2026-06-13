@@ -6,26 +6,25 @@ on:
     branches:
       - Skir
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Checkout repository
+        run: |
+          git init .
+          git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach "$GITHUB_SHA"
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install numpy matplotlib sympy pytest
+          python3 -m pip install --upgrade pip
+          python3 -m pip install numpy matplotlib sympy pytest
       - name: Compile Python
-        run: python -m compileall .
+        run: python3 -m compileall .
       - name: Run tests
-        run: python -m pytest -q
+        run: python3 -m pytest -q
       - name: Audit claims
-        run: python tools/audit_claims.py
+        run: python3 tools/audit_claims.py
       - name: Run quick simulation controls
-        run: python tools/run_simulation_controls.py --quick
+        run: python3 tools/run_simulation_controls.py --quick
