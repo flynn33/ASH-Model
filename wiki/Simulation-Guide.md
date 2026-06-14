@@ -42,7 +42,7 @@ python tools/run_simulation_controls.py --quick
 Expected behavior:
 
 - Compares canonical codeword transforms against no-codeword and random-codeword baselines
-- Writes `data/skir-control-results.json`
+- Writes `data/simulation-controls.json`
 - Prints total-variation distance to the binomial/Haar occupancy envelope for each run
 
 ## Choosing the right script

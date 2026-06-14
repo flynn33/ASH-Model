@@ -21,7 +21,7 @@ PARITY_COORDINATE = 9
 PARITY_INDEX = 8
 RESERVED_COORDINATES = (8,)
 
-CANONICAL_GENERATORS: tuple[Vector, ...] = (
+CANONICAL_TRANSFORMS: tuple[Vector, ...] = (
     (1, 1, 1, 1, 0, 0, 0, 0, 0),
     (1, 1, 0, 0, 1, 1, 0, 0, 0),
     (1, 0, 1, 0, 1, 0, 1, 0, 0),
@@ -30,7 +30,8 @@ CANONICAL_GENERATORS: tuple[Vector, ...] = (
     (0, 0, 0, 0, 1, 1, 1, 0, 1),
 )
 
-GENERATOR_BASIS: tuple[Vector, ...] = CANONICAL_GENERATORS[:4]
+GENERATOR_BASIS: tuple[Vector, ...] = CANONICAL_TRANSFORMS[:4]
+CANONICAL_GENERATORS: tuple[Vector, ...] = CANONICAL_TRANSFORMS
 
 
 @dataclass(frozen=True)
@@ -111,7 +112,7 @@ def span(generators: Iterable[Sequence[int]] = CANONICAL_GENERATORS) -> tuple[Ve
     return tuple(sorted(vectors))
 
 
-CANONICAL_CODEWORDS: tuple[Vector, ...] = span(CANONICAL_GENERATORS)
+CANONICAL_CODEWORDS: tuple[Vector, ...] = span(GENERATOR_BASIS)
 CANONICAL_CODEWORD_SET: frozenset[Vector] = frozenset(CANONICAL_CODEWORDS)
 
 

@@ -23,7 +23,7 @@ DEFAULT_SEED = 20260613
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.ash_code import CANONICAL_GENERATORS
+from src.ash_code import CANONICAL_TRANSFORMS
 
 OUTPUT_PATH = REPO_ROOT / "data" / "simulation-results.csv"
 
@@ -46,7 +46,7 @@ def lsystem_branch(branches: list[str]) -> list[str]:
 def run_simulation(*, num_agents: int = NUM_AGENTS, ticks: int = TICKS, seed: int = DEFAULT_SEED) -> np.ndarray:
     """Run the data-focused simulation and return final agent states."""
     rng = np.random.default_rng(seed)
-    codewords = [np.array(codeword, dtype=np.int8) for codeword in CANONICAL_GENERATORS]
+    codewords = [np.array(codeword, dtype=np.int8) for codeword in CANONICAL_TRANSFORMS]
     agents = rng.integers(0, 2, (num_agents, DIM), dtype=np.int8)
     branches = ["F"]
 

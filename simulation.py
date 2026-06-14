@@ -19,7 +19,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src.ash_code import CANONICAL_GENERATORS, DIM
+from src.ash_code import CANONICAL_TRANSFORMS, DIM
 
 NUM_AGENTS = 2000
 TICKS = 2000
@@ -37,7 +37,7 @@ def run_simulation(
 ) -> tuple[np.ndarray, np.ndarray]:
     """Run the visualization demo and return final occupancy plus history."""
     rng = np.random.default_rng(seed)
-    codewords = [np.array(codeword, dtype=np.int8) for codeword in CANONICAL_GENERATORS]
+    codewords = [np.array(codeword, dtype=np.int8) for codeword in CANONICAL_TRANSFORMS]
     agents = rng.integers(0, 2, size=(num_agents, DIM), dtype=np.int8)
     occupancy_history = np.zeros((ticks + 1, DIM + 1), dtype=int)
 

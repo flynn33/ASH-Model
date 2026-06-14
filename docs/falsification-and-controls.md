@@ -60,5 +60,5 @@ If codeword-only runs remain confined or non-binomial from atypical starts, docu
 Control output should be written to:
 
 ```text
-data/skir-control-results.json
+data/simulation-controls.json
 ```

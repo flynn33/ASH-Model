@@ -29,6 +29,8 @@
 - [ ] Unsupported code-specific occupancy claims are absent.
 - [ ] Narrative interpretation language was not added to ASH base docs.
 - [ ] Simulation controls were updated when simulation claims changed.
+- [ ] `tools/verify_branch.py` passes when this PR targets Skir work.
+- [ ] `bash scripts/final_gate.sh` passes when this PR targets Skir work.
 - [ ] Claim audit passes.
 
 ## Contribution requirements checklist
@@ -48,6 +50,8 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
+python tools/verify_branch.py
+bash scripts/final_gate.sh
 python tools/audit_simulation_data.py
 ```
 

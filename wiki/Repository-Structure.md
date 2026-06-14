@@ -16,6 +16,7 @@ This page maps major folders/files to their purpose.
 - `docs/ASH-research-paper.md` - markdown-formatted paper narrative
 - `docs/ASH-Model-Preprint-v1.pdf` - compiled preprint PDF
 - `docs/canonical-code.md` - Skir canonical code specification
+- `docs/skir-code-validation.md` - Skir code-theoretic validation
 - `docs/falsification-and-controls.md` - Skir controls and falsification boundaries
 - `docs/claim-language-policy.md` - supported and unsupported claim language
 - `docs/python-smoke-validation.md` - current Skir validation scope
@@ -35,12 +36,12 @@ This page maps major folders/files to their purpose.
 - `src/derive-9-properties.py` - symbolic/mathematical derivations
 - `tests/test_ash_code.py` - code and decoder tests
 - `data/simulation-results.csv` - sample/generated simulation output
-- `data/skir-control-results.json` - generated Skir control output
+- `data/simulation-controls.json` - generated Skir control output
 - `figures/` - model and simulation images
 - `tools/audit_simulation_data.py` - data integrity validation tool
 - `tools/audit_claims.py` - documentation claim audit
 - `tools/run_simulation_controls.py` - reproducible control runs
-- `tools/verify_skir_branch.py` - branch completeness guard
+- `tools/verify_branch.py` - Skir branch completeness guard
 
 ## CI and automation
 

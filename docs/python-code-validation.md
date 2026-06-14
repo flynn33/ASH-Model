@@ -14,6 +14,7 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
+python tools/verify_branch.py
 python tools/audit_simulation_data.py
 ```
 
@@ -39,6 +40,7 @@ Not validated by this report:
 Treat this file as a historical smoke-validation note. For current acceptance, use:
 
 - `docs/python-smoke-validation.md`
+- `docs/skir-code-validation.md`
 - `tools/audit_claims.py`
 - `tools/run_simulation_controls.py`
 - `tests/test_ash_code.py`

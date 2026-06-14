@@ -1,6 +1,9 @@
 from itertools import combinations
+from pathlib import Path
 
 import pytest
+
+from tools import run_simulation_controls
 
 from src.ash_code import (
     CANONICAL_CODEWORDS,
@@ -19,6 +22,8 @@ from src.ash_code import (
     validate_canonical_code,
     weight_distribution,
 )
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def flip_bit(vector, index):
@@ -118,3 +123,47 @@ def test_validate_canonical_code_summary():
     assert props["doubly_even"] is True
     assert props["coordinate_9_active"] is True
     assert props["coordinate_9_parity_valid"] is True
+
+
+def test_simulation_controls_use_package_artifact_path():
+    rel_path = run_simulation_controls.OUTPUT_PATH.relative_to(REPO_ROOT).as_posix()
+    assert rel_path == "data/simulation-controls.json"
+
+
+def test_required_skir_package_artifacts_exist():
+    required = [
+        "tools/verify_branch.py",
+        "docs/skir-code-validation.md",
+        "reports/skir-completion-report.md",
+        "scripts/local_precheck.sh",
+        "scripts/final_gate.sh",
+    ]
+    missing = [path for path in required if not (REPO_ROOT / path).exists()]
+    assert missing == []
+
+
+def test_base_docs_exclude_narrative_coordinate_terms():
+    terms = [
+        "".join(["W", "R", "W"]),
+        " ".join(["Divine", "Core"]),
+        " ".join(["Void", "Realm"]),
+    ]
+    allowed = {
+        "docs/claim-language-policy.md",
+    }
+    paths = [REPO_ROOT / "README.md"]
+    for root in [REPO_ROOT / "docs", REPO_ROOT / "wiki"]:
+        paths.extend(path for path in root.rglob("*.md") if path.is_file())
+    paths.extend(path for path in (REPO_ROOT / "latex").rglob("*.tex"))
+
+    violations = []
+    for path in paths:
+        rel = path.relative_to(REPO_ROOT).as_posix()
+        if rel in allowed:
+            continue
+        text = path.read_text(encoding="utf-8")
+        for term in terms:
+            if term in text:
+                violations.append(f"{rel}: contains {term}")
+
+    assert violations == []

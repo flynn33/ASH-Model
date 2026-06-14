@@ -11,6 +11,7 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
+python tools/verify_branch.py
 ```
 
 ## Validated code-theoretic properties
@@ -26,6 +27,9 @@ The canonical code module verifies:
 - coordinate 9 activity;
 - single-bit correction by explicit decoder;
 - no silent correction of double-bit errors by default.
+
+The code-theoretic validation summary is maintained in `docs/skir-code-validation.md`.
+Simulation controls write `data/simulation-controls.json`.
 
 ## Validation boundary
 

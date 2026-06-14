@@ -35,6 +35,7 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
+python tools/verify_branch.py
 python tools/audit_simulation_data.py
 ```
 

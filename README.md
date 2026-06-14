@@ -68,7 +68,8 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
-python tools/verify_skir_branch.py --base main --head Skir
+python tools/verify_branch.py
+bash scripts/final_gate.sh
 ```
 
 ## Wiki
@@ -89,6 +90,9 @@ GitHub Discussions in this repository are supported by repo-grounded automation:
 - `tests/test_ash_code.py` - Deterministic code and decoder tests
 - `tools/audit_claims.py` - Claim-alignment audit
 - `tools/run_simulation_controls.py` - Reproducible simulation controls
+- `tools/verify_branch.py` - Skir branch completeness guard
+- `docs/skir-code-validation.md` - Skir code-theoretic validation
+- `data/simulation-controls.json` - Generated Skir control output
 - `docs/` - Research notes, Skir policy docs, and validation reports
 - `latex/main.tex` - Master LaTeX source for the research paper
 - `latex/references.bib` - BibTeX references
@@ -115,6 +119,8 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
+python tools/verify_branch.py
+bash scripts/final_gate.sh
 python tools/audit_simulation_data.py
 ```
 

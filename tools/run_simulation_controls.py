@@ -14,9 +14,9 @@ import numpy as np
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.ash_code import CANONICAL_GENERATORS, DIM
+from src.ash_code import CANONICAL_TRANSFORMS, DIM
 
-OUTPUT_PATH = REPO_ROOT / "data" / "skir-control-results.json"
+OUTPUT_PATH = REPO_ROOT / "data" / "simulation-controls.json"
 
 
 def binomial_weights(dim: int = DIM) -> np.ndarray:
@@ -80,12 +80,12 @@ def run_controls(*, quick: bool = False, seed: int = 20260613) -> dict[str, obje
     ticks = 200 if quick else 2000
     noise_prob = 0.01
     rng = np.random.default_rng(seed)
-    ash = np.array(CANONICAL_GENERATORS, dtype=np.int8)
-    random_codes = random_codewords(rng, count=len(CANONICAL_GENERATORS))
+    ash = np.array(CANONICAL_TRANSFORMS, dtype=np.int8)
+    random_codes = random_codewords(rng, count=len(CANONICAL_TRANSFORMS))
 
     runs = [
         simulate(
-            name="ash_codewords_noise",
+            name="random_start_ash_noise",
             agents_count=agents_count,
             ticks=ticks,
             noise_prob=noise_prob,
@@ -94,7 +94,7 @@ def run_controls(*, quick: bool = False, seed: int = 20260613) -> dict[str, obje
             seed=seed + 1,
         ),
         simulate(
-            name="no_codewords_noise",
+            name="random_start_no_transform_noise",
             agents_count=agents_count,
             ticks=ticks,
             noise_prob=noise_prob,
@@ -103,7 +103,7 @@ def run_controls(*, quick: bool = False, seed: int = 20260613) -> dict[str, obje
             seed=seed + 2,
         ),
         simulate(
-            name="random_codewords_noise",
+            name="random_start_random_transform_noise",
             agents_count=agents_count,
             ticks=ticks,
             noise_prob=noise_prob,
@@ -112,7 +112,7 @@ def run_controls(*, quick: bool = False, seed: int = 20260613) -> dict[str, obje
             seed=seed + 3,
         ),
         simulate(
-            name="all_zero_ash_no_noise",
+            name="zero_start_ash_no_noise",
             agents_count=agents_count,
             ticks=ticks,
             noise_prob=0.0,
@@ -121,7 +121,7 @@ def run_controls(*, quick: bool = False, seed: int = 20260613) -> dict[str, obje
             seed=seed + 4,
         ),
         simulate(
-            name="all_zero_ash_noise",
+            name="zero_start_ash_noise",
             agents_count=agents_count,
             ticks=ticks,
             noise_prob=noise_prob,
@@ -139,7 +139,7 @@ def run_controls(*, quick: bool = False, seed: int = 20260613) -> dict[str, obje
             "baselines. They support conservative language about noisy hypercube mixing and "
             "do not by themselves prove runtime error correction."
         ),
-        "runs": runs,
+        "scenarios": runs,
     }
 
 
@@ -153,7 +153,7 @@ def main(argv: list[str] | None = None) -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(f"Wrote {args.output}")
-    for run in result["runs"]:
+    for run in result["scenarios"]:
         print(f"{run['name']}: TVD={run['tvd_to_binomial']:.4f}")
     return 0
 

@@ -28,3 +28,5 @@ jobs:
         run: python3 tools/audit_claims.py
       - name: Run quick simulation controls
         run: python3 tools/run_simulation_controls.py --quick
+      - name: Verify required Skir files
+        run: python3 tools/verify_branch.py --required-only

@@ -3,9 +3,9 @@
   "quick": true,
   "seed": 20260613,
   "interpretation": "Controls compare ASH codeword transforms with no-codeword and random-codeword baselines. They support conservative language about noisy hypercube mixing and do not by themselves prove runtime error correction.",
-  "runs": [
+  "scenarios": [
     {
-      "name": "ash_codewords_noise",
+      "name": "random_start_ash_noise",
       "agents": 500,
       "ticks": 200,
       "noise_prob": 0.01,
@@ -25,7 +25,7 @@
       "tvd_to_binomial": 0.03978125
     },
     {
-      "name": "no_codewords_noise",
+      "name": "random_start_no_transform_noise",
       "agents": 500,
       "ticks": 200,
       "noise_prob": 0.01,
@@ -45,7 +45,7 @@
       "tvd_to_binomial": 0.04953125
     },
     {
-      "name": "random_codewords_noise",
+      "name": "random_start_random_transform_noise",
       "agents": 500,
       "ticks": 200,
       "noise_prob": 0.01,
@@ -65,7 +65,7 @@
       "tvd_to_binomial": 0.046765625
     },
     {
-      "name": "all_zero_ash_no_noise",
+      "name": "zero_start_ash_no_noise",
       "agents": 500,
       "ticks": 200,
       "noise_prob": 0.0,
@@ -85,7 +85,7 @@
       "tvd_to_binomial": 0.75390625
     },
     {
-      "name": "all_zero_ash_noise",
+      "name": "zero_start_ash_noise",
       "agents": 500,
       "ticks": 200,
       "noise_prob": 0.01,
