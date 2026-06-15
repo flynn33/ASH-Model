@@ -1,10 +1,10 @@
 # Repository Review and Consistency Check
 
-Date: 2026-06-13
+Date: 2026-06-15
 
 ## Scope
 
-Reviewed repository documentation and executable scripts for internal consistency, reproducibility guidance, and factual accuracy after the Skir update.
+Reviewed repository documentation and executable scripts for internal consistency, reproducibility guidance, and factual accuracy after the Skir merge into `main`.
 
 ## Current Checks
 
@@ -43,6 +43,10 @@ The README and contribution guide list the required Python packages:
 ```bash
 python -m pip install numpy matplotlib sympy pytest
 ```
+
+### 5. Wiki publication
+
+The tracked `wiki/` mirror and the published GitHub Wiki should both describe the merged Skir baseline, including the canonical code, decoder boundary, simulation controls, and claim-language limits.
 
 ## Summary
 

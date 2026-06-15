@@ -2,7 +2,7 @@
 
 ## Scope
 
-This report verifies syntax, script execution, selected code-theoretic properties, and claim-audit behavior for the Skir branch. It does not certify all interpretive, philosophical, or physical claims of ASH.
+This report verifies syntax, script execution, selected code-theoretic properties, and claim-audit behavior after the Skir merge into `main`. It does not certify all interpretive, philosophical, or physical claims of ASH.
 
 ## Commands
 
@@ -11,7 +11,8 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
-python tools/verify_branch.py
+python tools/verify_branch.py --required-only
+python tools/audit_simulation_data.py
 ```
 
 ## Validated code-theoretic properties

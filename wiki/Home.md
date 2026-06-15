@@ -1,59 +1,88 @@
-> **Canonical source**: `README.md`
-> **Last synced**: 2026-06-13 16:40 UTC
+> **Canonical source**: `README.md`, `docs/skir-merged-overview.md`
+> **Last updated**: 2026-06-15
 
-# Adinkra-Stabilized Hypercube Model (ASH Model)
+# ASH Model Wiki
 
-[![License: Custom](https://img.shields.io/badge/License-Custom-red.svg)](LICENSE)
-[![arXiv](https://img.shields.io/badge/arXiv_in_preparation-red.svg)](https://arxiv.org)
+The Adinkra-Stabilized Hypercube Model (ASH Model) is an exploratory simulation-theory and procedural-cosmology framework over the 9-bit raw state space `F2^9`.
 
-**A Theoretical and Computational Framework for 9-Dimensional Procedural Cosmology**  
-**Author**: James Daley (Independent Researcher, Full-Stack Developer, Author)  
-**Date**: December 23, 2025
+The merged Skir baseline makes the executable code layer explicit: the canonical ASH stabilizer layer is a parity-explicit rank-4 doubly-even linear `[9,4,4]` code with coordinate 9 as the parity/integrity coordinate.
 
-## Abstract
+## Visual navigation
 
-The Adinkra-Stabilized Hypercube Model (ASH Model) is an exploratory simulation-theory and procedural-cosmology framework built on a 9-bit raw state space `F2^9`. In the Skir formulation, the canonical stabilizer layer is a rank-4 doubly-even linear `[9,4,4]` code. Coordinate 9 is treated as a parity/integrity coordinate for the canonical code, not as an unrestricted independent payload coordinate.
+```mermaid
+flowchart TD
+    A["ASH Model"] --> B["Raw state space F2^9"]
+    A --> C["Skir canonical code"]
+    A --> D["Simulation and controls"]
+    A --> E["Documentation and review gates"]
+    C --> C1["Rank 4"]
+    C --> C2["16 codewords"]
+    C --> C3["Minimum distance 4"]
+    C --> C4["Coordinate 9 parity"]
+    D --> D1["simulation.py visuals"]
+    D --> D2["src/simulate.py CSV data"]
+    D --> D3["tools/run_simulation_controls.py"]
+    E --> E1["Claim-language audit"]
+    E --> E2["Required-file gate"]
+```
 
-Agent-based scripts in this repository visualize noisy hypercube mixing and codeword transforms. Error-correction claims are limited to the explicit nearest-codeword decoder in `src/ash_code.py` and its tests. Simulation outputs should be read as controls and demonstrations, not as standalone proof of runtime correction or empirical physical validation.
+## Start here
 
-### Skir branch correction scope
+| Page | Use it for |
+|---|---|
+| [[Skir-Canonical-Code]] | Code definition, formulas, parity relation, decoder boundary |
+| [[Skir-Validation-and-Controls]] | Validation commands, control scenarios, claim limits |
+| [[Simulation-Guide]] | Running visual, data, and control scripts |
+| [[Repository-Structure]] | File map for code, docs, data, and automation |
+| [[Consistency-Checklist]] | Review checklist before changing docs or scripts |
 
-Skir aligns ASH documentation and tests with the code layer implemented in this repository. It removes unsupported self-dual and Hamming-bound simulation claims, adds explicit decoder tests, and adds controls for noisy hypercube mixing.
+## Core formulas
 
-## Quick Start
+The canonical code is:
 
-Use Python 3.10+ and install required packages:
+```text
+C = span_F2({g1, g2, g3, g4})
+|C| = 2^4 = 16
+d_min(C) = 4
+```
+
+For every canonical codeword `c`:
+
+```text
+c9 = c1 xor c2 xor c3 xor c4 xor c5 xor c6 xor c7 xor c8
+```
+
+The decoder boundary follows the standard minimum-distance rule:
+
+```text
+2t < d
+2(1) < 4
+```
+
+## Current claim boundary
+
+Supported:
+
+- the Skir code has rank 4, span size 16, doubly-even weights, and minimum distance 4;
+- coordinate 9 is active and parity-valid for canonical codewords;
+- the explicit decoder corrects unique single-bit errors around canonical codewords;
+- simulation controls support conservative noisy-mixing language.
+
+Not established:
+
+- the code is self-dual;
+- simulation scripts independently prove runtime error correction;
+- ASH codewords uniquely cause a specific occupancy distribution;
+- ASH is empirically validated as a physical cosmology.
+
+## Quick validation
 
 ```bash
 python -m pip install numpy matplotlib sympy pytest
-```
-
-Run validations:
-
-```bash
 python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
-python tools/verify_branch.py
+python tools/verify_branch.py --required-only
 python tools/audit_simulation_data.py
 ```
-
-Run simulations:
-
-```bash
-python simulation.py
-python src/simulate.py
-python tools/run_simulation_controls.py --quick
-```
-
-## Repository Contents
-
-- `src/ash_code.py` - Canonical Skir code layer and decoder
-- `tests/test_ash_code.py` - Deterministic code and decoder tests
-- `tools/audit_claims.py` - Claim-alignment audit
-- `tools/run_simulation_controls.py` - Reproducible simulation controls
-- `simulation.py` - Visualization-focused noisy-mixing demo
-- `src/simulate.py` - Data-focused simulation demo
-- `latex/main.tex` - Master LaTeX source for the research paper
-- `axioms-of-existence.json` - Formal modal-logic axiom set

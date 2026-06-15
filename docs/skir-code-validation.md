@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document records the mathematical validation for the Skir canonical ASH code.
+This document records the mathematical validation for the Skir canonical ASH code after merge into `main`.
 
 ## Canonical code
 
@@ -15,6 +15,18 @@ c9 = c1 xor c2 xor c3 xor c4 xor c5 xor c6 xor c7 xor c8
 ```
 
 Coordinate 8 is fixed to 0 in this canonical presentation. This is a neutral presentation fact and has no narrative interpretation in the ASH base repository.
+
+## Validation pipeline
+
+```mermaid
+flowchart LR
+    A["src/ash_code.py"] --> B["tests/test_ash_code.py"]
+    B --> C["rank, span, distance, parity"]
+    B --> D["decoder valid/corrected/ambiguous/uncorrectable states"]
+    A --> E["tools/verify_branch.py --required-only"]
+    E --> F["claim audit"]
+    F --> G["simulation controls"]
+```
 
 ## Validated properties
 
@@ -36,6 +48,13 @@ The tests in `tests/test_ash_code.py` verify:
 The code supports deterministic correction of a single bit when the explicit decoder is invoked.
 
 Random bit-flip noise in visualization scripts is not itself a decoder and must not be documented as runtime error correction.
+
+For minimum distance `d = 4`, nearest-codeword decoding supports one-error correction under the standard bound:
+
+```text
+2t < d
+2(1) < 4
+```
 
 ## Disallowed conclusion
 

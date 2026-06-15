@@ -15,9 +15,31 @@ Agent-based scripts in this repository visualize noisy hypercube mixing and code
 
 The recurrence of nine dimensions is explored through connections to string theory anomaly cancellation, optimal lattice packing (E8, Leech), coding theory, and the modal-logic axioms in `axioms-of-existence.json`.
 
-### Skir branch correction scope
+### Skir canonical code after merge
 
-Skir aligns ASH documentation and tests with the code layer implemented in this repository. It removes unsupported self-dual and Hamming-bound simulation claims, adds explicit decoder tests, and adds controls for noisy hypercube mixing.
+Skir is now merged into `main` as the repository's canonical code-alignment layer. It keeps the broad ASH research framing while making the executable code boundary explicit:
+
+| Layer | Repository surface | Supported statement |
+|---|---|---|
+| Raw state space | `F2^9` | 512 binary vectors are available to scripts and exploratory models. |
+| Canonical code | `src/ash_code.py` | The Skir code is a rank-4 doubly-even linear `[9,4,4]` code with 16 codewords. |
+| Integrity coordinate | coordinate 9 | For canonical codewords, `c9 = c1 xor c2 xor c3 xor c4 xor c5 xor c6 xor c7 xor c8`. |
+| Decoder boundary | `decode(...)` | Unique single-bit errors around canonical codewords are corrected by the explicit decoder. |
+| Simulation boundary | `simulation.py`, `src/simulate.py`, `tools/run_simulation_controls.py` | Simulations demonstrate noisy hypercube mixing and controls, not standalone physical validation. |
+
+```mermaid
+flowchart LR
+    A["Raw vector x in F2^9"] --> B["Canonical transforms"]
+    B --> C["Skir code C"]
+    C --> D["Rank 4, span size 16"]
+    C --> E["Minimum distance 4"]
+    C --> F["Coordinate 9 parity/integrity"]
+    E --> G["Decoder corrects unique single-bit errors"]
+    B --> H["Simulation controls"]
+    H --> I["Conservative noisy-mixing interpretation"]
+```
+
+The merged Skir documentation removes unsupported self-dual and Hamming-bound simulation claims, adds explicit decoder tests, and adds controls for noisy hypercube mixing.
 
 ## Repository Status
 
@@ -68,13 +90,18 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
-python tools/verify_branch.py
-bash scripts/final_gate.sh
+python tools/verify_branch.py --required-only
+python tools/audit_simulation_data.py
 ```
 
 ## Wiki
 
-Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates.
+Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates. The published wiki should cover:
+
+- the Skir canonical code and decoder boundary;
+- the validation commands and control scenarios;
+- repository structure and contribution expectations;
+- visual logic maps for the code, simulation, and documentation layers.
 
 ## Discussions
 
@@ -90,10 +117,12 @@ GitHub Discussions in this repository are supported by repo-grounded automation:
 - `tests/test_ash_code.py` - Deterministic code and decoder tests
 - `tools/audit_claims.py` - Claim-alignment audit
 - `tools/run_simulation_controls.py` - Reproducible simulation controls
-- `tools/verify_branch.py` - Skir branch completeness guard
+- `tools/verify_branch.py` - Skir required-file guard
 - `docs/skir-code-validation.md` - Skir code-theoretic validation
+- `docs/skir-merged-overview.md` - merged Skir overview and navigation map
 - `data/simulation-controls.json` - Generated Skir control output
 - `docs/` - Research notes, Skir policy docs, and validation reports
+- `changelog/CHANGELOG.md` - release and documentation change history
 - `latex/main.tex` - Master LaTeX source for the research paper
 - `latex/references.bib` - BibTeX references
 - `figures/` - Diagrams and generated visualizations
@@ -119,8 +148,7 @@ python -m compileall .
 python -m pytest -q
 python tools/audit_claims.py
 python tools/run_simulation_controls.py --quick
-python tools/verify_branch.py
-bash scripts/final_gate.sh
+python tools/verify_branch.py --required-only
 python tools/audit_simulation_data.py
 ```
 

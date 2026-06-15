@@ -49,6 +49,21 @@ The controls compare:
 4. all-zero start + ASH codewords + no noise,
 5. all-zero start + ASH codewords + noise.
 
+## Control logic
+
+```mermaid
+flowchart TD
+    A["Choose start mode"] --> B{"random or zero"}
+    B --> C["Choose transform family"]
+    C --> D{"ASH, none, or random"}
+    D --> E["Apply optional bit-flip noise"]
+    E --> F["Count Hamming weights"]
+    F --> G["Compute total-variation distance"]
+    G --> H["Compare with binomial/Haar envelope"]
+```
+
+The control output intentionally compares ASH transforms against alternative transform choices. If multiple noisy runs approach the same envelope, the documentation must not attribute the result uniquely to ASH codewords.
+
 ## Interpretation
 
 If noisy runs approach the binomial envelope across multiple transform choices, documentation must say noisy hypercube mixing rather than a code-specific cause.
@@ -62,3 +77,5 @@ Control output should be written to:
 ```text
 data/simulation-controls.json
 ```
+
+Use `docs/skir-merged-overview.md` and the GitHub Wiki pages as the public navigation layer for these controls.
