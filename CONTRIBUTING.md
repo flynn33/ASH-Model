@@ -22,14 +22,17 @@ Thank you for your interest in improving the ASH Model. This repository combines
    - Run the same checks used in CI locally:
 
    ```bash
-   python -m pip install numpy matplotlib sympy  # Install all required dependencies
-   python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
-   python -m json.tool axioms-of-existence.json > /dev/null
-   python -m compileall -q simulation.py src tools scripts
+   python -m pip install numpy matplotlib sympy pytest
+   python -m compileall .
+   python -m pytest -q
+   python tools/audit_claims.py
+   python tools/run_simulation_controls.py --quick
+   python tools/verify_branch.py
+   bash scripts/final_gate.sh
+   python tools/audit_simulation_data.py
    python scripts/github/discussion_agent.py --validate-config --root .
    python scripts/github/discussion_topic_agent.py --validate-config --root .
    python scripts/github/discussion_moderation_agent.py --validate-config --root .
-   python tools/audit_simulation_data.py
    ```
 
 5. **Use clear commit messages**
@@ -63,16 +66,6 @@ A pull request template is provided at `.github/pull_request_template.md` and sh
 - **LaTeX / docs**
   - Keep notation and formatting consistent with existing manuscript conventions.
   - Keep references and bibliography entries accurate and complete.
-
-
-## Automated Copilot Review
-
-This repository automatically requests a GitHub Copilot review on pull requests when they are opened, updated, or marked ready for review.
-
-- Workflow: `.github/workflows/copilot-review.yml`
-- Custom instructions: `.github/copilot-instructions.md`
-- Learn how to get started with Copilot custom instructions: https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions
-- If Copilot review is not available for a repository plan or organization policy, the workflow exits without failing the pull request checks.
 
 ## Review and Merge Process
 

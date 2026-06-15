@@ -1,0 +1,32 @@
+name: Skir validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - Skir
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        run: |
+          git init .
+          git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach "$GITHUB_SHA"
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install numpy matplotlib sympy pytest
+      - name: Compile Python
+        run: python3 -m compileall .
+      - name: Run tests
+        run: python3 -m pytest -q
+      - name: Audit claims
+        run: python3 tools/audit_claims.py
+      - name: Run quick simulation controls
+        run: python3 tools/run_simulation_controls.py --quick
+      - name: Verify required Skir files
+        run: python3 tools/verify_branch.py --required-only
