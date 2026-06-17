@@ -27,8 +27,7 @@ Thank you for your interest in improving the ASH Model. This repository combines
    python -m pytest -q
    python tools/audit_claims.py
    python tools/run_simulation_controls.py --quick
-   python tools/verify_branch.py
-   bash scripts/final_gate.sh
+   python tools/verify_branch.py --required-only
    python tools/audit_simulation_data.py
    python scripts/github/discussion_agent.py --validate-config --root .
    python scripts/github/discussion_topic_agent.py --validate-config --root .

@@ -1,56 +1,83 @@
 # Repository Structure
 
-This page maps major folders/files to their purpose.
+This page maps the current `main` branch after the Skir merge.
 
-## Top-level
+## Structure map
 
-- `README.md` - overview, quick start, and contribution checks
-- `CONTRIBUTING.md` - contribution workflow and expectations
-- `CODE_OF_CONDUCT.md` - discussion and collaboration standards
-- `LICENSE` - custom restrictive license
-- `axioms-of-existence.json` - formal modal-logic axiom set
-- `simulation.py` - visualization-focused noisy-mixing demo
+```mermaid
+flowchart LR
+    A["Repository root"] --> B["src/"]
+    A --> C["tests/"]
+    A --> D["tools/"]
+    A --> E["docs/"]
+    A --> F["wiki/"]
+    A --> G["data/"]
+    A --> H["latex/"]
+    B --> B1["ash_code.py"]
+    B --> B2["simulate.py"]
+    C --> C1["test_ash_code.py"]
+    D --> D1["audit_claims.py"]
+    D --> D2["run_simulation_controls.py"]
+    D --> D3["verify_branch.py --required-only"]
+    E --> E1["canonical-code.md"]
+    E --> E2["skir-code-validation.md"]
+    E --> E3["falsification-and-controls.md"]
+    F --> F1["GitHub Wiki source pages"]
+```
 
-## Research docs
+## Top-level files
 
-- `docs/ASH-research-paper.md` - markdown-formatted paper narrative
-- `docs/ASH-Model-Preprint-v1.pdf` - compiled preprint PDF
-- `docs/canonical-code.md` - Skir canonical code specification
-- `docs/skir-code-validation.md` - Skir code-theoretic validation
-- `docs/falsification-and-controls.md` - Skir controls and falsification boundaries
-- `docs/claim-language-policy.md` - supported and unsupported claim language
-- `docs/python-smoke-validation.md` - current Skir validation scope
-- `docs/repository-review.md` - consistency review and follow-up notes
-- `docs/consistency-validation-report.md` - scoped validation audit results
-- `docs/data-accuracy-audit.md` - simulation data verification
-- `docs/mathematical-accuracy-review.md` - mathematical correctness audit
-- `docs/python-code-validation.md` - historical Python validation note
-- `latex/main.tex` - canonical manuscript source
-- `latex/references.bib` - active bibliography
-- `latex/bibtex.bib` - legacy bibliography file
+| Path | Purpose |
+|---|---|
+| `README.md` | Main project entrypoint, quick start, Skir summary |
+| `CONTRIBUTING.md` | Contribution requirements and validation commands |
+| `CODE_OF_CONDUCT.md` | Collaboration and discussion standards |
+| `LICENSE` | Custom restrictive license |
+| `VERSION` | Current repository version string |
+| `axioms-of-existence.json` | Modal-logic axiom set |
+| `simulation.py` | Visualization-focused noisy-mixing demo |
+| `changelog/CHANGELOG.md` | Release and documentation change history |
 
-## Code and data
+## Code and tests
 
-- `src/ash_code.py` - canonical Skir code layer and decoder
-- `src/simulate.py` - data-focused simulation script
-- `src/derive-9-properties.py` - symbolic/mathematical derivations
-- `tests/test_ash_code.py` - code and decoder tests
-- `data/simulation-results.csv` - sample/generated simulation output
-- `data/simulation-controls.json` - generated Skir control output
-- `figures/` - model and simulation images
-- `tools/audit_simulation_data.py` - data integrity validation tool
-- `tools/audit_claims.py` - documentation claim audit
-- `tools/run_simulation_controls.py` - reproducible control runs
-- `tools/verify_branch.py` - Skir branch completeness guard
+| Path | Purpose |
+|---|---|
+| `src/ash_code.py` | Canonical Skir code layer and explicit nearest-codeword decoder |
+| `src/simulate.py` | Data-focused simulation script that writes `data/simulation-results.csv` |
+| `src/derive-9-properties.py` | Symbolic and mathematical derivation helper |
+| `tests/test_ash_code.py` | Rank, span, distance, parity, and decoder tests |
 
-## CI and automation
+## Tools
 
-- `.github/workflows/ci.yml` - repository checks
-- `.github/workflows/skir-validation.yml` - Skir validation checks
-- `.github/workflows/discussion-agents.yml` - repo-grounded discussion response automation
-- `.github/workflows/discussion-topic-seeder.yml` - scheduled topic creation from wiki and paper headings
-- `.github/workflows/discussion-moderation.yml` - discussion moderation and incident logging
-- `.github/discussion_agents.json` - discussion responder family routing
-- `.github/discussion_topic_generator.json` - topic seeding sources and family rules
-- `.github/discussion_moderation_policy.json` - moderation policy and enforcement thresholds
-- `.github/pull_request_template.md` - PR template for contributors
+| Path | Purpose |
+|---|---|
+| `tools/audit_claims.py` | Guards docs and source against unsupported Skir claim language |
+| `tools/audit_simulation_data.py` | Validates the structure of `data/simulation-results.csv` |
+| `tools/run_simulation_controls.py` | Runs ASH/no-transform/random-transform controls |
+| `tools/verify_branch.py --required-only` | Verifies required Skir files on current `main` |
+| `scripts/final_gate.sh` | Historical Skir branch final gate retained for branch-era traceability |
+| `scripts/local_precheck.sh` | Runs the local precheck subset |
+
+## Documentation
+
+| Path | Purpose |
+|---|---|
+| `docs/skir-merged-overview.md` | Merged Skir overview and navigation map |
+| `docs/canonical-code.md` | Canonical code definition and formulas |
+| `docs/skir-code-validation.md` | Code-theoretic validation details |
+| `docs/falsification-and-controls.md` | Supported claims, unsupported claims, and control logic |
+| `docs/claim-language-policy.md` | Required claim wording and prohibited overclaims |
+| `docs/repository-review.md` | Current consistency review |
+| `docs/ASH-research-paper.md` | Markdown manuscript narrative |
+| `latex/main.tex` | Publication-oriented LaTeX manuscript source |
+
+## Data and figures
+
+| Path | Purpose |
+|---|---|
+| `data/simulation-results.csv` | Sample data output from `src/simulate.py` |
+| `data/simulation-controls.json` | Control output from `tools/run_simulation_controls.py` |
+| `figures/adinkra-graph-colored.png` | Adinkra visual |
+| `figures/hypercube-3d-projection.png` | Hypercube projection visual |
+| `figures/simulation-histogram.png` | Simulation occupancy visual |
+| `figures/single-bit-error.png` | Single-bit error visual |
