@@ -1,97 +1,69 @@
 """
-Data-focused ASH simulation demo.
+Data-focused simulation for the ASH Model.
 
-Generates CSV data for 1000 agents over 1000 ticks in a 9D binary state
-space. The script applies parity-explicit canonical code masks and records
-the resulting state matrix. It is a data/demo script, not standalone proof of
-runtime error correction.
+Generates CSV data for 1000 agents over 1000 ticks in a 9D hypercube.
+Applies doubly-even adinkra transformations and tracks L-system branching.
+Output: data/simulation-results.csv
 """
-
-from __future__ import annotations
-
-import argparse
-import sys
 from pathlib import Path
 
 import numpy as np
 
+# Parameters for simulation
 NUM_AGENTS = 1000
 TICKS = 1000
-DIM = 9
-DEFAULT_SEED = 20260613
+DIM = 9  # 9-dimensional hypercube
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
-
-from src.ash_code import CANONICAL_TRANSFORMS
-
 OUTPUT_PATH = REPO_ROOT / "data" / "simulation-results.csv"
 
 
-def adinkra_transform(state: np.ndarray, codeword: np.ndarray) -> np.ndarray:
-    """Apply a canonical GF(2) codeword transform."""
-    return state ^ codeword
+def adinkra_transform(state):
+    """Apply SUSY-inspired adinkra transformation (parity flips)."""
+    code = np.array([1, 1, 1, 1, 0, 0, 0, 0, 0])  # Doubly-even code (Hamming weight 4)
+    return (state + code) % 2
 
 
-def lsystem_branch(branches: list[str]) -> list[str]:
-    """Apply cumulative L-system branching for a lightweight demo trace."""
+def lsystem_branch(branches):
+    """L-System branching for MWI-like evolution."""
     new = []
-    for branch in branches:
-        new.append(branch)
-        new.append(branch + "+")
-        new.append(branch + "-")
+    for b in branches:
+        new.append(b)
+        new.append(b + "+")  # Branch positive
+        new.append(b + "-")  # Branch negative
     return new
 
 
-def run_simulation(*, num_agents: int = NUM_AGENTS, ticks: int = TICKS, seed: int = DEFAULT_SEED) -> np.ndarray:
-    """Run the data-focused simulation and return final agent states."""
-    rng = np.random.default_rng(seed)
-    codewords = [np.array(codeword, dtype=np.int8) for codeword in CANONICAL_TRANSFORMS]
-    agents = rng.integers(0, 2, (num_agents, DIM), dtype=np.int8)
-    branches = ["F"]
+# Initialize agents in 9D hypercube
+agents = np.random.randint(0, 2, (NUM_AGENTS, DIM))
 
-    for tick in range(ticks):
-        codeword = codewords[tick % len(codewords)]
-        for index in range(num_agents):
-            agents[index] = adinkra_transform(agents[index], codeword)
+# Track branches across checkpoints so growth is cumulative
+branches = ["F"]
 
-        if tick % 100 == 0:
-            branches = lsystem_branch(branches)
-            print(f"Tick {tick}: Branch count = {len(branches)}")
+# Simulation loop
+for t in range(TICKS):
+    for i in range(NUM_AGENTS):
+        # Apply adinkra transform
+        agents[i] = adinkra_transform(agents[i])
 
-    return agents
+    # Optional branching every 100 ticks
+    if t % 100 == 0:
+        branches = lsystem_branch(branches)
+        print(f"Tick {t}: Branch count = {len(branches)}")
 
+# Compute example emergent property: Realm distribution by Hamming weight
+realm_sums = np.sum(agents, axis=1) % 10
+unique, counts = np.unique(realm_sums, return_counts=True)
+print("Realm distribution (bell-curve analog):")
+for realm, count in zip(unique, counts):
+    print(f"Realm {realm}: {count} agents")
 
-def write_results(agents: np.ndarray, output_path: Path = OUTPUT_PATH) -> None:
-    """Write final agent states as CSV."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    np.savetxt(
-        output_path,
-        agents,
-        delimiter=",",
-        header="dim1,dim2,dim3,dim4,dim5,dim6,dim7,dim8,dim9",
-    )
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
-    parser.add_argument("--ticks", type=int, default=TICKS)
-    parser.add_argument("--agents", type=int, default=NUM_AGENTS)
-    args = parser.parse_args()
-
-    agents = run_simulation(num_agents=args.agents, ticks=args.ticks, seed=args.seed)
-    weights = agents.sum(axis=1)
-    unique, counts = np.unique(weights, return_counts=True)
-
-    print("Hamming-weight occupancy distribution:")
-    for weight, count in zip(unique, counts):
-        print(f"Weight {int(weight)}: {int(count)} agents")
-
-    write_results(agents)
-    print(f"Simulation demo complete. Results saved to {OUTPUT_PATH.relative_to(REPO_ROOT)}")
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+# Save results to data/ for analysis
+OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+np.savetxt(
+    OUTPUT_PATH,
+    agents,
+    delimiter=",",
+    header="dim1,dim2,dim3,dim4,dim5,dim6,dim7,dim8,dim9",
+)
+print(f"Simulation complete. Results saved to {OUTPUT_PATH.relative_to(REPO_ROOT)}")

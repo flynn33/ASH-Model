@@ -1,114 +1,88 @@
 """
-Visualization-focused noisy hypercube mixing demo for ASH.
+Adinkra-Stabilized Hypercube Model (ASH Model) Simulation
+Author: James Daley
+Date: December 23, 2025
 
-This script applies parity-explicit canonical ASH code masks and optional
-random bit-flip noise to agents in F2^9. It visualizes Hamming-weight
-occupancy. It does not by itself demonstrate runtime error correction;
-decoder behavior is tested in src/ash_code.py and tests/test_ash_code.py.
+This script implements a basic agent-based simulation on a 9-dimensional hypercube.
+Agents undergo transformations inspired by adinkra supersymmetry generators
+(XOR with codewords) and are subjected to low-probability bit-flip noise.
+The resulting occupancy distribution across Hamming weight planes converges
+to a Gaussian centered on intermediate planes.
 """
 
-from __future__ import annotations
-
-import argparse
-from pathlib import Path
-
-import matplotlib
-
-matplotlib.use("Agg")
-
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-from src.ash_code import CANONICAL_TRANSFORMS, DIM
+# Parameters
+# NOTE: This visualization-focused script uses different parameters than src/simulate.py
+# (which uses 1000 agents/ticks for data generation). Both are valid demonstrations.
+DIM = 9                    # 9-dimensional hypercube
+NUM_AGENTS = 2000          # Number of agents (souls/realms entities)
+TICKS = 2000               # Simulation steps
+NOISE_PROB = 0.01          # Probability of random bit flip per tick per agent
 
-NUM_AGENTS = 2000
-TICKS = 2000
-NOISE_PROB = 0.01
-DEFAULT_SEED = 20260613
-OUTPUT_PATH = Path("figures") / "simulation-histogram-generated.png"
+# Sample adinkra-inspired codewords (linear transformations / SUSY generators)
+# These are chosen to mimic raising/lowering operators in adinkra graphs
+# All codewords are doubly-even (Hamming weight ≡ 0 mod 4) for error correction
+CODEWORDS = [
+    np.array([1, 1, 1, 1, 0, 0, 0, 0, 0], dtype=int),  # Weight 4
+    np.array([1, 1, 0, 0, 1, 1, 0, 0, 0], dtype=int),  # Weight 4
+    np.array([1, 0, 1, 0, 1, 0, 1, 0, 0], dtype=int),  # Weight 4
+    np.array([1, 0, 0, 1, 1, 0, 0, 1, 0], dtype=int),  # Weight 4
+    np.array([1, 1, 1, 1, 1, 1, 1, 1, 0], dtype=int),  # Weight 8 (doubly-even: 8 ≡ 0 mod 4)
+    np.array([0, 0, 0, 0, 1, 1, 1, 1, 0], dtype=int),  # Weight 4 (doubly-even: 4 ≡ 0 mod 4)
+]
 
+def hamming_weight(state):
+    """Compute Hamming weight (number of 1s) of a binary state."""
+    return np.sum(state)
 
-def run_simulation(
-    *,
-    num_agents: int = NUM_AGENTS,
-    ticks: int = TICKS,
-    noise_prob: float = NOISE_PROB,
-    seed: int = DEFAULT_SEED,
-) -> tuple[np.ndarray, np.ndarray]:
-    """Run the visualization demo and return final occupancy plus history."""
-    rng = np.random.default_rng(seed)
-    codewords = [np.array(codeword, dtype=np.int8) for codeword in CANONICAL_TRANSFORMS]
-    agents = rng.integers(0, 2, size=(num_agents, DIM), dtype=np.int8)
-    occupancy_history = np.zeros((ticks + 1, DIM + 1), dtype=int)
+# Initialize agents randomly on the hypercube
+agents = np.random.randint(0, 2, size=(NUM_AGENTS, DIM), dtype=int)
 
-    initial_weights = agents.sum(axis=1)
-    for weight in initial_weights:
-        occupancy_history[0, int(weight)] += 1
+# Track occupancy per Hamming weight plane (0 to 9)
+occupancy_history = np.zeros((TICKS + 1, DIM + 1), dtype=int)
 
-    for tick in range(1, ticks + 1):
-        code = codewords[int(rng.integers(0, len(codewords)))]
-        agents ^= code
+# Initial occupancy
+initial_weights = np.sum(agents, axis=1)
+for w in initial_weights:
+    occupancy_history[0, w] += 1
 
-        if noise_prob > 0:
-            flips = rng.random(size=(num_agents, DIM)) < noise_prob
-            agents ^= flips.astype(np.int8)
+# Simulation loop
+for t in range(1, TICKS + 1):
+    # Choose a random adinkra transformation for this tick
+    code = CODEWORDS[np.random.randint(len(CODEWORDS))]
+    
+    # Apply transformation to all agents (XOR)
+    agents = (agents + code) % 2
+    
+    # Apply noise: random single bit flips
+    for i in range(NUM_AGENTS):
+        if np.random.rand() < NOISE_PROB:
+            flip_bit = np.random.randint(DIM)
+            agents[i, flip_bit] ^= 1
+    
+    # Record occupancy
+    weights = np.sum(agents, axis=1)
+    for w in weights:
+        occupancy_history[t, w] += 1
 
-        weights = agents.sum(axis=1)
-        for weight in weights:
-            occupancy_history[tick, int(weight)] += 1
+# Plot final distribution
+final_occupancy = occupancy_history[-1]
+planes = np.arange(DIM + 1)
 
-    return occupancy_history[-1], occupancy_history
+plt.figure(figsize=(10, 6))
+plt.bar(planes, final_occupancy, color='teal', alpha=0.8, edgecolor='black')
+plt.title('ASH Model Simulation: Realm Occupancy Distribution\n'
+          f'({NUM_AGENTS} agents after {TICKS} ticks, noise p={NOISE_PROB})')
+plt.xlabel('Hamming Weight Plane (Realm Level)')
+plt.ylabel('Number of Agents')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.savefig('figures/simulation-histogram-generated.png')
+plt.show()
 
-
-def save_histogram(final_occupancy: np.ndarray, *, output_path: Path, num_agents: int, ticks: int, noise_prob: float) -> None:
-    """Write a Hamming-weight occupancy histogram."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    planes = np.arange(DIM + 1)
-
-    plt.figure(figsize=(10, 6))
-    plt.bar(planes, final_occupancy, color="teal", alpha=0.8, edgecolor="black")
-    plt.title(
-        "ASH Model Simulation: Hamming-Weight Occupancy Distribution\n"
-        f"({num_agents} agents after {ticks} ticks, noise p={noise_prob})"
-    )
-    plt.xlabel("Hamming Weight Plane")
-    plt.ylabel("Number of Agents")
-    plt.grid(axis="y", linestyle="--", alpha=0.7)
-    plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
-    parser.add_argument("--ticks", type=int, default=TICKS)
-    parser.add_argument("--agents", type=int, default=NUM_AGENTS)
-    parser.add_argument("--noise-prob", type=float, default=NOISE_PROB)
-    parser.add_argument("--output", type=Path, default=OUTPUT_PATH)
-    args = parser.parse_args()
-
-    final_occupancy, _ = run_simulation(
-        num_agents=args.agents,
-        ticks=args.ticks,
-        noise_prob=args.noise_prob,
-        seed=args.seed,
-    )
-    save_histogram(
-        final_occupancy,
-        output_path=args.output,
-        num_agents=args.agents,
-        ticks=args.ticks,
-        noise_prob=args.noise_prob,
-    )
-
-    print("Simulation demo complete.")
-    print(f"Histogram saved to {args.output}")
-    print("Final occupancy per plane:")
-    for plane, count in enumerate(final_occupancy):
-        print(f"Plane {plane}: {count} agents ({100 * count / args.agents:.1f}%)")
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+print("Simulation complete.")
+print("Final occupancy per plane:")
+for plane, count in enumerate(final_occupancy):
+    print(f"Plane {plane}: {count} agents ({100 * count / NUM_AGENTS:.1f}%)")

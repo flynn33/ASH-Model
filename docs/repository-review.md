@@ -1,53 +1,79 @@
 # Repository Review and Consistency Check
 
-Date: 2026-06-15
+Date: 2026-02-12
 
 ## Scope
 
-Reviewed repository documentation and executable scripts for internal consistency, reproducibility guidance, and factual accuracy after the Skir merge into `main`.
+Reviewed repository documentation and executable scripts for internal consistency, reproducibility guidance, and factual accuracy.
 
-## Current Checks
+## Checks Performed
 
-Use:
-
-```bash
-python -m compileall .
-python -m pytest -q
-python tools/audit_claims.py
-python tools/run_simulation_controls.py --quick
-python tools/audit_simulation_data.py
-```
+- `python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py`
+- `python -m json.tool axioms-of-existence.json > /dev/null`
+- `python -m compileall -q simulation.py src`
+- Manual review of:
+  - `README.md`
+  - `CONTRIBUTING.md`
+  - `simulation.py`
+  - `src/simulate.py`
+  - `docs/ASH-research-paper.md`
 
 ## Consistency Findings
 
-### 1. README structure
+### 1) Prior README formatting issue is resolved (verified)
 
-The root `README.md` lists the Skir canonical code module, tests, claim audit, controls, docs, simulation entry points, and data artifacts.
+The root `README.md` currently has valid Markdown sectioning and properly closed code fences.
 
-### 2. Simulation entry points
+- "Run the Simulation" block is correctly closed.
+- "Repository Contents", "Citation", and "Contributing" sections render as intended.
 
-The repository exposes three distinct scripts:
+**Status:** No action required.
 
-- `simulation.py` for visualization output
-- `src/simulate.py` for CSV output
-- `tools/run_simulation_controls.py` for Skir control comparisons
+### 2) `src/simulate.py` path handling is now robust (verified)
 
-### 3. Validation scope
+`src/simulate.py` now resolves output paths using `pathlib.Path(__file__).resolve()` and writes to `data/simulation-results.csv` inside the repository root.
 
-The Skir branch separates code-theoretic validation from simulation demos. Decoder correction claims are tied to `src/ash_code.py` and `tests/test_ash_code.py`. Simulation controls support conservative noisy-mixing language only.
+**Status:** No action required.
 
-### 4. Dependency setup
+### 3) Dependency installation instructions are still incomplete (open)
 
-The README and contribution guide list the required Python packages:
+The repository still lacks a dependency manifest (`requirements.txt` or `pyproject.toml`) even though scripts import external packages:
 
-```bash
-python -m pip install numpy matplotlib sympy pytest
-```
+- `simulation.py`: `numpy`, `matplotlib`
+- `src/simulate.py`: `numpy`
+- `src/derive-9-properties.py`: `sympy`
 
-### 5. Wiki publication
+**Impact:** New users cannot reliably reproduce the environment from docs alone.
 
-The tracked `wiki/` mirror and the published GitHub Wiki should both describe the merged Skir baseline, including the canonical code, decoder boundary, simulation controls, and claim-language limits.
+**Recommended correction:**
+- Add a dependency manifest and reference it in `README.md` quick start.
+
+### 4) Simulation entry points remain intentionally separate but should be clarified (open)
+
+There are two simulation scripts with different goals and outputs:
+
+- `simulation.py`: plotting-oriented run that saves `figures/simulation-histogram-generated.png`
+- `src/simulate.py`: lightweight numeric run that saves `data/simulation-results.csv`
+
+This is valid, but this distinction is not explicit in the README.
+
+**Impact:** Users may run the wrong script for their task (visualization vs data generation).
+
+**Recommended correction:**
+- Add one sentence in `README.md` distinguishing the two scripts and their outputs.
+
+### 5) Research-paper markdown aligns with available artifacts (verified)
+
+`docs/ASH-research-paper.md` references figures that exist in `figures/` and correctly points to `axioms-of-existence.json` for formal axioms.
+
+**Status:** No action required.
 
 ## Summary
 
-The current repository documentation is aligned with the Skir code layer and validation commands. Future updates should keep README, wiki pages, and validation reports in sync whenever scripts, file names, or claim language change.
+The repository is largely consistent and executable for existing maintainers. The major remaining accuracy/reproducibility gap is dependency declaration and clearer script-role documentation in the README.
+
+## Next Wiki Update Suggestions
+
+1. Add an "Environment Setup" section to README with pinned dependencies.
+2. Add a "Which simulation script should I run?" subsection.
+3. Keep this review updated whenever scripts, file names, or outputs change.
