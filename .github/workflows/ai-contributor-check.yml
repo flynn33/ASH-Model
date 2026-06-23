@@ -1,0 +1,76 @@
+name: AI Contributor Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-ai-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for AI contributors
+        run: |
+          VIOLATIONS=""
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+
+          AI_PATTERNS="[Cc]laude|[Cc]opilot|[Gg][Pp][Tt]|[Oo]pen[Aa][Ii]|[Gg]emini|[Aa]nthropic|[Gg]ithub.*[Cc]opilot|[Dd]eep[Ss]eek|[Mm]istral|[Cc]hat[Gg][Pp][Tt]|[Gg]ithub-actions\[bot\].*[Cc]o-[Aa]uthored"
+
+          # Check all commits in the PR
+          for COMMIT in $(git rev-list "$BASE".."$HEAD"); do
+            MSG=$(git log --format='%B' -n 1 "$COMMIT")
+            AUTHOR_NAME=$(git log --format='%an' -n 1 "$COMMIT")
+            AUTHOR_EMAIL=$(git log --format='%ae' -n 1 "$COMMIT")
+            COMMITTER_NAME=$(git log --format='%cn' -n 1 "$COMMIT")
+            COMMITTER_EMAIL=$(git log --format='%ce' -n 1 "$COMMIT")
+
+            # Check Co-Authored-By trailers
+            CO_AUTHORS=$(echo "$MSG" | grep -iE '^[Cc]o-[Aa]uthored-[Bb]y:' || true)
+            if echo "$CO_AUTHORS" | grep -qiE "$AI_PATTERNS"; then
+              VIOLATIONS="${VIOLATIONS}Commit ${COMMIT:0:7}: AI detected in Co-Authored-By trailer\n"
+            fi
+
+            # Check author name/email
+            if echo "$AUTHOR_NAME" | grep -qiE "$AI_PATTERNS"; then
+              VIOLATIONS="${VIOLATIONS}Commit ${COMMIT:0:7}: AI detected in author name ($AUTHOR_NAME)\n"
+            fi
+            if echo "$AUTHOR_EMAIL" | grep -qiE "$AI_PATTERNS"; then
+              VIOLATIONS="${VIOLATIONS}Commit ${COMMIT:0:7}: AI detected in author email ($AUTHOR_EMAIL)\n"
+            fi
+
+            # Check committer name/email
+            if echo "$COMMITTER_NAME" | grep -qiE "$AI_PATTERNS"; then
+              VIOLATIONS="${VIOLATIONS}Commit ${COMMIT:0:7}: AI detected in committer name ($COMMITTER_NAME)\n"
+            fi
+            if echo "$COMMITTER_EMAIL" | grep -qiE "$AI_PATTERNS"; then
+              VIOLATIONS="${VIOLATIONS}Commit ${COMMIT:0:7}: AI detected in committer email ($COMMITTER_EMAIL)\n"
+            fi
+          done
+
+          # Check PR body for AI attribution
+          BODY=$(cat <<'PREOF'
+          ${{ github.event.pull_request.body }}
+          PREOF
+          )
+          if echo "$BODY" | grep -qiE "$AI_PATTERNS"; then
+            if echo "$BODY" | grep -qiE "[Cc]o-[Aa]uthored|[Gg]enerated.*with|[Aa]ssisted.*by|[Pp]owered.*by.*($AI_PATTERNS)"; then
+              VIOLATIONS="${VIOLATIONS}PR body: AI attribution detected in pull request description\n"
+            fi
+          fi
+
+          if [ -n "$VIOLATIONS" ]; then
+            echo "::error::AI contributor detected — this repository does not accept AI-attributed contributions"
+            echo ""
+            echo "Violations found:"
+            echo -e "$VIOLATIONS"
+            echo ""
+            echo "Please remove all AI attribution from commits and PR description."
+            exit 1
+          fi
+
+          echo "No AI contributors detected"

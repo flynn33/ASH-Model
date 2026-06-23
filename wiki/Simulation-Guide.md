@@ -1,23 +1,10 @@
 # Simulation Guide
 
-ASH exposes three executable paths. Each path has a different evidentiary role.
+This project currently exposes two simulation entry points with different goals.
 
-## Script selection
+## 1) `simulation.py` (visualization path)
 
-```mermaid
-flowchart TD
-    A["What do you need?"] --> B{"Visual chart?"}
-    B -- "yes" --> C["python simulation.py"]
-    B -- "no" --> D{"CSV data?"}
-    D -- "yes" --> E["python src/simulate.py"]
-    D -- "no" --> F{"Claim controls?"}
-    F -- "yes" --> G["python tools/run_simulation_controls.py --quick"]
-    F -- "no" --> H["Start with README validation commands"]
-```
-
-## 1. Visualization path
-
-Use `simulation.py` when you want a plotted occupancy distribution.
+Use this when you want a plotted occupancy distribution and generated figure output.
 
 ```bash
 python simulation.py
@@ -25,14 +12,14 @@ python simulation.py
 
 Expected behavior:
 
-- runs agent dynamics on a 9D binary state space;
-- applies canonical ASH codeword transforms and low-probability noise;
-- writes `figures/simulation-histogram-generated.png`;
-- prints final occupancy per Hamming-weight plane.
+- Runs agent dynamics on a 9D binary state space
+- Applies adinkra-inspired codeword transforms and low-probability noise
+- Saves a chart to `figures/simulation-histogram-generated.png`
+- Prints final occupancy per Hamming-weight plane
 
-## 2. Data path
+## 2) `src/simulate.py` (data path)
 
-Use `src/simulate.py` when you want raw matrix output.
+Use this when you want raw matrix output suitable for downstream analysis.
 
 ```bash
 python src/simulate.py
@@ -40,42 +27,19 @@ python src/simulate.py
 
 Expected behavior:
 
-- runs a lightweight iterative transformation loop;
-- writes `data/simulation-results.csv`;
-- prints a summary distribution and output location.
+- Runs lightweight iterative transformation loop
+- Writes simulation state matrix to `data/simulation-results.csv`
+- Prints summary distribution and output location
 
-## 3. Skir controls
+## Choosing the right script
 
-Use `tools/run_simulation_controls.py` when documentation or analysis depends on conservative control comparisons.
-
-```bash
-python tools/run_simulation_controls.py --quick
-```
-
-Expected behavior:
-
-- compares canonical codeword transforms against no-transform and random-transform baselines;
-- writes `data/simulation-controls.json`;
-- prints total-variation distance to the binomial/Haar occupancy envelope for each run.
-
-## Control scenarios
-
-| Scenario | Start | Transform | Noise | Purpose |
-|---|---|---|---|---|
-| `random_start_ash_noise` | random | ASH transforms | yes | Main noisy ASH comparison |
-| `random_start_no_transform_noise` | random | none | yes | Noise-only baseline |
-| `random_start_random_transform_noise` | random | random masks | yes | Non-ASH transform baseline |
-| `zero_start_ash_no_noise` | zero | ASH transforms | no | Deterministic confinement check |
-| `zero_start_ash_noise` | zero | ASH transforms | yes | Noise recovery from atypical start |
-
-## Interpretation boundary
-
-The controls support language about noisy hypercube mixing. They do not prove that ASH codewords uniquely cause an occupancy distribution, and they do not prove physical cosmology.
+- Pick **`simulation.py`** for visuals and quick exploratory runs.
+- Pick **`src/simulate.py`** for reproducible CSV artifacts and data workflows.
 
 ## Troubleshooting
 
-Install dependencies first:
+If imports fail, install dependencies first:
 
 ```bash
-python -m pip install numpy matplotlib sympy pytest
+python -m pip install numpy matplotlib sympy
 ```
