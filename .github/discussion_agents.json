@@ -79,7 +79,7 @@
         "CONTRIBUTING.md",
         "wiki",
         ".github/pull_request_template.md",
-        "docs/claim-language-policy.md",
+        ".github/copilot-instructions.md",
         "docs/repository-review.md",
         "docs/consistency-validation-report.md"
       ]

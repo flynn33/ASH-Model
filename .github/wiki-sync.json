@@ -15,14 +15,6 @@
     {
       "source": "wiki/Consistency-Checklist.md",
       "destination": "Consistency-Checklist.md"
-    },
-    {
-      "source": "wiki/Skir-Canonical-Code.md",
-      "destination": "Skir-Canonical-Code.md"
-    },
-    {
-      "source": "wiki/Skir-Validation-and-Controls.md",
-      "destination": "Skir-Validation-and-Controls.md"
     }
   ]
 }
