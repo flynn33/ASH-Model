@@ -31,6 +31,22 @@ decode uniquely to the source codeword.
 
 Executable verification: `tests/test_code.py`
 
+## FIN-004: nine-cube finite geometry
+
+Status: computationally verified
+
+Statement: The ASH state hypercube `Q9` has 512 vertices, 2304 undirected
+edges, distance-shell counts `C(9,r)`, adjacency spectrum
+`9 - 2r` with multiplicity `C(9,r)`, and unnormalized Laplacian spectral
+gap `2`.
+
+Definitions used: `ash_model.hypercube.distance_shell_counts`,
+`ash_model.hypercube.hypercube_adjacency_spectrum`
+
+Executable verification: `tests/test_bits_hypercube.py`
+
+Limitations: This is finite state geometry, not a physical spacetime metric.
+
 ## PHY-001: physical-state interpretation
 
 Status: computationally verified for finite-observer scope
@@ -97,6 +113,23 @@ Definitions used: `ash_model.physics.lazy_pair_flip_eigenvalue`
 Executable verification: `tests/test_physics.py`
 
 Limitations: This is not a metric perturbation or external power spectrum.
+
+## PHY-006: pair-flip parity graph spectrum
+
+Status: computationally verified
+
+Statement: The pair-flip event graph on the parity-valid hyperplane has 256
+vertices, degree 36, 4608 undirected edges, adjacency spectrum
+`36^1, 20^9, 8^36, 0^84, (-4)^126`, and unnormalized Laplacian spectral
+gap `16`.
+
+Definitions used: `ash_model.hypercube.pair_flip_adjacency_spectrum`
+
+Executable verification: `tests/test_bits_hypercube.py`
+
+Limitations: The spectral gap is a finite graph-mixing invariant.  It is not
+a relativistic light cone, physical diffusion constant, or cosmological
+expansion rate without an additional unit-bearing bridge.
 
 ## EMP-001: calibration contract
 

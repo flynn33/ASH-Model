@@ -13,6 +13,11 @@ phi_t = 1 - 2 m_t / 9
 S_t: Shannon entropy in bits
 ```
 
+These variables are derived from the nine-dimensional hypercube state
+geometry.  The full hypercube has distance-shell counts
+`C(9,r)`, and the admissible even-parity hyperplane has Hamming-weight shells
+`C(9,w)` for `w in {0,2,4,6,8}`.
+
 ## Evolution law
 
 The background law is the exact Hamming-weight lumping of the pair-flip
@@ -38,6 +43,11 @@ S = 8 bits
 
 This is an internal equilibrium baseline, not a standard cosmological model.
 
+The pair-flip event graph has finite Laplacian spectral gap `16`, giving an
+exact relaxation invariant for the finite substrate.  A physical expansion
+rate would require a separate unit-bearing bridge from this finite relaxation
+scale to measured time and distance.
+
 ## Physical-cosmology boundary
 
 No Friedmann equation, metric expansion law, matter content, radiation content,
@@ -49,7 +59,10 @@ task.
 
 - `ash_model.physics.weight_background_kernel`
 - `ash_model.physics.bridge_observables`
+- `ash_model.hypercube.even_parity_shell_counts`
+- `ash_model.hypercube.pair_flip_laplacian_spectrum`
 - `tests/test_physics.py`
+- `tests/test_bits_hypercube.py`
 
 ## Verification status
 

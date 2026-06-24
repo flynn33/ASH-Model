@@ -33,7 +33,22 @@ from ash_model.empirical import (
     compare_gaussian_models,
     diagonal_gaussian_log_likelihood,
 )
-from ash_model.hypercube import coset_partition, integrity_states, state_reference_rows, states, theoretical_plane_counts
+from ash_model.hypercube import (
+    coset_partition,
+    distance_shell_counts,
+    even_parity_shell_counts,
+    hypercube_adjacency_spectrum,
+    hypercube_edge_count,
+    hypercube_laplacian_spectrum,
+    integrity_states,
+    pair_flip_adjacency_spectrum,
+    pair_flip_graph_degree,
+    pair_flip_graph_edge_count,
+    pair_flip_laplacian_spectrum,
+    state_reference_rows,
+    states,
+    theoretical_plane_counts,
+)
 from ash_model.physics import (
     bridge_observables,
     lazy_pair_flip_eigenvalue,
@@ -118,11 +133,50 @@ def _hypercube_certificate() -> dict[str, object]:
     valid = integrity_states()
     full_orbits = coset_partition()
     valid_orbits = coset_partition(integrity_only=True)
+    adjacency_spectrum = hypercube_adjacency_spectrum()
+    laplacian_spectrum = hypercube_laplacian_spectrum()
+    pair_adjacency_spectrum = pair_flip_adjacency_spectrum()
+    pair_laplacian_spectrum = pair_flip_laplacian_spectrum()
     return {
         "state_count": len(full),
         "integrity_state_count": len(valid),
         "each_state_neighbor_count": 9,
+        "edge_count": hypercube_edge_count(),
+        "distance_shell_counts": list(distance_shell_counts()),
         "plane_counts": list(theoretical_plane_counts()),
+        "adjacency_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in adjacency_spectrum
+        ],
+        "adjacency_trace": sum(
+            eigenvalue * multiplicity for eigenvalue, multiplicity in adjacency_spectrum
+        ),
+        "adjacency_square_trace": sum(
+            (eigenvalue**2) * multiplicity for eigenvalue, multiplicity in adjacency_spectrum
+        ),
+        "laplacian_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in laplacian_spectrum
+        ],
+        "laplacian_spectral_gap": laplacian_spectrum[1][0],
+        "even_parity_shell_counts": list(even_parity_shell_counts()),
+        "pair_flip_graph_degree": pair_flip_graph_degree(),
+        "pair_flip_graph_edge_count": pair_flip_graph_edge_count(),
+        "pair_flip_adjacency_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in pair_adjacency_spectrum
+        ],
+        "pair_flip_adjacency_trace": sum(
+            eigenvalue * multiplicity for eigenvalue, multiplicity in pair_adjacency_spectrum
+        ),
+        "pair_flip_adjacency_square_trace": sum(
+            (eigenvalue**2) * multiplicity for eigenvalue, multiplicity in pair_adjacency_spectrum
+        ),
+        "pair_flip_laplacian_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in pair_laplacian_spectrum
+        ],
+        "pair_flip_laplacian_spectral_gap": pair_laplacian_spectrum[1][0],
         "full_orbit_count": len(full_orbits),
         "integrity_orbit_count": len(valid_orbits),
         "orbit_size": len(full_orbits[0]),
@@ -296,6 +350,18 @@ def build_certificate() -> dict[str, object]:
         "punctured_code_self_dual": sections["code"]["punctured_self_dual"] is True,
         "decoder_radius_one_exhaustive": sections["decoder"]["single_error_checks"] == 144,
         "double_errors_rejected": sections["decoder"]["double_error_rejection_checks"] == 576,
+        "hypercube_edges_and_shells_exact": sections["hypercube"]["edge_count"] == 2304
+        and sections["hypercube"]["distance_shell_counts"] == sections["hypercube"]["plane_counts"]
+        and sum(sections["hypercube"]["even_parity_shell_counts"]) == 256,
+        "hypercube_spectrum_exact": sections["hypercube"]["adjacency_trace"] == 0
+        and sections["hypercube"]["adjacency_square_trace"] == 2 * sections["hypercube"]["edge_count"]
+        and sections["hypercube"]["laplacian_spectral_gap"] == 2,
+        "parity_pair_flip_spectrum_exact": sections["hypercube"]["pair_flip_graph_degree"] == 36
+        and sections["hypercube"]["pair_flip_graph_edge_count"] == 4608
+        and sections["hypercube"]["pair_flip_adjacency_trace"] == 0
+        and sections["hypercube"]["pair_flip_adjacency_square_trace"]
+        == 2 * sections["hypercube"]["pair_flip_graph_edge_count"]
+        and sections["hypercube"]["pair_flip_laplacian_spectral_gap"] == 16,
         "projection_idempotent": sections["projection"]["idempotence_max_abs_error"] == 0.0,
         "garden_algebra_exact": sections["adinkra"]["maximum_integer_residual"] == 0,
         "quotient_isomorphism": sections["adinkra"]["valid"] is True,
@@ -384,6 +450,12 @@ def _markdown(certificate: dict[str, object]) -> str:
         "",
         f"- Hypercube states: `{hypercube['state_count']}`",
         f"- Integrity-valid states: `{hypercube['integrity_state_count']}`",
+        f"- Hypercube edge count: `{hypercube['edge_count']}`",
+        f"- Distance-shell counts: `{hypercube['distance_shell_counts']}`",
+        f"- Hypercube Laplacian spectral gap: `{hypercube['laplacian_spectral_gap']}`",
+        f"- Parity pair-flip graph degree: `{hypercube['pair_flip_graph_degree']}`",
+        f"- Parity pair-flip graph edge count: `{hypercube['pair_flip_graph_edge_count']}`",
+        f"- Parity pair-flip Laplacian spectral gap: `{hypercube['pair_flip_laplacian_spectral_gap']}`",
         f"- Full/integrity orbit counts: `{hypercube['full_orbit_count']}` / `{hypercube['integrity_orbit_count']}`",
         f"- Projection idempotence residual: `{projection['idempotence_max_abs_error']}`",
         f"- Projection output code-invariant: `{projection['output_is_code_invariant']}`",

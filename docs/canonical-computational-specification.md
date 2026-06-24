@@ -34,11 +34,37 @@ Coordinate 1 is the leftmost displayed bit and the most-significant bit in integ
 
 Thus `000000000` has index 0 and `111111111` has index 511. Addition in `V` is coordinate-wise XOR.
 
-The graph `Q9` (the Enneahcube) has vertex set `V`; two states are adjacent exactly when their Hamming distance is one. Each vertex therefore has nine neighbors. The canonical plane map is Hamming weight:
+The graph `Q9` has vertex set `V`; two states are adjacent exactly when their Hamming distance is one. Each vertex therefore has nine neighbors and the graph has
+
+\[
+9\cdot 2^8=2304
+\]
+
+undirected edges.  The canonical plane map is Hamming weight:
 
 \[
 P(x)=\operatorname{wt}(x)\in\{0,\ldots,9\}.
 \]
+
+The distance shell around any vertex has size
+
+\[
+|\{y:d_H(x,y)=r\}|=\binom{9}{r}.
+\]
+
+The adjacency spectrum of `Q9` is
+
+\[
+\lambda_r=9-2r,\qquad m_r=\binom{9}{r},\qquad 0\le r\le 9.
+\]
+
+The unnormalized graph-Laplacian spectrum is
+
+\[
+\Delta_r=2r,\qquad m_r=\binom{9}{r},\qquad 0\le r\le 9,
+\]
+
+so the finite graph spectral gap is `2`.
 
 No historical decimal scaling rule is used by this specification.
 
@@ -51,6 +77,27 @@ E=\{x\in V:x_9=x_1\oplus\cdots\oplus x_8\}.
 \]
 
 Equivalently, every state in `E` has even total Hamming weight. `E` is an eight-dimensional linear subspace with 256 states. States outside `E` remain valid vertices of `Q9`, but they fail the application integrity relation and may represent corrupted or unvalidated data.
+
+The pair-flip graph on `E` connects states that differ in exactly two
+coordinates.  It has degree
+
+\[
+\binom{9}{2}=36
+\]
+
+and `4608` undirected edges.  Its adjacency spectrum is
+
+```text
+eigenvalue  multiplicity
+36          1
+20          9
+8           36
+0           84
+-4          126
+```
+
+The corresponding unnormalized Laplacian spectral gap is `16`.  These are
+finite graph identities, not a physical spacetime metric.
 
 ## 4. Canonical transform code
 

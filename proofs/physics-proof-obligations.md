@@ -10,19 +10,23 @@ Status: finite-observer obligations partially discharged
    generator are defined.
 3. Closure: pair flips preserve parity-valid admissibility.
 4. Finite locality: one event flips exactly two coordinates.
-5. Normalization and positivity: the stochastic kernel is row-stochastic and
+5. Nine-cube finite geometry: Q9 edge count, distance shells, adjacency
+   spectrum, and Laplacian spectral gap are exact.
+6. Pair-flip graph geometry: the parity-event graph degree, edge count,
+   adjacency spectrum, and Laplacian spectral gap are exact.
+7. Normalization and positivity: the stochastic kernel is row-stochastic and
    non-negative.
-6. Stationary law: the uniform admissible law is stationary.
-7. Background equation: Hamming-weight lumping is exact.
-8. Perturbation stability: lazy pair-flip mode factors are bounded.
-9. Bridge observables: dimensionless finite-observer observables are defined.
-10. Calibration contract: finite dimensionless observables can be mapped
+8. Stationary law: the uniform admissible law is stationary.
+9. Background equation: Hamming-weight lumping is exact.
+10. Perturbation stability: lazy pair-flip mode factors are bounded.
+11. Bridge observables: dimensionless finite-observer observables are defined.
+12. Calibration contract: finite dimensionless observables can be mapped
     through explicit named affine calibrations.
-11. Likelihood contract: diagonal Gaussian comparisons reject invalid vector
+13. Likelihood contract: diagonal Gaussian comparisons reject invalid vector
     shapes and non-positive uncertainty.
-12. Prediction-lock contract: frozen prediction entries can be hashed and
+14. Prediction-lock contract: frozen prediction entries can be hashed and
     validated before evaluation.
-13. Standard-baseline contract: flat standard-baseline distance curves can be
+15. Standard-baseline contract: flat standard-baseline distance curves can be
     computed and ranked by the likelihood contract.
 
 ## Remaining obligations
@@ -39,9 +43,11 @@ Status: finite-observer obligations partially discharged
 ## Evidence
 
 - `src/ash_model/physics.py`
+- `src/ash_model/hypercube.py`
 - `src/ash_model/empirical.py`
 - `src/ash_model/prediction_ledger.py`
 - `src/ash_model/cosmology.py`
+- `tests/test_bits_hypercube.py`
 - `tests/test_physics.py`
 - `tests/test_empirical_bridge.py`
 - `tests/test_prediction_ledger.py`
