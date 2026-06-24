@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "empirical_obligations": [
+    {
+      "id": "SYN-001",
+      "task": "synthetic data generator for frozen ASH physical model",
+      "status": "blocked_until_physics_model_defined"
+    },
+    {
+      "id": "SYN-002",
+      "task": "parameter recovery and interval coverage tests",
+      "status": "blocked_until_likelihood_defined"
+    },
+    {
+      "id": "ABL-001",
+      "task": "matched code ablation",
+      "status": "blocked_until_observable_pipeline_defined"
+    },
+    {
+      "id": "ABL-002",
+      "task": "matched branch-weight ablation",
+      "status": "blocked_until_branch_physics_defined"
+    },
+    {
+      "id": "NUM-001",
+      "task": "resolution and convergence tests",
+      "status": "blocked_until_numerical_solver_defined"
+    },
+    {
+      "id": "BASE-001",
+      "task": "standard baseline limit test",
+      "status": "blocked_until_equations_defined"
+    },
+    {
+      "id": "REAL-001",
+      "task": "preregistered likelihood analysis against baseline models",
+      "status": "blocked_until_synthetic_validation_passes"
+    },
+    {
+      "id": "PRED-001",
+      "task": "locked prospective or held-out prediction",
+      "status": "blocked_until_prediction_derived"
+    }
+  ]
+}

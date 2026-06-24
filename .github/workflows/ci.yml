@@ -3,48 +3,68 @@ name: Repository Checks
 on:
   pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  checks:
+  verification:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install numpy
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+          git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune --depth=2 origin "$GITHUB_REF"
+          git checkout --force FETCH_HEAD
 
-      - name: Python syntax checks
+      - name: Install package and test dependencies
         run: |
-          python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -e ".[dev]"
 
-      - name: JSON validation
-        run: |
-          python -m json.tool axioms-of-existence.json > /dev/null
+      - name: Verify committed repository claims and artifacts
+        run: python3 tools/verify_repository.py
 
-      - name: Bytecode compilation check
-        run: |
-          python -m compileall -q simulation.py src tools scripts
+      - name: Regenerate tracked evidence
+        run: python3 tools/generate_artifacts.py
 
-      - name: Discussion automation validation
-        run: |
-          python scripts/github/discussion_agent.py --validate-config --root .
-          python scripts/github/discussion_topic_agent.py --validate-config --root .
-          python scripts/github/discussion_moderation_agent.py --validate-config --root .
+      - name: Run proof certificate
+        run: python3 tools/run_proof_suite.py
 
-      - name: Data integrity check
+      - name: Unit and exhaustive tests
+        run: python3 -m pytest
+
+      - name: Verify repository claims and artifacts
+        run: python3 tools/verify_repository.py
+
+      - name: Validate ASH-Physics planning package
         run: |
-          python tools/audit_simulation_data.py
+          python3 docs/ash-physics-validation/scripts/check_claim_language.py .
+          python3 -m json.tool docs/ash-physics-validation/tasks/task_manifest.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/configs/prediction_ledger.schema.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/configs/preregistration.schema.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/configs/proof_certificate.schema.json > /dev/null
+          python3 -m json.tool predictions/prediction-ledger.json > /dev/null
+          python3 -m json.tool validation/status.json > /dev/null
+
+      - name: Require deterministic regenerated evidence to be committed
+        run: |
+          git diff --exit-code -- \
+            data \
+            proofs/computational-certificate.json \
+            proofs/computational-certificate.md
+
+      - name: Syntax and configuration checks
+        run: |
+          python3 -m compileall -q simulation.py src tools scripts
+          python3 -m json.tool config/ash_mapping_v1.json > /dev/null
+          python3 -m json.tool axioms-of-existence.json > /dev/null
+          python3 scripts/github/discussion_agent.py --validate-config --root .
+          python3 scripts/github/discussion_topic_agent.py --validate-config --root .
+          python3 scripts/github/discussion_moderation_agent.py --validate-config --root .

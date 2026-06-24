@@ -1,46 +1,18 @@
 # Repository Structure
 
-This page maps major folders/files to their purpose.
-
-## Top-level
-
-- `README.md` — overview, quick start, and contribution checks
-- `CONTRIBUTING.md` — contribution workflow and expectations
-- `CODE_OF_CONDUCT.md` — discussion and collaboration standards
-- `LICENSE` — MIT license
-- `axioms-of-existence.json` — formal modal-logic axiom set
-- `simulation.py` — visualization-focused simulation
-
-## Research docs
-
-- `docs/ASH-research-paper.md` — markdown-formatted paper narrative
-- `docs/ASH-Model-Preprint-v1.pdf` — compiled preprint PDF
-- `docs/repository-review.md` — consistency review and follow-up notes
-- `docs/consistency-validation-report.md` — validation audit results
-- `docs/data-accuracy-audit.md` — simulation data verification
-- `docs/mathematical-accuracy-review.md` — mathematical correctness audit
-- `docs/python-code-validation.md` — Python code verification
-- `latex/main.tex` — canonical manuscript source
-- `latex/references.bib` — active bibliography (used by main.tex)
-- `latex/bibtex.bib` — legacy bibliography file (not currently used)
-
-## Code and data
-
-- `src/simulate.py` — data-focused simulation script
-- `src/derive-9-properties.py` — symbolic/mathematical derivations
-- `data/simulation-results.csv` — sample/generated simulation output
-- `figures/` — model and simulation images
-- `tools/audit_simulation_data.py` — data integrity validation tool
-
-## CI and automation
-
-- `.github/workflows/ci.yml` — continuous integration checks (Python syntax, JSON validation, data audit)
-- `.github/workflows/copilot-review.yml` — automated Copilot code review on PRs
-- `.github/workflows/discussion-agents.yml` — repo-grounded discussion response automation
-- `.github/workflows/discussion-topic-seeder.yml` — scheduled topic creation from wiki and paper headings
-- `.github/workflows/discussion-moderation.yml` — discussion moderation and incident logging
-- `.github/copilot-instructions.md` — custom instructions for Copilot reviews
-- `.github/discussion_agents.json` — discussion responder family routing
-- `.github/discussion_topic_generator.json` — topic seeding sources and family rules
-- `.github/discussion_moderation_policy.json` — moderation policy and enforcement thresholds
-- `.github/pull_request_template.md` — PR template for contributors
+- `src/ash_model/` - canonical implementation
+- `tests/` - exhaustive deterministic tests
+- `config/` - normative mapping configuration
+- `proofs/` - computational certificate and hashes
+- `data/` - generated code, state, branch, simulation, and ablation artifacts
+- `figures/` - generated evidence figures
+- `docs/` - specification, proof, controls, integration, and paper
+- `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package
+- `theory/` - proposed postulates, dynamics, bridge maps, and equation obligations
+- `phenomenology/` - future observable-interface specifications
+- `validation/` - preregistration and validation-plan skeletons
+- `predictions/` - prediction ledger and falsification criteria
+- `latex/` - manuscript source
+- `tools/` - artifact, proof, and repository verification commands
+- `wiki/` - repository-hosted wiki source
+- `CITATION.cff` - machine-readable citation metadata

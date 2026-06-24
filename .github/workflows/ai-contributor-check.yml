@@ -8,12 +8,23 @@ jobs:
   check-ai-contributors:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Fetch pull request history
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+          git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune origin \
+            "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}" \
+            "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/pr/${PR_NUMBER}"
 
       - name: Check for AI contributors
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           VIOLATIONS=""
           BASE="${{ github.event.pull_request.base.sha }}"
@@ -53,10 +64,7 @@ jobs:
           done
 
           # Check PR body for AI attribution
-          BODY=$(cat <<'PREOF'
-          ${{ github.event.pull_request.body }}
-          PREOF
-          )
+          BODY="${PR_BODY:-}"
           if echo "$BODY" | grep -qiE "$AI_PATTERNS"; then
             if echo "$BODY" | grep -qiE "[Cc]o-[Aa]uthored|[Gg]enerated.*with|[Aa]ssisted.*by|[Pp]owered.*by.*($AI_PATTERNS)"; then
               VIOLATIONS="${VIOLATIONS}PR body: AI attribution detected in pull request description\n"

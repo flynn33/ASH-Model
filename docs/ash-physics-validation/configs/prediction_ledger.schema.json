@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Prediction Ledger",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "predictions"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "predictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "model_version",
+          "commit",
+          "frozen_utc",
+          "observable",
+          "prediction",
+          "uncertainty",
+          "data_product",
+          "test_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "model_version": {
+            "type": "string"
+          },
+          "commit": {
+            "type": "string"
+          },
+          "artifact_hashes": {
+            "type": "object"
+          },
+          "frozen_utc": {
+            "type": "string"
+          },
+          "observable": {
+            "type": "string"
+          },
+          "prediction": {},
+          "uncertainty": {},
+          "data_product": {
+            "type": "string"
+          },
+          "statistic": {
+            "type": "string"
+          },
+          "rejection_rule": {
+            "type": "string"
+          },
+          "test_status": {
+            "enum": [
+              "frozen",
+              "tested_pass",
+              "tested_fail",
+              "withdrawn_before_test"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

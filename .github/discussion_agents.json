@@ -79,7 +79,6 @@
         "CONTRIBUTING.md",
         "wiki",
         ".github/pull_request_template.md",
-        ".github/copilot-instructions.md",
         "docs/repository-review.md",
         "docs/consistency-validation-report.md"
       ]

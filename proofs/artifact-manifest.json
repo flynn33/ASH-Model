@@ -1,0 +1,46 @@
+{
+  "data/ablation-results.csv": {
+    "bytes": 1445,
+    "sha256": "c4c777b69948d918b0b87ff026a6aa837b46490d6b0e6ff65d913afd9f078207"
+  },
+  "data/ash-state-reference.csv": {
+    "bytes": 24759,
+    "sha256": "20e885ce6f83ca584ec13b53161dd25f5ed2e42baeeb60633b0ce19d2975c310"
+  },
+  "data/branch-topology.json": {
+    "bytes": 55401,
+    "sha256": "e114168b20ce2842126b949399b07750160fb0acbdf3971a028f5fcc15d3748c"
+  },
+  "data/codewords.csv": {
+    "bytes": 418,
+    "sha256": "cccb4077ec79e52d428f4fc41dabb6e91e565c95b7f8cca2d53356e7cd408fe4"
+  },
+  "data/simulation-metadata.json": {
+    "bytes": 310,
+    "sha256": "666915a7c6d93b37e26eb9d1eca44b6fcba68f8d412871c8f40476727cc7b43a"
+  },
+  "data/simulation-results.csv": {
+    "bytes": 18045,
+    "sha256": "a410aaadccaebd94259d9ada34d988546cbfade1633b5fa169856dc8ad1b0a28"
+  },
+  "figures/adinkra-graph-colored.png": {
+    "bytes": 582559,
+    "sha256": "b90b4d9ad4777320ec95052a056ca7a77b8aaeae80f6effec751fa650d3a1a67"
+  },
+  "figures/branch-topology.png": {
+    "bytes": 232335,
+    "sha256": "a5bb30acb97f53f79ab896821293096a742b37bc6e05756eade9943eee6f2f5b"
+  },
+  "figures/hypercube-3d-projection.png": {
+    "bytes": 458375,
+    "sha256": "da4c4f752d09f9b26d861e1a9037501fa77e818c505d392f4f3bba0086999924"
+  },
+  "figures/simulation-histogram.png": {
+    "bytes": 60476,
+    "sha256": "1f5457a70c911398bd20725b18c7f79dd52cfc018ac7628f2e125a7ac9db25c9"
+  },
+  "figures/single-bit-error.png": {
+    "bytes": 44769,
+    "sha256": "8bc96030dfb736405e4b20f3607fd191dbfbbcd540c9a616309e8d54462f5741"
+  }
+}

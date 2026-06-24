@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "proof_obligations": [
+    {
+      "id": "MATH-001",
+      "claim": "finite algebra theorem catalog is complete for implemented objects",
+      "status": "open"
+    },
+    {
+      "id": "PHY-001",
+      "claim": "physical state interpretation is defined",
+      "status": "open"
+    },
+    {
+      "id": "PHY-002",
+      "claim": "microscopic dynamics is defined",
+      "status": "open"
+    },
+    {
+      "id": "PHY-003",
+      "claim": "dynamics preserves admissibility",
+      "status": "open"
+    },
+    {
+      "id": "PHY-004",
+      "claim": "causal propagation bound is derived or nonlocality is declared",
+      "status": "open"
+    },
+    {
+      "id": "PHY-005",
+      "claim": "invariants are derived",
+      "status": "open"
+    },
+    {
+      "id": "PHY-006",
+      "claim": "stability is analyzed",
+      "status": "open"
+    },
+    {
+      "id": "BRIDGE-001",
+      "claim": "coarse-graining map to physical observables is defined",
+      "status": "open"
+    },
+    {
+      "id": "LIM-001",
+      "claim": "continuum or finite-observer limit is controlled",
+      "status": "open"
+    },
+    {
+      "id": "COSMO-001",
+      "claim": "background cosmology equations are derived",
+      "status": "open"
+    },
+    {
+      "id": "COSMO-002",
+      "claim": "linear perturbation equations are derived",
+      "status": "open"
+    },
+    {
+      "id": "PRED-001",
+      "claim": "at least one distinctive prediction is derived before data validation",
+      "status": "open"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "artifact_integrity": {
+    "generated_artifact_entries": 11,
+    "manuscript_pages": 7,
+    "manuscript_pdf_sha256": "a25e0df4b9567e82e03b29620726d141590770b6eacd138542742b3c893a0629",
+    "manuscript_source_sha256": "5a232384db3674574114b947ac1dfe447cb9abb3aebb24f80f89530e931502fa"
+  },
+  "audit_verdict": "materially_valid",
+  "configuration_validation": {
+    "json_files_parsed": 11,
+    "repository_configuration_validators_passed": 3,
+    "yaml_and_cff_files_parsed": 9
+  },
+  "deliverables": {
+    "computational_certificate": {
+      "bytes": 12287,
+      "filename": "ASH-Model-v1.1.0-computational-certificate.json",
+      "sha256": "e37e4fce9c3e66e20bc70ca864489b37052ef1fd28ad66d9bf02fcf668c0c496"
+    },
+    "manuscript_manifest": {
+      "bytes": 427,
+      "filename": "ASH-Model-v1.1.0-manuscript-manifest.json",
+      "sha256": "1263bae02fac8436be4a78400844b1b4adf183fc890c8c9d9a5821b7078d4d79"
+    },
+    "original_audit_reproduction": {
+      "bytes": 1241,
+      "filename": "ASH_Model_Original_Audit_Reproduction.json",
+      "sha256": "8d13c8b438bd0f7fb8472346caf98ab94ba33b59dce72d3cd9025ab4d36833fe"
+    },
+    "preprint_pdf": {
+      "bytes": 1331526,
+      "filename": "ASH-Model-Preprint-v1.1.0.pdf",
+      "sha256": "a25e0df4b9567e82e03b29620726d141590770b6eacd138542742b3c893a0629"
+    },
+    "python_wheel": {
+      "bytes": 27008,
+      "filename": "ash_model-1.1.0-py3-none-any.whl",
+      "sha256": "5d5ab2abebaf2bc749a296032c222d52dc2d17e6be80673ac8bb68673f20a85f"
+    },
+    "remediation_report": {
+      "bytes": 9934,
+      "filename": "ASH_Model_Audit_Validation_and_Remediation.md",
+      "sha256": "d52e830787255e6180cb04639199612c06bc7708933c306810f9ddfcff4167ad"
+    },
+    "repository_zip": {
+      "bytes": 2850503,
+      "filename": "ASH-Model-v1.1.0-audit-remediated.zip",
+      "sha256": "a0dc5eaa483ed4042708eee09d84c1bc0e5a8a63495e9b99357eed1eb9a8455c"
+    },
+    "verifier_negative_tests": {
+      "bytes": 2242,
+      "filename": "ASH_Model_Verifier_Negative_Tests.json",
+      "sha256": "8bfb9736eb70c1b82717bfdf333097de18ab2c96ea933bbd0f6162e0d43b8847"
+    }
+  },
+  "negative_verification_cases": {
+    "baseline": {
+      "rejected": false,
+      "returncode": 0
+    },
+    "changed_generated_figure": {
+      "rejected": true,
+      "returncode": 1
+    },
+    "changed_manuscript_pdf": {
+      "rejected": true,
+      "returncode": 1
+    },
+    "changed_source": {
+      "rejected": true,
+      "returncode": 1
+    },
+    "changed_version": {
+      "rejected": true,
+      "returncode": 1
+    }
+  },
+  "package_validation": {
+    "imported_code_rank": 4,
+    "imported_minimum_distance": 4,
+    "imported_version": "1.1.0",
+    "isolated_core_import_passed": true,
+    "wheel_built": true
+  },
+  "project_version": "1.1.0",
+  "proof_suite": {
+    "all_checks_pass": true,
+    "checks": {
+      "branch_weights_normalized": true,
+      "code_parameters": true,
+      "decoder_radius_one_exhaustive": true,
+      "double_errors_rejected": true,
+      "garden_algebra_exact": true,
+      "markov_uniform_stationary": true,
+      "nine_dimensional_code_not_self_dual": true,
+      "projection_idempotent": true,
+      "punctured_code_self_dual": true,
+      "quotient_isomorphism": true
+    },
+    "source_file_count": 76
+  },
+  "repository_verifier": {
+    "artifact_manifest_mismatches": [],
+    "claim_violations": [],
+    "manuscript_manifest_mismatches": [],
+    "missing_artifacts": [],
+    "proof_certificate_passes": true,
+    "source_manifest_mismatches": [],
+    "version_mismatches": []
+  },
+  "schema_version": "1.0.0",
+  "test_suite": {
+    "failed": 0,
+    "passed": 38
+  },
+  "validation_date": "2026-06-24"
+}
