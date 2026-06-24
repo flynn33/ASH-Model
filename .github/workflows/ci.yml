@@ -28,6 +28,9 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install -e ".[dev]"
 
+      - name: Verify committed repository claims and artifacts
+        run: python3 tools/verify_repository.py
+
       - name: Regenerate tracked evidence
         run: python3 tools/generate_artifacts.py
 
@@ -50,8 +53,12 @@ jobs:
           python3 -m json.tool predictions/prediction-ledger.json > /dev/null
           python3 -m json.tool validation/status.json > /dev/null
 
-      - name: Require regenerated evidence to be committed
-        run: git diff --exit-code -- data figures proofs
+      - name: Require deterministic regenerated evidence to be committed
+        run: |
+          git diff --exit-code -- \
+            data \
+            proofs/computational-certificate.json \
+            proofs/computational-certificate.md
 
       - name: Syntax and configuration checks
         run: |
