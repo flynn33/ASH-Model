@@ -1,23 +1,20 @@
 # Numerical Convergence Validation
 
-Status: Blocked
+Status: finite exact solver gate implemented; continuum convergence blocked
 
-## Purpose
+## Implemented finite gate
 
-Numerical convergence tests will verify that solver outputs are stable under resolution, timestep, sampling, and tolerance changes.
+The current finite-observer layer does not require a numerical ODE/PDE solver.
+It uses exact finite matrices:
 
-## Required inputs
+- `pair_flip_transition(p)` over 256 states;
+- `pair_flip_generator(lambda)` over 256 states;
+- `weight_background_kernel(p)` over five Hamming-weight levels.
 
-- Defined equations or finite-observer update rules.
-- Numerical solver implementation.
-- Error metric and convergence threshold.
+The gate verifies stochastic normalization, generator row sums, symmetry, and
+bounded perturbation factors.
 
-## Acceptance gates
+## Continuum blocker
 
-- Multiple resolutions are tested.
-- Convergence failures block empirical claims that depend on the failed solver.
-- Generated convergence artifacts are reproducible from tracked commands.
-
-## Current blocker
-
-No physical solver exists yet.
+Continuum convergence remains blocked because no continuum limit or continuum
+equation is claimed.

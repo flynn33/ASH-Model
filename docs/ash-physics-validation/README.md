@@ -53,3 +53,17 @@ ASH currently has a verified finite algebra and executable reference system. The
 5. controlled synthetic validation;
 6. real-data likelihood comparisons against appropriate baselines;
 7. at least one locked prospective or held-out prediction.
+
+## Current finite-observer result
+
+ASH-Physics v0.2 defines and verifies a finite-observer stochastic layer:
+
+- a 256-state admissible physical state space;
+- a lazy pair-flip Markov kernel and continuous-time generator;
+- a finite event graph and graph-distance bound;
+- a dimensionless bridge observable vector;
+- an exact Hamming-weight background equation;
+- bounded finite perturbation-mode factors.
+
+This result closes the finite internal theory gate.  It does not close the
+external physical validation gate.

@@ -1,25 +1,47 @@
 # Observable Map Specification
 
-Status: Draft
+Status: finite-observer observables implemented
 
-## Definitions
+## Observable vector
 
-- Observable: a statistic or data product that can be computed from ASH model outputs and compared to an external dataset.
-- Likelihood input: a frozen observable vector, covariance model, and nuisance-parameter treatment.
+The current observable vector is:
 
-## Required specification
+```text
+mean_hamming_weight
+order_parameter
+shannon_entropy_bits
+parity_valid_probability
+```
 
-- Observable names, units, cuts, and estimator definitions.
-- Data products and access rules.
-- Covariance and systematic-error handling.
-- Baseline models and parameter counts.
+## Implementation
+
+`ash_model.physics.bridge_observables(distribution)` computes the observable
+vector from a probability law over the admissible state space.
+
+## Units
+
+All current observables are dimensionless.  No external unit conversion is
+defined.
+
+## Data products
+
+No external data product is attached to this observable vector.  Future
+empirical validation must define:
+
+- data release and access date;
+- estimator;
+- cuts;
+- covariance model;
+- nuisance parameters;
+- matched baselines.
 
 ## Acceptance gates
 
-- All observables link to a preregistration entry.
-- The same cuts and estimator run for ASH and baselines.
-- No post-test model changes occur under the same validation version.
+- Probability law shape and normalization are validated.
+- Uniform admissible law has entropy `8` bits.
+- The observable vector is reproducible from tracked code.
 
-## Current status
+## Boundary
 
-Blocked until the bridge map and phenomenology equations exist.
+The observable vector is suitable for internal synthetic and numerical tests.
+It is not yet a likelihood input for external physical data.

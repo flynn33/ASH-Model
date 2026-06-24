@@ -1,38 +1,51 @@
 # Coarse-Graining and Bridge Map
 
-Status: Draft
+Status: finite-observer bridge specified
 
-## Definitions
+## Domain and codomain
 
-- Coarse-graining: a map from microscopic ASH configurations to effective continuum or finite-observer variables.
-- Bridge observable: a measurable quantity derived from a coarse-grained ASH state.
-- Scale parameter: the resolution, block size, sampling rule, or observer limit used in the map.
+The bridge map takes a probability law `rho` over the admissible ASH state
+space and returns dimensionless finite-observer observables.
 
-## Assumptions
+```text
+B: Delta(Omega) -> R^4
+```
 
-- The existing feature mapper is a deterministic reference design for image/video state mapping.
-- A physical bridge map must be specified independently of visualization or reconstruction convenience.
-- Observables must be defined before empirical data are used.
+where `Delta(Omega)` is the probability simplex over the 256 admissible
+states.
 
-## Theorem or model obligations
+## Frozen observables
 
-- Define the map domain, codomain, parameters, and invariance properties.
-- Prove that mapped quantities are well-defined under allowed state equivalences.
-- State which physical units and observational coordinates are produced.
-- Define error propagation from microscopic state uncertainty to observable uncertainty.
+The current bridge map returns:
 
-## Required tests
+```text
+mean_hamming_weight(rho)
+order_parameter(rho) = 1 - 2 mean_hamming_weight(rho) / 9
+shannon_entropy_bits(rho)
+parity_valid_probability(rho)
+```
 
-- Schema validation for bridge-map definitions.
-- Numerical reproducibility tests for deterministic maps.
-- Sensitivity tests for scale choices and admissible perturbations.
+These quantities are deterministic functions of `rho`.
 
-## Known gaps
+## Invariance and uncertainty
 
-- No physical bridge map is frozen.
-- No observable units or likelihood inputs are defined.
-- No coarse-graining limit is proven.
+The bridge is invariant under relabeling of states that preserves Hamming
+weight for the background variables.  It does not assign SI units.  Uncertainty
+propagates by applying the same deterministic bridge to sampled or estimated
+state laws.
+
+## Observable boundary
+
+These observables are internal finite-observer quantities.  They are not yet
+mapped to telescope data products, particle observables, gravitational
+observables, or laboratory measurements.
+
+## Evidence
+
+- `ash_model.physics.bridge_observables`
+- `tests/test_physics.py`
+- `proofs/computational-certificate.json`
 
 ## Verification status
 
-Blocked until physical postulates and dynamics identify the mapped state variables.
+Implemented and computationally verified for the finite-observer bridge.

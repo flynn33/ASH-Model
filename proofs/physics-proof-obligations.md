@@ -1,22 +1,33 @@
 # Physics Proof Obligations
 
-Status: Draft
+Status: finite-observer obligations partially discharged
 
-## Required obligations
+## Discharged finite-observer obligations
 
-1. Define the physical state ontology.
-2. Define microscopic dynamics.
-3. Prove closure of admissible states or record the failure.
-4. Establish locality or explicitly declare nonlocal propagation.
-5. Prove normalization and positivity for stochastic dynamics.
-6. Identify invariants and conserved quantities.
-7. Analyze stability under perturbations.
-8. Define gauge redundancy and physical degrees of freedom.
-9. Establish a controlled continuum or finite-observer limit.
-10. Derive background equations.
-11. Derive perturbation equations.
-12. Map model variables to observables.
+1. Physical state ontology: admissible states are parity-valid elements of
+   `F_2^9`.
+2. Microscopic dynamics: lazy pair-flip Markov kernel and continuous-time
+   generator are defined.
+3. Closure: pair flips preserve parity-valid admissibility.
+4. Finite locality: one event flips exactly two coordinates.
+5. Normalization and positivity: the stochastic kernel is row-stochastic and
+   non-negative.
+6. Stationary law: the uniform admissible law is stationary.
+7. Background equation: Hamming-weight lumping is exact.
+8. Perturbation stability: lazy pair-flip mode factors are bounded.
+9. Bridge observables: dimensionless finite-observer observables are defined.
 
-## Current boundary
+## Remaining obligations
 
-These obligations are not completed by the finite algebra certificate. They must be resolved before empirical physics claims are made.
+1. Unitful physical scale and time mapping.
+2. Spacetime metric or explicit non-spacetime physical interpretation.
+3. Gauge redundancy and physical degrees of freedom for any continuum reading.
+4. Standard cosmological background or proof that no such limit exists.
+5. External observable likelihood and matched baseline validation.
+6. Locked prediction.
+
+## Evidence
+
+- `src/ash_model/physics.py`
+- `tests/test_physics.py`
+- `proofs/computational-certificate.json`

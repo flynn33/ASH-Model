@@ -1,39 +1,64 @@
 # Microscopic State and Dynamics
 
-Status: Draft
+Status: finite stochastic dynamics specified and verified
 
-## Definitions
+## State space
 
-- Microscopic ASH state: the proposed physical state object before coarse-graining.
-- Admissible state: an ASH state satisfying the selected physical constraints and the finite-kernel parity conventions.
-- Dynamics: the deterministic, stochastic, reversible, irreversible, or quantum update rule applied to microscopic states.
+The microscopic state space is
 
-## Assumptions
+```text
+Omega = {x in F_2^9 : x_9 = x_1 xor ... xor x_8}
+```
 
-- The finite ASH code actions are already verified as algebraic transforms.
-- A physical dynamics must be specified separately from the current reference branch-generation and reconstruction pipeline.
-- If stochastic dynamics are introduced, normalization and positivity are required proof obligations.
+so `|Omega| = 256`.
 
-## Theorem or model obligations
+## Discrete dynamics
 
-- Define the microscopic state space and admissibility conditions.
-- Define the update rule, time parameter, boundary conditions, and allowed randomness.
-- Prove or explicitly reject closure of admissible states under the update rule.
-- Prove existence and uniqueness where deterministic evolution is claimed.
-- Identify conserved quantities, invariants, and gauge redundancy.
+For `p in [0,1]`, define the one-step Markov kernel `P_p` on `Omega` by
 
-## Required tests
+```text
+P_p(x, x) = 1 - p
+P_p(x, x xor e_i xor e_j) += p / C(9,2),  1 <= i < j <= 9
+```
 
-- Exhaustive finite-state tests where the state space remains finite.
-- Property tests for closure, normalization, positivity, and invariant preservation.
-- Regression tests that compare dynamics-independent finite-kernel artifacts against the current certificate.
+Every mask `e_i xor e_j` has even parity, so `P_p` is closed on `Omega`.
 
-## Known gaps
+## Continuous-time generator
 
-- No physical update rule is selected.
-- No locality, reversibility, or stochastic law is defined.
-- No numerical solver exists for a physical dynamics.
+For rate `lambda >= 0`, define the generator `Q_lambda` by
+
+```text
+Q_lambda(x, x xor e_i xor e_j) += lambda / C(9,2)
+Q_lambda(x, x) = -lambda
+```
+
+Rows of `Q_lambda` sum to zero and off-diagonal entries are non-negative.
+
+## Verified properties
+
+The repository verifies:
+
+- all generated states are parity-valid;
+- `P_p` is row-stochastic;
+- `P_p` is symmetric;
+- the uniform law on `Omega` is stationary;
+- `Q_lambda` is a valid symmetric continuous-time Markov generator;
+- the finite background equation induced by Hamming-weight lumping is
+  row-stochastic.
+
+## Physical interpretation
+
+The dynamics is a finite stochastic substrate.  It should be read as a
+candidate microscopic update law for finite-observer ASH research, not as a
+derived law of physical spacetime.
+
+## Evidence
+
+- `ash_model.physics.pair_flip_transition`
+- `ash_model.physics.pair_flip_generator`
+- `tests/test_physics.py`
+- `proofs/computational-certificate.json`
 
 ## Verification status
 
-Blocked until a microscopic dynamics is specified.
+Implemented and computationally verified for finite ASH states.

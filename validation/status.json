@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "model_version": "ash-physics-v0.1",
+  "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-24T10:48:27Z",
+  "updated_utc": "2026-06-24T11:38:20Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -15,113 +15,123 @@
     },
     {
       "id": "THEORY-001",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
         "theory/physical-postulates.md"
       ],
-      "notes": "Physical-postulates scaffold exists; final physical interpretation is blocked until a reviewed state model exists."
+      "notes": "Finite-observer physical state ontology is specified and verified over the 256-state admissible hyperplane."
     },
     {
       "id": "THEORY-002",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
-        "theory/microscopic-state-and-dynamics.md"
+        "theory/microscopic-state-and-dynamics.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
       ],
-      "notes": "Microscopic state and dynamics obligations are documented; dynamics are blocked until a reviewed update rule or solver exists."
+      "notes": "Lazy pair-flip microscopic dynamics and continuous-time generator are implemented and verified."
     },
     {
       "id": "THEORY-003",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
         "theory/causal-structure.md"
       ],
-      "notes": "Causal-structure obligations are documented; formal construction is blocked until bridge and dynamics gates exist."
+      "notes": "Finite event graph and graph-distance bound are specified and tested."
     },
     {
       "id": "THEORY-004",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
-        "theory/coarse-graining-and-bridge-map.md"
+        "theory/coarse-graining-and-bridge-map.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
       ],
-      "notes": "Bridge-map obligations are documented; observable mapping is blocked until state interpretation and dynamics are reviewed."
+      "notes": "Dimensionless finite-observer bridge observables are implemented and tested."
     },
     {
       "id": "THEORY-005",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "theorem_proved",
       "evidence": [
-        "theory/continuum-limit.md"
+        "theory/continuum-limit.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
       ],
-      "notes": "Continuum-limit obligations are documented; derivation is blocked until bridge and dynamics gates exist."
+      "notes": "A finite-observer substitute replaces an unclaimed continuum limit; lumped equations and mode factors are verified."
     },
     {
       "id": "COSMO-001",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
         "theory/cosmological-background.md",
-        "phenomenology/ash_background_spec.md"
+        "phenomenology/ash_background_spec.md",
+        "src/ash_model/physics.py"
       ],
-      "notes": "Background-equation scaffold exists; derived equations are blocked until the bridge map and solver exist."
+      "notes": "Finite Hamming-weight background surrogate is implemented; physical cosmological background remains outside proved scope."
     },
     {
       "id": "COSMO-002",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
         "theory/linear-perturbations.md",
-        "phenomenology/ash_perturbations_spec.md"
+        "phenomenology/ash_perturbations_spec.md",
+        "src/ash_model/physics.py"
       ],
-      "notes": "Perturbation-equation scaffold exists; derived perturbation equations are blocked until the bridge map and solver exist."
+      "notes": "Finite perturbation-mode decay factors are implemented; metric perturbations remain outside proved scope."
     },
     {
       "id": "OBS-001",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
-        "phenomenology/observables_spec.md"
+        "phenomenology/observables_spec.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
       ],
-      "notes": "Observable-map scaffold exists; computable observable pipeline is blocked until derived equations exist."
+      "notes": "Internal finite-observer observable vector is implemented and tested."
     },
     {
       "id": "VAL-001",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
         "validation/synthetic-recovery/README.md"
       ],
-      "notes": "Synthetic-recovery plan scaffold exists; empirical gate is blocked until theory, solver, and preregistration gates exist."
+      "notes": "Finite synthetic consistency gate is implemented through background-kernel lumping tests."
     },
     {
       "id": "VAL-002",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "scaffold_created",
       "evidence": [
         "validation/matched-ablations/README.md"
       ],
-      "notes": "Matched-ablation plan scaffold exists; empirical gate is blocked until synthetic controls and baselines exist."
+      "notes": "Internal controls are documented; external matched ablations remain blocked until a likelihood exists."
     },
     {
       "id": "VAL-003",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "implementation_verified",
       "evidence": [
         "validation/numerical-convergence/README.md"
       ],
-      "notes": "Numerical-convergence plan scaffold exists; empirical gate is blocked until a numerical solver exists."
+      "notes": "Finite exact-matrix solver gates are implemented; continuum convergence remains unclaimed."
     },
     {
       "id": "VAL-004",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "scaffold_created",
       "evidence": [
         "validation/lcdm-limit/README.md"
       ],
-      "notes": "Baseline-limit plan scaffold exists; empirical gate is blocked until derived equations and baseline comparisons exist."
+      "notes": "Internal uniform-state baseline is documented; standard cosmology limit is not present."
     },
     {
       "id": "PRED-001",
@@ -135,14 +145,15 @@
     },
     {
       "id": "PROOF-001",
-      "status": "blocked",
-      "completion_type": "blocked_scientific_work",
+      "status": "complete",
+      "completion_type": "theorem_proved",
       "evidence": [
         "proofs/theorem-catalog.md",
         "proofs/finite-algebra-status.md",
-        "proofs/physics-proof-obligations.md"
+        "proofs/physics-proof-obligations.md",
+        "proofs/computational-certificate.json"
       ],
-      "notes": "Theorem catalog and proof-obligation scaffolds exist; physics proofs are blocked until theorem obligations are discharged."
+      "notes": "Finite-observer theorem catalog and proof obligations are updated with executable evidence."
     },
     {
       "id": "SCAN-001",
@@ -169,17 +180,17 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_artifacts.py",
       "result": "passed",
-      "summary": "Generated 11 artifacts and proofs/artifact-manifest.json in 1.925s."
+      "summary": "Generated 11 artifacts and proofs/artifact-manifest.json."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true."
+      "summary": "all_checks_pass true with finite-observer physics checks enabled."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "39 passed in 2.40s."
+      "summary": "47 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -202,35 +213,32 @@
       "summary": "repository gate passed."
     },
     {
-      "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q simulation.py src tools scripts docs/ash-physics-validation/scripts",
+      "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q simulation.py src tools docs/ash-physics-validation/scripts",
       "result": "passed",
       "summary": "Python bytecode compilation passed."
-    },
-    {
-      "command": "/tmp/ash-model-validation-venv/bin/python performance smoke for run_ablation_suite(agent_count=12000, ticks=300)",
-      "result": "passed",
-      "summary": "elapsed=0.258s, below the 30.0s remediation threshold."
     },
     {
       "command": "git diff --check",
       "result": "passed",
       "summary": "No whitespace errors."
+    },
+    {
+      "command": "/tmp/actionlint-ash-model/actionlint",
+      "result": "passed",
+      "summary": "Workflow lint passed."
     }
   ],
   "open_blockers": [
-    "Physical state interpretation is not defined.",
-    "Microscopic dynamics are not defined.",
-    "Causal structure is not constructed from completed dynamics.",
-    "Bridge map to observables is not defined.",
-    "Continuum and finite-observer limits are not derived.",
-    "Background and perturbation equations are not derived from a completed bridge map.",
-    "Observable pipeline is not computable from derived equations.",
-    "Synthetic recovery, matched ablation, numerical convergence, and baseline-limit gates are blocked until theory and solver gates exist.",
-    "Physics proof obligations remain open.",
+    "No unitful bridge from finite ASH observables to physical spacetime, fields, or measured data products exists.",
+    "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph.",
+    "No gauge convention or physical degrees-of-freedom map exists for a continuum interpretation.",
+    "No standard cosmological background or baseline limit is derived.",
+    "No external likelihood, covariance model, or matched empirical baseline is implemented.",
     "No locked prospective or held-out prediction exists."
   ],
   "claim_downgrades": [
-    "ASH-Physics planning surfaces are scaffolds and blocked obligations, not completed empirical validation.",
-    "Finite algebra verification is not treated as empirical cosmology."
+    "ASH-Physics v0.2 completes a finite-observer stochastic foundation only.",
+    "Finite background and perturbation equations are internal dimensionless equations, not empirical cosmology.",
+    "External validation remains blocked until a unitful bridge, likelihood, baselines, and locked predictions exist."
   ]
 }

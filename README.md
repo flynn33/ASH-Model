@@ -35,6 +35,26 @@ The earlier repository overstated self-duality in nine dimensions, error correct
 
 The generated proof certificate is in [`proofs/computational-certificate.md`](proofs/computational-certificate.md), with the full machine-readable record in JSON. The manuscript PDF is cryptographically bound to its exact LaTeX source by [`proofs/manuscript-manifest.json`](proofs/manuscript-manifest.json).
 
+## Finite-observer physics layer
+
+ASH-Physics v0.2 adds a conservative finite-observer interpretation over the
+verified ASH kernel.  The admissible physical state space is the 256-state
+parity-valid hyperplane of `F_2^9`; the baseline microscopic dynamics is a
+lazy pair-flip Markov kernel that preserves admissibility, is symmetric, and
+has the uniform admissible law as a stationary state.
+
+The implemented bridge observables are dimensionless internal quantities:
+mean Hamming weight, order parameter, Shannon entropy, and parity-valid
+probability.  The finite background equation is the exact Hamming-weight
+lumping of the pair-flip dynamics, and the finite perturbation layer is given
+by bounded lazy pair-flip mode factors.
+
+This layer is implemented in [`src/ash_model/physics.py`](src/ash_model/physics.py)
+and verified by [`tests/test_physics.py`](tests/test_physics.py).  It is not a
+claim of observed spacetime dynamics or empirical cosmology; those remain
+blocked until a unitful bridge, likelihood, baselines, and locked predictions
+exist.
+
 ## Canonical state coordinates
 
 Coordinates 1 through 8 are deterministic measurements in `[0,1]`, thresholded with fixed hysteresis. Coordinate 9 is recomputed as parity.
@@ -101,9 +121,9 @@ The tracked ablations explicitly compare uniform starts, zero starts, ASH transf
 
 ## ASH-Physics validation program
 
-`docs/ash-physics-validation/` defines the next proof and empirical-validation program. It adds implementation instructions, proof obligations, preregistration templates, claim-language scanning, and task manifests for a future ASH-Physics v0.1 specification.
+`docs/ash-physics-validation/` defines the proof and empirical-validation program. It adds implementation instructions, proof obligations, preregistration templates, claim-language scanning, and task manifests for the ASH-Physics research track.
 
-The current validation program is intentionally not an empirical result. Physical postulates, microscopic dynamics, bridge maps, background equations, perturbation equations, observable maps, synthetic recovery, matched ablations, numerical convergence, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
+ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, and finite perturbation factors.  The current validation program is intentionally not an empirical result. External likelihoods, standard cosmology baselines, unitful bridge maps, continuum interpretations, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
 ## Repository map
 
@@ -118,9 +138,9 @@ The current validation program is intentionally not an empirical result. Physica
 - `figures/` - generated, repository-linked evidence figures
 - `docs/` - specification, proof, controls, integration, and paper
 - `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package
-- `theory/` - proposed ASH-Physics postulates, dynamics, bridge, and equation obligations
-- `phenomenology/` - observable-interface specifications blocked on the theory layer
-- `validation/` - preregistration and validation-plan skeletons
+- `theory/` - finite-observer ASH-Physics postulates, dynamics, bridge, and equation boundaries
+- `phenomenology/` - internal observable-interface specifications and external-validation blockers
+- `validation/` - finite consistency gates, preregistration surfaces, and external-validation blockers
 - `predictions/` - frozen-prediction ledger and falsification criteria
 - `axioms-of-existence.json` - explicitly labeled interpretive postulates and narrative implications
 - `latex/main.tex` - aligned manuscript source

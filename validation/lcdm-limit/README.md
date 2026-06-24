@@ -1,23 +1,24 @@
 # Baseline Limit Validation
 
-Status: Blocked
+Status: standard cosmology limit not present
 
-## Purpose
+## Internal baseline
 
-The baseline limit test will verify whether ASH-Physics contains a declared standard comparison limit or whether it should be compared only as a separate candidate model.
+The finite-observer baseline is the uniform admissible state law.  It gives:
 
-## Required inputs
+```text
+mean_hamming_weight = 4.5
+order_parameter = 0
+entropy = 8 bits
+```
 
-- Background and perturbation equations.
-- Parameter setting or approximation defining the baseline limit.
-- Observable map and likelihood interface.
+## Standard-model comparison boundary
 
-## Acceptance gates
-
-- The baseline limit is mathematically stated.
-- Numerical outputs match the selected baseline within preregistered tolerance.
-- If no limit exists, documentation states that ASH is a separate candidate model.
+No standard cosmological limit is derived.  This means the current ASH
+finite-observer layer must be treated as a separate candidate mathematical
+model rather than a deformation or limit of a standard cosmological model.
 
 ## Current blocker
 
-No background or perturbation equations exist yet.
+External baseline comparison remains blocked until a unitful bridge and
+observable likelihood exist.

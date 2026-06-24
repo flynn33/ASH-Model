@@ -1,37 +1,57 @@
 # Cosmological Background Equations
 
-Status: Draft
+Status: finite background surrogate specified; physical cosmology not derived
 
-## Definitions
+## Background variables
 
-- Background variable: a homogeneous or averaged quantity derived from the bridge map.
-- Background equation: the evolution law for those variables after coarse-graining.
-- Baseline limit: a parameter setting or approximation that recovers a standard comparison model.
+The current background variables are finite-observer quantities:
 
-## Assumptions
+```text
+W_t(w): Hamming-weight probability over w in {0,2,4,6,8}
+m_t: mean Hamming weight
+phi_t = 1 - 2 m_t / 9
+S_t: Shannon entropy in bits
+```
 
-- The repository has not derived physical cosmological background equations.
-- Any background equation must be derived before claims about observational cosmology are evaluated.
+## Evolution law
 
-## Theorem or model obligations
+The background law is the exact Hamming-weight lumping of the pair-flip
+microscopic dynamics:
 
-- Define the background variables and time coordinate.
-- Derive the background evolution equations from the microscopic dynamics or declare the derivation gap.
-- Define parameter meanings, units, priors, and allowed ranges.
-- Identify the standard baseline or limit used for comparison.
+```text
+W_{t+1} = W_t K_p
+```
 
-## Required tests
+where `K_p` is implemented by
+`ash_model.physics.weight_background_kernel(p)`.
 
-- Dimensional and unit consistency checks.
-- Numerical solver tests after equations exist.
-- Baseline-limit regression tests against the selected comparison model.
+## Baseline limit
 
-## Known gaps
+The stationary baseline of this finite model is the uniform admissible state
+law.  It has:
 
-- No background variables are frozen.
-- No equation of motion is derived.
-- No baseline recovery test can run yet.
+```text
+m = 9/2
+phi = 0
+S = 8 bits
+```
+
+This is an internal equilibrium baseline, not a standard cosmological model.
+
+## Physical-cosmology boundary
+
+No Friedmann equation, metric expansion law, matter content, radiation content,
+dark-sector interpretation, or unitful time coordinate is derived here.  A
+comparison to standard cosmological backgrounds remains a future model-building
+task.
+
+## Evidence
+
+- `ash_model.physics.weight_background_kernel`
+- `ash_model.physics.bridge_observables`
+- `tests/test_physics.py`
 
 ## Verification status
 
-Blocked until the physical bridge and dynamics produce background variables.
+Finite background surrogate implemented and verified.  Physical cosmological
+background equations remain outside the current proved scope.

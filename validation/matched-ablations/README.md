@@ -1,23 +1,19 @@
 # Matched Ablation Validation
 
-Status: Blocked
+Status: internal controls specified; external ablations blocked
 
-## Purpose
+## Implemented controls
 
-Matched ablations will separate ASH-specific assumptions from generic model flexibility, finite sampling, and reconstruction choices.
+The repository now separates:
 
-## Required inputs
+- the verified finite ASH code layer;
+- the existing simulation controls in `ash_model.simulation`;
+- the finite-observer pair-flip physics layer in `ash_model.physics`.
 
-- Frozen ASH observable pipeline.
-- Same-complexity baseline alternatives.
-- Code, branch, prior, and bridge-map ablations with matched parameter counts where practical.
+The pair-flip layer is intentionally simple and symmetric, which makes the
+uniform stationary law and finite-mode decay factors auditable.
 
-## Acceptance gates
+## External ablation blocker
 
-- Each ablation uses the same data cuts and likelihood as the ASH model.
-- Parameter-count differences are documented.
-- ASH-specific claims are weakened or removed when matched ablations perform equivalently.
-
-## Current blocker
-
-The observable pipeline and likelihood are not yet defined.
+Matched empirical ablations remain blocked until external observables,
+likelihood, data cuts, and parameter counts exist.

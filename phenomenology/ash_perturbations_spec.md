@@ -1,25 +1,37 @@
 # ASH Perturbations Specification
 
-Status: Draft
+Status: finite perturbation interface implemented
 
-## Definitions
+## Variables
 
-- Perturbation variable: a first-order deviation around the ASH background solution.
-- Mode basis: the representation used to evolve perturbations.
+Perturbations are deviations from the uniform admissible state law:
 
-## Required specification
+```text
+delta rho_t = rho_t - u
+```
 
-- Gauge convention and physical degrees of freedom.
-- Linearized equations and coupling terms.
-- Initial conditions and normalization.
-- Stability and convergence criteria.
+Modes are grouped by Walsh-character Hamming weight `k`.
+
+## Mode evolution
+
+For pair-flip probability `p`, one update multiplies a weight-`k` mode by
+
+```text
+mu_k(p) = 1 - p + p K_2(k;9) / C(9,2)
+```
+
+## Implementation
+
+- `ash_model.physics.pair_flip_eigenvalue`
+- `ash_model.physics.lazy_pair_flip_eigenvalue`
 
 ## Acceptance gates
 
-- Perturbation equations trace back to the background model.
-- Numerical implementation passes convergence tests.
-- Observable statistics are defined before empirical validation.
+- Mode factors are bounded in `[-1,1]`.
+- The uniform mode has factor `1`.
+- The linear update is consistent with the stochastic pair-flip kernel.
 
-## Current status
+## Boundary
 
-Blocked until background equations and perturbation variables are defined.
+These are finite-state perturbation modes.  They are not metric perturbations,
+gauge-fixed spacetime perturbations, or a cosmic power spectrum.

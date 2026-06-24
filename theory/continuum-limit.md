@@ -1,37 +1,71 @@
 # Continuum or Finite-Observer Limit
 
-Status: Draft
+Status: finite-observer substitute specified
 
-## Definitions
+## Decision
 
-- Continuum limit: a controlled limiting process from finite ASH configurations to continuum equations.
-- Finite-observer limit: a bounded-resolution alternative that does not require an actual continuum.
-- Convergence criterion: the topology, norm, statistic, or observable used to decide whether a limit exists.
+This branch does not claim an actual continuum limit.  It defines a
+finite-observer substitute: exact evolution on the 256-state admissible state
+space and an exact five-level Hamming-weight background equation.
 
-## Assumptions
+## Background equation
 
-- A limit must be derived from a specified dynamics and bridge map.
-- Bell-shaped finite histograms are not sufficient evidence for a physical continuum limit.
+Let `W_t(w)` be the probability that the state has Hamming weight `w`, where
 
-## Theorem or model obligations
+```text
+w in {0, 2, 4, 6, 8}
+```
 
-- Define the limiting parameter and sequence of finite systems.
-- Prove convergence, identify nonconvergence, or specify the finite-observer substitute.
-- State which equations or observables survive the limit.
-- Bound approximation error at finite resolution.
+Under the lazy pair-flip kernel with probability `p`,
 
-## Required tests
+```text
+W_{t+1} = W_t K_p
+```
 
-- Numerical convergence tests with multiple resolutions.
-- Ablations that separate ASH-specific structure from generic finite sampling.
-- Reproducibility checks for all generated convergence artifacts.
+where
 
-## Known gaps
+```text
+K_p(w, w-2) = p C(w,2) / C(9,2)
+K_p(w, w)   = 1 - p + p w(9-w) / C(9,2)
+K_p(w, w+2) = p C(9-w,2) / C(9,2)
+```
 
-- No limiting sequence is defined.
-- No norm or convergence statistic is selected.
-- No continuum equation has been derived.
+with terms outside `{0,2,4,6,8}` omitted.
+
+## Perturbation-mode factors
+
+For a Walsh mode of Hamming weight `k`, the non-lazy pair-flip eigenvalue is
+
+```text
+lambda_k = K_2(k; 9) / C(9,2)
+```
+
+where
+
+```text
+K_2(k; 9) =
+  C(9-k,2) - k(9-k) + C(k,2)
+```
+
+The lazy one-step decay factor is
+
+```text
+mu_k(p) = 1 - p + p lambda_k
+```
+
+The repository verifies that these factors are bounded in `[-1,1]`.
+
+## Boundary
+
+This finite-observer substitute supplies exact finite equations.  It does not
+derive a differentiable spacetime continuum, metric field, or field equation.
+
+## Evidence
+
+- `ash_model.physics.weight_background_kernel`
+- `ash_model.physics.lazy_pair_flip_eigenvalue`
+- `tests/test_physics.py`
 
 ## Verification status
 
-Blocked until the dynamics and bridge map are formalized.
+Implemented and computationally verified for the finite-observer substitute.
