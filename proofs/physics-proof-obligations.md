@@ -22,6 +22,8 @@ Status: finite-observer obligations partially discharged
     shapes and non-positive uncertainty.
 12. Prediction-lock contract: frozen prediction entries can be hashed and
     validated before evaluation.
+13. Standard-baseline contract: flat standard-baseline distance curves can be
+    computed and ranked by the likelihood contract.
 
 ## Remaining obligations
 
@@ -29,7 +31,8 @@ Status: finite-observer obligations partially discharged
    products.
 2. Spacetime metric or explicit non-spacetime physical interpretation.
 3. Gauge redundancy and physical degrees of freedom for any continuum reading.
-4. Standard cosmological background or proof that no such limit exists.
+4. ASH-derived standard cosmological background or proof that no such limit
+   exists.
 5. External data product, covariance source, and matched baseline validation.
 6. Locked scientific prediction.
 
@@ -38,7 +41,9 @@ Status: finite-observer obligations partially discharged
 - `src/ash_model/physics.py`
 - `src/ash_model/empirical.py`
 - `src/ash_model/prediction_ledger.py`
+- `src/ash_model/cosmology.py`
 - `tests/test_physics.py`
 - `tests/test_empirical_bridge.py`
 - `tests/test_prediction_ledger.py`
+- `tests/test_cosmology.py`
 - `proofs/computational-certificate.json`

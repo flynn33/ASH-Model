@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-24T12:36:39Z",
+  "updated_utc": "2026-06-24T12:43:43Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -131,11 +131,13 @@
     {
       "id": "VAL-004",
       "status": "complete",
-      "completion_type": "scaffold_created",
+      "completion_type": "implementation_verified",
       "evidence": [
-        "validation/lcdm-limit/README.md"
+        "validation/lcdm-limit/README.md",
+        "src/ash_model/cosmology.py",
+        "tests/test_cosmology.py"
       ],
-      "notes": "Internal uniform-state baseline is documented; standard cosmology limit is not present."
+      "notes": "Dimensionless flat standard-baseline comparator is implemented; an ASH-derived standard cosmology limit is not present."
     },
     {
       "id": "PRED-001",
@@ -192,12 +194,12 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true with finite-observer physics, empirical-interface, and prediction-lock checks enabled."
+      "summary": "all_checks_pass true with finite-observer physics, empirical-interface, prediction-lock, and standard-baseline checks enabled."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "59 passed."
+      "summary": "65 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -239,7 +241,7 @@
     "No reviewed physical calibration constants map finite ASH observables to physical spacetime, fields, or measured data products.",
     "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph.",
     "No gauge convention or physical degrees-of-freedom map exists for a continuum interpretation.",
-    "No standard cosmological background or baseline limit is derived.",
+    "No ASH-derived standard cosmological background or baseline limit is derived.",
     "No external data product, covariance source, or matched empirical baseline is committed.",
     "No scientific prospective or held-out prediction is locked."
   ],

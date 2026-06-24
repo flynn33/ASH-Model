@@ -67,6 +67,8 @@ ASH-Physics v0.2 defines and verifies a finite-observer stochastic layer:
 - an explicit affine calibration contract for future unit-bearing observables;
 - a diagonal Gaussian likelihood contract for future matched comparisons;
 - hash-lock validation for future prediction-ledger entries.
+- a dimensionless flat standard-baseline comparator for future baseline
+  checks.
 
 This result closes the finite internal theory and validation-mechanics gates.
 It does not close the external physical validation gate.

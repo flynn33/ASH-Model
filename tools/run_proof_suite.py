@@ -19,6 +19,13 @@ from ash_model.adinkra import adinkra_certificate
 from ash_model.bits import flip_bit, is_integrity_valid, xor_bits
 from ash_model.branching import branch_certificate
 from ash_model.code import CODEWORDS, code_certificate, decode, decode_affine
+from ash_model.cosmology import (
+    FlatLambdaCDMParameters,
+    compare_distance_baselines,
+    dimensionless_hubble_parameter,
+    flat_lcdm_distance_curve,
+    normalized_comoving_distance,
+)
 from ash_model.empirical import (
     ObservableCalibration,
     calibrate_observable,
@@ -237,6 +244,36 @@ def _prediction_ledger_certificate() -> dict[str, object]:
     }
 
 
+def _standard_baseline_certificate() -> dict[str, object]:
+    standard = FlatLambdaCDMParameters(matter_density=0.3, dark_energy_density=0.7)
+    shifted = FlatLambdaCDMParameters(matter_density=0.4, dark_energy_density=0.6)
+    redshifts = [0.2, 0.5, 1.0]
+    observed = flat_lcdm_distance_curve(redshifts, standard, steps=512)
+    comparison = compare_distance_baselines(
+        redshifts=redshifts,
+        observed_distances=observed,
+        standard_deviation=[0.01, 0.01, 0.01],
+        baselines={"standard": standard, "shifted": shifted},
+        steps=512,
+    )
+    distances = [
+        normalized_comoving_distance(redshift, standard, steps=512)
+        for redshift in (0.0, 0.5, 1.0)
+    ]
+    return {
+        "matter_density": standard.matter_density,
+        "dark_energy_density": standard.dark_energy_density,
+        "total_density": standard.total_density,
+        "hubble_at_zero": dimensionless_hubble_parameter(0.0, standard),
+        "hubble_at_one": dimensionless_hubble_parameter(1.0, standard),
+        "distance_curve": [float(value) for value in distances],
+        "distance_curve_monotonic": distances[0] == 0.0 and distances[0] < distances[1] < distances[2],
+        "best_baseline": comparison[0].name,
+        "best_baseline_chi_square": comparison[0].chi_square,
+        "interpretation": "Standard-baseline comparison mechanics only; not an ASH-derived cosmology limit.",
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -249,6 +286,7 @@ def build_certificate() -> dict[str, object]:
         "physics": _physics_certificate(),
         "empirical_bridge": _empirical_bridge_certificate(),
         "prediction_ledger": _prediction_ledger_certificate(),
+        "standard_baseline": _standard_baseline_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -287,6 +325,11 @@ def build_certificate() -> dict[str, object]:
         and sections["prediction_ledger"]["locked_entry_status"] == "has_locked_predictions"
         and sections["prediction_ledger"]["entry_hash_length"] == 64
         and sections["prediction_ledger"]["entry_hash_validates"] is True,
+        "standard_baseline_contract": abs(sections["standard_baseline"]["total_density"] - 1.0) < 1e-15
+        and abs(sections["standard_baseline"]["hubble_at_zero"] - 1.0) < 1e-15
+        and sections["standard_baseline"]["distance_curve_monotonic"] is True
+        and sections["standard_baseline"]["best_baseline"] == "standard"
+        and abs(sections["standard_baseline"]["best_baseline_chi_square"]) < 1e-15,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -310,6 +353,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     physics = certificate["sections"]["physics"]
     empirical = certificate["sections"]["empirical_bridge"]
     prediction = certificate["sections"]["prediction_ledger"]
+    standard = certificate["sections"]["standard_baseline"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -390,6 +434,14 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Entry hash length: `{prediction['entry_hash_length']}`",
         f"- Locked-entry validation: `{prediction['entry_hash_validates']}`",
         "- Boundary: mechanics for future locked predictions are present; no repository prediction is locked here.",
+        "",
+        "## Standard baseline mechanics",
+        "",
+        f"- Flat density total: `{standard['total_density']}`",
+        f"- `E(0)`: `{standard['hubble_at_zero']}`",
+        f"- Distance curve monotonic: `{standard['distance_curve_monotonic']}`",
+        f"- Best example baseline: `{standard['best_baseline']}`",
+        "- Boundary: this is a reference-baseline comparator, not an ASH-derived standard-cosmology limit.",
         "",
         "## Check matrix",
         "",

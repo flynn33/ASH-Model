@@ -15,8 +15,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "9aed9bee7970ca3afd556d23d113ef92e000c38515ea282ab20f5594ecc4a620",
-      "bytes": 3606
+      "sha256": "e66a5ca869e709c358dd9444acab15dedc00b44dc6dc7002fda5685bf0c295c8",
+      "bytes": 3688
     },
     {
       "path": "configs/prediction_ledger.schema.json",
@@ -145,8 +145,8 @@
     },
     {
       "path": "tasks/task_manifest.json",
-      "sha256": "5d4bd5acb8b472437347c6f5d6c52e7a63fb22eb61acf5db39683d2264df1ec1",
-      "bytes": 6265
+      "sha256": "75102597ccae592fd0abde233b4cf1a8310e9f4de293f14686e1c5118e1a155a",
+      "bytes": 6338
     },
     {
       "path": "templates/preregistration.md",

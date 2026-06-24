@@ -140,3 +140,18 @@ Executable verification: `tests/test_prediction_ledger.py`
 
 Limitations: This verifies ledger mechanics; no scientific prediction is
 locked by the current repository ledger.
+
+## BASE-001: flat standard-baseline comparator
+
+Status: computationally verified
+
+Statement: A dimensionless flat standard-baseline distance curve can be
+computed from non-negative flat density parameters and ranked with the
+diagonal Gaussian likelihood contract.
+
+Definitions used: `ash_model.cosmology.FlatLambdaCDMParameters`
+
+Executable verification: `tests/test_cosmology.py`
+
+Limitations: This verifies baseline comparison mechanics; it does not derive a
+standard cosmological limit from ASH finite-observer dynamics.

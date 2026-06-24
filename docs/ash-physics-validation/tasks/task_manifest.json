@@ -165,7 +165,9 @@
         "validation/lcdm-limit/README.md"
       ],
       "evidence": [
-        "validation/lcdm-limit/README.md"
+        "validation/lcdm-limit/README.md",
+        "src/ash_model/cosmology.py",
+        "tests/test_cosmology.py"
       ]
     },
     {
