@@ -1,7 +1,7 @@
 # Python Validation Report
 
 **Version:** 1.1.0
-**Validation command:** `pytest`
+**Validation command:** `python -m pytest`
 
 ## Scope
 
@@ -35,11 +35,12 @@ The test suite validates the executable claims made by the canonical specificati
 ```bash
 python -m pip install -e ".[dev]"
 python tools/generate_artifacts.py
+python tools/build_manuscript.py
 python tools/run_proof_suite.py
-pytest
+python -m pytest
 python tools/verify_repository.py
 ```
 
 ## Current result
 
-All tracked tests and proof checks pass in the audit-remediation package. Exact proof counts are stored in `proofs/computational-certificate.json` rather than duplicated manually here.
+The current local validation pass reports `83 passed`. Exact proof counts are stored in `proofs/computational-certificate.json` rather than duplicated manually here.

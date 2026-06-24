@@ -16,10 +16,12 @@ The repository now functions as a coherent research/code package rather than a c
 - controlled statistical ablations;
 - generated figures with repository generators;
 - claim-language safeguards in tests and CI.
+- explicit final repository-readiness audit with open science blockers preserved;
+- tracked wiki source aligned to the current finite-observer and validation boundary.
 
 ### Remaining research work
 
 - external image/video benchmarks;
 - GPU/Metal conformance and performance work;
 - operator-quality studies against matched baselines;
-- separately formulated falsifiable physical hypotheses.
+- unit-bearing physical bridge maps, external data products, matched baselines, and separately formulated falsifiable physical hypotheses.

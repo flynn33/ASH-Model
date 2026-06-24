@@ -1,5 +1,28 @@
 # Changelog
 
+## Unreleased - 2026-06-24
+
+**Title**: Repository documentation and wiki publication refresh
+
+**Change Class**: docs
+
+**Version Impact**: none
+
+**Summary**: Aligns README, repository documentation, changelog, tracked wiki sources, and live wiki publication content with the final repository-readiness audit and ASH-Physics finite-observer boundary.
+
+**Affected Area**: README, documentation, changelog, tracked wiki source, live wiki publication workflow, and repository readiness notes
+
+### Added
+
+- documented wiki publication map and live wiki synchronization expectations;
+- expanded tracked wiki pages for installation, finite mathematics, finite-observer physics, artifact policy, validation, repository structure, and science roadmap.
+
+### Updated
+
+- refreshed public documentation to point at the final live repository audit;
+- aligned wiki verification commands with the editable package, proof suite, repository gate, generated-output policy, and current test count;
+- kept empirical cosmology, unit-bearing physical interpretation, external validation, and locked predictions marked as open science work.
+
 ## v1.1.0 - 2026-06-24
 
 **Title**: Canonical mapping engine, proof suite, and repository audit remediation

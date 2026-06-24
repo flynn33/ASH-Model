@@ -5,6 +5,42 @@
       "destination": "Home.md"
     },
     {
+      "source": "wiki/Getting-Started.md",
+      "destination": "Getting-Started.md"
+    },
+    {
+      "source": "wiki/Introduction-to-ASH-Model.md",
+      "destination": "Introduction-to-ASH-Model.md"
+    },
+    {
+      "source": "wiki/Mathematical-Framework.md",
+      "destination": "Mathematical-Framework.md"
+    },
+    {
+      "source": "wiki/Finite-Observer-Physics.md",
+      "destination": "Finite-Observer-Physics.md"
+    },
+    {
+      "source": "wiki/Evidence-and-Artifacts.md",
+      "destination": "Evidence-and-Artifacts.md"
+    },
+    {
+      "source": "wiki/Hypercube-and-Adinkra-Visual-Guide.md",
+      "destination": "Hypercube-and-Adinkra-Visual-Guide.md"
+    },
+    {
+      "source": "wiki/Visual-Model-Atlas.md",
+      "destination": "Visual-Model-Atlas.md"
+    },
+    {
+      "source": "wiki/Validation-and-Data-Audit.md",
+      "destination": "Validation-and-Data-Audit.md"
+    },
+    {
+      "source": "wiki/Science-Roadmap.md",
+      "destination": "Science-Roadmap.md"
+    },
+    {
       "source": "wiki/Simulation-Guide.md",
       "destination": "Simulation-Guide.md"
     },
@@ -15,6 +51,50 @@
     {
       "source": "wiki/Consistency-Checklist.md",
       "destination": "Consistency-Checklist.md"
+    },
+    {
+      "source": "wiki/Research-Paper-Guide.md",
+      "destination": "Research-Paper-Guide.md"
+    },
+    {
+      "source": "wiki/Axioms-of-Existence.md",
+      "destination": "Axioms-of-Existence.md"
+    },
+    {
+      "source": "wiki/Codebase-Overview.md",
+      "destination": "Codebase-Overview.md"
+    },
+    {
+      "source": "wiki/Examples-and-Tutorials.md",
+      "destination": "Examples-and-Tutorials.md"
+    },
+    {
+      "source": "wiki/Theoretical-Applications.md",
+      "destination": "Theoretical-Applications.md"
+    },
+    {
+      "source": "wiki/Contributing-Guidelines.md",
+      "destination": "Contributing-Guidelines.md"
+    },
+    {
+      "source": "wiki/Governance-and-Discussions.md",
+      "destination": "Governance-and-Discussions.md"
+    },
+    {
+      "source": "wiki/References-and-Further-Reading.md",
+      "destination": "References-and-Further-Reading.md"
+    },
+    {
+      "source": "wiki/License-and-Use.md",
+      "destination": "License-and-Use.md"
+    },
+    {
+      "source": "wiki/_Sidebar.md",
+      "destination": "_Sidebar.md"
+    },
+    {
+      "source": "wiki/_Footer.md",
+      "destination": "_Footer.md"
     }
   ]
 }
