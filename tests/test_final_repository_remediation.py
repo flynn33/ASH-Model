@@ -1,4 +1,5 @@
 import importlib.util
+import hashlib
 import json
 import subprocess
 import sys
@@ -77,6 +78,30 @@ def test_manuscript_manifest_uses_only_tracked_figure_inputs():
     )
 
     assert figure_inputs <= tracked_figures
+
+
+def test_artifact_generator_preserves_tracked_figures_by_default():
+    figure_paths = [
+        ROOT / relative
+        for relative in subprocess.check_output(
+            ["git", "ls-files", "figures/*.png"],
+            cwd=ROOT,
+            text=True,
+        ).splitlines()
+    ]
+    before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in figure_paths}
+
+    result = subprocess.run(
+        [sys.executable, "tools/generate_artifacts.py"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+
+    after = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in figure_paths}
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "verified 5 figure artifacts" in result.stdout
+    assert after == before
 
 
 def test_repository_verifier_accepts_source_input_manuscript_policy():

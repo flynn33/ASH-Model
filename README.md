@@ -92,6 +92,7 @@ python tools/verify_repository.py
 After changing manuscript source, bibliography inputs, generated figures, or the committed PDF, refresh the source-input manifest before regenerating the proof certificate:
 
 ```bash
+python tools/generate_artifacts.py --refresh-figures  # only when figure PNGs intentionally change
 python tools/build_manuscript.py
 ```
 

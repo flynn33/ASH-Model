@@ -2,9 +2,9 @@
 """Check that generated repository artifacts are current.
 
 This script assumes it is run from a git working tree. It runs artifact generation,
-then verifies that generated paths do not produce an unintended diff. Manuscript
-verification can be included after the repository selects byte-deterministic or
-equivalence-checked manuscript policy.
+then verifies that generated paths do not produce an unintended diff. By default,
+figure PNGs are treated as committed visual artifacts bound by manifest hashes;
+pass --refresh-figures when intentionally redrawing tracked PNG figures.
 """
 from __future__ import annotations
 
@@ -50,6 +50,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("repo", nargs="?", default=".")
     parser.add_argument("--include-manuscript", action="store_true")
+    parser.add_argument("--refresh-figures", action="store_true")
     parser.add_argument("--write-json", default=None)
     args = parser.parse_args()
 
@@ -62,7 +63,10 @@ def main() -> int:
         print(json.dumps(results, indent=2, sort_keys=True))
         return 1
 
-    gen = run(root, [sys.executable, "tools/generate_artifacts.py"])
+    generate_command = [sys.executable, "tools/generate_artifacts.py"]
+    if args.refresh_figures:
+        generate_command.append("--refresh-figures")
+    gen = run(root, generate_command)
     results["steps"].append({"name": "generate_artifacts", **gen})
     if gen["returncode"] != 0:
         results["passed"] = False

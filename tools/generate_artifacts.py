@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate all tracked data and figure artifacts from the canonical code."""
+"""Regenerate deterministic data artifacts and bind tracked figure artifacts."""
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -35,6 +36,13 @@ from ash_model.hypercube import projection_coordinates, state_reference_rows, st
 from ash_model.simulation import binomial_distribution, run_ablation_suite, run_simulation
 
 PNG_METADATA = {"Software": "ASH Model artifact generator"}
+TRACKED_FIGURES = (
+    "figures/simulation-histogram.png",
+    "figures/single-bit-error.png",
+    "figures/hypercube-3d-projection.png",
+    "figures/adinkra-graph-colored.png",
+    "figures/branch-topology.png",
+)
 
 
 def _write_codewords() -> Path:
@@ -315,7 +323,40 @@ def _write_manifest(paths: list[Path]) -> Path:
     return manifest_path
 
 
+def _tracked_figure_paths() -> list[Path]:
+    paths = [REPO_ROOT / relative for relative in TRACKED_FIGURES]
+    missing = [path.relative_to(REPO_ROOT).as_posix() for path in paths if not path.is_file()]
+    if missing:
+        raise SystemExit(
+            "missing tracked figure artifacts: "
+            + ", ".join(missing)
+            + "; run with --refresh-figures to redraw them"
+        )
+    return paths
+
+
+def _refresh_figures(results) -> list[Path]:
+    return [
+        _plot_simulation_histogram(results),
+        _plot_single_bit_error(),
+        _plot_hypercube_projection(),
+        _plot_adinkra(),
+        _plot_branch_topology(),
+    ]
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--refresh-figures",
+        action="store_true",
+        help=(
+            "Redraw tracked PNG figures before recording the artifact manifest. "
+            "The default preserves committed figure bytes and verifies them by hash."
+        ),
+    )
+    args = parser.parse_args()
+
     (REPO_ROOT / "data").mkdir(exist_ok=True)
     (REPO_ROOT / "figures").mkdir(exist_ok=True)
     generated: list[Path] = []
@@ -325,13 +366,16 @@ def main() -> int:
     generated.extend(_write_simulation_data())
     ablation_path, results = _write_ablation_data()
     generated.append(ablation_path)
-    generated.append(_plot_simulation_histogram(results))
-    generated.append(_plot_single_bit_error())
-    generated.append(_plot_hypercube_projection())
-    generated.append(_plot_adinkra())
-    generated.append(_plot_branch_topology())
+    figure_paths = _refresh_figures(results) if args.refresh_figures else _tracked_figure_paths()
+    generated.extend(figure_paths)
     manifest = _write_manifest(generated)
-    print(f"Generated {len(generated)} artifacts and {manifest.relative_to(REPO_ROOT)}")
+    data_count = len(generated) - len(figure_paths)
+    figure_action = "refreshed" if args.refresh_figures else "verified"
+    print(
+        f"Generated {data_count} data artifacts, "
+        f"{figure_action} {len(figure_paths)} figure artifacts, "
+        f"and wrote {manifest.relative_to(REPO_ROOT)}"
+    )
     return 0
 
 

@@ -7,18 +7,18 @@
         "pytest",
         "-q"
       ],
-      "duration_seconds": 2.414,
+      "duration_seconds": 2.919,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "........................................................................ [ 87%]\n..........                                                               [100%]\n"
+      "stdout_tail": "........................................................................ [ 86%]\n...........                                                              [100%]\n"
     },
     {
       "cmd": [
         "/tmp/ash-model-validation-venv/bin/python",
         "tools/run_proof_suite.py"
       ],
-      "duration_seconds": 2.073,
+      "duration_seconds": 2.075,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -29,7 +29,7 @@
         "/tmp/ash-model-validation-venv/bin/python",
         "tools/verify_repository.py"
       ],
-      "duration_seconds": 0.06,
+      "duration_seconds": 0.061,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -53,7 +53,7 @@
         "tools/validate_json_assets.py",
         "."
       ],
-      "duration_seconds": 0.066,
+      "duration_seconds": 0.065,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -66,11 +66,11 @@
         ".",
         "--include-manuscript"
       ],
-      "duration_seconds": 1.625,
+      "duration_seconds": 0.545,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"passed\": true,\n  \"root\": \"/Volumes/NVME/GitHub/ASH-Model\",\n  \"steps\": [\n    {\n      \"cmd\": [\n        \"/tmp/ash-model-validation-venv/bin/python\",\n        \"tools/generate_artifacts.py\"\n      ],\n      \"name\": \"generate_artifacts\",\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"Generated 11 artifacts and proofs/artifact-manifest.json\\n\"\n    },\n    {\n      \"cmd\": [\n        \"git\",\n        \"diff\",\n        \"--exit-code\",\n        \"--\",\n        \"data\",\n        \"figures\",\n        \"proofs/artifact-manifest.json\",\n        \"proofs/computational-certificate.json\",\n        \"proofs/computational-certificate.md\"\n      ],\n      \"name\": \"generated_artifact_diff\",\n      \"passed\": true,\n      \"paths\": [\n        \"data\",\n        \"figures\",\n        \"proofs/artifact-manifest.json\",\n        \"proofs/computational-certificate.json\",\n        \"proofs/computational-certificate.md\"\n      ],\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"\"\n    },\n    {\n      \"cmd\": [\n        \"/tmp/ash-model-validation-venv/bin/python\",\n        \"tools/build_manuscript.py\"\n      ],\n      \"name\": \"build_manuscript\",\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"{\\n  \\\"manifest\\\": \\\"proofs/manuscript-manifest.json\\\",\\n  \\\"source_inputs\\\": 9,\\n  \\\"verification_policy\\\": \\\"source_input_equivalence\\\"\\n}\\n\"\n    },\n    {\n      \"cmd\": [\n        \"git\",\n        \"diff\",\n        \"--exit-code\",\n        \"--\",\n        \"docs/ASH-Model-Preprint-v1.pdf\",\n        \"proofs/manuscript-manifest.json\"\n      ],\n      \"name\": \"manuscript_diff\",\n      \"passed\": true,\n      \"paths\": [\n        \"docs/ASH-Model-Preprint-v1.pdf\",\n        \"proofs/manuscript-manifest.json\"\n      ],\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"\"\n    }\n  ]\n}\n"
+      "stdout_tail": "{\n  \"passed\": true,\n  \"root\": \"/Volumes/NVME/GitHub/ASH-Model\",\n  \"steps\": [\n    {\n      \"cmd\": [\n        \"/tmp/ash-model-validation-venv/bin/python\",\n        \"tools/generate_artifacts.py\"\n      ],\n      \"name\": \"generate_artifacts\",\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"Generated 6 data artifacts, verified 5 figure artifacts, and wrote proofs/artifact-manifest.json\\n\"\n    },\n    {\n      \"cmd\": [\n        \"git\",\n        \"diff\",\n        \"--exit-code\",\n        \"--\",\n        \"data\",\n        \"figures\",\n        \"proofs/artifact-manifest.json\",\n        \"proofs/computational-certificate.json\",\n        \"proofs/computational-certificate.md\"\n      ],\n      \"name\": \"generated_artifact_diff\",\n      \"passed\": true,\n      \"paths\": [\n        \"data\",\n        \"figures\",\n        \"proofs/artifact-manifest.json\",\n        \"proofs/computational-certificate.json\",\n        \"proofs/computational-certificate.md\"\n      ],\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"\"\n    },\n    {\n      \"cmd\": [\n        \"/tmp/ash-model-validation-venv/bin/python\",\n        \"tools/build_manuscript.py\"\n      ],\n      \"name\": \"build_manuscript\",\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"{\\n  \\\"manifest\\\": \\\"proofs/manuscript-manifest.json\\\",\\n  \\\"source_inputs\\\": 9,\\n  \\\"verification_policy\\\": \\\"source_input_equivalence\\\"\\n}\\n\"\n    },\n    {\n      \"cmd\": [\n        \"git\",\n        \"diff\",\n        \"--exit-code\",\n        \"--\",\n        \"docs/ASH-Model-Preprint-v1.pdf\",\n        \"proofs/manuscript-manifest.json\"\n      ],\n      \"name\": \"manuscript_diff\",\n      \"passed\": true,\n      \"paths\": [\n        \"docs/ASH-Model-Preprint-v1.pdf\",\n        \"proofs/manuscript-manifest.json\"\n      ],\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"\"\n    }\n  ]\n}\n"
     },
     {
       "cmd": [
@@ -93,14 +93,14 @@
         "tools/audit_live_repository_readiness.py",
         "."
       ],
-      "duration_seconds": 0.014,
+      "duration_seconds": 0.015,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
       "stdout_tail": "live repository readiness audit passed\n"
     }
   ],
-  "commit": "f5c06de513a50247dfc7378603f336baa7db96b4",
+  "commit": "7d7f1c0b9ea1d1f1eafe5e30dc1e16306ecd9187",
   "final_status": "repository_remediation_complete",
   "missing_required_paths": [],
   "passed": true,
@@ -232,6 +232,6 @@
   ],
   "root": "/Volumes/NVME/GitHub/ASH-Model",
   "schema_version": "1.0",
-  "timestamp_unix": 1782318022,
-  "tree_hash": "359632d98e8cc208e97a438170ff90732e9d0b34cb1427ca5f8456638cfe587f"
+  "timestamp_unix": 1782318529,
+  "tree_hash": "b0d496172d150333d1798a56d032ba622eaf118324864702fe5ddeb2f99804d6"
 }

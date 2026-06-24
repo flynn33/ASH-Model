@@ -61,16 +61,16 @@ The repository does not claim empirical cosmology completion. The finite-observe
 
 ```text
 python -m pip install -e ".[dev]" -> passed
-python tools/generate_artifacts.py -> passed, 11 artifacts generated
+python tools/generate_artifacts.py -> passed, 6 data artifacts generated and 5 figure artifacts verified
 python tools/build_manuscript.py -> passed, 9 tracked source inputs recorded
 python tools/run_proof_suite.py -> passed, all_checks_pass true
-python -m pytest -> passed, 82 tests
+python -m pytest -> passed, 83 tests
 python tools/verify_repository.py -> passed, no mismatches
 python docs/ash-physics-validation/scripts/check_claim_language.py . -> passed
 python docs/ash-physics-validation/scripts/check_sensitive_language.py . -> passed
 python docs/ash-physics-validation/scripts/run_repository_gate.py . -> passed
 python tools/validate_json_assets.py . -> passed
-python tools/check_generated_outputs.py . --include-manuscript -> passed
+python tools/check_generated_outputs.py . --include-manuscript -> passed, data artifacts, tracked figure hashes, and manuscript source inputs matched
 python tools/audit_physics_readiness.py . --expect-open --write-json docs/remediation/physics-readiness.json -> passed, 12 science blockers open
 python tools/audit_live_repository_readiness.py . -> passed
 python tools/final_repository_audit.py . -> passed

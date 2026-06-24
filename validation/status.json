@@ -202,7 +202,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_artifacts.py",
       "result": "passed",
-      "summary": "Generated 11 artifacts and proofs/artifact-manifest.json."
+      "summary": "Generated 6 data artifacts, verified 5 tracked figure artifacts, and wrote proofs/artifact-manifest.json."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/build_manuscript.py",
@@ -217,7 +217,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "82 passed."
+      "summary": "83 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -247,7 +247,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/check_generated_outputs.py . --include-manuscript",
       "result": "passed",
-      "summary": "Generated artifacts and manuscript source-input manifest were reproducible against the staged generated files."
+      "summary": "Deterministic data artifacts, tracked figure hashes, and the manuscript source-input manifest were reproducible against the staged generated files."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/audit_physics_readiness.py . --expect-open --write-json docs/remediation/physics-readiness.json",
