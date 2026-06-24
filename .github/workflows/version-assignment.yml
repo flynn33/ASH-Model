@@ -14,9 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+          git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune --depth=2 origin "$GITHUB_REF"
+          git checkout --force FETCH_HEAD
 
       - name: Check changelog modified
         id: check
@@ -103,6 +109,8 @@ jobs:
 
       - name: Write and commit version
         if: steps.check.outputs.modified == 'true' && steps.impact.outputs.skip != 'true' && steps.next.outputs.skip != 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           NEXT="${{ steps.next.outputs.next }}"
           echo "$NEXT" > VERSION
@@ -111,4 +119,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add VERSION
           git commit -m "chore: bump version to $NEXT"
-          git push
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+          git -c "http.https://github.com/.extraheader=$AUTH_HEADER" push origin "HEAD:${GITHUB_REF}"

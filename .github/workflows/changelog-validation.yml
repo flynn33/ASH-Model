@@ -8,17 +8,42 @@ jobs:
   validate-changelog:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout pull request
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+          git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune origin \
+            "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}" \
+            "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/pr/${PR_NUMBER}"
+          git checkout --force "refs/remotes/origin/pr/${PR_NUMBER}"
 
       - name: Detect changed files
         id: changes
-        uses: tj-actions/changed-files@v44
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" > /tmp/changed-files.txt
+          {
+            echo "all_changed_files<<EOF"
+            cat /tmp/changed-files.txt
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Validate changelog entry
+        env:
+          CHANGED_FILES: ${{ steps.changes.outputs.all_changed_files }}
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           # Skip if changelog not modified
-          if ! echo "${{ steps.changes.outputs.all_changed_files }}" | grep -q 'changelog/CHANGELOG.md'; then
+          if ! printf '%s\n' "$CHANGED_FILES" | grep -q 'changelog/CHANGELOG.md'; then
             echo "Changelog not modified — skipping validation"
             exit 0
           fi
@@ -105,10 +130,7 @@ jobs:
           fi
 
           # Cross-reference with PR body
-          BODY=$(cat <<'PREOF'
-          ${{ github.event.pull_request.body }}
-          PREOF
-          )
+          BODY="${PR_BODY:-}"
 
           PR_CLASS=$(echo "$BODY" | grep -oP '\*\*Change Class\*\*:\s*\K[a-z-]+' | head -1 || true)
           if [ -n "$PR_CLASS" ] && [ -n "$CHANGE_CLASS" ]; then
