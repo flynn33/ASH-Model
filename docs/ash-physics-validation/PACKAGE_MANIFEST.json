@@ -4,19 +4,24 @@
   "import_profile": "repository-neutral",
   "files": [
     {
+      "path": "IMPLEMENTATION_INSTRUCTIONS.md",
+      "sha256": "de06725adb28a0020eae3c3164008d57f2ffa9227777603b5ad1f24ec6cbac31",
+      "bytes": 5048
+    },
+    {
       "path": "PACKAGE_QA.json",
       "sha256": "0d959a19221b586333d80e3b7fd072a3eaa6827c1b288c163f53175e2ee9ef37",
       "bytes": 63
     },
     {
       "path": "README.md",
-      "sha256": "fa62527b24b59ea3b93ee64f310ff1b427d164799721f4d9c7d5e25ec5e073f5",
-      "bytes": 2703
+      "sha256": "2391dd11cdaf64e7d0651cdbb1727dc19ac909b91120d01c4858c7c9f2d92b68",
+      "bytes": 2850
     },
     {
       "path": "configs/prediction_ledger.schema.json",
-      "sha256": "61a246aabd45efe4a80daab6694ec519eb6f6e5b8bba768185ea1fbd47318c86",
-      "bytes": 1501
+      "sha256": "a7559d584f6a3828e6b202cd436346482e62c8a8104a57090652bfe0313f804b",
+      "bytes": 1960
     },
     {
       "path": "configs/preregistration.schema.json",
@@ -27,6 +32,16 @@
       "path": "configs/proof_certificate.schema.json",
       "sha256": "56d7c4551cbb0cc3b91116bee2dca04fb041bf06d953f903ad7602666ecf96b1",
       "bytes": 674
+    },
+    {
+      "path": "configs/task_manifest.schema.json",
+      "sha256": "1fda2013cc56094c70ef2b26ed716e9e95621384ad96a8f0b8aaf475c498f9b4",
+      "bytes": 869
+    },
+    {
+      "path": "configs/validation_status.schema.json",
+      "sha256": "5f1194aa46541af4a8e1114df4cd8a1800e2020d15d4fe17ed09a775f5c4d915",
+      "bytes": 1726
     },
     {
       "path": "docs/01_mathematical_proof_program.md",
@@ -50,8 +65,8 @@
     },
     {
       "path": "docs/05_repository_integration_plan.md",
-      "sha256": "99d4ead95b0827106186eff960a39a3c16c29db087b7b3e792b62217a41bf93e",
-      "bytes": 1874
+      "sha256": "0f48dcacedcaf88f4e7f1f269e1a359d6d4d32a4c31247606e3404edecabb07c",
+      "bytes": 2108
     },
     {
       "path": "docs/06_language_and_claim_policy.md",
@@ -94,6 +109,16 @@
       "bytes": 2629
     },
     {
+      "path": "scripts/check_sensitive_language.py",
+      "sha256": "9681a7ec3cca063ad1dcf1278b846ed62427645ede1b084b26def9447d023a00",
+      "bytes": 4980
+    },
+    {
+      "path": "scripts/run_repository_gate.py",
+      "sha256": "a8130ac7c1d2fd10ec11675185840f34ef334d3340d0b94d678fa06860f3f60f",
+      "bytes": 12188
+    },
+    {
       "path": "tasks/empirical_backlog.json",
       "sha256": "c7fd48801e84953d845ac4b2f8d072f5b06d3e870c20cdc00e15f505437f24af",
       "bytes": 1245
@@ -105,8 +130,8 @@
     },
     {
       "path": "tasks/task_manifest.json",
-      "sha256": "63f814a64a2a5a90bef89de197842bbd03825192122e91e49f38d08fabaf4189",
-      "bytes": 5212
+      "sha256": "3997de57dc255855b8718fe2e68ab4d20c11dcbf3575af5334129987030ad046",
+      "bytes": 5604
     },
     {
       "path": "templates/preregistration.md",
@@ -120,8 +145,8 @@
     },
     {
       "path": "templates/validation_status.json",
-      "sha256": "13d812609cd28558e7b0d4ff056e574163452b8c42aa2aced23e3b30dc0eb544",
-      "bytes": 185
+      "sha256": "aac9f909f48e01508a40d1fc79bc159d044058c074cfccd1da3f016411569f53",
+      "bytes": 464
     }
   ]
 }

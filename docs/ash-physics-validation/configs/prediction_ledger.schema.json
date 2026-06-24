@@ -2,18 +2,29 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ASH Prediction Ledger",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "schema_version",
-    "predictions"
+    "model_version",
+    "status",
+    "entries"
   ],
   "properties": {
-    "schema_version": {
-      "type": "string"
+    "schema_version": {"type": "string"},
+    "model_version": {"type": "string"},
+    "status": {
+      "enum": [
+        "no_locked_predictions",
+        "has_locked_predictions",
+        "testing_in_progress",
+        "archived"
+      ]
     },
-    "predictions": {
+    "entries": {
       "type": "array",
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "id",
           "model_version",
@@ -23,38 +34,22 @@
           "prediction",
           "uncertainty",
           "data_product",
+          "statistic",
+          "rejection_rule",
           "test_status"
         ],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "model_version": {
-            "type": "string"
-          },
-          "commit": {
-            "type": "string"
-          },
-          "artifact_hashes": {
-            "type": "object"
-          },
-          "frozen_utc": {
-            "type": "string"
-          },
-          "observable": {
-            "type": "string"
-          },
+          "id": {"type": "string", "minLength": 1},
+          "model_version": {"type": "string", "minLength": 1},
+          "commit": {"type": "string", "minLength": 1},
+          "artifact_hashes": {"type": "object"},
+          "frozen_utc": {"type": "string", "minLength": 1},
+          "observable": {"type": "string", "minLength": 1},
           "prediction": {},
           "uncertainty": {},
-          "data_product": {
-            "type": "string"
-          },
-          "statistic": {
-            "type": "string"
-          },
-          "rejection_rule": {
-            "type": "string"
-          },
+          "data_product": {"type": "string", "minLength": 1},
+          "statistic": {"type": "string", "minLength": 1},
+          "rejection_rule": {"type": "string", "minLength": 1},
           "test_status": {
             "enum": [
               "frozen",
@@ -62,9 +57,16 @@
               "tested_fail",
               "withdrawn_before_test"
             ]
-          }
+          },
+          "notes": {"type": "string"}
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "no_locked_predictions"}}},
+      "then": {"properties": {"entries": {"maxItems": 0}}}
+    }
+  ]
 }

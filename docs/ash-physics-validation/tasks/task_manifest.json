@@ -186,23 +186,29 @@
     },
     {
       "id": "SCAN-001",
-      "title": "Add claim-language scanner",
+      "title": "Add claim and sensitive-language scanners",
       "status": "complete",
       "required_paths": [
-        "docs/ash-physics-validation/scripts/check_claim_language.py"
+        "docs/ash-physics-validation/scripts/check_claim_language.py",
+        "docs/ash-physics-validation/scripts/check_sensitive_language.py"
       ],
       "evidence": [
-        "docs/ash-physics-validation/scripts/check_claim_language.py"
+        "docs/ash-physics-validation/scripts/check_claim_language.py",
+        "docs/ash-physics-validation/scripts/check_sensitive_language.py"
       ]
     },
     {
       "id": "CI-001",
-      "title": "Wire validation checks into CI where practical",
+      "title": "Wire validation checks into CI",
       "status": "complete",
-      "required_paths": [],
+      "required_paths": [
+        ".github/workflows/ci.yml"
+      ],
       "evidence": [
         ".github/workflows/ci.yml"
       ]
     }
-  ]
+  ],
+  "canonical_task_manifest_path": "docs/ash-physics-validation/tasks/task_manifest.json",
+  "migration_note": "The neutral task_manifest.json path is the canonical repository path for package tasks."
 }

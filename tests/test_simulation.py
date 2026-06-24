@@ -3,6 +3,7 @@ import numpy as np
 from ash_model.bits import is_integrity_valid
 from ash_model.code import CODEWORDS
 from ash_model.simulation import (
+    _random_weight4_masks,
     binomial_distribution,
     initialize_agents,
     noise_kernel,
@@ -10,6 +11,13 @@ from ash_model.simulation import (
     run_simulation,
     step_agents,
 )
+
+
+def test_random_weight4_masks_are_weight_four():
+    rng = np.random.default_rng(12345)
+    masks = _random_weight4_masks(1000, rng)
+    assert masks.shape == (1000, 9)
+    assert set(np.sum(masks, axis=1).tolist()) == {4}
 
 
 def test_noise_kernel_is_doubly_stochastic_irreducible_and_aperiodic_for_0_p_1():
