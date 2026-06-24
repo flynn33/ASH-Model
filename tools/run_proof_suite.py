@@ -20,6 +20,15 @@ from ash_model.bits import flip_bit, is_integrity_valid, xor_bits
 from ash_model.branching import branch_certificate
 from ash_model.code import CODEWORDS, code_certificate, decode, decode_affine
 from ash_model.hypercube import coset_partition, integrity_states, state_reference_rows, states, theoretical_plane_counts
+from ash_model.physics import (
+    bridge_observables,
+    lazy_pair_flip_eigenvalue,
+    pair_flip_generator,
+    pair_flip_transition,
+    physical_state_space,
+    uniform_physical_distribution,
+    weight_background_kernel,
+)
 from ash_model.projection import projection_certificate
 from ash_model.simulation import binomial_distribution, noise_kernel
 
@@ -124,6 +133,37 @@ def _markov_certificate() -> dict[str, object]:
     }
 
 
+def _physics_certificate() -> dict[str, object]:
+    probability = 0.35
+    rate = 1.25
+    states = physical_state_space()
+    kernel = pair_flip_transition(probability)
+    generator = pair_flip_generator(rate)
+    background = weight_background_kernel(probability)
+    uniform = uniform_physical_distribution()
+    observables = bridge_observables(uniform)
+    mode_factors = [lazy_pair_flip_eigenvalue(weight, probability) for weight in range(10)]
+    return {
+        "state_count": len(states),
+        "all_states_parity_valid": all(state[8] == (sum(state[:8]) & 1) for state in states),
+        "pair_flip_probability_checked": probability,
+        "pair_flip_rate_checked": rate,
+        "kernel_row_sum_max_abs_error": float(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
+        "kernel_symmetry_max_abs_error": float(np.max(np.abs(kernel - kernel.T))),
+        "uniform_stationary_max_abs_error": float(np.max(np.abs(uniform @ kernel - uniform))),
+        "generator_row_sum_max_abs_error": float(np.max(np.abs(generator.sum(axis=1)))),
+        "generator_symmetry_max_abs_error": float(np.max(np.abs(generator - generator.T))),
+        "background_row_sum_max_abs_error": float(np.max(np.abs(background.sum(axis=1) - 1.0))),
+        "uniform_mean_hamming_weight": observables.mean_hamming_weight,
+        "uniform_order_parameter": observables.order_parameter,
+        "uniform_entropy_bits": observables.shannon_entropy_bits,
+        "uniform_parity_valid_probability": observables.parity_valid_probability,
+        "lazy_pair_flip_mode_factors": mode_factors,
+        "mode_factors_bounded": all(-1.0 <= value <= 1.0 for value in mode_factors),
+        "interpretation": "Finite-observer stochastic physics layer; not an observational cosmology claim.",
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -133,6 +173,7 @@ def build_certificate() -> dict[str, object]:
         "adinkra": adinkra_certificate(),
         "branching": branch_certificate(4),
         "markov_chain": _markov_certificate(),
+        "physics": _physics_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -147,6 +188,19 @@ def build_certificate() -> dict[str, object]:
         "quotient_isomorphism": sections["adinkra"]["valid"] is True,
         "branch_weights_normalized": abs(sections["branching"]["leaf_weight_sum"] - 1.0) < 1e-12,
         "markov_uniform_stationary": sections["markov_chain"]["uniform_stationary_max_abs_error"] < 1e-15,
+        "physics_pair_flip_closed": sections["physics"]["state_count"] == 256
+        and sections["physics"]["all_states_parity_valid"] is True,
+        "physics_kernel_stochastic": sections["physics"]["kernel_row_sum_max_abs_error"] < 1e-15
+        and sections["physics"]["kernel_symmetry_max_abs_error"] < 1e-15
+        and sections["physics"]["uniform_stationary_max_abs_error"] < 1e-15,
+        "physics_generator_valid": sections["physics"]["generator_row_sum_max_abs_error"] < 1e-15
+        and sections["physics"]["generator_symmetry_max_abs_error"] < 1e-15,
+        "physics_background_lumped": sections["physics"]["background_row_sum_max_abs_error"] < 1e-15,
+        "physics_bridge_observables_normalized": abs(sections["physics"]["uniform_mean_hamming_weight"] - 4.5) < 1e-15
+        and abs(sections["physics"]["uniform_order_parameter"]) < 1e-15
+        and abs(sections["physics"]["uniform_entropy_bits"] - 8.0) < 1e-15
+        and abs(sections["physics"]["uniform_parity_valid_probability"] - 1.0) < 1e-15,
+        "physics_perturbation_modes_bounded": sections["physics"]["mode_factors_bounded"] is True,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -167,6 +221,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     adinkra = certificate["sections"]["adinkra"]
     branching = certificate["sections"]["branching"]
     markov = certificate["sections"]["markov_chain"]
+    physics = certificate["sections"]["physics"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -218,6 +273,20 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Uniform-stationary residual: `{markov['uniform_stationary_max_abs_error']}`",
         f"- Minimum self-loop probability: `{markov['minimum_self_loop_probability']}`",
         "- Conclusion: the binomial Hamming-weight envelope is the marginal of uniform occupancy and is not evidence unique to the ASH code transforms.",
+        "",
+        "## Finite-observer physics layer",
+        "",
+        f"- Admissible physical states: `{physics['state_count']}`",
+        f"- Pair-flip kernel row residual: `{physics['kernel_row_sum_max_abs_error']}`",
+        f"- Pair-flip kernel symmetry residual: `{physics['kernel_symmetry_max_abs_error']}`",
+        f"- Uniform stationary residual: `{physics['uniform_stationary_max_abs_error']}`",
+        f"- Generator row residual: `{physics['generator_row_sum_max_abs_error']}`",
+        f"- Lumped background row residual: `{physics['background_row_sum_max_abs_error']}`",
+        f"- Uniform mean Hamming weight: `{physics['uniform_mean_hamming_weight']}`",
+        f"- Uniform order parameter: `{physics['uniform_order_parameter']}`",
+        f"- Uniform entropy, bits: `{physics['uniform_entropy_bits']}`",
+        f"- Mode factors bounded: `{physics['mode_factors_bounded']}`",
+        "- Boundary: this is a finite-observer stochastic layer, not an observational cosmology result.",
         "",
         "## Check matrix",
         "",

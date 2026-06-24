@@ -30,11 +30,20 @@ from .code import (
     encode,
     translate,
 )
+from .physics import (
+    PhysicsObservables,
+    bridge_observables,
+    pair_flip_transition,
+    physical_state_space,
+    uniform_physical_distribution,
+    weight_background_kernel,
+)
 
 __all__ = [
     "BIT_COUNT",
     "CODEWORDS",
     "GENERATOR_MATRIX",
+    "PhysicsObservables",
     "DecodeResult",
     "bits_to_int",
     "decode",
@@ -47,7 +56,12 @@ __all__ = [
     "integrity_bit",
     "is_integrity_valid",
     "make_integrity_state",
+    "bridge_observables",
+    "pair_flip_transition",
+    "physical_state_space",
     "translate",
+    "uniform_physical_distribution",
+    "weight_background_kernel",
     "xor_bits",
 ]
 
