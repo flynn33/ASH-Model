@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-24T11:38:20Z",
+  "updated_utc": "2026-06-24T12:36:39Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -93,9 +93,11 @@
       "evidence": [
         "phenomenology/observables_spec.md",
         "src/ash_model/physics.py",
+        "src/ash_model/empirical.py",
+        "tests/test_empirical_bridge.py",
         "tests/test_physics.py"
       ],
-      "notes": "Internal finite-observer observable vector is implemented and tested."
+      "notes": "Internal finite-observer observable vector and explicit affine calibration contract are implemented and tested."
     },
     {
       "id": "VAL-001",
@@ -109,11 +111,13 @@
     {
       "id": "VAL-002",
       "status": "complete",
-      "completion_type": "scaffold_created",
+      "completion_type": "implementation_verified",
       "evidence": [
-        "validation/matched-ablations/README.md"
+        "validation/matched-ablations/README.md",
+        "src/ash_model/empirical.py",
+        "tests/test_empirical_bridge.py"
       ],
-      "notes": "Internal controls are documented; external matched ablations remain blocked until a likelihood exists."
+      "notes": "Diagonal Gaussian likelihood and model-comparison mechanics are implemented; external matched ablations remain blocked until data products, covariance sources, and baselines exist."
     },
     {
       "id": "VAL-003",
@@ -136,12 +140,15 @@
     {
       "id": "PRED-001",
       "status": "complete",
-      "completion_type": "scaffold_created",
+      "completion_type": "implementation_verified",
       "evidence": [
         "predictions/prediction-ledger.json",
-        "predictions/falsification-criteria.md"
+        "predictions/falsification-criteria.md",
+        "src/ash_model/prediction_ledger.py",
+        "tests/test_prediction_ledger.py",
+        "docs/ash-physics-validation/configs/prediction_ledger.schema.json"
       ],
-      "notes": "Prediction ledger exists with no locked predictions."
+      "notes": "Prediction ledger hash-lock mechanics and gate validation are implemented; no scientific prediction is currently locked."
     },
     {
       "id": "PROOF-001",
@@ -185,12 +192,12 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true with finite-observer physics checks enabled."
+      "summary": "all_checks_pass true with finite-observer physics, empirical-interface, and prediction-lock checks enabled."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "47 passed."
+      "summary": "59 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -229,16 +236,17 @@
     }
   ],
   "open_blockers": [
-    "No unitful bridge from finite ASH observables to physical spacetime, fields, or measured data products exists.",
+    "No reviewed physical calibration constants map finite ASH observables to physical spacetime, fields, or measured data products.",
     "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph.",
     "No gauge convention or physical degrees-of-freedom map exists for a continuum interpretation.",
     "No standard cosmological background or baseline limit is derived.",
-    "No external likelihood, covariance model, or matched empirical baseline is implemented.",
-    "No locked prospective or held-out prediction exists."
+    "No external data product, covariance source, or matched empirical baseline is committed.",
+    "No scientific prospective or held-out prediction is locked."
   ],
   "claim_downgrades": [
     "ASH-Physics v0.2 completes a finite-observer stochastic foundation only.",
     "Finite background and perturbation equations are internal dimensionless equations, not empirical cosmology.",
-    "External validation remains blocked until a unitful bridge, likelihood, baselines, and locked predictions exist."
+    "Calibration and likelihood mechanics are contracts; they are not external empirical validation.",
+    "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist."
   ]
 }

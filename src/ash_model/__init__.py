@@ -30,6 +30,15 @@ from .code import (
     encode,
     translate,
 )
+from .empirical import (
+    CalibratedObservable,
+    LikelihoodResult,
+    ObservableCalibration,
+    calibrate_observable,
+    chi_square,
+    compare_gaussian_models,
+    diagonal_gaussian_log_likelihood,
+)
 from .physics import (
     PhysicsObservables,
     bridge_observables,
@@ -38,16 +47,29 @@ from .physics import (
     uniform_physical_distribution,
     weight_background_kernel,
 )
+from .prediction_ledger import (
+    canonical_prediction_hash,
+    ledger_lock_status,
+    validate_prediction_ledger,
+)
 
 __all__ = [
     "BIT_COUNT",
     "CODEWORDS",
     "GENERATOR_MATRIX",
+    "CalibratedObservable",
     "PhysicsObservables",
     "DecodeResult",
+    "LikelihoodResult",
+    "ObservableCalibration",
     "bits_to_int",
+    "calibrate_observable",
+    "canonical_prediction_hash",
+    "chi_square",
+    "compare_gaussian_models",
     "decode",
     "decode_affine",
+    "diagonal_gaussian_log_likelihood",
     "encode",
     "flip_bit",
     "hamming_distance",
@@ -55,12 +77,14 @@ __all__ = [
     "int_to_bits",
     "integrity_bit",
     "is_integrity_valid",
+    "ledger_lock_status",
     "make_integrity_state",
     "bridge_observables",
     "pair_flip_transition",
     "physical_state_space",
     "translate",
     "uniform_physical_distribution",
+    "validate_prediction_ledger",
     "weight_background_kernel",
     "xor_bits",
 ]

@@ -16,18 +16,29 @@ Status: finite-observer obligations partially discharged
 7. Background equation: Hamming-weight lumping is exact.
 8. Perturbation stability: lazy pair-flip mode factors are bounded.
 9. Bridge observables: dimensionless finite-observer observables are defined.
+10. Calibration contract: finite dimensionless observables can be mapped
+    through explicit named affine calibrations.
+11. Likelihood contract: diagonal Gaussian comparisons reject invalid vector
+    shapes and non-positive uncertainty.
+12. Prediction-lock contract: frozen prediction entries can be hashed and
+    validated before evaluation.
 
 ## Remaining obligations
 
-1. Unitful physical scale and time mapping.
+1. Reviewed physical calibration constants for scale, time, and measured data
+   products.
 2. Spacetime metric or explicit non-spacetime physical interpretation.
 3. Gauge redundancy and physical degrees of freedom for any continuum reading.
 4. Standard cosmological background or proof that no such limit exists.
-5. External observable likelihood and matched baseline validation.
-6. Locked prediction.
+5. External data product, covariance source, and matched baseline validation.
+6. Locked scientific prediction.
 
 ## Evidence
 
 - `src/ash_model/physics.py`
+- `src/ash_model/empirical.py`
+- `src/ash_model/prediction_ledger.py`
 - `tests/test_physics.py`
+- `tests/test_empirical_bridge.py`
+- `tests/test_prediction_ledger.py`
 - `proofs/computational-certificate.json`

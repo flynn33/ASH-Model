@@ -117,7 +117,9 @@
         "phenomenology/observables_spec.md"
       ],
       "evidence": [
-        "phenomenology/observables_spec.md"
+        "phenomenology/observables_spec.md",
+        "src/ash_model/empirical.py",
+        "tests/test_empirical_bridge.py"
       ]
     },
     {
@@ -139,7 +141,9 @@
         "validation/matched-ablations/README.md"
       ],
       "evidence": [
-        "validation/matched-ablations/README.md"
+        "validation/matched-ablations/README.md",
+        "src/ash_model/empirical.py",
+        "tests/test_empirical_bridge.py"
       ]
     },
     {
@@ -173,7 +177,9 @@
       ],
       "evidence": [
         "predictions/prediction-ledger.json",
-        "predictions/falsification-criteria.md"
+        "predictions/falsification-criteria.md",
+        "src/ash_model/prediction_ledger.py",
+        "tests/test_prediction_ledger.py"
       ]
     },
     {

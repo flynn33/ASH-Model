@@ -19,6 +19,13 @@ from ash_model.adinkra import adinkra_certificate
 from ash_model.bits import flip_bit, is_integrity_valid, xor_bits
 from ash_model.branching import branch_certificate
 from ash_model.code import CODEWORDS, code_certificate, decode, decode_affine
+from ash_model.empirical import (
+    ObservableCalibration,
+    calibrate_observable,
+    chi_square,
+    compare_gaussian_models,
+    diagonal_gaussian_log_likelihood,
+)
 from ash_model.hypercube import coset_partition, integrity_states, state_reference_rows, states, theoretical_plane_counts
 from ash_model.physics import (
     bridge_observables,
@@ -29,6 +36,7 @@ from ash_model.physics import (
     uniform_physical_distribution,
     weight_background_kernel,
 )
+from ash_model.prediction_ledger import canonical_prediction_hash, ledger_lock_status, validate_prediction_ledger
 from ash_model.projection import projection_certificate
 from ash_model.simulation import binomial_distribution, noise_kernel
 
@@ -164,6 +172,71 @@ def _physics_certificate() -> dict[str, object]:
     }
 
 
+def _empirical_bridge_certificate() -> dict[str, object]:
+    observables = bridge_observables(uniform_physical_distribution())
+    calibration = ObservableCalibration(
+        source="mean_hamming_weight",
+        target="example_length",
+        scale=3.0,
+        offset=1.0,
+        unit="m",
+    )
+    calibrated = calibrate_observable(observables.mean_hamming_weight, calibration)
+    observed = [1.0, 2.0]
+    close = [1.0, 2.1]
+    far = [2.0, 3.0]
+    standard_deviation = [0.25, 0.25]
+    comparison = compare_gaussian_models(
+        observed=observed,
+        standard_deviation=standard_deviation,
+        predictions={"close": close, "far": far},
+    )
+    return {
+        "calibration_source": calibrated.source,
+        "calibration_target": calibrated.target,
+        "calibrated_value": calibrated.value,
+        "calibrated_unit": calibrated.unit,
+        "example_chi_square": chi_square([1.0, 2.0], [0.5, 2.5], [0.5, 1.0]),
+        "example_log_likelihood": diagonal_gaussian_log_likelihood([1.0, 2.0], [0.5, 2.5], [0.5, 1.0]),
+        "best_likelihood_model": comparison[0].name,
+        "comparison_count": len(comparison),
+        "interpretation": "Calibration and likelihood contracts only; no external data fit is claimed.",
+    }
+
+
+def _prediction_ledger_certificate() -> dict[str, object]:
+    entry = {
+        "id": "PRED-EXAMPLE-001",
+        "model_version": "ash-physics-v0.2",
+        "commit": "0123456789abcdef",
+        "frozen_utc": "2026-06-24T12:00:00Z",
+        "observable": "example_length",
+        "prediction": {"value": 14.5, "unit": "m"},
+        "uncertainty": {"standard_deviation": 0.2, "unit": "m"},
+        "data_product": "example-held-out-data-product",
+        "statistic": "diagonal_gaussian_log_likelihood",
+        "rejection_rule": "reject if chi_square exceeds preregistered threshold",
+        "test_status": "frozen",
+        "artifact_hashes": {
+            "proofs/computational-certificate.json": "a" * 64,
+        },
+    }
+    entry["entry_hash"] = canonical_prediction_hash(entry)
+    ledger = {
+        "schema_version": "1.0",
+        "model_version": "ash-physics-v0.2",
+        "status": "has_locked_predictions",
+        "entries": [entry],
+    }
+    return {
+        "empty_entry_status": ledger_lock_status([]),
+        "locked_entry_status": ledger_lock_status(ledger["entries"]),
+        "entry_hash_length": len(entry["entry_hash"]),
+        "entry_hash_validates": not validate_prediction_ledger(ledger),
+        "interpretation": "Prediction-lock mechanics are implemented; no repository prediction is locked by this example.",
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -174,6 +247,8 @@ def build_certificate() -> dict[str, object]:
         "branching": branch_certificate(4),
         "markov_chain": _markov_certificate(),
         "physics": _physics_certificate(),
+        "empirical_bridge": _empirical_bridge_certificate(),
+        "prediction_ledger": _prediction_ledger_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -201,6 +276,17 @@ def build_certificate() -> dict[str, object]:
         and abs(sections["physics"]["uniform_entropy_bits"] - 8.0) < 1e-15
         and abs(sections["physics"]["uniform_parity_valid_probability"] - 1.0) < 1e-15,
         "physics_perturbation_modes_bounded": sections["physics"]["mode_factors_bounded"] is True,
+        "empirical_calibration_contract": sections["empirical_bridge"]["calibration_source"] == "mean_hamming_weight"
+        and sections["empirical_bridge"]["calibration_target"] == "example_length"
+        and abs(sections["empirical_bridge"]["calibrated_value"] - 14.5) < 1e-15
+        and sections["empirical_bridge"]["calibrated_unit"] == "m",
+        "empirical_likelihood_contract": abs(sections["empirical_bridge"]["example_chi_square"] - 1.25) < 1e-15
+        and sections["empirical_bridge"]["best_likelihood_model"] == "close"
+        and sections["empirical_bridge"]["comparison_count"] == 2,
+        "prediction_lock_contract": sections["prediction_ledger"]["empty_entry_status"] == "no_locked_predictions"
+        and sections["prediction_ledger"]["locked_entry_status"] == "has_locked_predictions"
+        and sections["prediction_ledger"]["entry_hash_length"] == 64
+        and sections["prediction_ledger"]["entry_hash_validates"] is True,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -222,6 +308,8 @@ def _markdown(certificate: dict[str, object]) -> str:
     branching = certificate["sections"]["branching"]
     markov = certificate["sections"]["markov_chain"]
     physics = certificate["sections"]["physics"]
+    empirical = certificate["sections"]["empirical_bridge"]
+    prediction = certificate["sections"]["prediction_ledger"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -287,6 +375,21 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Uniform entropy, bits: `{physics['uniform_entropy_bits']}`",
         f"- Mode factors bounded: `{physics['mode_factors_bounded']}`",
         "- Boundary: this is a finite-observer stochastic layer, not an observational cosmology result.",
+        "",
+        "## Empirical interface mechanics",
+        "",
+        f"- Example calibrated observable: `{empirical['calibration_target']}` = `{empirical['calibrated_value']}` `{empirical['calibrated_unit']}`",
+        f"- Example chi-square: `{empirical['example_chi_square']}`",
+        f"- Best example likelihood model: `{empirical['best_likelihood_model']}`",
+        "- Boundary: these are bridge and likelihood contracts, not an external fit.",
+        "",
+        "## Prediction ledger mechanics",
+        "",
+        f"- Empty ledger status: `{prediction['empty_entry_status']}`",
+        f"- Locked-entry status: `{prediction['locked_entry_status']}`",
+        f"- Entry hash length: `{prediction['entry_hash_length']}`",
+        f"- Locked-entry validation: `{prediction['entry_hash_validates']}`",
+        "- Boundary: mechanics for future locked predictions are present; no repository prediction is locked here.",
         "",
         "## Check matrix",
         "",

@@ -64,6 +64,9 @@ ASH-Physics v0.2 defines and verifies a finite-observer stochastic layer:
 - a dimensionless bridge observable vector;
 - an exact Hamming-weight background equation;
 - bounded finite perturbation-mode factors.
+- an explicit affine calibration contract for future unit-bearing observables;
+- a diagonal Gaussian likelihood contract for future matched comparisons;
+- hash-lock validation for future prediction-ledger entries.
 
-This result closes the finite internal theory gate.  It does not close the
-external physical validation gate.
+This result closes the finite internal theory and validation-mechanics gates.
+It does not close the external physical validation gate.

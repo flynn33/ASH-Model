@@ -9,7 +9,8 @@ This file records the criteria that can reject or weaken future ASH-Physics clai
 ## Required criteria
 
 - A physical bridge map must be frozen before observable comparison.
-- Predictions must be registered in `prediction-ledger.json` before evaluation.
+- Predictions must be registered and hash-locked in
+  `prediction-ledger.json` before evaluation.
 - Matched baselines must use the same data cuts and likelihood interface.
 - Failed synthetic recovery blocks real-data claims that depend on the failed component.
 - Failed numerical convergence blocks claims that depend on the failed solver.
@@ -21,3 +22,5 @@ This file records the criteria that can reject or weaken future ASH-Physics clai
 
 No external prediction is locked. No empirical rejection test has been run.
 Finite-observer rejection tests are implemented in `tests/test_physics.py`.
+Prediction-lock validation is implemented in `ash_model.prediction_ledger` and
+covered by `tests/test_prediction_ledger.py`.

@@ -49,11 +49,16 @@ probability.  The finite background equation is the exact Hamming-weight
 lumping of the pair-flip dynamics, and the finite perturbation layer is given
 by bounded lazy pair-flip mode factors.
 
+The repository also includes the first validation mechanics around this layer:
+an explicit affine calibration contract for future unit-bearing observables, a
+diagonal Gaussian likelihood comparator, and deterministic hash-lock validation
+for future prediction-ledger entries.
+
 This layer is implemented in [`src/ash_model/physics.py`](src/ash_model/physics.py)
 and verified by [`tests/test_physics.py`](tests/test_physics.py).  It is not a
 claim of observed spacetime dynamics or empirical cosmology; those remain
-blocked until a unitful bridge, likelihood, baselines, and locked predictions
-exist.
+blocked until reviewed physical calibrations, external data products, matched
+baselines, and locked scientific predictions exist.
 
 ## Canonical state coordinates
 

@@ -15,13 +15,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "6ba5d12ebd75713892555cb1ff1df270119183a2a35966cd46a6a81ff7cdd924",
-      "bytes": 3367
+      "sha256": "9aed9bee7970ca3afd556d23d113ef92e000c38515ea282ab20f5594ecc4a620",
+      "bytes": 3606
     },
     {
       "path": "configs/prediction_ledger.schema.json",
-      "sha256": "a7559d584f6a3828e6b202cd436346482e62c8a8104a57090652bfe0313f804b",
-      "bytes": 1960
+      "sha256": "946103ea52d78095680d8b29e88c6b6e38471e2bbcaa26184181076b276c02b2",
+      "bytes": 2033
     },
     {
       "path": "configs/preregistration.schema.json",
@@ -115,8 +115,8 @@
     },
     {
       "path": "scripts/__pycache__/run_repository_gate.cpython-312.pyc",
-      "sha256": "359c2ae9ac203caf63d08f5deffec163cf3cf9ca16fb54949a4d6b50e82f90a3",
-      "bytes": 15889
+      "sha256": "86abb9778fa2320d237e4ba642edd892e89648eee16c1e92be2b82cd6e25676e",
+      "bytes": 16584
     },
     {
       "path": "scripts/check_claim_language.py",
@@ -130,8 +130,8 @@
     },
     {
       "path": "scripts/run_repository_gate.py",
-      "sha256": "a8130ac7c1d2fd10ec11675185840f34ef334d3340d0b94d678fa06860f3f60f",
-      "bytes": 12188
+      "sha256": "44b7ac886606d511c02199ce4bceaca6810bd50b7c1a3f1f066847008c666ee7",
+      "bytes": 12483
     },
     {
       "path": "tasks/empirical_backlog.json",
@@ -145,8 +145,8 @@
     },
     {
       "path": "tasks/task_manifest.json",
-      "sha256": "e2b72477dcc82d2b64ebff30e27d5d1188f737b419999214df74ac8e8b2125ad",
-      "bytes": 6016
+      "sha256": "5d4bd5acb8b472437347c6f5d6c52e7a63fb22eb61acf5db39683d2264df1ec1",
+      "bytes": 6265
     },
     {
       "path": "templates/preregistration.md",

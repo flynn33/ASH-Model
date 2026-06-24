@@ -97,3 +97,46 @@ Definitions used: `ash_model.physics.lazy_pair_flip_eigenvalue`
 Executable verification: `tests/test_physics.py`
 
 Limitations: This is not a metric perturbation or external power spectrum.
+
+## EMP-001: calibration contract
+
+Status: computationally verified
+
+Statement: A finite internal observable can be mapped through an explicit
+affine calibration into a named unit-bearing value.
+
+Definitions used: `ash_model.empirical.ObservableCalibration`
+
+Executable verification: `tests/test_empirical_bridge.py`
+
+Limitations: This verifies the calibration contract, not the physical validity
+of any calibration constants.
+
+## EMP-002: diagonal Gaussian likelihood contract
+
+Status: computationally verified
+
+Statement: The empirical interface computes diagonal-covariance chi-square and
+Gaussian log-likelihood values for finite vectors with positive standard
+deviations.
+
+Definitions used: `ash_model.empirical.diagonal_gaussian_log_likelihood`
+
+Executable verification: `tests/test_empirical_bridge.py`
+
+Limitations: This verifies likelihood arithmetic, not an external data fit.
+
+## PRED-001: prediction-lock contract
+
+Status: computationally verified
+
+Statement: Frozen prediction-ledger entries can be assigned deterministic
+canonical hashes and rejected when the stored hash does not match the entry
+content.
+
+Definitions used: `ash_model.prediction_ledger.canonical_prediction_hash`
+
+Executable verification: `tests/test_prediction_ledger.py`
+
+Limitations: This verifies ledger mechanics; no scientific prediction is
+locked by the current repository ledger.
