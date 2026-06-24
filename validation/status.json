@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0",
+  "model_version": "ash-physics-v0.1",
+  "commit": "",
+  "updated_utc": "2026-06-24T09:45:00Z",
+  "tasks": [
+    {
+      "id": "PKG-001",
+      "status": "complete",
+      "evidence": [
+        "docs/ash-physics-validation/"
+      ]
+    },
+    {
+      "id": "THEORY-001",
+      "status": "complete",
+      "evidence": [
+        "theory/physical-postulates.md"
+      ]
+    },
+    {
+      "id": "THEORY-002",
+      "status": "complete",
+      "evidence": [
+        "theory/microscopic-state-and-dynamics.md"
+      ]
+    },
+    {
+      "id": "THEORY-003",
+      "status": "complete",
+      "evidence": [
+        "theory/causal-structure.md"
+      ]
+    },
+    {
+      "id": "THEORY-004",
+      "status": "complete",
+      "evidence": [
+        "theory/coarse-graining-and-bridge-map.md"
+      ]
+    },
+    {
+      "id": "THEORY-005",
+      "status": "complete",
+      "evidence": [
+        "theory/continuum-limit.md"
+      ]
+    },
+    {
+      "id": "COSMO-001",
+      "status": "complete",
+      "evidence": [
+        "theory/cosmological-background.md",
+        "phenomenology/ash_background_spec.md"
+      ]
+    },
+    {
+      "id": "COSMO-002",
+      "status": "complete",
+      "evidence": [
+        "theory/linear-perturbations.md",
+        "phenomenology/ash_perturbations_spec.md"
+      ]
+    },
+    {
+      "id": "OBS-001",
+      "status": "complete",
+      "evidence": [
+        "phenomenology/observables_spec.md"
+      ]
+    },
+    {
+      "id": "VAL-001",
+      "status": "complete",
+      "evidence": [
+        "validation/synthetic-recovery/README.md"
+      ]
+    },
+    {
+      "id": "VAL-002",
+      "status": "complete",
+      "evidence": [
+        "validation/matched-ablations/README.md"
+      ]
+    },
+    {
+      "id": "VAL-003",
+      "status": "complete",
+      "evidence": [
+        "validation/numerical-convergence/README.md"
+      ]
+    },
+    {
+      "id": "VAL-004",
+      "status": "complete",
+      "evidence": [
+        "validation/lcdm-limit/README.md"
+      ]
+    },
+    {
+      "id": "PRED-001",
+      "status": "complete",
+      "evidence": [
+        "predictions/prediction-ledger.json",
+        "predictions/falsification-criteria.md"
+      ]
+    },
+    {
+      "id": "PROOF-001",
+      "status": "complete",
+      "evidence": [
+        "proofs/theorem-catalog.md",
+        "proofs/finite-algebra-status.md",
+        "proofs/physics-proof-obligations.md"
+      ]
+    },
+    {
+      "id": "SCAN-001",
+      "status": "complete",
+      "evidence": [
+        "docs/ash-physics-validation/scripts/check_claim_language.py"
+      ]
+    },
+    {
+      "id": "CI-001",
+      "status": "complete",
+      "evidence": [
+        ".github/workflows/ci.yml"
+      ]
+    }
+  ],
+  "verification_commands": [
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_artifacts.py",
+      "result": "passed",
+      "summary": "Generated 11 artifacts and proofs/artifact-manifest.json."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
+      "result": "passed",
+      "summary": "all_checks_pass true."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
+      "result": "passed",
+      "summary": "38 passed."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
+      "result": "passed",
+      "summary": "No claim violations, missing artifacts, manifest mismatches, version mismatches, or proof failures."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python docs/ash-physics-validation/scripts/check_claim_language.py .",
+      "result": "passed",
+      "summary": "claim-language scan passed."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m json.tool docs/ash-physics-validation/tasks/task_manifest.json > /dev/null",
+      "result": "passed",
+      "summary": "JSON valid."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m json.tool docs/ash-physics-validation/configs/prediction_ledger.schema.json > /dev/null",
+      "result": "passed",
+      "summary": "JSON valid."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m json.tool docs/ash-physics-validation/configs/preregistration.schema.json > /dev/null",
+      "result": "passed",
+      "summary": "JSON valid."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m json.tool docs/ash-physics-validation/configs/proof_certificate.schema.json > /dev/null",
+      "result": "passed",
+      "summary": "JSON valid."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m json.tool predictions/prediction-ledger.json > /dev/null",
+      "result": "passed",
+      "summary": "JSON valid."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m json.tool validation/status.json > /dev/null",
+      "result": "passed",
+      "summary": "JSON valid."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q simulation.py src tools scripts docs/ash-physics-validation/scripts",
+      "result": "passed",
+      "summary": "Python bytecode compilation passed."
+    },
+    {
+      "command": "rg -n -i \"forbidden attribution patterns\" --glob filters .",
+      "result": "passed",
+      "summary": "No repository-facing attribution hits."
+    }
+  ],
+  "open_blockers": [
+    "Physical state interpretation is not defined.",
+    "Microscopic dynamics are not defined.",
+    "Bridge map to observables is not defined.",
+    "Empirical validation is blocked until theory, solver, and preregistration gates exist."
+  ],
+  "claim_downgrades": []
+}

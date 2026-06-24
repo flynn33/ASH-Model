@@ -1,56 +1,48 @@
+#!/usr/bin/env python3
+"""Reproduce limited arithmetic observations about the integer nine.
+
+These observations are contextual and do not constitute evidence that nine is
+physically privileged.  The executable ASH definition is given by the
+canonical computational specification and code modules.
 """
-Mathematical properties demonstrating the significance of the number 9.
 
-Verifies five key properties:
-1. Refactorability (tau(9) = 3, and 9 % 3 = 0)
-2. Smallest odd refactorable number > 1
-3. Smallest odd composite number
-4. Digital root invariance for multiples of 9
-5. String theory: 9 spatial dimensions from critical dimension D=10
-"""
-import sympy as sp
+from __future__ import annotations
 
-# 1. Refactorability of 9
-def tau(n):
-    """Compute the number of positive divisors of n."""
-    return len(list(sp.divisors(n)))
+from math import isqrt
 
-n = 9
-tau_9 = tau(n)
-refactorable_9 = (n % tau_9 == 0)
-divisors_9 = sp.divisors(n)
-print(f"tau(9): {tau_9}")
-print(f"9 % {tau_9} == 0: {refactorable_9}")
-print(f"Divisors of 9: {divisors_9}")
 
-# 2. Minimality as Smallest Odd Refactorable >1
-odd_numbers = [3, 5, 7, 9]
-tau_values = [tau(m) for m in odd_numbers]
-refactorable_checks = [(m % tau_values[i] == 0) for i, m in enumerate(odd_numbers)]
-print(f"Odd numbers <10: {odd_numbers}")
-print(f"tau values: {tau_values}")
-print(f"Refactorable checks: {refactorable_checks}")
+def divisors(value: int) -> tuple[int, ...]:
+    result = set()
+    for candidate in range(1, isqrt(value) + 1):
+        if value % candidate == 0:
+            result.add(candidate)
+            result.add(value // candidate)
+    return tuple(sorted(result))
 
-# 3. Minimality as Smallest Odd Composite
-composites = [m for m in odd_numbers if not sp.isprime(m)]
-smallest_odd_composite = min(composites) if composites else None
-print(f"Smallest odd composite: {smallest_odd_composite}")
 
-# 4. Digital Root Invariance for Multiples of 9
-def digital_root(m):
-    """Compute digital root: iterative sum of digits mod 9, adjusted to 9 if 0 (non-zero m)."""
-    dr = sum(int(d) for d in str(m)) % 9
-    return 9 if dr == 0 else dr
+def divisor_count(value: int) -> int:
+    return len(divisors(value))
 
-multiples_9 = [9 * k for k in range(1, 5)]  # 9,18,27,36
-digital_roots_adjusted = [digital_root(m) for m in multiples_9]
-print(f"Multiples of 9: {multiples_9}")
-print(f"Adjusted digital roots: {digital_roots_adjusted}")
 
-# 5. 9's Role in Superstring Spatial Dimensions
-D = sp.symbols('D')
-eq = sp.Eq((sp.Rational(3, 2)) * D - 15, 0)
-solution_D = sp.solve(eq, D)
-spatial_dims = solution_D[0] - 1  # Subtract 1 temporal
-print(f"Critical D: {solution_D[0]}")
-print(f"Spatial dimensions: {spatial_dims}")
+def digital_root(value: int) -> int:
+    if value == 0:
+        return 0
+    return 1 + (abs(value) - 1) % 9
+
+
+def main() -> int:
+    value = 9
+    observations = {
+        "divisors": divisors(value),
+        "divisor_count": divisor_count(value),
+        "refactorable": value % divisor_count(value) == 0,
+        "smallest_odd_composite": all(candidate < value and (candidate < 2 or len(divisors(candidate)) == 2) for candidate in range(3, value, 2)),
+        "sample_digital_roots": {multiple: digital_root(multiple) for multiple in (9, 18, 27, 36)},
+    }
+    for key, result in observations.items():
+        print(f"{key}: {result}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

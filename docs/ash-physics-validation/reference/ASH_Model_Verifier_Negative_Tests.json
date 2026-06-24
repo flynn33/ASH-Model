@@ -1,0 +1,76 @@
+{
+  "baseline": {
+    "report": {
+      "artifact_manifest_mismatches": [],
+      "claim_violations": [],
+      "manuscript_manifest_mismatches": [],
+      "missing_artifacts": [],
+      "proof_certificate_passes": true,
+      "source_manifest_mismatches": [],
+      "version_mismatches": []
+    },
+    "returncode": 0
+  },
+  "changed_generated_figure": {
+    "report": {
+      "artifact_manifest_mismatches": [
+        "artifact hash mismatch: figures/branch-topology.png",
+        "artifact byte-count mismatch: figures/branch-topology.png"
+      ],
+      "claim_violations": [],
+      "manuscript_manifest_mismatches": [],
+      "missing_artifacts": [],
+      "proof_certificate_passes": true,
+      "source_manifest_mismatches": [],
+      "version_mismatches": []
+    },
+    "returncode": 1
+  },
+  "changed_manuscript_pdf": {
+    "report": {
+      "artifact_manifest_mismatches": [],
+      "claim_violations": [],
+      "manuscript_manifest_mismatches": [
+        "manuscript pdf hash mismatch: docs/ASH-Model-Preprint-v1.pdf",
+        "manuscript pdf byte-count mismatch: docs/ASH-Model-Preprint-v1.pdf"
+      ],
+      "missing_artifacts": [],
+      "proof_certificate_passes": true,
+      "source_manifest_mismatches": [],
+      "version_mismatches": []
+    },
+    "returncode": 1
+  },
+  "changed_source": {
+    "report": {
+      "artifact_manifest_mismatches": [],
+      "claim_violations": [],
+      "manuscript_manifest_mismatches": [],
+      "missing_artifacts": [],
+      "proof_certificate_passes": true,
+      "source_manifest_mismatches": [
+        "changed source: README.md"
+      ],
+      "version_mismatches": []
+    },
+    "returncode": 1
+  },
+  "changed_version": {
+    "report": {
+      "artifact_manifest_mismatches": [],
+      "claim_violations": [],
+      "manuscript_manifest_mismatches": [
+        "manuscript manifest project version mismatch"
+      ],
+      "missing_artifacts": [],
+      "proof_certificate_passes": true,
+      "source_manifest_mismatches": [
+        "changed source: VERSION"
+      ],
+      "version_mismatches": [
+        "version mismatch: VERSION='9.9.9', pyproject='1.1.0', package='1.1.0', config='1.1.0', CITATION.cff='1.1.0', certificate='1.1.0'"
+      ]
+    },
+    "returncode": 1
+  }
+}

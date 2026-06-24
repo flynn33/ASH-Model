@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Proof Certificate",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "model_version",
+    "commit",
+    "theorems",
+    "artifacts",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "commit": {
+      "type": "string"
+    },
+    "theorems": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "artifacts": {
+      "type": "object"
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

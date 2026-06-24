@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Validation Preregistration",
+  "type": "object",
+  "required": [
+    "model",
+    "data",
+    "observable",
+    "prediction",
+    "baselines",
+    "analysis_plan",
+    "post_test_policy"
+  ],
+  "properties": {
+    "model": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "commit",
+        "hashes",
+        "frozen_date"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "product",
+        "release",
+        "holdout_status"
+      ]
+    },
+    "observable": {
+      "type": "object",
+      "required": [
+        "name",
+        "estimator",
+        "cuts",
+        "covariance"
+      ]
+    },
+    "prediction": {
+      "type": "object",
+      "required": [
+        "value_or_interval",
+        "uncertainty",
+        "rejection_rule",
+        "success_rule"
+      ]
+    },
+    "baselines": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "analysis_plan": {
+      "type": "object"
+    },
+    "post_test_policy": {
+      "type": "string"
+    }
+  }
+}

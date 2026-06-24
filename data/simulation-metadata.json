@@ -1,0 +1,10 @@
+{
+  "agent_count": 1000,
+  "initial_mode": "uniform",
+  "interpretation": "Controlled mixing sample; not evidence that ASH transforms uniquely produce the binomial envelope.",
+  "noise_probability": 0.01,
+  "seed": 20260624,
+  "ticks": 250,
+  "transform_mode": "ash",
+  "tv_to_binomial": 0.03165624999999999
+}

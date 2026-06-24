@@ -1,97 +1,62 @@
 #!/usr/bin/env python3
-"""Audit ASH simulation CSV data against repository expectations."""
+"""Audit generated ASH data against version-1.1.0 invariants."""
 
 from __future__ import annotations
 
-import ast
 import csv
+import json
 from collections import Counter
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-SIM_PATH = REPO_ROOT / "src" / "simulate.py"
+REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = REPO_ROOT / "data" / "simulation-results.csv"
+METADATA_PATH = REPO_ROOT / "data" / "simulation-metadata.json"
+REFERENCE_PATH = REPO_ROOT / "data" / "ash-state-reference.csv"
+CODEWORDS_PATH = REPO_ROOT / "data" / "codewords.csv"
 
 
-def read_constants(path: Path) -> dict[str, int]:
-    constants: dict[str, int] = {}
-    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-    for node in tree.body:
-        if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
-            name = node.targets[0].id
-            if name in {"NUM_AGENTS", "DIM", "TICKS"} and isinstance(node.value, ast.Constant):
-                constants[name] = int(node.value.value)
-    return constants
-
-
-def read_csv_rows(path: Path) -> tuple[list[str], list[list[float]], list[tuple[int, list[str]]]]:
+def read_binary_csv(path: Path) -> list[tuple[int, ...]]:
     with path.open(newline="", encoding="utf-8") as handle:
         reader = csv.reader(handle)
         header = next(reader)
-        rows: list[list[float]] = []
-        malformed: list[tuple[int, list[str]]] = []
-        for line_no, row in enumerate(reader, start=2):
-            if not row:
-                continue
-            if len(row) != 9:
-                malformed.append((line_no, row))
-                continue
-            try:
-                rows.append([float(v) for v in row])
-            except ValueError:
-                malformed.append((line_no, row))
-        return header, rows, malformed
+        rows = [tuple(int(value) for value in row) for row in reader]
+    if len(header) != 9 or any(len(row) != 9 for row in rows):
+        raise AssertionError(f"{path} does not contain nine columns")
+    if any(value not in (0, 1) for row in rows for value in row):
+        raise AssertionError(f"{path} contains non-binary values")
+    return rows
 
 
 def main() -> int:
-    constants = read_constants(SIM_PATH)
-    header, rows, malformed = read_csv_rows(DATA_PATH)
+    states = read_binary_csv(DATA_PATH)
+    if len(states) != 1000:
+        raise AssertionError("simulation-results.csv must contain 1,000 rows")
+    metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
+    if metadata["agent_count"] != len(states):
+        raise AssertionError("metadata agent count mismatch")
 
-    expected_agents = constants.get("NUM_AGENTS")
-    expected_dim = constants.get("DIM")
+    with REFERENCE_PATH.open(newline="", encoding="utf-8") as handle:
+        reference_count = sum(1 for _ in csv.DictReader(handle))
+    if reference_count != 512:
+        raise AssertionError("state reference must contain 512 rows")
 
-    print("ASH data audit")
-    print(f"- Source constants: NUM_AGENTS={expected_agents}, DIM={expected_dim}, TICKS={constants.get('TICKS')}")
-    print(f"- CSV header columns: {len(header)}")
-    print(f"- Valid rows: {len(rows)}")
+    with CODEWORDS_PATH.open(newline="", encoding="utf-8") as handle:
+        code_rows = list(csv.DictReader(handle))
+    weights = Counter(int(row["weight"]) for row in code_rows)
+    if len(code_rows) != 16 or weights != Counter({4: 14, 0: 1, 8: 1}):
+        raise AssertionError("codeword table invariant mismatch")
+    if any(row["syndrome"] != "00000" for row in code_rows):
+        raise AssertionError("nonzero codeword syndrome")
 
-    if malformed:
-        print(f"- Malformed rows: {len(malformed)}")
-        for line_no, row in malformed[:5]:
-            preview = ",".join(row[:3])
-            print(f"  - line {line_no}: {len(row)} columns (starts with: {preview})")
-
-    if rows:
-        dims = len(rows[0])
-        unique_states = len({tuple(int(v) for v in r) for r in rows})
-        weights = [sum(int(v) for v in r) for r in rows]
-        print(f"- Inferred row width: {dims}")
-        print(f"- Unique binary states: {unique_states}")
-        print(f"- Hamming weight distribution: {dict(sorted(Counter(weights).items()))}")
-
-    failures: list[str] = []
-    if expected_dim is not None and len(header) != expected_dim:
-        failures.append(f"header has {len(header)} columns but DIM={expected_dim}")
-    if expected_dim is not None and rows and len(rows[0]) != expected_dim:
-        failures.append(f"row width {len(rows[0])} does not match DIM={expected_dim}")
-    if expected_agents is not None and len(rows) != expected_agents:
-        failures.append(f"valid row count {len(rows)} does not match NUM_AGENTS={expected_agents}")
-    if malformed:
-        failures.append(f"CSV contains {len(malformed)} malformed row(s)")
-
-    # Deterministic parity check from the implementation: same codeword is applied every tick.
-    ticks = constants.get("TICKS")
-    if ticks is not None:
-        parity = "identity" if ticks % 2 == 0 else "single XOR flip"
-        print(f"- Transform parity after TICKS: {parity} (because same codeword is used every tick)")
-
-    if failures:
-        print("\nRESULT: FAIL")
-        for item in failures:
-            print(f"- {item}")
-        return 1
-
-    print("\nRESULT: PASS")
+    summary = {
+        "simulation_rows": len(states),
+        "simulation_unique_states": len(set(states)),
+        "mean_hamming_weight": sum(sum(row) for row in states) / len(states),
+        "reference_rows": reference_count,
+        "codeword_weight_distribution": dict(sorted(weights.items())),
+        "metadata": metadata,
+    }
+    print(json.dumps(summary, indent=2, sort_keys=True))
     return 0
 
 

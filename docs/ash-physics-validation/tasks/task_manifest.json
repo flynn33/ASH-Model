@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "branch": "ash-physics-validation",
+  "execution_loop": [
+    "read_instructions",
+    "audit_repository",
+    "identify_missing_items",
+    "implement_or_repair",
+    "add_tests_or_proofs",
+    "run_verification",
+    "record_evidence",
+    "repeat_until_closed"
+  ],
+  "tasks": [
+    {
+      "id": "PKG-001",
+      "title": "Add validation package",
+      "status": "complete",
+      "required_paths": [
+        "docs/ash-physics-validation/"
+      ],
+      "evidence": [
+        "docs/ash-physics-validation/"
+      ]
+    },
+    {
+      "id": "THEORY-001",
+      "title": "Create physical postulates skeleton",
+      "status": "complete",
+      "required_paths": [
+        "theory/physical-postulates.md"
+      ],
+      "evidence": [
+        "theory/physical-postulates.md"
+      ]
+    },
+    {
+      "id": "THEORY-002",
+      "title": "Define microscopic state and dynamics obligations",
+      "status": "complete",
+      "required_paths": [
+        "theory/microscopic-state-and-dynamics.md"
+      ],
+      "evidence": [
+        "theory/microscopic-state-and-dynamics.md"
+      ]
+    },
+    {
+      "id": "THEORY-003",
+      "title": "Define causal structure obligations",
+      "status": "complete",
+      "required_paths": [
+        "theory/causal-structure.md"
+      ],
+      "evidence": [
+        "theory/causal-structure.md"
+      ]
+    },
+    {
+      "id": "THEORY-004",
+      "title": "Define bridge map obligations",
+      "status": "complete",
+      "required_paths": [
+        "theory/coarse-graining-and-bridge-map.md"
+      ],
+      "evidence": [
+        "theory/coarse-graining-and-bridge-map.md"
+      ]
+    },
+    {
+      "id": "THEORY-005",
+      "title": "Define continuum or finite-observer limit obligations",
+      "status": "complete",
+      "required_paths": [
+        "theory/continuum-limit.md"
+      ],
+      "evidence": [
+        "theory/continuum-limit.md"
+      ]
+    },
+    {
+      "id": "COSMO-001",
+      "title": "Specify cosmological background equations required",
+      "status": "complete",
+      "required_paths": [
+        "theory/cosmological-background.md",
+        "phenomenology/ash_background_spec.md"
+      ],
+      "evidence": [
+        "theory/cosmological-background.md",
+        "phenomenology/ash_background_spec.md"
+      ]
+    },
+    {
+      "id": "COSMO-002",
+      "title": "Specify perturbation equations required",
+      "status": "complete",
+      "required_paths": [
+        "theory/linear-perturbations.md",
+        "phenomenology/ash_perturbations_spec.md"
+      ],
+      "evidence": [
+        "theory/linear-perturbations.md",
+        "phenomenology/ash_perturbations_spec.md"
+      ]
+    },
+    {
+      "id": "OBS-001",
+      "title": "Specify observable map",
+      "status": "complete",
+      "required_paths": [
+        "phenomenology/observables_spec.md"
+      ],
+      "evidence": [
+        "phenomenology/observables_spec.md"
+      ]
+    },
+    {
+      "id": "VAL-001",
+      "title": "Create synthetic recovery plan",
+      "status": "complete",
+      "required_paths": [
+        "validation/synthetic-recovery/README.md"
+      ],
+      "evidence": [
+        "validation/synthetic-recovery/README.md"
+      ]
+    },
+    {
+      "id": "VAL-002",
+      "title": "Create matched ablation plan",
+      "status": "complete",
+      "required_paths": [
+        "validation/matched-ablations/README.md"
+      ],
+      "evidence": [
+        "validation/matched-ablations/README.md"
+      ]
+    },
+    {
+      "id": "VAL-003",
+      "title": "Create numerical convergence plan",
+      "status": "complete",
+      "required_paths": [
+        "validation/numerical-convergence/README.md"
+      ],
+      "evidence": [
+        "validation/numerical-convergence/README.md"
+      ]
+    },
+    {
+      "id": "VAL-004",
+      "title": "Create baseline limit plan",
+      "status": "complete",
+      "required_paths": [
+        "validation/lcdm-limit/README.md"
+      ],
+      "evidence": [
+        "validation/lcdm-limit/README.md"
+      ]
+    },
+    {
+      "id": "PRED-001",
+      "title": "Create prediction ledger",
+      "status": "complete",
+      "required_paths": [
+        "predictions/prediction-ledger.json"
+      ],
+      "evidence": [
+        "predictions/prediction-ledger.json",
+        "predictions/falsification-criteria.md"
+      ]
+    },
+    {
+      "id": "PROOF-001",
+      "title": "Create theorem catalog",
+      "status": "complete",
+      "required_paths": [
+        "proofs/theorem-catalog.md"
+      ],
+      "evidence": [
+        "proofs/theorem-catalog.md",
+        "proofs/finite-algebra-status.md",
+        "proofs/physics-proof-obligations.md"
+      ]
+    },
+    {
+      "id": "SCAN-001",
+      "title": "Add claim-language scanner",
+      "status": "complete",
+      "required_paths": [
+        "docs/ash-physics-validation/scripts/check_claim_language.py"
+      ],
+      "evidence": [
+        "docs/ash-physics-validation/scripts/check_claim_language.py"
+      ]
+    },
+    {
+      "id": "CI-001",
+      "title": "Wire validation checks into CI where practical",
+      "status": "complete",
+      "required_paths": [],
+      "evidence": [
+        ".github/workflows/ci.yml"
+      ]
+    }
+  ]
+}

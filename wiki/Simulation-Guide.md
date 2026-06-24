@@ -1,45 +1,19 @@
-# Simulation Guide
+# Simulation and Evidence Guide
 
-This project currently exposes two simulation entry points with different goals.
-
-## 1) `simulation.py` (visualization path)
-
-Use this when you want a plotted occupancy distribution and generated figure output.
+## Generate all evidence
 
 ```bash
 python simulation.py
 ```
 
-Expected behavior:
+This regenerates code/state tables, branch topology, seeded simulation data, controlled ablations, evidence figures, and artifact hashes.
 
-- Runs agent dynamics on a 9D binary state space
-- Applies adinkra-inspired codeword transforms and low-probability noise
-- Saves a chart to `figures/simulation-histogram-generated.png`
-- Prints final occupancy per Hamming-weight plane
-
-## 2) `src/simulate.py` (data path)
-
-Use this when you want raw matrix output suitable for downstream analysis.
+## Generate only terminal state data
 
 ```bash
-python src/simulate.py
+python src/simulate.py --agents 1000 --ticks 250 --noise 0.01 --seed 20260624
 ```
 
-Expected behavior:
+## Interpretation
 
-- Runs lightweight iterative transformation loop
-- Writes simulation state matrix to `data/simulation-results.csv`
-- Prints summary distribution and output location
-
-## Choosing the right script
-
-- Pick **`simulation.py`** for visuals and quick exploratory runs.
-- Pick **`src/simulate.py`** for reproducible CSV artifacts and data workflows.
-
-## Troubleshooting
-
-If imports fail, install dependencies first:
-
-```bash
-python -m pip install numpy matplotlib sympy
-```
+A bell-shaped Hamming-weight histogram is the expected marginal of uniform 9-bit occupancy. It must not be interpreted as ASH-specific without comparison against the no-transform and matched-random controls in `data/ablation-results.csv`.

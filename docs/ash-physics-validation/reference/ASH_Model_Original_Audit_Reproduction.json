@@ -1,0 +1,53 @@
+{
+  "original_code": {
+    "coordinate_9_values": [
+      0
+    ],
+    "dual_size": 32,
+    "minimum_distance": 4,
+    "rank_over_F2": 4,
+    "sample_mask_count": 6,
+    "self_dual_in_F2_9": false,
+    "self_orthogonal": true,
+    "span_size": 16,
+    "weight_distribution": {
+      "0": 1,
+      "4": 14,
+      "8": 1
+    }
+  },
+  "original_dataset": {
+    "binary_only": true,
+    "mean_hamming_weight": 4.492,
+    "population_standard_deviation": 1.469672072266463,
+    "shape": [
+      1000,
+      9
+    ],
+    "total_variation_to_Binomial_9_half": 0.029281250000000016,
+    "unique_states": 444
+  },
+  "original_missing_surface_term_counts": {
+    "Enneahcube_or_Enneacube": 0,
+    "Garden_algebra": 0,
+    "formal_leaf_to_state_mapping": 0,
+    "historical_2_25_mapping": 0,
+    "historical_geometry_grammar": 0
+  },
+  "original_src_simulate": {
+    "branch_strings_affect_agents": false,
+    "fixed_mask_weight": 4,
+    "net_transform_identity": true,
+    "tick_count": 1000
+  },
+  "record_schema": "1.0.0",
+  "repository_change_counts": {
+    "added": 43,
+    "modified_common": 33,
+    "original_files": 53,
+    "remediated_files": 90,
+    "removed": 6,
+    "unchanged_common": 14
+  },
+  "snapshot": "uploaded ASH-Model-main.zip"
+}

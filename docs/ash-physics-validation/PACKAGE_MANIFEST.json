@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "package": "ASH Physics Proof and Empirical Validation Package",
+  "import_profile": "repository-neutral",
+  "files": [
+    {
+      "path": "PACKAGE_QA.json",
+      "sha256": "0d959a19221b586333d80e3b7fd072a3eaa6827c1b288c163f53175e2ee9ef37",
+      "bytes": 63
+    },
+    {
+      "path": "README.md",
+      "sha256": "fa62527b24b59ea3b93ee64f310ff1b427d164799721f4d9c7d5e25ec5e073f5",
+      "bytes": 2703
+    },
+    {
+      "path": "configs/prediction_ledger.schema.json",
+      "sha256": "61a246aabd45efe4a80daab6694ec519eb6f6e5b8bba768185ea1fbd47318c86",
+      "bytes": 1501
+    },
+    {
+      "path": "configs/preregistration.schema.json",
+      "sha256": "99519298a65bb1ba8b2c18107f9e38d414bf50105e27d4b58af39abe5b8d8ed6",
+      "bytes": 1138
+    },
+    {
+      "path": "configs/proof_certificate.schema.json",
+      "sha256": "56d7c4551cbb0cc3b91116bee2dca04fb041bf06d953f903ad7602666ecf96b1",
+      "bytes": 674
+    },
+    {
+      "path": "docs/01_mathematical_proof_program.md",
+      "sha256": "6c5940318fde72e1b7a108d8cfeac2d568755cf3e59f507ef95027e2450c8661",
+      "bytes": 4427
+    },
+    {
+      "path": "docs/02_physical_bridge_specification.md",
+      "sha256": "cd28da118ce071d419893adbaf965572fec525938c57d9a03a23f4eb7485856a",
+      "bytes": 1881
+    },
+    {
+      "path": "docs/03_empirical_validation_program.md",
+      "sha256": "d94d0665685da9771a7355db290ce87f38fdaa4b452fd9c20f9649bd78edfa03",
+      "bytes": 2737
+    },
+    {
+      "path": "docs/04_falsification_and_acceptance_gates.md",
+      "sha256": "77e17a8c5d9788d58f083176c1aa299c24578b671b776f621503ef2f0924617d",
+      "bytes": 2329
+    },
+    {
+      "path": "docs/05_repository_integration_plan.md",
+      "sha256": "99d4ead95b0827106186eff960a39a3c16c29db087b7b3e792b62217a41bf93e",
+      "bytes": 1874
+    },
+    {
+      "path": "docs/06_language_and_claim_policy.md",
+      "sha256": "051eea5ed50f9ade81ee3b63eea96b53fd8637953b65db16e135b85208b7681e",
+      "bytes": 1428
+    },
+    {
+      "path": "reference/ASH-Model-v1.1.0-SHA256SUMS.txt",
+      "sha256": "e4401e78b4e52c34824e10314c481fc2d4a9f9ac988045b6852c6037cf37f9be",
+      "bytes": 947
+    },
+    {
+      "path": "reference/ASH-Model-v1.1.0-computational-certificate.json",
+      "sha256": "e37e4fce9c3e66e20bc70ca864489b37052ef1fd28ad66d9bf02fcf668c0c496",
+      "bytes": 12287
+    },
+    {
+      "path": "reference/ASH_Model_Audit_Validation_and_Remediation.md",
+      "sha256": "d52e830787255e6180cb04639199612c06bc7708933c306810f9ddfcff4167ad",
+      "bytes": 9934
+    },
+    {
+      "path": "reference/ASH_Model_Final_Verification.json",
+      "sha256": "f0cc3ce7b9110e5a51f90993535e90289a519b70743cd55a4ed23f5003c44342",
+      "bytes": 3682
+    },
+    {
+      "path": "reference/ASH_Model_Original_Audit_Reproduction.json",
+      "sha256": "8d13c8b438bd0f7fb8472346caf98ab94ba33b59dce72d3cd9025ab4d36833fe",
+      "bytes": 1241
+    },
+    {
+      "path": "reference/ASH_Model_Verifier_Negative_Tests.json",
+      "sha256": "8bfb9736eb70c1b82717bfdf333097de18ab2c96ea933bbd0f6162e0d43b8847",
+      "bytes": 2242
+    },
+    {
+      "path": "scripts/check_claim_language.py",
+      "sha256": "170dd05acfaa94c7c1b110c08cf257c8f03b1f41cef2e6eae398219cd90767c2",
+      "bytes": 2629
+    },
+    {
+      "path": "tasks/empirical_backlog.json",
+      "sha256": "c7fd48801e84953d845ac4b2f8d072f5b06d3e870c20cdc00e15f505437f24af",
+      "bytes": 1245
+    },
+    {
+      "path": "tasks/proof_backlog.json",
+      "sha256": "3ce4132a5c5bdee7871f0a50a94603ec1716b203c75e504c6925f97ad0e06db2",
+      "bytes": 1532
+    },
+    {
+      "path": "tasks/task_manifest.json",
+      "sha256": "63f814a64a2a5a90bef89de197842bbd03825192122e91e49f38d08fabaf4189",
+      "bytes": 5212
+    },
+    {
+      "path": "templates/preregistration.md",
+      "sha256": "34bd9912356c4d9a066306524ee1113e95b8785cfe19fcd06a799f62edf976d8",
+      "bytes": 838
+    },
+    {
+      "path": "templates/theorem_catalog.md",
+      "sha256": "721911b1ff676359a9587e8c78684771119630a2eb612365a7a371bbdde23d0c",
+      "bytes": 1315
+    },
+    {
+      "path": "templates/validation_status.json",
+      "sha256": "13d812609cd28558e7b0d4ff056e574163452b8c42aa2aced23e3b30dc0eb544",
+      "bytes": 185
+    }
+  ]
+}

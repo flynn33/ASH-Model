@@ -1,104 +1,137 @@
 # Adinkra-Stabilized Hypercube Model (ASH Model)
 
-[![License: Custom](https://img.shields.io/badge/License-Custom-red.svg)](LICENSE)
-[![arXiv](https://img.shields.io/badge/arXiv-in_preparation-red.svg)](https://arxiv.org)
+**A deterministic reference framework for a 9-bit hypercube, doubly-even code actions, Adinkra quotients, bounded branching, and image/video state mapping**
 
-**A Theoretical and Computational Framework for 9-Dimensional Procedural Cosmology**  
-**Author**: James Daley (Independent Researcher, Full-Stack Developer, Author)  
-**Mathematics and Calculations**: A.I. Assistance  
-**Date**: December 23, 2025  
+**Author:** James Daley
+**Reference implementation:** version 1.1.0
+**Audit-remediation release:** June 24, 2026
 
-## Abstract
+## Status and scope
 
-The Adinkra-Stabilized Hypercube Model (ASH Model) constructs a procedural cosmology on a 9-dimensional hypercube whose 512 vertices represent distinct cosmological realms encoded as binary strings. Supersymmetric adinkra graphs and doubly-even self-dual error-correcting codes are embedded at each vertex, enforcing symmetry transformations and robust error correction.
+ASH is an exploratory simulation-theory and computational-ontology framework. The repository now distinguishes three kinds of claims:
 
-Agent-based simulations reveal emergent phenomena:
+1. **Proved finite mathematics:** the 9-bit state space, canonical code, decoder radius, code-orbit projection, and Garden-algebra representation.
+2. **Specified deterministic computation:** image/video feature mapping, temporal hysteresis, branch-to-state semantics, reconstruction operators, scoring, pruning, and artifact generation.
+3. **Interpretive research:** procedural-cosmology and physical interpretations. These are hypotheses, not empirical conclusions established by the code.
 
-- Rapid convergence to Gaussian occupancy distributions across Hamming weight planes
-- Resilience to random bit-flip noise up to the theoretical Hamming bound
-- Fractal branching via Lindenmayer systems analogous to quantum decoherence
+The earlier repository overstated self-duality in nine dimensions, error correction in simulations, ASH-specific Gaussian convergence, and branch/Adinkra implementation maturity. Version 1.1.0 resolves those discrepancies and records the evidence in [`docs/audit-resolution.md`](docs/audit-resolution.md).
 
-The recurrence of nine dimensions is supported by connections to string theory anomaly cancellation, optimal lattice packing (E₈, Leech), and coding theory. A modal-logic foundation is provided by five axioms of existence in Kripke-frame semantics (see `axioms-of-existence.json`).
+## Verified mathematical core
 
-## Repository Status
+| Component | Verified result |
+|---|---|
+| State space | `F_2^9`, 512 vertices, Q9 degree 9 |
+| Application integrity states | 256 states satisfying `x9 = x1 xor ... xor x8` |
+| Canonical transform code | rank-4 doubly-even linear `[9,4,4]` code |
+| Code size / weights | 16 codewords; `{0:1, 4:14, 8:1}` |
+| Coordinate 9 | active parity/integrity coordinate |
+| Coordinate 8 under code actions | invariant; it remains available as the temporal-change state bit |
+| Nine-dimensional self-duality | false; `dim(C)=4`, `dim(C-perp)=5` |
+| Punctured code | removing coordinate 8 gives a self-dual doubly-even `[8,4,4]` code |
+| Guaranteed correction | every one-bit corruption of a codeword or known affine-orbit state; all tested two-bit codeword corruptions are rejected by policy |
+| Code-orbit averaging | exact idempotent projection `T^2=T` |
+| Adinkra layer | 16-vertex `Q8/C8` quotient and exact N=8 Garden matrices |
+| Controlled-noise limit | uniform state occupancy, with `Binomial(9,1/2)` Hamming marginal |
 
-**Active Development** – Preprint manuscript in preparation for submission (target: Q1 2026).  
-The LaTeX paper compiles to PDF and includes figures, proofs, and references.
+The generated proof certificate is in [`proofs/computational-certificate.md`](proofs/computational-certificate.md), with the full machine-readable record in JSON. The manuscript PDF is cryptographically bound to its exact LaTeX source by [`proofs/manuscript-manifest.json`](proofs/manuscript-manifest.json).
 
-## Quick Start
+## Canonical state coordinates
 
-### Prerequisites
+Coordinates 1 through 8 are deterministic measurements in `[0,1]`, thresholded with fixed hysteresis. Coordinate 9 is recomputed as parity.
 
-Use Python 3.10+ and install required packages before running scripts:
+| Bit | Measurement |
+|---:|---|
+| 1 | mean luminance |
+| 2 | RMS contrast |
+| 3 | edge energy |
+| 4 | texture residual energy |
+| 5 | chroma energy |
+| 6 | horizontal-gradient energy |
+| 7 | vertical-gradient energy |
+| 8 | temporal change |
+| 9 | parity/integrity of bits 1-8 |
+
+Exact formulas, thresholds, bit ordering, and transition rules are normative in [`docs/canonical-computational-specification.md`](docs/canonical-computational-specification.md) and [`config/ash_mapping_v1.json`](config/ash_mapping_v1.json).
+
+## Install and verify
 
 ```bash
-python -m pip install numpy matplotlib sympy
+python -m pip install -e ".[dev]"
+python tools/generate_artifacts.py
+python tools/run_proof_suite.py
+pytest
+python tools/verify_repository.py
 ```
 
-### 1. View the Paper
+After changing `latex/main.tex`, rebuild and bind the manuscript before regenerating the proof certificate:
 
-- Compile locally: `cd latex && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex`
-- Or upload the repository to [Overleaf](https://www.overleaf.com) for instant PDF rendering.
+```bash
+python tools/build_manuscript.py
+```
 
-### 2. Run the Simulation
+The proof suite exhaustively checks all 512 states, all 16 codewords, every one-bit neighborhood, every two-bit corruption of every codeword, all parity-valid affine anchors, all code orbits, and the exact Garden identities.
 
-- Visualization-focused simulation (generates histogram figure):
+## Reference pipeline
+
+```python
+import numpy as np
+from ash_model.pipeline import map_patch
+
+current = np.linspace(0.0, 1.0, 64).reshape(8, 8)
+result = map_patch(current, branch_depth=4, scale=2, top_k=4)
+
+print(result.source_state)
+print([candidate.message for candidate in result.selected])
+```
+
+The pipeline performs:
+
+`measure -> threshold/hysteresis -> parity state -> code-orbit branches -> reconstruction operators -> source-consistency scoring -> deterministic top-k pruning`
+
+It is a CPU reference for validating semantics before a production GPU or Metal implementation. It does not claim state-of-the-art reconstruction quality.
+
+## Controlled simulation
 
 ```bash
 python simulation.py
+python src/simulate.py --agents 1000 --ticks 250 --noise 0.01 --seed 20260624
 ```
 
-- Data-focused simulation (writes CSV output):
+The tracked ablations explicitly compare uniform starts, zero starts, ASH transforms, no transforms, random weight-four transforms, and bit-flip noise. The resulting binomial envelope is documented as a uniform-hypercube baseline, not as evidence uniquely caused by ASH.
 
-```bash
-python src/simulate.py
-```
+## ASH-Physics validation program
 
-`simulation.py` is the visualization-focused model (histogram output), while `src/simulate.py` is a lightweight data generator that also applies cumulative L-system branching checkpoints.
+`docs/ash-physics-validation/` defines the next proof and empirical-validation program. It adds implementation instructions, proof obligations, preregistration templates, claim-language scanning, and task manifests for a future ASH-Physics v0.1 specification.
 
-## Wiki
+The current validation program is intentionally not an empirical result. Physical postulates, microscopic dynamics, bridge maps, background equations, perturbation equations, observable maps, synthetic recovery, matched ablations, numerical convergence, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
-Wiki source pages are maintained in `wiki/` and should be mirrored to the GitHub Wiki (`ASH-Model.wiki`) when publishing updates.
+## Repository map
 
-## Discussions
+- `src/ash_model/` - canonical implementation
+- `tests/` - exhaustive and deterministic tests
+- `config/ash_mapping_v1.json` - normative mapping configuration
+- `proofs/` - generated proof certificate and artifact hashes
+- `data/ash-state-reference.csv` - all 512 states and decoder/orbit metadata
+- `data/codewords.csv` - all 16 codewords and syndromes
+- `data/branch-topology.json` - complete depth-4 branch topology
+- `data/ablation-results.csv` - controlled simulation results
+- `figures/` - generated, repository-linked evidence figures
+- `docs/` - specification, proof, controls, integration, and paper
+- `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package
+- `theory/` - proposed ASH-Physics postulates, dynamics, bridge, and equation obligations
+- `phenomenology/` - observable-interface specifications blocked on the theory layer
+- `validation/` - preregistration and validation-plan skeletons
+- `predictions/` - frozen-prediction ledger and falsification criteria
+- `axioms-of-existence.json` - explicitly labeled interpretive postulates and narrative implications
+- `latex/main.tex` - aligned manuscript source
+- `CITATION.cff` - machine-readable citation metadata
 
-GitHub Discussions in this repository are supported by repo-grounded automation:
+## Scientific boundary
 
-- discussion responders for technical, support, and research/theory questions
-- scheduled topic seeding from wiki and paper headings
-- moderation against the repository code of conduct
+This release proves the finite algebra and validates the executable mapping semantics. The feature thresholds, branch priors, reconstruction operators, and score weights are versioned reference-design choices rather than uniquely derived physical constants. It does **not** establish that ASH is an empirically confirmed cosmology, that its branching realizes quantum measurement, or that its code translations uniquely generate Gaussian statistics. Those questions require separately stated falsifiable predictions and external evidence.
 
-## Repository Contents
+## License and citation
 
-- `latex/main.tex` – Master LaTeX source for the research paper
-- `latex/references.bib` – BibTeX references (active bibliography)
-- `figures/` – Diagrams and generated visualizations
-- `simulation.py` – Reproducible Python implementation of core dynamics
-- `axioms-of-existence.json` – Formal modal-logic axioms underpinning the model
-- `data/simulation-results.csv` – Sample raw data
+See [`LICENSE`](LICENSE) and [`CITATION.cff`](CITATION.cff). For permitted academic use, cite:
 
-## Citation
-Please cite this work as:
-Daley, J. (2025). "Adinkra-Stabilized Hypercube Model (ASH Model): A Theoretical Framework for 9-Dimensional Procedural Cosmology." Preprint, in preparation.
-## Contributing
-Contributions are welcome. Before opening a pull request, review `CONTRIBUTING.md` and run the required checks:
-
-```bash
-python -m pip install numpy matplotlib sympy  # Install all required dependencies
-python -m py_compile simulation.py src/simulate.py src/derive-9-properties.py tools/audit_simulation_data.py scripts/github/discussion_agent.py scripts/github/discussion_topic_agent.py scripts/github/discussion_moderation_agent.py
-python -m json.tool axioms-of-existence.json > /dev/null
-python -m compileall -q simulation.py src tools scripts
-python scripts/github/discussion_agent.py --validate-config --root .
-python scripts/github/discussion_topic_agent.py --validate-config --root .
-python scripts/github/discussion_moderation_agent.py --validate-config --root .
-python tools/audit_simulation_data.py
-```
-
-All contributors and discussion participants must follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
-
-## License
-This project is licensed under a custom restrictive license — see [LICENSE](LICENSE) for details. Free for educational use and individual experimentation only. All other use is strictly prohibited. Commercial use requires a separate license. Academic citation is required for any use or derivative work.
-## Contact
-For inquiries, extensions, or collaboration, open an Issue or discuss via GitHub.
-
-
+Daley, J. (2026). *Adinkra-Stabilized Hypercube Model: Canonical Computational Specification and Reference Implementation*, version 1.1.0.

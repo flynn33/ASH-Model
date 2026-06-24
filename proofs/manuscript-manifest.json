@@ -1,0 +1,16 @@
+{
+  "passes": 2,
+  "pdf": {
+    "bytes": 1331526,
+    "path": "docs/ASH-Model-Preprint-v1.pdf",
+    "sha256": "a25e0df4b9567e82e03b29620726d141590770b6eacd138542742b3c893a0629"
+  },
+  "project_version": "1.1.0",
+  "schema_version": "1.0.0",
+  "source": {
+    "bytes": 12424,
+    "path": "latex/main.tex",
+    "sha256": "5a232384db3674574114b947ac1dfe447cb9abb3aebb24f80f89530e931502fa"
+  },
+  "source_date_epoch": 1782259200
+}

@@ -1,69 +1,62 @@
-"""
-Data-focused simulation for the ASH Model.
+#!/usr/bin/env python3
+"""Seeded ASH data generator with nontrivial, auditable dynamics."""
 
-Generates CSV data for 1000 agents over 1000 ticks in a 9D hypercube.
-Applies doubly-even adinkra transformations and tracks L-system branching.
-Output: data/simulation-results.csv
-"""
+from __future__ import annotations
+
+import argparse
+import json
 from pathlib import Path
 
 import numpy as np
 
-# Parameters for simulation
-NUM_AGENTS = 1000
-TICKS = 1000
-DIM = 9  # 9-dimensional hypercube
+from ash_model.simulation import run_simulation
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_PATH = REPO_ROOT / "data" / "simulation-results.csv"
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
-def adinkra_transform(state):
-    """Apply SUSY-inspired adinkra transformation (parity flips)."""
-    code = np.array([1, 1, 1, 1, 0, 0, 0, 0, 0])  # Doubly-even code (Hamming weight 4)
-    return (state + code) % 2
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--agents", type=int, default=1000)
+    parser.add_argument("--ticks", type=int, default=250)
+    parser.add_argument("--noise", type=float, default=0.01)
+    parser.add_argument("--seed", type=int, default=20260624)
+    parser.add_argument("--output", type=Path, default=REPO_ROOT / "data" / "simulation-results.csv")
+    return parser.parse_args()
 
 
-def lsystem_branch(branches):
-    """L-System branching for MWI-like evolution."""
-    new = []
-    for b in branches:
-        new.append(b)
-        new.append(b + "+")  # Branch positive
-        new.append(b + "-")  # Branch negative
-    return new
+def main() -> int:
+    args = parse_args()
+    result = run_simulation(
+        agent_count=args.agents,
+        ticks=args.ticks,
+        initial_mode="uniform",
+        transform_mode="ash",
+        noise_probability=args.noise,
+        seed=args.seed,
+    )
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    np.savetxt(
+        args.output,
+        result.agents,
+        fmt="%d",
+        delimiter=",",
+        header="dim1,dim2,dim3,dim4,dim5,dim6,dim7,dim8,dim9",
+        comments="",
+    )
+    metadata = {
+        "seed": result.seed,
+        "agent_count": len(result.agents),
+        "ticks": result.ticks,
+        "initial_mode": result.initial_mode,
+        "transform_mode": result.transform_mode,
+        "noise_probability": result.noise_probability,
+        "tv_to_binomial": result.tv_to_binomial,
+    }
+    metadata_path = args.output.with_name("simulation-metadata.json")
+    metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(json.dumps(metadata, indent=2))
+    return 0
 
 
-# Initialize agents in 9D hypercube
-agents = np.random.randint(0, 2, (NUM_AGENTS, DIM))
-
-# Track branches across checkpoints so growth is cumulative
-branches = ["F"]
-
-# Simulation loop
-for t in range(TICKS):
-    for i in range(NUM_AGENTS):
-        # Apply adinkra transform
-        agents[i] = adinkra_transform(agents[i])
-
-    # Optional branching every 100 ticks
-    if t % 100 == 0:
-        branches = lsystem_branch(branches)
-        print(f"Tick {t}: Branch count = {len(branches)}")
-
-# Compute example emergent property: Realm distribution by Hamming weight
-realm_sums = np.sum(agents, axis=1) % 10
-unique, counts = np.unique(realm_sums, return_counts=True)
-print("Realm distribution (bell-curve analog):")
-for realm, count in zip(unique, counts):
-    print(f"Realm {realm}: {count} agents")
-
-# Save results to data/ for analysis
-OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-np.savetxt(
-    OUTPUT_PATH,
-    agents,
-    delimiter=",",
-    header="dim1,dim2,dim3,dim4,dim5,dim6,dim7,dim8,dim9",
-)
-print(f"Simulation complete. Results saved to {OUTPUT_PATH.relative_to(REPO_ROOT)}")
+if __name__ == "__main__":
+    raise SystemExit(main())
