@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
+from itertools import combinations
 from math import comb
 from typing import Literal
 
@@ -54,12 +56,18 @@ def initialize_agents(count: int, mode: InitialMode, rng: np.random.Generator) -
     raise ValueError(f"unsupported initial mode {mode!r}")
 
 
+@lru_cache(maxsize=1)
+def _weight4_mask_table() -> np.ndarray:
+    table = np.zeros((126, 9), dtype=np.uint8)
+    for row, indices in enumerate(combinations(range(9), 4)):
+        table[row, list(indices)] = 1
+    return table
+
+
 def _random_weight4_masks(count: int, rng: np.random.Generator) -> np.ndarray:
-    masks = np.zeros((count, 9), dtype=np.uint8)
-    for row in range(count):
-        indices = rng.choice(9, size=4, replace=False)
-        masks[row, indices] = 1
-    return masks
+    table = _weight4_mask_table()
+    choices = rng.integers(0, len(table), size=count)
+    return table[choices].copy()
 
 
 def step_agents(

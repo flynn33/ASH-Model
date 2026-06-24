@@ -83,13 +83,16 @@ proofs/physics-proof-obligations.md
 
 ## Add claim-language scan
 
-Add the script:
+Add the scripts:
 
 ```text
 docs/ash-physics-validation/scripts/check_claim_language.py
+docs/ash-physics-validation/scripts/check_sensitive_language.py
+docs/ash-physics-validation/scripts/run_repository_gate.py
 ```
 
-Run it in CI if practical.
+Run them in CI with the repository verification, proof, artifact-generation,
+and test commands.
 
 ## Suggested commit sequence
 
@@ -99,8 +102,9 @@ Run it in CI if practical.
 3. add phenomenology skeleton
 4. add validation and prediction ledgers
 5. add claim-language scanner
-6. wire scanner into CI
-7. update README with proof-status boundary
-8. run full verification
-9. record validation/status.json
+6. add strict repository gate
+7. wire scanners and gate into CI
+8. update README with proof-status boundary
+9. run full verification
+10. record validation/status.json
 ```

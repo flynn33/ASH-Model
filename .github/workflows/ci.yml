@@ -46,8 +46,12 @@ jobs:
       - name: Validate ASH-Physics planning package
         run: |
           python3 docs/ash-physics-validation/scripts/check_claim_language.py .
+          python3 docs/ash-physics-validation/scripts/check_sensitive_language.py .
+          python3 docs/ash-physics-validation/scripts/run_repository_gate.py .
           python3 -m json.tool docs/ash-physics-validation/tasks/task_manifest.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/prediction_ledger.schema.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/configs/task_manifest.schema.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/configs/validation_status.schema.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/preregistration.schema.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/proof_certificate.schema.json > /dev/null
           python3 -m json.tool predictions/prediction-ledger.json > /dev/null
@@ -62,7 +66,7 @@ jobs:
 
       - name: Syntax and configuration checks
         run: |
-          python3 -m compileall -q simulation.py src tools scripts
+          python3 -m compileall -q simulation.py src tools scripts docs/ash-physics-validation/scripts
           python3 -m json.tool config/ash_mapping_v1.json > /dev/null
           python3 -m json.tool axioms-of-existence.json > /dev/null
           python3 scripts/github/discussion_agent.py --validate-config --root .

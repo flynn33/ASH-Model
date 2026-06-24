@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Validation Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_version",
+    "updated_utc",
+    "tasks",
+    "verification_commands",
+    "open_blockers"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "model_version": {"type": "string"},
+    "commit": {"type": "string"},
+    "updated_utc": {"type": "string"},
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "completion_type", "evidence"],
+        "properties": {
+          "id": {"type": "string"},
+          "status": {"enum": ["complete", "blocked", "deferred"]},
+          "completion_type": {
+            "enum": [
+              "scaffold_created",
+              "theorem_proved",
+              "implementation_verified",
+              "empirical_gate_passed",
+              "blocked_scientific_work"
+            ]
+          },
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "verification_commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "result", "summary"],
+        "properties": {
+          "command": {"type": "string"},
+          "result": {"enum": ["passed", "failed", "blocked", "not_run"]},
+          "summary": {"type": "string"}
+        }
+      }
+    },
+    "open_blockers": {"type": "array", "items": {"type": "string"}},
+    "claim_downgrades": {"type": "array", "items": {"type": "string"}}
+  }
+}

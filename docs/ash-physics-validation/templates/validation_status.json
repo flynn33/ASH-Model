@@ -1,10 +1,15 @@
 {
   "schema_version": "1.0",
-  "model_version": "",
+  "model_version": "ash-physics-v0.1",
   "commit": "",
-  "updated_utc": "",
+  "updated_utc": "YYYY-MM-DDTHH:MM:SSZ",
   "tasks": [],
   "verification_commands": [],
-  "open_blockers": [],
+  "open_blockers": [
+    "Physical state interpretation is not defined.",
+    "Microscopic dynamics are not defined.",
+    "Bridge map to observables is not defined.",
+    "Empirical validation is blocked until theory, solver, and preregistration gates exist."
+  ],
   "claim_downgrades": []
 }

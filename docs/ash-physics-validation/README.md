@@ -35,9 +35,11 @@ Do not stop after partial compliance. Do not mark an item complete unless the re
 | `docs/05_repository_integration_plan.md` | Exact repository layout and integration sequence |
 | `docs/06_language_and_claim_policy.md` | Claim boundaries and forbidden wording |
 | `tasks/*.json` | Machine-readable task plans and checklists |
-| `configs/*.json` | Schemas and templates for future validation artifacts |
+| `configs/*.json` | Schemas and templates for validation artifacts |
 | `templates/*.md` | Reusable documents to add to the repository |
 | `scripts/check_claim_language.py` | Simple claim-language scanner |
+| `scripts/check_sensitive_language.py` | Strict repository language scanner |
+| `scripts/run_repository_gate.py` | Schema and package consistency gate |
 | `reference/*` | Current remediation and verification references, when available |
 
 ## Non-negotiable boundary

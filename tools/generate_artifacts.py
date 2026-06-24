@@ -121,7 +121,7 @@ def _write_ablation_data():
     results = run_ablation_suite(agent_count=12_000, ticks=300, noise_probability=0.02, seed=20260624)
     path = REPO_ROOT / "data" / "ablation-results.csv"
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(
             [
                 "case",

@@ -1,7 +1,7 @@
 {
   "data/ablation-results.csv": {
-    "bytes": 1445,
-    "sha256": "c4c777b69948d918b0b87ff026a6aa837b46490d6b0e6ff65d913afd9f078207"
+    "bytes": 1437,
+    "sha256": "abf4f54774eacd7ebbf17e6306330b6adb9d1f2da038d39d2a363677c2dc949a"
   },
   "data/ash-state-reference.csv": {
     "bytes": 24759,
