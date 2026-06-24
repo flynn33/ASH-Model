@@ -1,25 +1,25 @@
 # Primordial Spectrum Specification
 
-Status: Draft
+Status: blocked for external claims
 
-## Definitions
+## Current finite spectrum
 
-- Spectrum statistic: a frozen observable derived from ASH perturbation variables.
-- Prediction interval: the preregistered range produced before held-out evaluation.
+The finite-observer layer defines internal perturbation-mode decay factors
+`mu_k(p)` for Walsh mode weights `k = 0, ..., 9`.
 
-## Required specification
+## External spectrum boundary
 
-- Derivation from perturbation variables.
-- Parameter dependence and priors.
-- Scale range and cut rules.
-- Baseline and same-complexity alternatives.
+No primordial curvature spectrum, tensor spectrum, transfer function, or
+observable angular spectrum is derived.  A future spectrum claim must define:
 
-## Acceptance gates
-
-- Prediction frozen in `predictions/prediction-ledger.json`.
-- Hashes recorded for code, parameters, and generated artifacts.
-- Matched ablations and synthetic recovery pass before real-data comparison.
+- unitful bridge from ASH variables to physical perturbation variables;
+- gauge convention;
+- initial-condition surface;
+- scale variable and cuts;
+- baseline comparison;
+- locked prediction in `predictions/prediction-ledger.json`.
 
 ## Current status
 
-Blocked until perturbation equations exist.
+The internal finite-mode factors are implemented.  External spectrum
+phenomenology remains blocked.

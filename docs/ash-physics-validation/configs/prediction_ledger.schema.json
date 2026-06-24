@@ -43,6 +43,7 @@
           "model_version": {"type": "string", "minLength": 1},
           "commit": {"type": "string", "minLength": 1},
           "artifact_hashes": {"type": "object"},
+          "entry_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
           "frozen_utc": {"type": "string", "minLength": 1},
           "observable": {"type": "string", "minLength": 1},
           "prediction": {},

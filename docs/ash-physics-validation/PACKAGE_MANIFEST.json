@@ -15,13 +15,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "2391dd11cdaf64e7d0651cdbb1727dc19ac909b91120d01c4858c7c9f2d92b68",
-      "bytes": 2850
+      "sha256": "e66a5ca869e709c358dd9444acab15dedc00b44dc6dc7002fda5685bf0c295c8",
+      "bytes": 3688
     },
     {
       "path": "configs/prediction_ledger.schema.json",
-      "sha256": "a7559d584f6a3828e6b202cd436346482e62c8a8104a57090652bfe0313f804b",
-      "bytes": 1960
+      "sha256": "946103ea52d78095680d8b29e88c6b6e38471e2bbcaa26184181076b276c02b2",
+      "bytes": 2033
     },
     {
       "path": "configs/preregistration.schema.json",
@@ -104,6 +104,21 @@
       "bytes": 2242
     },
     {
+      "path": "scripts/__pycache__/check_claim_language.cpython-312.pyc",
+      "sha256": "e9ccefc821a6b4bbce2a6370193f4c8993258b76511640446bbb441416e1c528",
+      "bytes": 4165
+    },
+    {
+      "path": "scripts/__pycache__/check_sensitive_language.cpython-312.pyc",
+      "sha256": "0b67c9341f0257aab215cfc936c4bf7f8eab872399442c044cdb08f217576c17",
+      "bytes": 7796
+    },
+    {
+      "path": "scripts/__pycache__/run_repository_gate.cpython-312.pyc",
+      "sha256": "86abb9778fa2320d237e4ba642edd892e89648eee16c1e92be2b82cd6e25676e",
+      "bytes": 16584
+    },
+    {
       "path": "scripts/check_claim_language.py",
       "sha256": "170dd05acfaa94c7c1b110c08cf257c8f03b1f41cef2e6eae398219cd90767c2",
       "bytes": 2629
@@ -115,8 +130,8 @@
     },
     {
       "path": "scripts/run_repository_gate.py",
-      "sha256": "a8130ac7c1d2fd10ec11675185840f34ef334d3340d0b94d678fa06860f3f60f",
-      "bytes": 12188
+      "sha256": "44b7ac886606d511c02199ce4bceaca6810bd50b7c1a3f1f066847008c666ee7",
+      "bytes": 12483
     },
     {
       "path": "tasks/empirical_backlog.json",
@@ -130,8 +145,8 @@
     },
     {
       "path": "tasks/task_manifest.json",
-      "sha256": "3997de57dc255855b8718fe2e68ab4d20c11dcbf3575af5334129987030ad046",
-      "bytes": 5604
+      "sha256": "75102597ccae592fd0abde233b4cf1a8310e9f4de293f14686e1c5118e1a155a",
+      "bytes": 6338
     },
     {
       "path": "templates/preregistration.md",
@@ -145,7 +160,7 @@
     },
     {
       "path": "templates/validation_status.json",
-      "sha256": "aac9f909f48e01508a40d1fc79bc159d044058c074cfccd1da3f016411569f53",
+      "sha256": "6b7d036ea97b154c524e3f170ff20b0a1e3d7a79ac3694ce5952bed5ef58cc95",
       "bytes": 464
     }
   ]

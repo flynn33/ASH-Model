@@ -7,6 +7,11 @@ import json
 import sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPO_ROOT / "src"))
+
+from ash_model.prediction_ledger import validate_prediction_ledger as validate_prediction_locks
+
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -73,7 +78,7 @@ def validate_prediction_ledger(path: Path, payload) -> list[str]:
         "rejection_rule",
         "test_status",
     }
-    entry_allowed = entry_required | {"artifact_hashes", "notes"}
+    entry_allowed = entry_required | {"artifact_hashes", "entry_hash", "notes"}
     entry_statuses = {"frozen", "tested_pass", "tested_fail", "withdrawn_before_test"}
     for index, entry in enumerate(payload.get("entries", []) if isinstance(payload.get("entries"), list) else []):
         label = f"entries/{index}"
@@ -84,6 +89,7 @@ def validate_prediction_ledger(path: Path, payload) -> list[str]:
         failures.extend(f"{path}: {label}: unexpected property {key}" for key in sorted(set(entry) - entry_allowed))
         if isinstance(entry.get("test_status"), str) and entry["test_status"] not in entry_statuses:
             failures.append(f"{path}: {label}/test_status: unsupported value {entry['test_status']!r}")
+    failures.extend(f"{path}: {failure}" for failure in validate_prediction_locks(payload))
     return failures
 
 

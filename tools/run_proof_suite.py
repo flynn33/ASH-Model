@@ -19,9 +19,61 @@ from ash_model.adinkra import adinkra_certificate
 from ash_model.bits import flip_bit, is_integrity_valid, xor_bits
 from ash_model.branching import branch_certificate
 from ash_model.code import CODEWORDS, code_certificate, decode, decode_affine
-from ash_model.hypercube import coset_partition, integrity_states, state_reference_rows, states, theoretical_plane_counts
+from ash_model.cosmology import (
+    FlatLambdaCDMParameters,
+    compare_distance_baselines,
+    dimensionless_hubble_parameter,
+    flat_lcdm_distance_curve,
+    normalized_comoving_distance,
+)
+from ash_model.empirical import (
+    ObservableCalibration,
+    calibrate_observable,
+    chi_square,
+    compare_gaussian_models,
+    diagonal_gaussian_log_likelihood,
+)
+from ash_model.hypercube import (
+    coset_partition,
+    distance_shell_counts,
+    even_parity_shell_counts,
+    hypercube_adjacency_spectrum,
+    hypercube_edge_count,
+    hypercube_laplacian_spectrum,
+    integrity_states,
+    pair_flip_adjacency_spectrum,
+    pair_flip_graph_degree,
+    pair_flip_graph_edge_count,
+    pair_flip_laplacian_spectrum,
+    state_reference_rows,
+    states,
+    theoretical_plane_counts,
+)
+from ash_model.physics import (
+    background_moments,
+    bridge_observables,
+    evolve_weight_distribution,
+    lazy_pair_flip_eigenvalue,
+    pair_flip_generator,
+    pair_flip_transition,
+    physical_state_space,
+    uniform_background_distribution,
+    uniform_physical_distribution,
+    weight_level_degeneracies,
+    weight_background_kernel,
+)
+from ash_model.prediction_ledger import canonical_prediction_hash, ledger_lock_status, validate_prediction_ledger
 from ash_model.projection import projection_certificate
 from ash_model.simulation import binomial_distribution, noise_kernel
+
+
+def _reported_residual(value: float) -> float:
+    """Return stable proof-certificate residuals across BLAS/platform noise."""
+
+    residual = float(value)
+    if abs(residual) < 1e-15:
+        return 0.0
+    return residual
 
 
 def _source_manifest() -> dict[str, str]:
@@ -94,11 +146,50 @@ def _hypercube_certificate() -> dict[str, object]:
     valid = integrity_states()
     full_orbits = coset_partition()
     valid_orbits = coset_partition(integrity_only=True)
+    adjacency_spectrum = hypercube_adjacency_spectrum()
+    laplacian_spectrum = hypercube_laplacian_spectrum()
+    pair_adjacency_spectrum = pair_flip_adjacency_spectrum()
+    pair_laplacian_spectrum = pair_flip_laplacian_spectrum()
     return {
         "state_count": len(full),
         "integrity_state_count": len(valid),
         "each_state_neighbor_count": 9,
+        "edge_count": hypercube_edge_count(),
+        "distance_shell_counts": list(distance_shell_counts()),
         "plane_counts": list(theoretical_plane_counts()),
+        "adjacency_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in adjacency_spectrum
+        ],
+        "adjacency_trace": sum(
+            eigenvalue * multiplicity for eigenvalue, multiplicity in adjacency_spectrum
+        ),
+        "adjacency_square_trace": sum(
+            (eigenvalue**2) * multiplicity for eigenvalue, multiplicity in adjacency_spectrum
+        ),
+        "laplacian_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in laplacian_spectrum
+        ],
+        "laplacian_spectral_gap": laplacian_spectrum[1][0],
+        "even_parity_shell_counts": list(even_parity_shell_counts()),
+        "pair_flip_graph_degree": pair_flip_graph_degree(),
+        "pair_flip_graph_edge_count": pair_flip_graph_edge_count(),
+        "pair_flip_adjacency_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in pair_adjacency_spectrum
+        ],
+        "pair_flip_adjacency_trace": sum(
+            eigenvalue * multiplicity for eigenvalue, multiplicity in pair_adjacency_spectrum
+        ),
+        "pair_flip_adjacency_square_trace": sum(
+            (eigenvalue**2) * multiplicity for eigenvalue, multiplicity in pair_adjacency_spectrum
+        ),
+        "pair_flip_laplacian_spectrum": [
+            {"eigenvalue": eigenvalue, "multiplicity": multiplicity}
+            for eigenvalue, multiplicity in pair_laplacian_spectrum
+        ],
+        "pair_flip_laplacian_spectral_gap": pair_laplacian_spectrum[1][0],
         "full_orbit_count": len(full_orbits),
         "integrity_orbit_count": len(valid_orbits),
         "orbit_size": len(full_orbits[0]),
@@ -114,13 +205,158 @@ def _markov_certificate() -> dict[str, object]:
     stationary_residual = uniform @ kernel - uniform
     return {
         "noise_probability_checked": probability,
-        "row_sum_max_abs_error": float(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
-        "column_sum_max_abs_error": float(np.max(np.abs(kernel.sum(axis=0) - 1.0))),
-        "uniform_stationary_max_abs_error": float(np.max(np.abs(stationary_residual))),
-        "minimum_self_loop_probability": float(np.min(np.diag(kernel))),
+        "row_sum_max_abs_error": _reported_residual(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
+        "column_sum_max_abs_error": _reported_residual(np.max(np.abs(kernel.sum(axis=0) - 1.0))),
+        "uniform_stationary_max_abs_error": _reported_residual(np.max(np.abs(stationary_residual))),
+        "minimum_self_loop_probability": _reported_residual(np.min(np.diag(kernel))),
         "positive_hypercube_edges": int(np.count_nonzero(kernel - np.diag(np.diag(kernel)))),
         "uniform_hamming_marginal": [float(value) for value in binomial_distribution()],
         "interpretation": "The binomial Hamming marginal follows from uniform occupancy; it is not ASH-specific evidence.",
+    }
+
+
+def _physics_certificate() -> dict[str, object]:
+    probability = 0.35
+    rate = 1.25
+    states = physical_state_space()
+    kernel = pair_flip_transition(probability)
+    generator = pair_flip_generator(rate)
+    background = weight_background_kernel(probability)
+    background_distribution = uniform_background_distribution()
+    moments = background_moments(background_distribution)
+    initial_weight_distribution = np.zeros(len(weight_level_degeneracies()), dtype=float)
+    initial_weight_distribution[0] = 1.0
+    evolved_weight_distribution = evolve_weight_distribution(
+        initial_weight_distribution,
+        probability=probability,
+        steps=3,
+    )
+    uniform = uniform_physical_distribution()
+    observables = bridge_observables(uniform)
+    mode_factors = [lazy_pair_flip_eigenvalue(weight, probability) for weight in range(10)]
+    return {
+        "state_count": len(states),
+        "all_states_parity_valid": all(state[8] == (sum(state[:8]) & 1) for state in states),
+        "pair_flip_probability_checked": probability,
+        "pair_flip_rate_checked": rate,
+        "kernel_row_sum_max_abs_error": _reported_residual(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
+        "kernel_symmetry_max_abs_error": _reported_residual(np.max(np.abs(kernel - kernel.T))),
+        "uniform_stationary_max_abs_error": _reported_residual(np.max(np.abs(uniform @ kernel - uniform))),
+        "generator_row_sum_max_abs_error": _reported_residual(np.max(np.abs(generator.sum(axis=1)))),
+        "generator_symmetry_max_abs_error": _reported_residual(np.max(np.abs(generator - generator.T))),
+        "background_row_sum_max_abs_error": _reported_residual(np.max(np.abs(background.sum(axis=1) - 1.0))),
+        "weight_level_degeneracies": list(weight_level_degeneracies()),
+        "uniform_background_distribution": [float(value) for value in background_distribution],
+        "uniform_background_stationary_max_abs_error": _reported_residual(
+            np.max(np.abs(background_distribution @ background - background_distribution))
+        ),
+        "uniform_background_mean_hamming_weight": moments.mean_hamming_weight,
+        "uniform_background_variance_hamming_weight": moments.variance_hamming_weight,
+        "uniform_background_order_parameter": moments.order_parameter,
+        "evolved_weight_distribution_sum": float(np.sum(evolved_weight_distribution)),
+        "evolved_weight_distribution_mean": background_moments(evolved_weight_distribution).mean_hamming_weight,
+        "uniform_mean_hamming_weight": observables.mean_hamming_weight,
+        "uniform_order_parameter": observables.order_parameter,
+        "uniform_entropy_bits": observables.shannon_entropy_bits,
+        "uniform_parity_valid_probability": observables.parity_valid_probability,
+        "lazy_pair_flip_mode_factors": mode_factors,
+        "mode_factors_bounded": all(-1.0 <= value <= 1.0 for value in mode_factors),
+        "interpretation": "Finite-observer stochastic physics layer; not an observational cosmology claim.",
+    }
+
+
+def _empirical_bridge_certificate() -> dict[str, object]:
+    observables = bridge_observables(uniform_physical_distribution())
+    calibration = ObservableCalibration(
+        source="mean_hamming_weight",
+        target="example_length",
+        scale=3.0,
+        offset=1.0,
+        unit="m",
+    )
+    calibrated = calibrate_observable(observables.mean_hamming_weight, calibration)
+    observed = [1.0, 2.0]
+    close = [1.0, 2.1]
+    far = [2.0, 3.0]
+    standard_deviation = [0.25, 0.25]
+    comparison = compare_gaussian_models(
+        observed=observed,
+        standard_deviation=standard_deviation,
+        predictions={"close": close, "far": far},
+    )
+    return {
+        "calibration_source": calibrated.source,
+        "calibration_target": calibrated.target,
+        "calibrated_value": calibrated.value,
+        "calibrated_unit": calibrated.unit,
+        "example_chi_square": chi_square([1.0, 2.0], [0.5, 2.5], [0.5, 1.0]),
+        "example_log_likelihood": diagonal_gaussian_log_likelihood([1.0, 2.0], [0.5, 2.5], [0.5, 1.0]),
+        "best_likelihood_model": comparison[0].name,
+        "comparison_count": len(comparison),
+        "interpretation": "Calibration and likelihood contracts only; no external data fit is claimed.",
+    }
+
+
+def _prediction_ledger_certificate() -> dict[str, object]:
+    entry = {
+        "id": "PRED-EXAMPLE-001",
+        "model_version": "ash-physics-v0.2",
+        "commit": "0123456789abcdef",
+        "frozen_utc": "2026-06-24T12:00:00Z",
+        "observable": "example_length",
+        "prediction": {"value": 14.5, "unit": "m"},
+        "uncertainty": {"standard_deviation": 0.2, "unit": "m"},
+        "data_product": "example-held-out-data-product",
+        "statistic": "diagonal_gaussian_log_likelihood",
+        "rejection_rule": "reject if chi_square exceeds preregistered threshold",
+        "test_status": "frozen",
+        "artifact_hashes": {
+            "proofs/computational-certificate.json": "a" * 64,
+        },
+    }
+    entry["entry_hash"] = canonical_prediction_hash(entry)
+    ledger = {
+        "schema_version": "1.0",
+        "model_version": "ash-physics-v0.2",
+        "status": "has_locked_predictions",
+        "entries": [entry],
+    }
+    return {
+        "empty_entry_status": ledger_lock_status([]),
+        "locked_entry_status": ledger_lock_status(ledger["entries"]),
+        "entry_hash_length": len(entry["entry_hash"]),
+        "entry_hash_validates": not validate_prediction_ledger(ledger),
+        "interpretation": "Prediction-lock mechanics are implemented; no repository prediction is locked by this example.",
+    }
+
+
+def _standard_baseline_certificate() -> dict[str, object]:
+    standard = FlatLambdaCDMParameters(matter_density=0.3, dark_energy_density=0.7)
+    shifted = FlatLambdaCDMParameters(matter_density=0.4, dark_energy_density=0.6)
+    redshifts = [0.2, 0.5, 1.0]
+    observed = flat_lcdm_distance_curve(redshifts, standard, steps=512)
+    comparison = compare_distance_baselines(
+        redshifts=redshifts,
+        observed_distances=observed,
+        standard_deviation=[0.01, 0.01, 0.01],
+        baselines={"standard": standard, "shifted": shifted},
+        steps=512,
+    )
+    distances = [
+        normalized_comoving_distance(redshift, standard, steps=512)
+        for redshift in (0.0, 0.5, 1.0)
+    ]
+    return {
+        "matter_density": standard.matter_density,
+        "dark_energy_density": standard.dark_energy_density,
+        "total_density": standard.total_density,
+        "hubble_at_zero": dimensionless_hubble_parameter(0.0, standard),
+        "hubble_at_one": dimensionless_hubble_parameter(1.0, standard),
+        "distance_curve": [float(value) for value in distances],
+        "distance_curve_monotonic": distances[0] == 0.0 and distances[0] < distances[1] < distances[2],
+        "best_baseline": comparison[0].name,
+        "best_baseline_chi_square": comparison[0].chi_square,
+        "interpretation": "Standard-baseline comparison mechanics only; not an ASH-derived cosmology limit.",
     }
 
 
@@ -133,6 +369,10 @@ def build_certificate() -> dict[str, object]:
         "adinkra": adinkra_certificate(),
         "branching": branch_certificate(4),
         "markov_chain": _markov_certificate(),
+        "physics": _physics_certificate(),
+        "empirical_bridge": _empirical_bridge_certificate(),
+        "prediction_ledger": _prediction_ledger_certificate(),
+        "standard_baseline": _standard_baseline_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -142,11 +382,61 @@ def build_certificate() -> dict[str, object]:
         "punctured_code_self_dual": sections["code"]["punctured_self_dual"] is True,
         "decoder_radius_one_exhaustive": sections["decoder"]["single_error_checks"] == 144,
         "double_errors_rejected": sections["decoder"]["double_error_rejection_checks"] == 576,
+        "hypercube_edges_and_shells_exact": sections["hypercube"]["edge_count"] == 2304
+        and sections["hypercube"]["distance_shell_counts"] == sections["hypercube"]["plane_counts"]
+        and sum(sections["hypercube"]["even_parity_shell_counts"]) == 256,
+        "hypercube_spectrum_exact": sections["hypercube"]["adjacency_trace"] == 0
+        and sections["hypercube"]["adjacency_square_trace"] == 2 * sections["hypercube"]["edge_count"]
+        and sections["hypercube"]["laplacian_spectral_gap"] == 2,
+        "parity_pair_flip_spectrum_exact": sections["hypercube"]["pair_flip_graph_degree"] == 36
+        and sections["hypercube"]["pair_flip_graph_edge_count"] == 4608
+        and sections["hypercube"]["pair_flip_adjacency_trace"] == 0
+        and sections["hypercube"]["pair_flip_adjacency_square_trace"]
+        == 2 * sections["hypercube"]["pair_flip_graph_edge_count"]
+        and sections["hypercube"]["pair_flip_laplacian_spectral_gap"] == 16,
         "projection_idempotent": sections["projection"]["idempotence_max_abs_error"] == 0.0,
         "garden_algebra_exact": sections["adinkra"]["maximum_integer_residual"] == 0,
         "quotient_isomorphism": sections["adinkra"]["valid"] is True,
         "branch_weights_normalized": abs(sections["branching"]["leaf_weight_sum"] - 1.0) < 1e-12,
         "markov_uniform_stationary": sections["markov_chain"]["uniform_stationary_max_abs_error"] < 1e-15,
+        "physics_pair_flip_closed": sections["physics"]["state_count"] == 256
+        and sections["physics"]["all_states_parity_valid"] is True,
+        "physics_kernel_stochastic": sections["physics"]["kernel_row_sum_max_abs_error"] < 1e-15
+        and sections["physics"]["kernel_symmetry_max_abs_error"] < 1e-15
+        and sections["physics"]["uniform_stationary_max_abs_error"] < 1e-15,
+        "physics_generator_valid": sections["physics"]["generator_row_sum_max_abs_error"] < 1e-15
+        and sections["physics"]["generator_symmetry_max_abs_error"] < 1e-15,
+        "physics_background_lumped": sections["physics"]["background_row_sum_max_abs_error"] < 1e-15,
+        "physics_background_moments_exact": sections["physics"]["weight_level_degeneracies"]
+        == [1, 36, 126, 84, 9]
+        and sections["physics"]["uniform_background_stationary_max_abs_error"] < 1e-15
+        and abs(sections["physics"]["uniform_background_mean_hamming_weight"] - 4.5) < 1e-15
+        and abs(sections["physics"]["uniform_background_variance_hamming_weight"] - 2.25)
+        < 1e-15
+        and abs(sections["physics"]["uniform_background_order_parameter"]) < 1e-15
+        and abs(sections["physics"]["evolved_weight_distribution_sum"] - 1.0) < 1e-15
+        and sections["physics"]["evolved_weight_distribution_mean"] > 0.0,
+        "physics_bridge_observables_normalized": abs(sections["physics"]["uniform_mean_hamming_weight"] - 4.5) < 1e-15
+        and abs(sections["physics"]["uniform_order_parameter"]) < 1e-15
+        and abs(sections["physics"]["uniform_entropy_bits"] - 8.0) < 1e-15
+        and abs(sections["physics"]["uniform_parity_valid_probability"] - 1.0) < 1e-15,
+        "physics_perturbation_modes_bounded": sections["physics"]["mode_factors_bounded"] is True,
+        "empirical_calibration_contract": sections["empirical_bridge"]["calibration_source"] == "mean_hamming_weight"
+        and sections["empirical_bridge"]["calibration_target"] == "example_length"
+        and abs(sections["empirical_bridge"]["calibrated_value"] - 14.5) < 1e-15
+        and sections["empirical_bridge"]["calibrated_unit"] == "m",
+        "empirical_likelihood_contract": abs(sections["empirical_bridge"]["example_chi_square"] - 1.25) < 1e-15
+        and sections["empirical_bridge"]["best_likelihood_model"] == "close"
+        and sections["empirical_bridge"]["comparison_count"] == 2,
+        "prediction_lock_contract": sections["prediction_ledger"]["empty_entry_status"] == "no_locked_predictions"
+        and sections["prediction_ledger"]["locked_entry_status"] == "has_locked_predictions"
+        and sections["prediction_ledger"]["entry_hash_length"] == 64
+        and sections["prediction_ledger"]["entry_hash_validates"] is True,
+        "standard_baseline_contract": abs(sections["standard_baseline"]["total_density"] - 1.0) < 1e-15
+        and abs(sections["standard_baseline"]["hubble_at_zero"] - 1.0) < 1e-15
+        and sections["standard_baseline"]["distance_curve_monotonic"] is True
+        and sections["standard_baseline"]["best_baseline"] == "standard"
+        and abs(sections["standard_baseline"]["best_baseline_chi_square"]) < 1e-15,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -167,6 +457,10 @@ def _markdown(certificate: dict[str, object]) -> str:
     adinkra = certificate["sections"]["adinkra"]
     branching = certificate["sections"]["branching"]
     markov = certificate["sections"]["markov_chain"]
+    physics = certificate["sections"]["physics"]
+    empirical = certificate["sections"]["empirical_bridge"]
+    prediction = certificate["sections"]["prediction_ledger"]
+    standard = certificate["sections"]["standard_baseline"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -197,6 +491,12 @@ def _markdown(certificate: dict[str, object]) -> str:
         "",
         f"- Hypercube states: `{hypercube['state_count']}`",
         f"- Integrity-valid states: `{hypercube['integrity_state_count']}`",
+        f"- Hypercube edge count: `{hypercube['edge_count']}`",
+        f"- Distance-shell counts: `{hypercube['distance_shell_counts']}`",
+        f"- Hypercube Laplacian spectral gap: `{hypercube['laplacian_spectral_gap']}`",
+        f"- Parity pair-flip graph degree: `{hypercube['pair_flip_graph_degree']}`",
+        f"- Parity pair-flip graph edge count: `{hypercube['pair_flip_graph_edge_count']}`",
+        f"- Parity pair-flip Laplacian spectral gap: `{hypercube['pair_flip_laplacian_spectral_gap']}`",
         f"- Full/integrity orbit counts: `{hypercube['full_orbit_count']}` / `{hypercube['integrity_orbit_count']}`",
         f"- Projection idempotence residual: `{projection['idempotence_max_abs_error']}`",
         f"- Projection output code-invariant: `{projection['output_is_code_invariant']}`",
@@ -218,6 +518,46 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Uniform-stationary residual: `{markov['uniform_stationary_max_abs_error']}`",
         f"- Minimum self-loop probability: `{markov['minimum_self_loop_probability']}`",
         "- Conclusion: the binomial Hamming-weight envelope is the marginal of uniform occupancy and is not evidence unique to the ASH code transforms.",
+        "",
+        "## Finite-observer physics layer",
+        "",
+        f"- Admissible physical states: `{physics['state_count']}`",
+        f"- Pair-flip kernel row residual: `{physics['kernel_row_sum_max_abs_error']}`",
+        f"- Pair-flip kernel symmetry residual: `{physics['kernel_symmetry_max_abs_error']}`",
+        f"- Uniform stationary residual: `{physics['uniform_stationary_max_abs_error']}`",
+        f"- Generator row residual: `{physics['generator_row_sum_max_abs_error']}`",
+        f"- Lumped background row residual: `{physics['background_row_sum_max_abs_error']}`",
+        f"- Background shell degeneracies: `{physics['weight_level_degeneracies']}`",
+        f"- Uniform background stationary residual: `{physics['uniform_background_stationary_max_abs_error']}`",
+        f"- Uniform background variance: `{physics['uniform_background_variance_hamming_weight']}`",
+        f"- Uniform mean Hamming weight: `{physics['uniform_mean_hamming_weight']}`",
+        f"- Uniform order parameter: `{physics['uniform_order_parameter']}`",
+        f"- Uniform entropy, bits: `{physics['uniform_entropy_bits']}`",
+        f"- Mode factors bounded: `{physics['mode_factors_bounded']}`",
+        "- Boundary: this is a finite-observer stochastic layer, not an observational cosmology result.",
+        "",
+        "## Empirical interface mechanics",
+        "",
+        f"- Example calibrated observable: `{empirical['calibration_target']}` = `{empirical['calibrated_value']}` `{empirical['calibrated_unit']}`",
+        f"- Example chi-square: `{empirical['example_chi_square']}`",
+        f"- Best example likelihood model: `{empirical['best_likelihood_model']}`",
+        "- Boundary: these are bridge and likelihood contracts, not an external fit.",
+        "",
+        "## Prediction ledger mechanics",
+        "",
+        f"- Empty ledger status: `{prediction['empty_entry_status']}`",
+        f"- Locked-entry status: `{prediction['locked_entry_status']}`",
+        f"- Entry hash length: `{prediction['entry_hash_length']}`",
+        f"- Locked-entry validation: `{prediction['entry_hash_validates']}`",
+        "- Boundary: mechanics for future locked predictions are present; no repository prediction is locked here.",
+        "",
+        "## Standard baseline mechanics",
+        "",
+        f"- Flat density total: `{standard['total_density']}`",
+        f"- `E(0)`: `{standard['hubble_at_zero']}`",
+        f"- Distance curve monotonic: `{standard['distance_curve_monotonic']}`",
+        f"- Best example baseline: `{standard['best_baseline']}`",
+        "- Boundary: this is a reference-baseline comparator, not an ASH-derived standard-cosmology limit.",
         "",
         "## Check matrix",
         "",

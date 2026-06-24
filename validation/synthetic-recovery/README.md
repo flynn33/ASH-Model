@@ -1,24 +1,18 @@
 # Synthetic Recovery Validation
 
-Status: Blocked
+Status: finite-observer smoke gate implemented; external recovery blocked
 
-## Purpose
+## Implemented finite gate
 
-Synthetic recovery tests will verify whether a frozen ASH-Physics model can recover known parameters from generated data before any real-data validation.
+The current finite-observer gate verifies that a known Hamming-weight
+background law can be lifted to a state law, evolved through the pair-flip
+kernel, and lumped back to the same result produced by the background kernel.
 
-## Required inputs
+Evidence:
 
-- Frozen dynamics and bridge map.
-- Background and perturbation equations.
-- Likelihood function and priors.
-- Synthetic data generator with recorded seeds.
+- `tests/test_physics.py::test_weight_background_kernel_matches_direct_state_kernel_lumping`
 
-## Acceptance gates
+## External recovery blocker
 
-- Coverage and bias targets are preregistered.
-- Recovery succeeds across representative parameter settings.
-- Failure cases are recorded without changing the frozen model version.
-
-## Current blocker
-
-The physical model and likelihood are not yet defined.
+Recovery against generated physical data remains blocked until a unitful
+bridge, likelihood, priors, and synthetic data generator are specified.

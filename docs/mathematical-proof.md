@@ -22,6 +22,57 @@ vertices. The complete count is
 
 These sum to 512 by the binomial theorem.
 
+### Exact graph spectra
+
+The adjacency matrix of `Q9` has eigenvalues
+
+\[
+\lambda_r=9-2r
+\]
+
+with multiplicity `C(9,r)` for `0<=r<=9`.  Equivalently, the
+unnormalized graph Laplacian has eigenvalues
+
+\[
+\Delta_r=2r
+\]
+
+with the same multiplicities, so the finite graph spectral gap is `2`.
+The trace identities
+
+\[
+\sum_r \lambda_r C(9,r)=0,\qquad
+\sum_r \lambda_r^2 C(9,r)=2\cdot 2304
+\]
+
+match zero diagonal trace and twice the undirected edge count.
+
+Restricting to the even-parity integrity subspace and using distance-two
+pair-flip edges gives a 256-vertex graph with degree `C(9,2)=36` and 4608
+undirected edges.  Its adjacency spectrum is
+
+```text
+36^1, 20^9, 8^36, 0^84, (-4)^126
+```
+
+and its unnormalized Laplacian spectral gap is `16`.
+
+For the even-parity Hamming shells `w in {0,2,4,6,8}`, the shell
+degeneracies are
+
+```text
+1, 36, 126, 84, 9
+```
+
+so the uniform admissible law has shell probabilities `C(9,w)/256`.  Its
+finite background moments are
+
+\[
+\mathbb E[W]=9/2,\qquad \operatorname{Var}(W)=9/4,
+\]
+
+and the order parameter `1 - 2 E[W]/9` is zero.
+
 ## 2. The application integrity subspace
 
 Define the linear functional

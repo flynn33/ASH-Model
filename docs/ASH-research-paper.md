@@ -19,6 +19,10 @@ The model's earlier implementation contained a useful coding-theory scaffold but
 
 Let `V=F_2^9`. Its 512 elements are the vertices of the nine-dimensional hypercube `Q9`. Two vertices are adjacent when they differ in exactly one coordinate. The Hamming plane of `x` is `wt(x)`; plane `k` has `binom(9,k)` vertices.
 
+The exact graph geometry is finite and computable: `Q9` has 2,304 undirected
+edges, distance-shell counts `binom(9,r)`, adjacency spectrum `9-2r` with
+multiplicity `binom(9,r)`, and unnormalized Laplacian spectral gap `2`.
+
 Application mapping uses the integrity subspace
 
 \[
@@ -26,6 +30,15 @@ E=\{x\in V:x_9=x_1\oplus\cdots\oplus x_8\},
 \]
 
 which has 256 states. The remaining 256 vertices are retained as integrity-invalid or corrupted states rather than silently discarded.
+
+The pair-flip graph on `E` is the distance-two hypercube graph restricted to
+the even-parity subspace.  It has degree 36, 4,608 undirected edges, adjacency
+spectrum `36^1, 20^9, 8^36, 0^84, (-4)^126`, and unnormalized Laplacian
+spectral gap `16`.  These are state-geometry invariants, not a physical metric.
+
+The corresponding even Hamming shells have degeneracies `(1, 36, 126, 84, 9)`.
+The uniform admissible law therefore has mean Hamming weight `9/2`, variance
+`9/4`, and zero order parameter.
 
 ![Deterministic projection of Q9](../figures/hypercube-3d-projection.png)
 

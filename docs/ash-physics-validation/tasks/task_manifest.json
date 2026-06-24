@@ -1,6 +1,7 @@
 {
   "schema_version": "1.0",
-  "branch": "ash-physics-validation",
+  "branch": "physics/research-foundation",
+  "scope_note": "Complete statuses refer to finite-observer v0.2 repository tasks. External empirical cosmology remains blocked until the validation status blockers are resolved.",
   "execution_loop": [
     "read_instructions",
     "audit_repository",
@@ -42,7 +43,9 @@
         "theory/microscopic-state-and-dynamics.md"
       ],
       "evidence": [
-        "theory/microscopic-state-and-dynamics.md"
+        "theory/microscopic-state-and-dynamics.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
       ]
     },
     {
@@ -64,7 +67,9 @@
         "theory/coarse-graining-and-bridge-map.md"
       ],
       "evidence": [
-        "theory/coarse-graining-and-bridge-map.md"
+        "theory/coarse-graining-and-bridge-map.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
       ]
     },
     {
@@ -112,7 +117,9 @@
         "phenomenology/observables_spec.md"
       ],
       "evidence": [
-        "phenomenology/observables_spec.md"
+        "phenomenology/observables_spec.md",
+        "src/ash_model/empirical.py",
+        "tests/test_empirical_bridge.py"
       ]
     },
     {
@@ -134,7 +141,9 @@
         "validation/matched-ablations/README.md"
       ],
       "evidence": [
-        "validation/matched-ablations/README.md"
+        "validation/matched-ablations/README.md",
+        "src/ash_model/empirical.py",
+        "tests/test_empirical_bridge.py"
       ]
     },
     {
@@ -156,7 +165,9 @@
         "validation/lcdm-limit/README.md"
       ],
       "evidence": [
-        "validation/lcdm-limit/README.md"
+        "validation/lcdm-limit/README.md",
+        "src/ash_model/cosmology.py",
+        "tests/test_cosmology.py"
       ]
     },
     {
@@ -168,7 +179,9 @@
       ],
       "evidence": [
         "predictions/prediction-ledger.json",
-        "predictions/falsification-criteria.md"
+        "predictions/falsification-criteria.md",
+        "src/ash_model/prediction_ledger.py",
+        "tests/test_prediction_ledger.py"
       ]
     },
     {
@@ -181,7 +194,8 @@
       "evidence": [
         "proofs/theorem-catalog.md",
         "proofs/finite-algebra-status.md",
-        "proofs/physics-proof-obligations.md"
+        "proofs/physics-proof-obligations.md",
+        "proofs/computational-certificate.json"
       ]
     },
     {
@@ -210,5 +224,6 @@
     }
   ],
   "canonical_task_manifest_path": "docs/ash-physics-validation/tasks/task_manifest.json",
-  "migration_note": "The neutral task_manifest.json path is the canonical repository path for package tasks."
+  "migration_note": "The neutral task_manifest.json path is the canonical repository path for package tasks.",
+  "model_version": "ash-physics-v0.2"
 }

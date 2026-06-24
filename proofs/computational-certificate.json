@@ -7,12 +7,26 @@
     "code_parameters": true,
     "decoder_radius_one_exhaustive": true,
     "double_errors_rejected": true,
+    "empirical_calibration_contract": true,
+    "empirical_likelihood_contract": true,
     "garden_algebra_exact": true,
+    "hypercube_edges_and_shells_exact": true,
+    "hypercube_spectrum_exact": true,
     "markov_uniform_stationary": true,
     "nine_dimensional_code_not_self_dual": true,
+    "parity_pair_flip_spectrum_exact": true,
+    "physics_background_lumped": true,
+    "physics_background_moments_exact": true,
+    "physics_bridge_observables_normalized": true,
+    "physics_generator_valid": true,
+    "physics_kernel_stochastic": true,
+    "physics_pair_flip_closed": true,
+    "physics_perturbation_modes_bounded": true,
+    "prediction_lock_contract": true,
     "projection_idempotent": true,
     "punctured_code_self_dual": true,
-    "quotient_isomorphism": true
+    "quotient_isomorphism": true,
+    "standard_baseline_contract": true
   },
   "project_version": "1.1.0",
   "sections": {
@@ -125,13 +139,180 @@
       "silent_correction_beyond_radius_one": false,
       "single_error_checks": 144
     },
+    "empirical_bridge": {
+      "best_likelihood_model": "close",
+      "calibrated_unit": "m",
+      "calibrated_value": 14.5,
+      "calibration_source": "mean_hamming_weight",
+      "calibration_target": "example_length",
+      "comparison_count": 2,
+      "example_chi_square": 1.25,
+      "example_log_likelihood": -1.7697298858494,
+      "interpretation": "Calibration and likelihood contracts only; no external data fit is claimed."
+    },
     "hypercube": {
+      "adjacency_spectrum": [
+        {
+          "eigenvalue": 9,
+          "multiplicity": 1
+        },
+        {
+          "eigenvalue": 7,
+          "multiplicity": 9
+        },
+        {
+          "eigenvalue": 5,
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": 3,
+          "multiplicity": 84
+        },
+        {
+          "eigenvalue": 1,
+          "multiplicity": 126
+        },
+        {
+          "eigenvalue": -1,
+          "multiplicity": 126
+        },
+        {
+          "eigenvalue": -3,
+          "multiplicity": 84
+        },
+        {
+          "eigenvalue": -5,
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": -7,
+          "multiplicity": 9
+        },
+        {
+          "eigenvalue": -9,
+          "multiplicity": 1
+        }
+      ],
+      "adjacency_square_trace": 4608,
+      "adjacency_trace": 0,
       "all_integrity_states_valid": true,
+      "distance_shell_counts": [
+        1,
+        9,
+        36,
+        84,
+        126,
+        126,
+        84,
+        36,
+        9,
+        1
+      ],
       "each_state_neighbor_count": 9,
+      "edge_count": 2304,
+      "even_parity_shell_counts": [
+        1,
+        36,
+        126,
+        84,
+        9
+      ],
       "full_orbit_count": 32,
       "integrity_orbit_count": 16,
       "integrity_state_count": 256,
+      "laplacian_spectral_gap": 2,
+      "laplacian_spectrum": [
+        {
+          "eigenvalue": 0,
+          "multiplicity": 1
+        },
+        {
+          "eigenvalue": 2,
+          "multiplicity": 9
+        },
+        {
+          "eigenvalue": 4,
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": 6,
+          "multiplicity": 84
+        },
+        {
+          "eigenvalue": 8,
+          "multiplicity": 126
+        },
+        {
+          "eigenvalue": 10,
+          "multiplicity": 126
+        },
+        {
+          "eigenvalue": 12,
+          "multiplicity": 84
+        },
+        {
+          "eigenvalue": 14,
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": 16,
+          "multiplicity": 9
+        },
+        {
+          "eigenvalue": 18,
+          "multiplicity": 1
+        }
+      ],
       "orbit_size": 16,
+      "pair_flip_adjacency_spectrum": [
+        {
+          "eigenvalue": 36,
+          "multiplicity": 1
+        },
+        {
+          "eigenvalue": 20,
+          "multiplicity": 9
+        },
+        {
+          "eigenvalue": 8,
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": 0,
+          "multiplicity": 84
+        },
+        {
+          "eigenvalue": -4,
+          "multiplicity": 126
+        }
+      ],
+      "pair_flip_adjacency_square_trace": 9216,
+      "pair_flip_adjacency_trace": 0,
+      "pair_flip_graph_degree": 36,
+      "pair_flip_graph_edge_count": 4608,
+      "pair_flip_laplacian_spectral_gap": 16,
+      "pair_flip_laplacian_spectrum": [
+        {
+          "eigenvalue": 0,
+          "multiplicity": 1
+        },
+        {
+          "eigenvalue": 16,
+          "multiplicity": 9
+        },
+        {
+          "eigenvalue": 28,
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": 36,
+          "multiplicity": 84
+        },
+        {
+          "eigenvalue": 40,
+          "multiplicity": 126
+        }
+      ],
       "plane_counts": [
         1,
         9,
@@ -148,12 +329,12 @@
       "state_count": 512
     },
     "markov_chain": {
-      "column_sum_max_abs_error": 2.220446049250313e-16,
+      "column_sum_max_abs_error": 0.0,
       "interpretation": "The binomial Hamming marginal follows from uniform occupancy; it is not ASH-specific evidence.",
       "minimum_self_loop_probability": 0.8,
       "noise_probability_checked": 0.2,
       "positive_hypercube_edges": 4608,
-      "row_sum_max_abs_error": 2.220446049250313e-16,
+      "row_sum_max_abs_error": 0.0,
       "uniform_hamming_marginal": [
         0.001953125,
         0.017578125,
@@ -166,7 +347,64 @@
         0.017578125,
         0.001953125
       ],
-      "uniform_stationary_max_abs_error": 4.336808689942018e-19
+      "uniform_stationary_max_abs_error": 0.0
+    },
+    "physics": {
+      "all_states_parity_valid": true,
+      "background_row_sum_max_abs_error": 0.0,
+      "evolved_weight_distribution_mean": 1.7902716049382714,
+      "evolved_weight_distribution_sum": 1.0,
+      "generator_row_sum_max_abs_error": 0.0,
+      "generator_symmetry_max_abs_error": 0.0,
+      "interpretation": "Finite-observer stochastic physics layer; not an observational cosmology claim.",
+      "kernel_row_sum_max_abs_error": 0.0,
+      "kernel_symmetry_max_abs_error": 0.0,
+      "lazy_pair_flip_mode_factors": [
+        1.0,
+        0.8444444444444444,
+        0.7277777777777777,
+        0.65,
+        0.6111111111111112,
+        0.6111111111111112,
+        0.65,
+        0.7277777777777777,
+        0.8444444444444444,
+        1.0
+      ],
+      "mode_factors_bounded": true,
+      "pair_flip_probability_checked": 0.35,
+      "pair_flip_rate_checked": 1.25,
+      "state_count": 256,
+      "uniform_background_distribution": [
+        0.00390625,
+        0.140625,
+        0.4921875,
+        0.328125,
+        0.03515625
+      ],
+      "uniform_background_mean_hamming_weight": 4.5,
+      "uniform_background_order_parameter": 0.0,
+      "uniform_background_stationary_max_abs_error": 0.0,
+      "uniform_background_variance_hamming_weight": 2.25,
+      "uniform_entropy_bits": 8.0,
+      "uniform_mean_hamming_weight": 4.5,
+      "uniform_order_parameter": 0.0,
+      "uniform_parity_valid_probability": 1.0,
+      "uniform_stationary_max_abs_error": 0.0,
+      "weight_level_degeneracies": [
+        1,
+        36,
+        126,
+        84,
+        9
+      ]
+    },
+    "prediction_ledger": {
+      "empty_entry_status": "no_locked_predictions",
+      "entry_hash_length": 64,
+      "entry_hash_validates": true,
+      "interpretation": "Prediction-lock mechanics are implemented; no repository prediction is locked by this example.",
+      "locked_entry_status": "has_locked_predictions"
     },
     "projection": {
       "codeword_count": 16,
@@ -174,6 +412,22 @@
       "idempotence_max_abs_error": 0.0,
       "output_is_code_invariant": true,
       "state_count": 512
+    },
+    "standard_baseline": {
+      "best_baseline": "standard",
+      "best_baseline_chi_square": 0.0,
+      "dark_energy_density": 0.7,
+      "distance_curve": [
+        0.0,
+        0.44098433481065213,
+        0.7714271046433859
+      ],
+      "distance_curve_monotonic": true,
+      "hubble_at_one": 1.7606816861659007,
+      "hubble_at_zero": 1.0,
+      "interpretation": "Standard-baseline comparison mechanics only; not an ASH-derived cosmology limit.",
+      "matter_density": 0.3,
+      "total_density": 1.0
     }
   },
   "source_sha256": {
@@ -196,19 +450,19 @@
     "CODE_OF_CONDUCT.md": "d62908e6788db8f909131bd0ef64a38a943758d68653b5e29f942b448ede2b60",
     "CONTRIBUTING.md": "df82eb27c381df7d89e8e7bd87ceef8458268e7c3b54cebc320d158a082a449d",
     "LICENSE": "213910e1405c0866a1200da12f1dcd5a4f41ed3d4a82c9c78acf85e6f5f304a6",
-    "README.md": "3f57ccc7cb615930580d97d4f196d87c33e7d4d95803152327e73611aa80ce98",
+    "README.md": "912f18f133f0411e7ccf5ff6be69ab4793708ecc549cfccccf8b733432bdb658",
     "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
     "axioms-of-existence.json": "f1a71833bb53b31e120d0591bd717999aeb23d729f58a29b8c9104a915bf25ef",
     "changelog/CHANGELOG.md": "0fd17018ef2f4896e3976efd6c98e2f406b406d997bfe46984395de1e5e73d17",
     "config/ash_mapping_v1.json": "aef24e8eba2441025e1e440e2791215d32d163e0b7b91d25bb7e9b7018260c79",
     "data/branch-topology.json": "e114168b20ce2842126b949399b07750160fb0acbdf3971a028f5fcc15d3748c",
     "data/simulation-metadata.json": "666915a7c6d93b37e26eb9d1eca44b6fcba68f8d412871c8f40476727cc7b43a",
-    "docs/ASH-research-paper.md": "032067025b6969ac72d0b41923376730d5086a5cf9258a856ed5a515229b2575",
+    "docs/ASH-research-paper.md": "bcfed7ba4ced8c1fe9ba5c85e12fb1b96d960062c24f49296e557bacac3ed43f",
     "docs/ash-physics-validation/IMPLEMENTATION_INSTRUCTIONS.md": "de06725adb28a0020eae3c3164008d57f2ffa9227777603b5ad1f24ec6cbac31",
-    "docs/ash-physics-validation/PACKAGE_MANIFEST.json": "6cab5a96230e9023a7c0254abff8e524d23090bcfd8d8cb2cfec06e37d20cf64",
+    "docs/ash-physics-validation/PACKAGE_MANIFEST.json": "d3ed360f74ee7537b11783e6113045ff19239ee4c8ef5c82405ce6367a061aa9",
     "docs/ash-physics-validation/PACKAGE_QA.json": "0d959a19221b586333d80e3b7fd072a3eaa6827c1b288c163f53175e2ee9ef37",
-    "docs/ash-physics-validation/README.md": "2391dd11cdaf64e7d0651cdbb1727dc19ac909b91120d01c4858c7c9f2d92b68",
-    "docs/ash-physics-validation/configs/prediction_ledger.schema.json": "a7559d584f6a3828e6b202cd436346482e62c8a8104a57090652bfe0313f804b",
+    "docs/ash-physics-validation/README.md": "e66a5ca869e709c358dd9444acab15dedc00b44dc6dc7002fda5685bf0c295c8",
+    "docs/ash-physics-validation/configs/prediction_ledger.schema.json": "946103ea52d78095680d8b29e88c6b6e38471e2bbcaa26184181076b276c02b2",
     "docs/ash-physics-validation/configs/preregistration.schema.json": "99519298a65bb1ba8b2c18107f9e38d414bf50105e27d4b58af39abe5b8d8ed6",
     "docs/ash-physics-validation/configs/proof_certificate.schema.json": "56d7c4551cbb0cc3b91116bee2dca04fb041bf06d953f903ad7602666ecf96b1",
     "docs/ash-physics-validation/configs/task_manifest.schema.json": "1fda2013cc56094c70ef2b26ed716e9e95621384ad96a8f0b8aaf475c498f9b4",
@@ -226,79 +480,87 @@
     "docs/ash-physics-validation/reference/ASH_Model_Verifier_Negative_Tests.json": "8bfb9736eb70c1b82717bfdf333097de18ab2c96ea933bbd0f6162e0d43b8847",
     "docs/ash-physics-validation/scripts/check_claim_language.py": "170dd05acfaa94c7c1b110c08cf257c8f03b1f41cef2e6eae398219cd90767c2",
     "docs/ash-physics-validation/scripts/check_sensitive_language.py": "9681a7ec3cca063ad1dcf1278b846ed62427645ede1b084b26def9447d023a00",
-    "docs/ash-physics-validation/scripts/run_repository_gate.py": "a8130ac7c1d2fd10ec11675185840f34ef334d3340d0b94d678fa06860f3f60f",
+    "docs/ash-physics-validation/scripts/run_repository_gate.py": "44b7ac886606d511c02199ce4bceaca6810bd50b7c1a3f1f066847008c666ee7",
     "docs/ash-physics-validation/tasks/empirical_backlog.json": "c7fd48801e84953d845ac4b2f8d072f5b06d3e870c20cdc00e15f505437f24af",
     "docs/ash-physics-validation/tasks/proof_backlog.json": "3ce4132a5c5bdee7871f0a50a94603ec1716b203c75e504c6925f97ad0e06db2",
-    "docs/ash-physics-validation/tasks/task_manifest.json": "3997de57dc255855b8718fe2e68ab4d20c11dcbf3575af5334129987030ad046",
+    "docs/ash-physics-validation/tasks/task_manifest.json": "75102597ccae592fd0abde233b4cf1a8310e9f4de293f14686e1c5118e1a155a",
     "docs/ash-physics-validation/templates/preregistration.md": "34bd9912356c4d9a066306524ee1113e95b8785cfe19fcd06a799f62edf976d8",
     "docs/ash-physics-validation/templates/theorem_catalog.md": "721911b1ff676359a9587e8c78684771119630a2eb612365a7a371bbdde23d0c",
-    "docs/ash-physics-validation/templates/validation_status.json": "aac9f909f48e01508a40d1fc79bc159d044058c074cfccd1da3f016411569f53",
+    "docs/ash-physics-validation/templates/validation_status.json": "6b7d036ea97b154c524e3f170ff20b0a1e3d7a79ac3694ce5952bed5ef58cc95",
     "docs/audit-resolution.md": "86217abcc867b0ba3ac288cd1d62e4a64ccd7786795ed458427ef52bb335a004",
-    "docs/canonical-computational-specification.md": "f25359ee940bce6e96e05a0d786374c67cb9c4469071cafa96d2615582580d6a",
+    "docs/canonical-computational-specification.md": "4ab825d8722e00b035e75b653a23dc176e2a96b51414241d0199946700789ddd",
     "docs/consistency-validation-report.md": "22a0f9c037f93327207aca334a6223d3ae7ce8edda30ca74670dfb650cd86088",
     "docs/data-accuracy-audit.md": "69beef38a41213a6801d3b574a126306fdb1beba8d758d0a85cea5f05296ae50",
     "docs/falsification-and-controls.md": "8c21ebde99b63d10d57117a615a639927df35251472b15d731de402fa1e229fe",
     "docs/governance/discussion_moderation_policy.md": "9c56afb1fa37b35c9ea1e7ec11929b1b55fb0431305ad0415b64d8c7a5e5537c",
     "docs/governance/github_automation_agents.md": "d8888d256267229c3d9fcef26cd2bf3a038207569f9143410c16585cbd544441",
     "docs/mathematical-accuracy-review.md": "03f0b720fe288b5246ba6411182e8ac84093a95e83d8c2a6fc6aa6ddfa412679",
-    "docs/mathematical-proof.md": "70ac2a6112b5694dadcb901d1bb2d9f98f897bca760d9ef5d709b527b90bbcf1",
+    "docs/mathematical-proof.md": "298278413efaba66f1730b5bd496e281188a8e7d2de0b7a3960fe4571e4591bb",
     "docs/mirmir-integration.md": "3293da531348521e97341a181be56ee8b8357ecb723a25ac8b395a1b913bfaca",
     "docs/python-code-validation.md": "cfaecb83ce1b6bcf9ad44271cc79b69f869effd3ba40f89a5362252922597aa4",
     "docs/repository-review.md": "ae1c5445be705d358b5f791270f64b5ab2ec73cfd9054c395e902356b8597cd5",
     "latex/main.tex": "5a232384db3674574114b947ac1dfe447cb9abb3aebb24f80f89530e931502fa",
-    "phenomenology/README.md": "214a2c3b714223fbc67103784e28fc9fece25670f6ff28f6f82b9feb1aba798b",
-    "phenomenology/ash_background_spec.md": "38c5319b107eeae32765a10852e62ada96d50baed101d64203b4a93eea9ec1ac",
-    "phenomenology/ash_perturbations_spec.md": "b9030d4951a4ced0c44957a07f39488e03bb6c33ece115cec47921d330167208",
-    "phenomenology/observables_spec.md": "415c970819cb139bc1bd6ef5352ea31b6424d9c0a49d447271380281d59f0cef",
-    "phenomenology/primordial_spectrum_spec.md": "b0506628898cd473587fd85afece1a6de089595f514230707e41588136038216",
-    "predictions/falsification-criteria.md": "72e45ae04a61e40162dc49dc23c9008df78a254b97e27ffaa937f680630b1b27",
-    "predictions/prediction-ledger.json": "f1289d63d4271e6879dabb8d267e90fb8efcb8534406217572ed4661f7ef9033",
+    "phenomenology/README.md": "981970197971fc45912f36ebf67251110aef844c7a4309625285e5a6fd8edaec",
+    "phenomenology/ash_background_spec.md": "4211ddfb039f15c2326885a9b92bd731a218571fc69fcb7f54f9538aea5dc7f1",
+    "phenomenology/ash_perturbations_spec.md": "9ad6c991ca405a6f8419a316c9efc11f52d393e454bd3aaa2cb28e93e7e81ee4",
+    "phenomenology/observables_spec.md": "50a261daa13afdd7a7387a6fcd2457710a8af95635292bcb486fc4cfe0111c8a",
+    "phenomenology/primordial_spectrum_spec.md": "eb636ade08319c8527ee40102a1b569674bf88ee18fe979ed2b1aef8836ee654",
+    "predictions/falsification-criteria.md": "182012217051bdce79a96d37f740739a0c4be4475a6b4cba47b095554512c010",
+    "predictions/prediction-ledger.json": "ced86e9d9bf2a3a4613317fbdb83546b5315b4c073f81086af46ba7040b18393",
     "pyproject.toml": "b449a1074354d9713f8d7dc62604dc6a8e364810a2e20bf8422d38813e6ff110",
     "scripts/github/discussion_agent.py": "8a4cda43bb2df75c106eb86622ccb54cdb6c8a83d0c9959b309d951b28c33361",
     "scripts/github/discussion_moderation_agent.py": "02430dd7c1a761aa31cc20b84627d2151d80a09071b94c5fe43752d13c0a7c2a",
     "scripts/github/discussion_topic_agent.py": "1a5bad3b569dc065589b3cf1553be253fdf628d28741d07c98bf9214b5059c94",
     "simulation.py": "3f3cdb342062deb2c19d10d561abed6918556ea40516b53d0e424b7bf11054f9",
-    "src/ash_model/__init__.py": "2c26ff56646481693ab26ca861daefdb94ea62948d334d071d8719f7f63ca449",
+    "src/ash_model/__init__.py": "b11f2b4348ee106e5cfa3ceb0b01e3662ec3e62f68a1256748377f1bba928b91",
     "src/ash_model/adinkra.py": "13f360b11b95033940ead7fd507664e3ce81b14c53921bc68d7223ff223f86c0",
     "src/ash_model/bits.py": "cdcc9027da11b4dcae5d6bd53dda404d021dee10b01bbf0f86dd9be1c9d481cb",
     "src/ash_model/branching.py": "7c6378e1a3f03e7d277bca04651eaf3d24b5e4cb15799c106c99a76d2f2c3ef3",
     "src/ash_model/code.py": "272a91ad1af3e51d6b9fe2545212448cefb404e0818d55c5623441ae636ba992",
+    "src/ash_model/cosmology.py": "3839c1ddabffc7aa364f595eef78c86a62f13e89793917f3be7a1f2c2a39ffdb",
+    "src/ash_model/empirical.py": "320b1013c6770c153d56fe9235ac8299551003937151c5326790f005b90ce41f",
     "src/ash_model/features.py": "47f31bde543768caee3e325edffb60770c2a93428a32479dfbfeeccfda77de30",
-    "src/ash_model/hypercube.py": "427d20d71dc4693b81c8d142264d769520eb99bf21278d888db559ec507a2965",
+    "src/ash_model/hypercube.py": "b03528c7c7e860f7d7ddc5cb8f5d56115ba563499d9b55d2e269afc67c1feef8",
+    "src/ash_model/physics.py": "f2d861922a1bd071fbeea4705bef5a718cc9cf8800d637f0540f127af0f57ac5",
     "src/ash_model/pipeline.py": "8bd106051a922721836df78584ce478c3ecda2072264970b477a104a0fbecc77",
+    "src/ash_model/prediction_ledger.py": "2e5a582da290c44c098b1844952650cdde798fa4814b39d235f33b2c9a2bdde0",
     "src/ash_model/projection.py": "4ef9c24d8143e669c1d88a086d25aa2e1f6f199e259ddadaaeb9c5c1101fc1f1",
     "src/ash_model/reconstruction.py": "89dc2de96f75d0ccedc1be7d48c4f558071270650806daaf58ae4c3ed313fc1f",
     "src/ash_model/simulation.py": "5c36fec87dd170cb57bcd898f4ac7ad5fb94b90c5c2aa21670269bf8a3a0915f",
     "src/derive-9-properties.py": "161d6961d49754fafac653c4833546825be887e39153bc0b21fda93dfa1ad2a5",
     "src/simulate.py": "54cdfaa1f1f26dc21c594c4c4f60a0021cd2ea618eab6354a4ad8e6d859e6877",
-    "tests/test_bits_hypercube.py": "e9ce2025d40ba2aae55175514ab302a5ea4e2b6fe4dd726a22f2e249fa5eeca7",
+    "tests/test_bits_hypercube.py": "9b6ef1be9223b77737f284dd9bbc3b94fbdca8c0beeda3602b720c1a316bbd34",
     "tests/test_branching_reconstruction_pipeline.py": "42e3ccd646576b8ed58e63175d69222473287112ab3e1fcf34de87ea50112a79",
     "tests/test_code.py": "828c64a45a500444c31359b6f06c2ffaec8296268670e201ab29259bcb073110",
     "tests/test_config_conformance.py": "5b9ea1e97bdc9095c95c455e778212451649fb331776f9047bb3379f7f96e244",
+    "tests/test_cosmology.py": "2e7aaa7bb005217f34e7267b5573273fd5177fd3ffb2de29900b3ee3b834d83f",
+    "tests/test_empirical_bridge.py": "70c122a8d4df6763e50caa986949dc0b8354c698c28d846cb7de8cd42d9f03ac",
     "tests/test_features.py": "684952b4a4a6583cab344a9aab25de78e6a6a7bab0735faf1f4d7076186919ab",
+    "tests/test_physics.py": "326df9bb2444304f35c9c201efbe88e8924012698621be1ff799071deba263b8",
+    "tests/test_prediction_ledger.py": "99a68a6d997a6f068a59c7c611c2fa63db0e9fc34ce2caeb232ecc0a57b018a3",
     "tests/test_projection_adinkra.py": "690225ebfa30dcd12a80fc4b48005cc1619bcf66e498579d02787015462cfee2",
     "tests/test_repository_claims.py": "a634a52f2bccb766e2a07f6772de77c9dbccb83b4d8ec33df91aa2e5859893c6",
     "tests/test_repository_integrity.py": "793a957c7552e0713097154da2b2ec40d367f73839e1dad2f62367b56c1fdad8",
     "tests/test_simulation.py": "d18efb724b9d4e6e658c460cd92a287c9d7f3500a6e902b84dd01d479b4e1eca",
-    "theory/causal-structure.md": "a5ff38ac059a44a80e1eba4a2d3016ec6b6af008e1fa9e7dfd84b360fa177ebc",
-    "theory/coarse-graining-and-bridge-map.md": "2875bee5da3a535f5404d5bb03f834303bd272f9eae33b7c29e864d5a722731b",
-    "theory/continuum-limit.md": "d1c0e3482faf609870cdb35384f4284150c009c9e03fa5184ed9a7a1f4329dde",
-    "theory/cosmological-background.md": "b48e079c5e533630286728315b5805110a97095060d4b33101c6774a65c2e7ba",
-    "theory/linear-perturbations.md": "ab24dc85b7432d712f5221204628f09bd6b7a42edb10f5c9f1d91588d1732f26",
-    "theory/microscopic-state-and-dynamics.md": "b3d77a5ac55eb3ca720ec9fdf817669ac2dcf42013d15610cee91d2c750b6cc4",
-    "theory/physical-postulates.md": "d4c4f0431d6c87197150897fe5148dc67f6cebb03e73bebbac7af33f9262d727",
+    "theory/causal-structure.md": "c80b59885e9251dffbb3337e129de3dfc63482a6f9d03aee5334dc69f359d137",
+    "theory/coarse-graining-and-bridge-map.md": "4fe127fcdc36487305ca520624ec9e249c6ed8024eb79210c98f3c7feb487296",
+    "theory/continuum-limit.md": "40f645992328e96cfff0f597aebd07da42d24151b4d70dd9e2465f2c94cb1e37",
+    "theory/cosmological-background.md": "e0d5bd699a45097b0b3aa1c28294a96b60dcf1748d8e5a9d5c6a34868d95c868",
+    "theory/linear-perturbations.md": "ee681b628a4efc0be20ab72e054bb7c7b952e5a3e1eae9c265d796e95b016583",
+    "theory/microscopic-state-and-dynamics.md": "a543635fa29116e2c4e6c3f7627e13ad838b7b09885b749871ee921490e06543",
+    "theory/physical-postulates.md": "78d12f2a46c266a3140b15d72893a80dbd9bdc6034d89bf4cc821cdd4f5b7aba",
     "tools/__init__.py": "a61d112f13d4188ec891315ea0f254d0131bd9ccd1847229dbb3d2469e0bb7de",
     "tools/audit_simulation_data.py": "0b2be60bff931968223e99d6b8b830cc9667e016b56ed6521e05aff413bac090",
     "tools/build_manuscript.py": "19d1f7d94da6f0f1bbce778a039203b63ab4f39b0fb9f5ceb132ceae9fe86e1e",
     "tools/generate_artifacts.py": "d04fe5ef421ea4a750778b23277c4dda116e65adafa62b0361c5e2cba289fdd7",
-    "tools/run_proof_suite.py": "370da9eaea5b485b4a6f621a7960822e7c2b10ffdb881ef4ddb8a770cc49c7a7",
+    "tools/run_proof_suite.py": "43162df6191679d5db141539e3562e9657816e51a555a4857960dcaf788722cb",
     "tools/verify_repository.py": "1e9b725e568b00a721aca8b30a838b86a9a94b356db1f6a61ca1e3e5afd4d9c3",
-    "validation/lcdm-limit/README.md": "725f9bd3fd1712c44148f6afb1e038afaffd7c46daca1c1ba4cdbd19a92450fb",
-    "validation/matched-ablations/README.md": "7e2368509754c80eaddfb98b6a98b1899467bf9e321bd34a4055dd19a0286d4c",
-    "validation/numerical-convergence/README.md": "a6ce390345786b893985d2fc1cfdd942a47f2de8bf8d8ed9d3911b444a9a3829",
+    "validation/lcdm-limit/README.md": "b03ac3bba6122bf3e4e505c3f1188e8ddf1203ed27fae0a24f16d88b36e0b555",
+    "validation/matched-ablations/README.md": "004b2df17503b5276b0b63e00469e439bb52983d440ee2f286d5dc6f2372a5b9",
+    "validation/numerical-convergence/README.md": "c04c5bbf76f8efc0bf1ae7a699b8fceed01be7a421e225c59fd61e81e9abe7ac",
     "validation/preregistration.md": "74d5875c196627430cc959cbbcacfbdfec13c011e1b5f82b1c03b38782ca0fd6",
-    "validation/status.json": "09baf0b8d494dc1fa80c738e71d0ae64fd4eb97c20530fc629b0b4fe25198cc2",
-    "validation/synthetic-recovery/README.md": "30d23cc72726adf5ea68681b0ad7f9b1a4ee3de1b2e4fdb72bf8798b6f5f5d9e",
+    "validation/status.json": "e5b7772ce9127f785571de6b9dd5de098df535f0e6333640ffbbfa92188de169",
+    "validation/synthetic-recovery/README.md": "f74a411ab65daef967315632f19b362b81f96602ff4b4e1451047e3e2b31063f",
     "wiki/Consistency-Checklist.md": "53a7b47394e2fbd7599e3b3305836c2cb5ba84b5fe70eff9021dd17c7967ab9b",
     "wiki/Home.md": "2b2b95fb15df32ef1bf4ee0b559fe4e08b4f08d6233258f01566466a76b95ff9",
     "wiki/Repository-Structure.md": "fe1d683be9f70638d801f76b2ed1a386a7b775288af3761797fc0fa9d729e06b",
