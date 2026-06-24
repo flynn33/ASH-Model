@@ -80,6 +80,10 @@ def _source_manifest() -> dict[str, str]:
     suffixes = {".py", ".json", ".toml", ".md", ".tex", ".yml", ".yaml", ".cff"}
     filenames = {"LICENSE", "VERSION", ".gitignore"}
     excluded_prefixes = ("proofs/",)
+    excluded_paths = {
+        "docs/remediation/final-remediation-evidence.json",
+        "docs/remediation/physics-readiness.json",
+    }
     manifest: dict[str, str] = {}
     for path in sorted(REPO_ROOT.rglob("*")):
         if not path.is_file():
@@ -87,7 +91,12 @@ def _source_manifest() -> dict[str, str]:
         if path.suffix.lower() not in suffixes and path.name not in filenames:
             continue
         relative = path.relative_to(REPO_ROOT).as_posix()
-        if relative.startswith(excluded_prefixes) or "/__pycache__/" in f"/{relative}/" or "/.pytest_cache/" in f"/{relative}/":
+        if (
+            relative in excluded_paths
+            or relative.startswith(excluded_prefixes)
+            or "/__pycache__/" in f"/{relative}/"
+            or "/.pytest_cache/" in f"/{relative}/"
+        ):
             continue
         manifest[relative] = hashlib.sha256(path.read_bytes()).hexdigest()
     return manifest

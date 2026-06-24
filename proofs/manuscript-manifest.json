@@ -1,16 +1,63 @@
 {
-  "passes": 2,
-  "pdf": {
-    "bytes": 1331526,
-    "path": "docs/ASH-Model-Preprint-v1.pdf",
-    "sha256": "a25e0df4b9567e82e03b29620726d141590770b6eacd138542742b3c893a0629"
+  "environment": {
+    "pdflatex_required": false,
+    "policy": "platform-independent source-input hashing"
   },
+  "policy_description": "The committed PDF is bound to deterministic hashes of the LaTeX source, bibliography files, generated figures, and current PDF bytes. CI fails when any source-bound input changes without a manifest update.",
   "project_version": "1.1.0",
-  "schema_version": "1.0.0",
-  "source": {
-    "bytes": 12424,
-    "path": "latex/main.tex",
-    "sha256": "5a232384db3674574114b947ac1dfe447cb9abb3aebb24f80f89530e931502fa"
-  },
-  "source_date_epoch": 1782259200
+  "schema_version": "1.1.0",
+  "source_date_epoch": 1782259200,
+  "source_inputs": [
+    {
+      "bytes": 12424,
+      "path": "latex/main.tex",
+      "sha256": "5a232384db3674574114b947ac1dfe447cb9abb3aebb24f80f89530e931502fa"
+    },
+    {
+      "bytes": 2682,
+      "path": "latex/bibtex.bib",
+      "sha256": "5e80588a1b6d29a2125b34292fb33c2b8cadae4bb3a260bd51b057a2500fc63f"
+    },
+    {
+      "bytes": 2495,
+      "path": "latex/references.bib",
+      "sha256": "adb04e5f209f62d1dd4ee4b56f5b6ccda002b404280dd5947dee136177113f59"
+    },
+    {
+      "bytes": 1331526,
+      "path": "docs/ASH-Model-Preprint-v1.pdf",
+      "sha256": "a25e0df4b9567e82e03b29620726d141590770b6eacd138542742b3c893a0629"
+    },
+    {
+      "bytes": 582559,
+      "path": "figures/adinkra-graph-colored.png",
+      "sha256": "b90b4d9ad4777320ec95052a056ca7a77b8aaeae80f6effec751fa650d3a1a67"
+    },
+    {
+      "bytes": 232335,
+      "path": "figures/branch-topology.png",
+      "sha256": "a5bb30acb97f53f79ab896821293096a742b37bc6e05756eade9943eee6f2f5b"
+    },
+    {
+      "bytes": 458375,
+      "path": "figures/hypercube-3d-projection.png",
+      "sha256": "da4c4f752d09f9b26d861e1a9037501fa77e818c505d392f4f3bba0086999924"
+    },
+    {
+      "bytes": 31524,
+      "path": "figures/simulation-histogram-generated.png",
+      "sha256": "1c468672f423465a703aec9049b1e39159b3d375e3c6aabce58d0dff9d4b11fc"
+    },
+    {
+      "bytes": 60476,
+      "path": "figures/simulation-histogram.png",
+      "sha256": "1f5457a70c911398bd20725b18c7f79dd52cfc018ac7628f2e125a7ac9db25c9"
+    },
+    {
+      "bytes": 44769,
+      "path": "figures/single-bit-error.png",
+      "sha256": "8bc96030dfb736405e4b20f3607fd191dbfbbcd540c9a616309e8d54462f5741"
+    }
+  ],
+  "verification_policy": "source_input_equivalence"
 }

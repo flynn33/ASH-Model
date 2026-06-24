@@ -33,7 +33,7 @@ The earlier repository overstated self-duality in nine dimensions, error correct
 | Adinkra layer | 16-vertex `Q8/C8` quotient and exact N=8 Garden matrices |
 | Controlled-noise limit | uniform state occupancy, with `Binomial(9,1/2)` Hamming marginal |
 
-The generated proof certificate is in [`proofs/computational-certificate.md`](proofs/computational-certificate.md), with the full machine-readable record in JSON. The manuscript PDF is cryptographically bound to its exact LaTeX source by [`proofs/manuscript-manifest.json`](proofs/manuscript-manifest.json).
+The generated proof certificate is in [`proofs/computational-certificate.md`](proofs/computational-certificate.md), with the full machine-readable record in JSON. The manuscript manifest records deterministic hashes for the LaTeX source, bibliography inputs, generated figures, and committed PDF in [`proofs/manuscript-manifest.json`](proofs/manuscript-manifest.json).
 
 ## Finite-observer physics layer
 
@@ -89,7 +89,7 @@ pytest
 python tools/verify_repository.py
 ```
 
-After changing `latex/main.tex`, rebuild and bind the manuscript before regenerating the proof certificate:
+After changing manuscript source, bibliography inputs, generated figures, or the committed PDF, refresh the source-input manifest before regenerating the proof certificate:
 
 ```bash
 python tools/build_manuscript.py

@@ -1,38 +1,60 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ASH Proof Certificate",
+  "title": "ASH Computational Proof Certificate",
   "type": "object",
+  "additionalProperties": false,
   "required": [
-    "schema_version",
-    "model_version",
-    "commit",
-    "theorems",
-    "artifacts",
-    "verification"
+    "certificate_schema",
+    "project_version",
+    "arithmetic",
+    "sections",
+    "checks",
+    "all_checks_pass",
+    "source_sha256"
   ],
   "properties": {
-    "schema_version": {
+    "certificate_schema": {
       "type": "string"
     },
-    "model_version": {
+    "project_version": {
       "type": "string"
     },
-    "commit": {
+    "arithmetic": {
       "type": "string"
     },
-    "theorems": {
-      "type": "array",
-      "items": {
+    "sections": {
+      "type": "object",
+      "required": [
+        "code",
+        "decoder",
+        "hypercube",
+        "projection",
+        "adinkra",
+        "branching",
+        "markov_chain",
+        "physics",
+        "empirical_bridge",
+        "prediction_ledger",
+        "standard_baseline"
+      ],
+      "additionalProperties": {
         "type": "object"
       }
     },
-    "artifacts": {
-      "type": "object"
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
     },
-    "verification": {
-      "type": "array",
-      "items": {
-        "type": "object"
+    "all_checks_pass": {
+      "type": "boolean"
+    },
+    "source_sha256": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
       }
     }
   }

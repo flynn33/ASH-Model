@@ -44,6 +44,10 @@ REQUIRED_ARTIFACTS = MANIFEST_ARTIFACTS + (
 SOURCE_SUFFIXES = {".py", ".json", ".toml", ".md", ".tex", ".yml", ".yaml", ".cff"}
 SOURCE_FILENAMES = {"LICENSE", "VERSION", ".gitignore"}
 SOURCE_EXCLUDED_PREFIXES = ("proofs/",)
+SOURCE_EXCLUDED_PATHS = {
+    "docs/remediation/final-remediation-evidence.json",
+    "docs/remediation/physics-readiness.json",
+}
 
 
 def sha256(path: Path) -> str:
@@ -58,6 +62,8 @@ def current_source_manifest() -> dict[str, str]:
         if not path.is_file():
             continue
         relative = path.relative_to(REPO_ROOT).as_posix()
+        if relative in SOURCE_EXCLUDED_PATHS:
+            continue
         if relative.startswith(SOURCE_EXCLUDED_PREFIXES):
             continue
         if "__pycache__" in path.parts or ".pytest_cache" in path.parts:
@@ -134,8 +140,24 @@ def verify_artifact_manifest() -> list[str]:
 
 
 
+def expected_manuscript_inputs() -> list[str]:
+    """Return the deterministic manuscript input set tracked by the manifest."""
+
+    required_inputs = [
+        "latex/main.tex",
+        "latex/bibtex.bib",
+        "latex/references.bib",
+        "docs/ASH-Model-Preprint-v1.pdf",
+    ]
+    figure_inputs = [
+        path.relative_to(REPO_ROOT).as_posix()
+        for path in sorted((REPO_ROOT / "figures").glob("*.png"))
+    ]
+    return required_inputs + figure_inputs
+
+
 def verify_manuscript_manifest() -> list[str]:
-    """Bind the tracked PDF to the exact LaTeX source and release version."""
+    """Bind the tracked PDF to deterministic source-input evidence."""
 
     manifest_path = REPO_ROOT / "proofs" / "manuscript-manifest.json"
     if not manifest_path.is_file():
@@ -150,26 +172,44 @@ def verify_manuscript_manifest() -> list[str]:
     if payload.get("project_version") != expected_version:
         mismatches.append("manuscript manifest project version mismatch")
 
-    expected_entries = {
-        "source": "latex/main.tex",
-        "pdf": "docs/ASH-Model-Preprint-v1.pdf",
-    }
-    for section, expected_path in expected_entries.items():
-        entry = payload.get(section)
+    if payload.get("verification_policy") != "source_input_equivalence":
+        mismatches.append("manuscript manifest verification policy mismatch")
+
+    source_inputs = payload.get("source_inputs")
+    if not isinstance(source_inputs, list):
+        return mismatches + ["manuscript manifest has invalid source_inputs"]
+
+    entries: dict[str, Any] = {}
+    for index, entry in enumerate(source_inputs):
         if not isinstance(entry, dict):
-            mismatches.append(f"manuscript manifest has invalid {section} entry")
+            mismatches.append(f"manuscript manifest source_inputs[{index}] is invalid")
             continue
-        if entry.get("path") != expected_path:
-            mismatches.append(f"manuscript manifest {section} path mismatch")
+        relative = entry.get("path")
+        if not isinstance(relative, str):
+            mismatches.append(f"manuscript manifest source_inputs[{index}] has invalid path")
             continue
-        path = REPO_ROOT / expected_path
+        if relative in entries:
+            mismatches.append(f"manuscript manifest has duplicate source input: {relative}")
+            continue
+        entries[relative] = entry
+
+    expected_paths = set(expected_manuscript_inputs())
+    actual_paths = set(entries)
+    for relative in sorted(expected_paths - actual_paths):
+        mismatches.append(f"manuscript manifest omits source input: {relative}")
+    for relative in sorted(actual_paths - expected_paths):
+        mismatches.append(f"manuscript manifest contains unexpected source input: {relative}")
+
+    for relative in sorted(expected_paths & actual_paths):
+        path = REPO_ROOT / relative
+        entry = entries[relative]
         if not path.is_file():
-            mismatches.append(f"missing manuscript {section}: {expected_path}")
+            mismatches.append(f"missing manuscript source input: {relative}")
             continue
         if entry.get("sha256") != sha256(path):
-            mismatches.append(f"manuscript {section} hash mismatch: {expected_path}")
+            mismatches.append(f"manuscript source input hash mismatch: {relative}")
         if entry.get("bytes") != path.stat().st_size:
-            mismatches.append(f"manuscript {section} byte-count mismatch: {expected_path}")
+            mismatches.append(f"manuscript source input byte-count mismatch: {relative}")
     return mismatches
 
 def version_mismatches(certificate: dict[str, Any]) -> list[str]:

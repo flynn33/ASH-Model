@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-24T13:25:54Z",
+  "updated_utc": "2026-06-24T16:02:54Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -200,6 +200,11 @@
       "summary": "Generated 11 artifacts and proofs/artifact-manifest.json."
     },
     {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/build_manuscript.py",
+      "result": "passed",
+      "summary": "Wrote proofs/manuscript-manifest.json with 10 source inputs under the source_input_equivalence policy."
+    },
+    {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
       "summary": "all_checks_pass true with exact hypercube shell, hypercube spectrum, pair-flip spectrum, background-moment, finite-observer physics, empirical-interface, prediction-lock, and standard-baseline checks enabled."
@@ -207,7 +212,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "73 passed."
+      "summary": "80 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -228,6 +233,26 @@
       "command": "/tmp/ash-model-validation-venv/bin/python docs/ash-physics-validation/scripts/run_repository_gate.py .",
       "result": "passed",
       "summary": "repository gate passed."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/validate_json_assets.py .",
+      "result": "passed",
+      "summary": "All JSON parsed; task, science, prediction-ledger, validation-status, and proof-certificate schema validations passed."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/check_generated_outputs.py . --include-manuscript",
+      "result": "passed",
+      "summary": "Generated artifacts and manuscript source-input manifest were reproducible against the staged generated files."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/audit_physics_readiness.py . --expect-open --write-json docs/remediation/physics-readiness.json",
+      "result": "passed",
+      "summary": "Readiness gate reported ready false with 12 open science blockers recorded from the science manifest."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/final_repository_audit.py . --write-json docs/remediation/final-remediation-evidence.json",
+      "result": "passed",
+      "summary": "Final remediation audit passed; remaining blockers are scientific rather than repository-remediation blockers."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q simulation.py src tools docs/ash-physics-validation/scripts",

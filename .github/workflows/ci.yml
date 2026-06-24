@@ -48,9 +48,15 @@ jobs:
           python3 docs/ash-physics-validation/scripts/check_claim_language.py .
           python3 docs/ash-physics-validation/scripts/check_sensitive_language.py .
           python3 docs/ash-physics-validation/scripts/run_repository_gate.py .
+          python3 tools/validate_json_assets.py .
+          python3 tools/check_generated_outputs.py . --include-manuscript
+          python3 tools/audit_physics_readiness.py . --expect-open --write-json docs/remediation/physics-readiness.json
+          python3 tools/final_repository_audit.py . --write-json docs/remediation/final-remediation-evidence.json
           python3 -m json.tool docs/ash-physics-validation/tasks/task_manifest.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/tasks/science_manifest.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/prediction_ledger.schema.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/task_manifest.schema.json > /dev/null
+          python3 -m json.tool docs/ash-physics-validation/configs/science_manifest.schema.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/validation_status.schema.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/preregistration.schema.json > /dev/null
           python3 -m json.tool docs/ash-physics-validation/configs/proof_certificate.schema.json > /dev/null
@@ -61,8 +67,11 @@ jobs:
         run: |
           git diff --exit-code -- \
             data \
+            figures \
+            proofs/artifact-manifest.json \
             proofs/computational-certificate.json \
-            proofs/computational-certificate.md
+            proofs/computational-certificate.md \
+            proofs/manuscript-manifest.json
 
       - name: Syntax and configuration checks
         run: |
