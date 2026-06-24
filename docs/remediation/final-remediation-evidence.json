@@ -1,0 +1,237 @@
+{
+  "commands": [
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "duration_seconds": 2.919,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "........................................................................ [ 86%]\n...........                                                              [100%]\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "tools/run_proof_suite.py"
+      ],
+      "duration_seconds": 2.075,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"all_checks_pass\": true,\n  \"checks\": {\n    \"code_parameters\": true,\n    \"nine_dimensional_code_not_self_dual\": true,\n    \"punctured_code_self_dual\": true,\n    \"decoder_radius_one_exhaustive\": true,\n    \"double_errors_rejected\": true,\n    \"hypercube_edges_and_shells_exact\": true,\n    \"hypercube_spectrum_exact\": true,\n    \"parity_pair_flip_spectrum_exact\": true,\n    \"projection_idempotent\": true,\n    \"garden_algebra_exact\": true,\n    \"quotient_isomorphism\": true,\n    \"branch_weights_normalized\": true,\n    \"markov_uniform_stationary\": true,\n    \"physics_pair_flip_closed\": true,\n    \"physics_kernel_stochastic\": true,\n    \"physics_generator_valid\": true,\n    \"physics_background_lumped\": true,\n    \"physics_background_moments_exact\": true,\n    \"physics_bridge_observables_normalized\": true,\n    \"physics_perturbation_modes_bounded\": true,\n    \"empirical_calibration_contract\": true,\n    \"empirical_likelihood_contract\": true,\n    \"prediction_lock_contract\": true,\n    \"standard_baseline_contract\": true\n  }\n}\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "tools/verify_repository.py"
+      ],
+      "duration_seconds": 0.061,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"claim_violations\": [],\n  \"missing_artifacts\": [],\n  \"artifact_manifest_mismatches\": [],\n  \"manuscript_manifest_mismatches\": [],\n  \"source_manifest_mismatches\": [],\n  \"version_mismatches\": [],\n  \"proof_certificate_passes\": true\n}\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "docs/ash-physics-validation/scripts/run_repository_gate.py",
+        "."
+      ],
+      "duration_seconds": 0.062,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "repository gate passed\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "tools/validate_json_assets.py",
+        "."
+      ],
+      "duration_seconds": 0.065,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"json_parse_errors\": [],\n  \"passed\": true,\n  \"root\": \"/Volumes/NVME/GitHub/ASH-Model\",\n  \"schema_library_available\": true,\n  \"schema_results\": [\n    {\n      \"instance\": \"docs/ash-physics-validation/tasks/task_manifest.json\",\n      \"result\": \"pass\",\n      \"schema\": \"docs/ash-physics-validation/configs/task_manifest.schema.json\"\n    },\n    {\n      \"instance\": \"docs/ash-physics-validation/tasks/science_manifest.json\",\n      \"result\": \"pass\",\n      \"schema\": \"docs/ash-physics-validation/configs/science_manifest.schema.json\"\n    },\n    {\n      \"instance\": \"predictions/prediction-ledger.json\",\n      \"result\": \"pass\",\n      \"schema\": \"docs/ash-physics-validation/configs/prediction_ledger.schema.json\"\n    },\n    {\n      \"instance\": \"validation/status.json\",\n      \"result\": \"pass\",\n      \"schema\": \"docs/ash-physics-validation/configs/validation_status.schema.json\"\n    },\n    {\n      \"instance\": \"proofs/computational-certificate.json\",\n      \"result\": \"pass\",\n      \"schema\": \"docs/ash-physics-validation/configs/proof_certificate.schema.json\"\n    }\n  ]\n}\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "tools/check_generated_outputs.py",
+        ".",
+        "--include-manuscript"
+      ],
+      "duration_seconds": 0.545,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"passed\": true,\n  \"root\": \"/Volumes/NVME/GitHub/ASH-Model\",\n  \"steps\": [\n    {\n      \"cmd\": [\n        \"/tmp/ash-model-validation-venv/bin/python\",\n        \"tools/generate_artifacts.py\"\n      ],\n      \"name\": \"generate_artifacts\",\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"Generated 6 data artifacts, verified 5 figure artifacts, and wrote proofs/artifact-manifest.json\\n\"\n    },\n    {\n      \"cmd\": [\n        \"git\",\n        \"diff\",\n        \"--exit-code\",\n        \"--\",\n        \"data\",\n        \"figures\",\n        \"proofs/artifact-manifest.json\",\n        \"proofs/computational-certificate.json\",\n        \"proofs/computational-certificate.md\"\n      ],\n      \"name\": \"generated_artifact_diff\",\n      \"passed\": true,\n      \"paths\": [\n        \"data\",\n        \"figures\",\n        \"proofs/artifact-manifest.json\",\n        \"proofs/computational-certificate.json\",\n        \"proofs/computational-certificate.md\"\n      ],\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"\"\n    },\n    {\n      \"cmd\": [\n        \"/tmp/ash-model-validation-venv/bin/python\",\n        \"tools/build_manuscript.py\"\n      ],\n      \"name\": \"build_manuscript\",\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"{\\n  \\\"manifest\\\": \\\"proofs/manuscript-manifest.json\\\",\\n  \\\"source_inputs\\\": 9,\\n  \\\"verification_policy\\\": \\\"source_input_equivalence\\\"\\n}\\n\"\n    },\n    {\n      \"cmd\": [\n        \"git\",\n        \"diff\",\n        \"--exit-code\",\n        \"--\",\n        \"docs/ASH-Model-Preprint-v1.pdf\",\n        \"proofs/manuscript-manifest.json\"\n      ],\n      \"name\": \"manuscript_diff\",\n      \"passed\": true,\n      \"paths\": [\n        \"docs/ASH-Model-Preprint-v1.pdf\",\n        \"proofs/manuscript-manifest.json\"\n      ],\n      \"returncode\": 0,\n      \"stderr\": \"\",\n      \"stdout\": \"\"\n    }\n  ]\n}\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "tools/audit_physics_readiness.py",
+        ".",
+        "--expect-open",
+        "--write-json",
+        "docs/remediation/physics-readiness.json"
+      ],
+      "duration_seconds": 0.022,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "   \"id\": \"physical_state_ontology\",\n      \"paths\": [\n        \"theory/physical-postulates.md\",\n        \"proofs/theorem-catalog.md\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/physical-postulates.md\",\n        \"proofs/theorem-catalog.md\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": false,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"microscopic_physical_dynamics\",\n      \"paths\": [\n        \"theory/microscopic-state-and-dynamics.md\",\n        \"src/ash_model/physics.py\",\n        \"tests/test_physics.py\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/microscopic-state-and-dynamics.md\",\n        \"src/ash_model/physics.py\",\n        \"tests/test_physics.py\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": false,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"causal_structure_or_nonlocality\",\n      \"paths\": [\n        \"theory/causal-structure.md\",\n        \"proofs/theorem-catalog.md\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/causal-structure.md\",\n        \"proofs/theorem-catalog.md\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": false,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"bridge_map_to_physical_observables\",\n      \"paths\": [\n        \"theory/coarse-graining-and-bridge-map.md\",\n        \"phenomenology/observables_spec.md\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/coarse-graining-and-bridge-map.md\",\n        \"phenomenology/observables_spec.md\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": false,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"continuum_or_finite_observer_limit\",\n      \"paths\": [\n        \"theory/continuum-limit.md\",\n        \"proofs/physics-proof-obligations.md\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/continuum-limit.md\",\n        \"proofs/physics-proof-obligations.md\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": true,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"cosmological_background_equations\",\n      \"paths\": [\n        \"theory/cosmological-background.md\",\n        \"phenomenology/ash_background_spec.md\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/cosmological-background.md\",\n        \"phenomenology/ash_background_spec.md\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": false,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"perturbation_equations\",\n      \"paths\": [\n        \"theory/linear-perturbations.md\",\n        \"phenomenology/ash_perturbations_spec.md\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"theory/linear-perturbations.md\",\n        \"phenomenology/ash_perturbations_spec.md\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": true,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"executable_cosmology_solver\",\n      \"paths\": [\n        \"phenomenology\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"phenomenology\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": true,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"synthetic_recovery\",\n      \"paths\": [\n        \"validation/synthetic-recovery\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"validation/synthetic-recovery\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": true,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"matched_ablations\",\n      \"paths\": [\n        \"validation/matched-ablations\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"validation/matched-ablations\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"exists\": true,\n      \"has_blocker_language\": true,\n      \"has_completion_language\": true,\n      \"has_required_terms\": true,\n      \"id\": \"baseline_limit\",\n      \"paths\": [\n        \"validation/lcdm-limit\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"validation/lcdm-limit\"\n      ],\n      \"status\": \"open\"\n    },\n    {\n      \"all_evidence_exists\": true,\n      \"completion_type\": \"blocked\",\n      \"entry_count\": 0,\n      \"exists\": true,\n      \"has_blocker_language\": false,\n      \"has_completion_language\": false,\n      \"has_required_terms\": true,\n      \"id\": \"locked_prediction\",\n      \"paths\": [\n        \"predictions/prediction-ledger.json\"\n      ],\n      \"ready\": false,\n      \"required_evidence\": [\n        \"predictions/prediction-ledger.json\"\n      ],\n      \"status\": \"open\"\n    }\n  ],\n  \"mode\": \"expect-open\",\n  \"ready\": false,\n  \"root\": \"/Volumes/NVME/GitHub/ASH-Model\",\n  \"science_manifest\": \"docs/ash-physics-validation/tasks/science_manifest.json\"\n}\n"
+    },
+    {
+      "cmd": [
+        "/tmp/ash-model-validation-venv/bin/python",
+        "tools/audit_live_repository_readiness.py",
+        "."
+      ],
+      "duration_seconds": 0.015,
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "live repository readiness audit passed\n"
+    }
+  ],
+  "commit": "7d7f1c0b9ea1d1f1eafe5e30dc1e16306ecd9187",
+  "final_status": "repository_remediation_complete",
+  "missing_required_paths": [],
+  "passed": true,
+  "physics_readiness": {
+    "available": true,
+    "blocker_count": 12,
+    "blockers": [
+      {
+        "id": "physical_state_ontology",
+        "label": "physical state ontology"
+      },
+      {
+        "id": "microscopic_physical_dynamics",
+        "label": "microscopic physical dynamics"
+      },
+      {
+        "id": "causal_structure_or_nonlocality",
+        "label": "causal structure or nonlocality"
+      },
+      {
+        "id": "bridge_map_to_physical_observables",
+        "label": "bridge map to physical observables"
+      },
+      {
+        "id": "continuum_or_finite_observer_limit",
+        "label": "continuum or finite observer limit"
+      },
+      {
+        "id": "cosmological_background_equations",
+        "label": "cosmological background equations"
+      },
+      {
+        "id": "perturbation_equations",
+        "label": "perturbation equations"
+      },
+      {
+        "id": "executable_cosmology_solver",
+        "label": "executable cosmology solver"
+      },
+      {
+        "id": "synthetic_recovery",
+        "label": "synthetic recovery"
+      },
+      {
+        "id": "matched_ablations",
+        "label": "matched ablations"
+      },
+      {
+        "id": "baseline_limit",
+        "label": "baseline limit"
+      },
+      {
+        "id": "locked_prediction",
+        "label": "locked prediction"
+      }
+    ],
+    "ready": false
+  },
+  "remaining_blockers_are_scientific": true,
+  "required_paths": [
+    {
+      "exists": true,
+      "path": "tools/validate_json_assets.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/check_generated_outputs.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/audit_physics_readiness.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/audit_live_repository_readiness.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/final_repository_audit.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/generate_artifacts.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/build_manuscript.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/run_proof_suite.py"
+    },
+    {
+      "exists": true,
+      "path": "tools/verify_repository.py"
+    },
+    {
+      "exists": true,
+      "path": "proofs/computational-certificate.json"
+    },
+    {
+      "exists": true,
+      "path": "proofs/artifact-manifest.json"
+    },
+    {
+      "exists": true,
+      "path": "proofs/manuscript-manifest.json"
+    },
+    {
+      "exists": true,
+      "path": "validation/status.json"
+    },
+    {
+      "exists": true,
+      "path": "predictions/prediction-ledger.json"
+    },
+    {
+      "exists": true,
+      "path": "docs/remediation/final-repository-remediation.md"
+    },
+    {
+      "exists": true,
+      "path": "docs/final-live-repository-audit.md"
+    },
+    {
+      "exists": true,
+      "path": "docs/ash-physics-validation/tasks/science_manifest.json"
+    }
+  ],
+  "root": "/Volumes/NVME/GitHub/ASH-Model",
+  "schema_version": "1.0",
+  "timestamp_unix": 1782318529,
+  "tree_hash": "b0d496172d150333d1798a56d032ba622eaf118324864702fe5ddeb2f99804d6"
+}

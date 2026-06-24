@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Science Status Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "manifest_type",
+    "rules",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "manifest_type": {
+      "const": "science_status"
+    },
+    "rules": {
+      "type": "object",
+      "required": [
+        "scientific_complete_requires",
+        "placeholder_files_do_not_count_as_complete"
+      ],
+      "properties": {
+        "scientific_complete_requires": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "placeholder_files_do_not_count_as_complete": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "completion_type",
+          "required_evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "complete"
+            ]
+          },
+          "completion_type": {
+            "enum": [
+              "blocked",
+              "scientific_definition",
+              "implementation",
+              "validation"
+            ]
+          },
+          "required_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

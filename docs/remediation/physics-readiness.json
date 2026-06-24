@@ -1,0 +1,280 @@
+{
+  "blocker_count": 12,
+  "blockers": [
+    {
+      "id": "physical_state_ontology",
+      "label": "physical state ontology"
+    },
+    {
+      "id": "microscopic_physical_dynamics",
+      "label": "microscopic physical dynamics"
+    },
+    {
+      "id": "causal_structure_or_nonlocality",
+      "label": "causal structure or nonlocality"
+    },
+    {
+      "id": "bridge_map_to_physical_observables",
+      "label": "bridge map to physical observables"
+    },
+    {
+      "id": "continuum_or_finite_observer_limit",
+      "label": "continuum or finite observer limit"
+    },
+    {
+      "id": "cosmological_background_equations",
+      "label": "cosmological background equations"
+    },
+    {
+      "id": "perturbation_equations",
+      "label": "perturbation equations"
+    },
+    {
+      "id": "executable_cosmology_solver",
+      "label": "executable cosmology solver"
+    },
+    {
+      "id": "synthetic_recovery",
+      "label": "synthetic recovery"
+    },
+    {
+      "id": "matched_ablations",
+      "label": "matched ablations"
+    },
+    {
+      "id": "baseline_limit",
+      "label": "baseline limit"
+    },
+    {
+      "id": "locked_prediction",
+      "label": "locked prediction"
+    }
+  ],
+  "items": [
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "physical_state_ontology",
+      "paths": [
+        "theory/physical-postulates.md",
+        "proofs/theorem-catalog.md"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/physical-postulates.md",
+        "proofs/theorem-catalog.md"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "microscopic_physical_dynamics",
+      "paths": [
+        "theory/microscopic-state-and-dynamics.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/microscopic-state-and-dynamics.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "causal_structure_or_nonlocality",
+      "paths": [
+        "theory/causal-structure.md",
+        "proofs/theorem-catalog.md"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/causal-structure.md",
+        "proofs/theorem-catalog.md"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "bridge_map_to_physical_observables",
+      "paths": [
+        "theory/coarse-graining-and-bridge-map.md",
+        "phenomenology/observables_spec.md"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/coarse-graining-and-bridge-map.md",
+        "phenomenology/observables_spec.md"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "continuum_or_finite_observer_limit",
+      "paths": [
+        "theory/continuum-limit.md",
+        "proofs/physics-proof-obligations.md"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/continuum-limit.md",
+        "proofs/physics-proof-obligations.md"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": true,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "cosmological_background_equations",
+      "paths": [
+        "theory/cosmological-background.md",
+        "phenomenology/ash_background_spec.md"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/cosmological-background.md",
+        "phenomenology/ash_background_spec.md"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "perturbation_equations",
+      "paths": [
+        "theory/linear-perturbations.md",
+        "phenomenology/ash_perturbations_spec.md"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "theory/linear-perturbations.md",
+        "phenomenology/ash_perturbations_spec.md"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": true,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "executable_cosmology_solver",
+      "paths": [
+        "phenomenology"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "phenomenology"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": true,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "synthetic_recovery",
+      "paths": [
+        "validation/synthetic-recovery"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "validation/synthetic-recovery"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": true,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "matched_ablations",
+      "paths": [
+        "validation/matched-ablations"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "validation/matched-ablations"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "exists": true,
+      "has_blocker_language": true,
+      "has_completion_language": true,
+      "has_required_terms": true,
+      "id": "baseline_limit",
+      "paths": [
+        "validation/lcdm-limit"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "validation/lcdm-limit"
+      ],
+      "status": "open"
+    },
+    {
+      "all_evidence_exists": true,
+      "completion_type": "blocked",
+      "entry_count": 0,
+      "exists": true,
+      "has_blocker_language": false,
+      "has_completion_language": false,
+      "has_required_terms": true,
+      "id": "locked_prediction",
+      "paths": [
+        "predictions/prediction-ledger.json"
+      ],
+      "ready": false,
+      "required_evidence": [
+        "predictions/prediction-ledger.json"
+      ],
+      "status": "open"
+    }
+  ],
+  "mode": "expect-open",
+  "ready": false,
+  "root": "/Volumes/NVME/GitHub/ASH-Model",
+  "science_manifest": "docs/ash-physics-validation/tasks/science_manifest.json"
+}

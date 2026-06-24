@@ -90,4 +90,4 @@ It does not convert interpretive procedural cosmology into experimentally confir
 
 ## Manuscript integrity
 
-`tools/build_manuscript.py` performs a two-pass build with a fixed source date and writes `proofs/manuscript-manifest.json`. Repository verification recomputes both the LaTeX-source and PDF hashes, so a stale or altered manuscript is release-blocking.
+`tools/build_manuscript.py` writes `proofs/manuscript-manifest.json` using a source-input equivalence policy. Repository verification recomputes hashes for the LaTeX source, bibliography inputs, generated figures, and committed PDF, so stale manuscript evidence is release-blocking even when local TeX tooling is unavailable.

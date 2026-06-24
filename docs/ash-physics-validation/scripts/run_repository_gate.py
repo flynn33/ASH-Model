@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -26,6 +27,8 @@ def validate(schema_path: Path, instance_path: Path) -> list[str]:
         return validate_validation_status(instance_path, instance)
     if schema_name == "task_manifest.schema.json":
         return validate_task_manifest(instance_path, instance)
+    if schema_name == "science_manifest.schema.json":
+        return validate_science_manifest(instance_path, instance)
     return [f"unsupported schema: {schema_path}"]
 
 
@@ -118,6 +121,44 @@ def validate_task_manifest(path: Path, payload) -> list[str]:
         for key in ("required_paths", "evidence"):
             if key in task:
                 failures.extend(_require_array(path, task[key], f"{label}/{key}"))
+    return failures
+
+
+def validate_science_manifest(path: Path, payload) -> list[str]:
+    failures = _require_object(path, payload, "<root>")
+    if failures:
+        return failures
+    for key in ("schema_version", "manifest_type", "rules", "items"):
+        if key not in payload:
+            failures.append(f"{path}: <root>: missing required property {key}")
+    if "schema_version" in payload:
+        failures.extend(_require_string(path, payload["schema_version"], "schema_version"))
+    if payload.get("manifest_type") != "science_status":
+        failures.append(f"{path}: manifest_type: expected science_status")
+    failures.extend(_require_object(path, payload.get("rules"), "rules"))
+    if isinstance(payload.get("rules"), dict):
+        if payload["rules"].get("placeholder_files_do_not_count_as_complete") is not True:
+            failures.append(f"{path}: rules/placeholder_files_do_not_count_as_complete: expected true")
+        failures.extend(_require_array(path, payload["rules"].get("scientific_complete_requires"), "rules/scientific_complete_requires"))
+    failures.extend(_require_array(path, payload.get("items"), "items"))
+    completion_types = {"blocked", "scientific_definition", "implementation", "validation"}
+    statuses = {"open", "complete"}
+    for index, item in enumerate(payload.get("items", []) if isinstance(payload.get("items"), list) else []):
+        label = f"items/{index}"
+        failures.extend(_require_object(path, item, label))
+        if not isinstance(item, dict):
+            continue
+        for key in ("id", "status", "completion_type", "required_evidence"):
+            if key not in item:
+                failures.append(f"{path}: {label}: missing required property {key}")
+        if isinstance(item.get("status"), str) and item["status"] not in statuses:
+            failures.append(f"{path}: {label}/status: unsupported value {item['status']!r}")
+        if isinstance(item.get("completion_type"), str) and item["completion_type"] not in completion_types:
+            failures.append(f"{path}: {label}/completion_type: unsupported value {item['completion_type']!r}")
+        if item.get("status") == "open" and item.get("completion_type") != "blocked":
+            failures.append(f"{path}: {label}: open science items must use blocked completion_type")
+        if "required_evidence" in item:
+            failures.extend(_require_array(path, item["required_evidence"], f"{label}/required_evidence"))
     return failures
 
 
@@ -224,6 +265,22 @@ def check_readme_references(root: Path) -> list[str]:
     return messages
 
 
+def check_live_repository_readiness(root: Path) -> list[str]:
+    script = root / "tools/audit_live_repository_readiness.py"
+    if not script.exists():
+        return ["missing required path: tools/audit_live_repository_readiness.py"]
+    result = subprocess.run(
+        [sys.executable, str(script), str(root)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode == 0:
+        return []
+    output = "\n".join(part for part in (result.stdout.strip(), result.stderr.strip()) if part)
+    return [f"live repository readiness audit failed: {output or result.returncode}"]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("root", nargs="?", default=".")
@@ -235,9 +292,12 @@ def main() -> int:
         "docs/ash-physics-validation/README.md",
         "docs/ash-physics-validation/IMPLEMENTATION_INSTRUCTIONS.md",
         "docs/ash-physics-validation/tasks/task_manifest.json",
+        "docs/ash-physics-validation/tasks/science_manifest.json",
         "docs/ash-physics-validation/configs/prediction_ledger.schema.json",
         "docs/ash-physics-validation/configs/validation_status.schema.json",
         "docs/ash-physics-validation/configs/task_manifest.schema.json",
+        "docs/ash-physics-validation/configs/science_manifest.schema.json",
+        "docs/ash-physics-validation/configs/proof_certificate.schema.json",
         "predictions/prediction-ledger.json",
         "validation/status.json",
     ]
@@ -248,6 +308,7 @@ def main() -> int:
         ("docs/ash-physics-validation/configs/prediction_ledger.schema.json", "predictions/prediction-ledger.json"),
         ("docs/ash-physics-validation/configs/validation_status.schema.json", "validation/status.json"),
         ("docs/ash-physics-validation/configs/task_manifest.schema.json", "docs/ash-physics-validation/tasks/task_manifest.json"),
+        ("docs/ash-physics-validation/configs/science_manifest.schema.json", "docs/ash-physics-validation/tasks/science_manifest.json"),
     ]
     for schema_rel, instance_rel in schema_pairs:
         schema_path = root / schema_rel
@@ -257,6 +318,7 @@ def main() -> int:
 
     failures.extend(check_task_status_consistency(root))
     failures.extend(check_readme_references(root))
+    failures.extend(check_live_repository_readiness(root))
 
     if failures:
         for failure in failures:

@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "science_status",
+  "rules": {
+    "scientific_complete_requires": [
+      "definition_or_equation",
+      "theorem_or_proof_obligation",
+      "implementation",
+      "test",
+      "validation_evidence"
+    ],
+    "placeholder_files_do_not_count_as_complete": true
+  },
+  "items": [
+    {
+      "id": "physical_state_ontology",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/physical-postulates.md",
+        "proofs/theorem-catalog.md"
+      ]
+    },
+    {
+      "id": "microscopic_physical_dynamics",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/microscopic-state-and-dynamics.md",
+        "src/ash_model/physics.py",
+        "tests/test_physics.py"
+      ]
+    },
+    {
+      "id": "causal_structure_or_nonlocality",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/causal-structure.md",
+        "proofs/theorem-catalog.md"
+      ]
+    },
+    {
+      "id": "bridge_map_to_physical_observables",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/coarse-graining-and-bridge-map.md",
+        "phenomenology/observables_spec.md"
+      ]
+    },
+    {
+      "id": "continuum_or_finite_observer_limit",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/continuum-limit.md",
+        "proofs/physics-proof-obligations.md"
+      ]
+    },
+    {
+      "id": "cosmological_background_equations",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/cosmological-background.md",
+        "phenomenology/ash_background_spec.md"
+      ]
+    },
+    {
+      "id": "perturbation_equations",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "theory/linear-perturbations.md",
+        "phenomenology/ash_perturbations_spec.md"
+      ]
+    },
+    {
+      "id": "executable_cosmology_solver",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "phenomenology"
+      ]
+    },
+    {
+      "id": "synthetic_recovery",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "validation/synthetic-recovery"
+      ]
+    },
+    {
+      "id": "matched_ablations",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "validation/matched-ablations"
+      ]
+    },
+    {
+      "id": "baseline_limit",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "validation/lcdm-limit"
+      ]
+    },
+    {
+      "id": "locked_prediction",
+      "status": "open",
+      "completion_type": "blocked",
+      "required_evidence": [
+        "predictions/prediction-ledger.json"
+      ]
+    }
+  ]
+}
