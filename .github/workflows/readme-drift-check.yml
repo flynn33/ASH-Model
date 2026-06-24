@@ -26,5 +26,5 @@ jobs:
             test -e "$entry"
             grep -q "$entry" README.md
           done
-          grep -q 'not self-dual' README.md
+          grep -q 'Nine-dimensional self-duality | false' README.md
           grep -q 'Binomial(9,1/2)' README.md
