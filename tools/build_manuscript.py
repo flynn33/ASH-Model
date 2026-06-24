@@ -17,6 +17,13 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SOURCE = REPO_ROOT / "latex" / "main.tex"
 OUTPUT = REPO_ROOT / "docs" / "ASH-Model-Preprint-v1.pdf"
 MANIFEST = REPO_ROOT / "proofs" / "manuscript-manifest.json"
+MANUSCRIPT_FIGURES = (
+    "figures/adinkra-graph-colored.png",
+    "figures/branch-topology.png",
+    "figures/hypercube-3d-projection.png",
+    "figures/simulation-histogram.png",
+    "figures/single-bit-error.png",
+)
 
 
 def sha256(path: Path) -> str:
@@ -43,7 +50,7 @@ def source_input_paths() -> tuple[Path, ...]:
         REPO_ROOT / "latex" / "references.bib",
         OUTPUT,
     ]
-    paths.extend(sorted((REPO_ROOT / "figures").glob("*.png")))
+    paths.extend(REPO_ROOT / relative for relative in MANUSCRIPT_FIGURES)
     return tuple(path for path in paths if path.is_file())
 
 

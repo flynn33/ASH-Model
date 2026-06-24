@@ -15,6 +15,15 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
+matplotlib.rcParams.update(
+    {
+        "font.family": "DejaVu Sans",
+        "font.sans-serif": ["DejaVu Sans"],
+        "path.simplify": False,
+        "text.usetex": False,
+    }
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
@@ -24,6 +33,8 @@ from ash_model.branching import generate_branch_tree, leaf_nodes
 from ash_model.code import CODEWORDS, MESSAGE_CODEWORD_PAIRS, decode, syndrome
 from ash_model.hypercube import projection_coordinates, state_reference_rows, states
 from ash_model.simulation import binomial_distribution, run_ablation_suite, run_simulation
+
+PNG_METADATA = {"Software": "ASH Model artifact generator"}
 
 
 def _write_codewords() -> Path:
@@ -172,7 +183,7 @@ def _plot_simulation_histogram(results) -> Path:
     ax.legend(fontsize=8)
     ax.grid(axis="y", alpha=0.25)
     fig.tight_layout()
-    fig.savefig(path, dpi=180, metadata={"Software": "ASH Model artifact generator"})
+    fig.savefig(path, dpi=180, metadata=PNG_METADATA)
     plt.close(fig)
     return path
 
@@ -201,7 +212,7 @@ def _plot_single_bit_error() -> Path:
     ax.set_title("Canonical [9,4,4] bounded-distance recovery")
     ax.axis("off")
     fig.tight_layout()
-    fig.savefig(path, dpi=180, metadata={"Software": "ASH Model artifact generator"})
+    fig.savefig(path, dpi=180, metadata=PNG_METADATA)
     plt.close(fig)
     return path
 
@@ -227,7 +238,7 @@ def _plot_hypercube_projection() -> Path:
     ax.set_zlabel("projection axis 3")
     fig.colorbar(scatter, ax=ax, shrink=0.65, label="Hamming weight")
     fig.tight_layout()
-    fig.savefig(path, dpi=180, metadata={"Software": "ASH Model artifact generator"})
+    fig.savefig(path, dpi=180, metadata=PNG_METADATA)
     plt.close(fig)
     return path
 
@@ -262,7 +273,7 @@ def _plot_adinkra() -> Path:
     ax.set_ylim(-1.0, 7.7)
     ax.axis("off")
     fig.tight_layout()
-    fig.savefig(path, dpi=180, metadata={"Software": "ASH Model artifact generator"})
+    fig.savefig(path, dpi=180, metadata=PNG_METADATA)
     plt.close(fig)
     return path
 
@@ -286,7 +297,7 @@ def _plot_branch_topology() -> Path:
     ax.set_title("Depth-4 bounded branch topology (81 leaves, 16 operator states)")
     ax.axis("off")
     fig.tight_layout()
-    fig.savefig(path, dpi=180, metadata={"Software": "ASH Model artifact generator"})
+    fig.savefig(path, dpi=180, metadata=PNG_METADATA)
     plt.close(fig)
     return path
 

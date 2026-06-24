@@ -36,6 +36,7 @@ def test_final_remediation_tools_are_present_and_importable():
         "validate_json_assets",
         "check_generated_outputs",
         "audit_physics_readiness",
+        "audit_live_repository_readiness",
         "final_repository_audit",
     ):
         _load_tool(name)
@@ -58,6 +59,24 @@ def test_manuscript_manifest_declares_source_input_equivalence_policy():
     assert "latex/main.tex" in input_paths
     assert "docs/ASH-Model-Preprint-v1.pdf" in input_paths
     assert "figures/hypercube-3d-projection.png" in input_paths
+
+
+def test_manuscript_manifest_uses_only_tracked_figure_inputs():
+    manifest = _load_json("proofs/manuscript-manifest.json")
+    figure_inputs = {
+        item["path"]
+        for item in manifest["source_inputs"]
+        if item["path"].startswith("figures/")
+    }
+    tracked_figures = set(
+        subprocess.check_output(
+            ["git", "ls-files", "figures/*.png"],
+            cwd=ROOT,
+            text=True,
+        ).splitlines()
+    )
+
+    assert figure_inputs <= tracked_figures
 
 
 def test_repository_verifier_accepts_source_input_manuscript_policy():
@@ -106,3 +125,19 @@ def test_physics_readiness_gate_modes_report_open_science_blockers():
     assert expect_payload["ready"] is False
     assert expect_payload["blocker_count"] == len(open_science_items)
     assert require_ready.returncode == 1
+
+
+def test_live_repository_readiness_audit_passes_with_open_science_blockers():
+    audit = subprocess.run(
+        [
+            sys.executable,
+            "tools/audit_live_repository_readiness.py",
+            ".",
+        ],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+
+    assert audit.returncode == 0, audit.stdout + audit.stderr
+    assert "live repository readiness audit passed" in audit.stdout

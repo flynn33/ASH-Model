@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -264,6 +265,22 @@ def check_readme_references(root: Path) -> list[str]:
     return messages
 
 
+def check_live_repository_readiness(root: Path) -> list[str]:
+    script = root / "tools/audit_live_repository_readiness.py"
+    if not script.exists():
+        return ["missing required path: tools/audit_live_repository_readiness.py"]
+    result = subprocess.run(
+        [sys.executable, str(script), str(root)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode == 0:
+        return []
+    output = "\n".join(part for part in (result.stdout.strip(), result.stderr.strip()) if part)
+    return [f"live repository readiness audit failed: {output or result.returncode}"]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("root", nargs="?", default=".")
@@ -301,6 +318,7 @@ def main() -> int:
 
     failures.extend(check_task_status_consistency(root))
     failures.extend(check_readme_references(root))
+    failures.extend(check_live_repository_readiness(root))
 
     if failures:
         for failure in failures:

@@ -44,11 +44,6 @@
       "sha256": "da4c4f752d09f9b26d861e1a9037501fa77e818c505d392f4f3bba0086999924"
     },
     {
-      "bytes": 31524,
-      "path": "figures/simulation-histogram-generated.png",
-      "sha256": "1c468672f423465a703aec9049b1e39159b3d375e3c6aabce58d0dff9d4b11fc"
-    },
-    {
       "bytes": 60476,
       "path": "figures/simulation-histogram.png",
       "sha256": "1f5457a70c911398bd20725b18c7f79dd52cfc018ac7628f2e125a7ac9db25c9"

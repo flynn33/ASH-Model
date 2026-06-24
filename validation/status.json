@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-24T16:02:54Z",
+  "updated_utc": "2026-06-24T16:14:30Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -195,6 +195,11 @@
   ],
   "verification_commands": [
     {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m pip install -e \".[dev]\"",
+      "result": "passed",
+      "summary": "Editable package and development dependencies installed."
+    },
+    {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_artifacts.py",
       "result": "passed",
       "summary": "Generated 11 artifacts and proofs/artifact-manifest.json."
@@ -202,7 +207,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/build_manuscript.py",
       "result": "passed",
-      "summary": "Wrote proofs/manuscript-manifest.json with 10 source inputs under the source_input_equivalence policy."
+      "summary": "Wrote proofs/manuscript-manifest.json with 9 tracked source inputs under the source_input_equivalence policy."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
@@ -212,7 +217,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "80 passed."
+      "summary": "82 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -250,12 +255,17 @@
       "summary": "Readiness gate reported ready false with 12 open science blockers recorded from the science manifest."
     },
     {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/audit_live_repository_readiness.py .",
+      "result": "passed",
+      "summary": "Live repository readiness audit passed while preserving explicit science blockers."
+    },
+    {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/final_repository_audit.py . --write-json docs/remediation/final-remediation-evidence.json",
       "result": "passed",
       "summary": "Final remediation audit passed; remaining blockers are scientific rather than repository-remediation blockers."
     },
     {
-      "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q simulation.py src tools docs/ash-physics-validation/scripts",
+      "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q simulation.py src tools scripts docs/ash-physics-validation/scripts",
       "result": "passed",
       "summary": "Python bytecode compilation passed."
     },

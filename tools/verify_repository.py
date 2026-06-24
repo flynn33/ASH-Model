@@ -41,6 +41,14 @@ REQUIRED_ARTIFACTS = MANIFEST_ARTIFACTS + (
     "docs/ASH-Model-Preprint-v1.pdf",
 )
 
+MANUSCRIPT_FIGURES = (
+    "figures/adinkra-graph-colored.png",
+    "figures/branch-topology.png",
+    "figures/hypercube-3d-projection.png",
+    "figures/simulation-histogram.png",
+    "figures/single-bit-error.png",
+)
+
 SOURCE_SUFFIXES = {".py", ".json", ".toml", ".md", ".tex", ".yml", ".yaml", ".cff"}
 SOURCE_FILENAMES = {"LICENSE", "VERSION", ".gitignore"}
 SOURCE_EXCLUDED_PREFIXES = ("proofs/",)
@@ -143,17 +151,13 @@ def verify_artifact_manifest() -> list[str]:
 def expected_manuscript_inputs() -> list[str]:
     """Return the deterministic manuscript input set tracked by the manifest."""
 
-    required_inputs = [
+    return [
         "latex/main.tex",
         "latex/bibtex.bib",
         "latex/references.bib",
         "docs/ASH-Model-Preprint-v1.pdf",
+        *MANUSCRIPT_FIGURES,
     ]
-    figure_inputs = [
-        path.relative_to(REPO_ROOT).as_posix()
-        for path in sorted((REPO_ROOT / "figures").glob("*.png"))
-    ]
-    return required_inputs + figure_inputs
 
 
 def verify_manuscript_manifest() -> list[str]:

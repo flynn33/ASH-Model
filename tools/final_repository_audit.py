@@ -24,12 +24,14 @@ COMMANDS = [
     [sys.executable, "tools/validate_json_assets.py", "."],
     [sys.executable, "tools/check_generated_outputs.py", ".", "--include-manuscript"],
     [sys.executable, "tools/audit_physics_readiness.py", ".", "--expect-open", "--write-json", "docs/remediation/physics-readiness.json"],
+    [sys.executable, "tools/audit_live_repository_readiness.py", "."],
 ]
 
 REQUIRED_PATHS = [
     "tools/validate_json_assets.py",
     "tools/check_generated_outputs.py",
     "tools/audit_physics_readiness.py",
+    "tools/audit_live_repository_readiness.py",
     "tools/final_repository_audit.py",
     "tools/generate_artifacts.py",
     "tools/build_manuscript.py",
@@ -41,6 +43,7 @@ REQUIRED_PATHS = [
     "validation/status.json",
     "predictions/prediction-ledger.json",
     "docs/remediation/final-repository-remediation.md",
+    "docs/final-live-repository-audit.md",
     "docs/ash-physics-validation/tasks/science_manifest.json",
 ]
 
