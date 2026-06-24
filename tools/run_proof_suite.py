@@ -67,6 +67,15 @@ from ash_model.projection import projection_certificate
 from ash_model.simulation import binomial_distribution, noise_kernel
 
 
+def _reported_residual(value: float) -> float:
+    """Return stable proof-certificate residuals across BLAS/platform noise."""
+
+    residual = float(value)
+    if abs(residual) < 1e-15:
+        return 0.0
+    return residual
+
+
 def _source_manifest() -> dict[str, str]:
     suffixes = {".py", ".json", ".toml", ".md", ".tex", ".yml", ".yaml", ".cff"}
     filenames = {"LICENSE", "VERSION", ".gitignore"}
@@ -196,10 +205,10 @@ def _markov_certificate() -> dict[str, object]:
     stationary_residual = uniform @ kernel - uniform
     return {
         "noise_probability_checked": probability,
-        "row_sum_max_abs_error": float(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
-        "column_sum_max_abs_error": float(np.max(np.abs(kernel.sum(axis=0) - 1.0))),
-        "uniform_stationary_max_abs_error": float(np.max(np.abs(stationary_residual))),
-        "minimum_self_loop_probability": float(np.min(np.diag(kernel))),
+        "row_sum_max_abs_error": _reported_residual(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
+        "column_sum_max_abs_error": _reported_residual(np.max(np.abs(kernel.sum(axis=0) - 1.0))),
+        "uniform_stationary_max_abs_error": _reported_residual(np.max(np.abs(stationary_residual))),
+        "minimum_self_loop_probability": _reported_residual(np.min(np.diag(kernel))),
         "positive_hypercube_edges": int(np.count_nonzero(kernel - np.diag(np.diag(kernel)))),
         "uniform_hamming_marginal": [float(value) for value in binomial_distribution()],
         "interpretation": "The binomial Hamming marginal follows from uniform occupancy; it is not ASH-specific evidence.",
@@ -230,15 +239,15 @@ def _physics_certificate() -> dict[str, object]:
         "all_states_parity_valid": all(state[8] == (sum(state[:8]) & 1) for state in states),
         "pair_flip_probability_checked": probability,
         "pair_flip_rate_checked": rate,
-        "kernel_row_sum_max_abs_error": float(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
-        "kernel_symmetry_max_abs_error": float(np.max(np.abs(kernel - kernel.T))),
-        "uniform_stationary_max_abs_error": float(np.max(np.abs(uniform @ kernel - uniform))),
-        "generator_row_sum_max_abs_error": float(np.max(np.abs(generator.sum(axis=1)))),
-        "generator_symmetry_max_abs_error": float(np.max(np.abs(generator - generator.T))),
-        "background_row_sum_max_abs_error": float(np.max(np.abs(background.sum(axis=1) - 1.0))),
+        "kernel_row_sum_max_abs_error": _reported_residual(np.max(np.abs(kernel.sum(axis=1) - 1.0))),
+        "kernel_symmetry_max_abs_error": _reported_residual(np.max(np.abs(kernel - kernel.T))),
+        "uniform_stationary_max_abs_error": _reported_residual(np.max(np.abs(uniform @ kernel - uniform))),
+        "generator_row_sum_max_abs_error": _reported_residual(np.max(np.abs(generator.sum(axis=1)))),
+        "generator_symmetry_max_abs_error": _reported_residual(np.max(np.abs(generator - generator.T))),
+        "background_row_sum_max_abs_error": _reported_residual(np.max(np.abs(background.sum(axis=1) - 1.0))),
         "weight_level_degeneracies": list(weight_level_degeneracies()),
         "uniform_background_distribution": [float(value) for value in background_distribution],
-        "uniform_background_stationary_max_abs_error": float(
+        "uniform_background_stationary_max_abs_error": _reported_residual(
             np.max(np.abs(background_distribution @ background - background_distribution))
         ),
         "uniform_background_mean_hamming_weight": moments.mean_hamming_weight,

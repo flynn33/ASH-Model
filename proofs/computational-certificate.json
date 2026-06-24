@@ -329,12 +329,12 @@
       "state_count": 512
     },
     "markov_chain": {
-      "column_sum_max_abs_error": 2.220446049250313e-16,
+      "column_sum_max_abs_error": 0.0,
       "interpretation": "The binomial Hamming marginal follows from uniform occupancy; it is not ASH-specific evidence.",
       "minimum_self_loop_probability": 0.8,
       "noise_probability_checked": 0.2,
       "positive_hypercube_edges": 4608,
-      "row_sum_max_abs_error": 2.220446049250313e-16,
+      "row_sum_max_abs_error": 0.0,
       "uniform_hamming_marginal": [
         0.001953125,
         0.017578125,
@@ -347,17 +347,17 @@
         0.017578125,
         0.001953125
       ],
-      "uniform_stationary_max_abs_error": 4.336808689942018e-19
+      "uniform_stationary_max_abs_error": 0.0
     },
     "physics": {
       "all_states_parity_valid": true,
       "background_row_sum_max_abs_error": 0.0,
       "evolved_weight_distribution_mean": 1.7902716049382714,
       "evolved_weight_distribution_sum": 1.0,
-      "generator_row_sum_max_abs_error": 4.440892098500626e-16,
+      "generator_row_sum_max_abs_error": 0.0,
       "generator_symmetry_max_abs_error": 0.0,
       "interpretation": "Finite-observer stochastic physics layer; not an observational cosmology claim.",
-      "kernel_row_sum_max_abs_error": 2.220446049250313e-16,
+      "kernel_row_sum_max_abs_error": 0.0,
       "kernel_symmetry_max_abs_error": 0.0,
       "lazy_pair_flip_mode_factors": [
         1.0,
@@ -390,7 +390,7 @@
       "uniform_mean_hamming_weight": 4.5,
       "uniform_order_parameter": 0.0,
       "uniform_parity_valid_probability": 1.0,
-      "uniform_stationary_max_abs_error": 4.7704895589362195e-18,
+      "uniform_stationary_max_abs_error": 0.0,
       "weight_level_degeneracies": [
         1,
         36,
@@ -553,7 +553,7 @@
     "tools/audit_simulation_data.py": "0b2be60bff931968223e99d6b8b830cc9667e016b56ed6521e05aff413bac090",
     "tools/build_manuscript.py": "19d1f7d94da6f0f1bbce778a039203b63ab4f39b0fb9f5ceb132ceae9fe86e1e",
     "tools/generate_artifacts.py": "d04fe5ef421ea4a750778b23277c4dda116e65adafa62b0361c5e2cba289fdd7",
-    "tools/run_proof_suite.py": "1fbd461e28f06bf7241ae844823a4aed7ba4cb14ca97e965dee3fc256bb7a250",
+    "tools/run_proof_suite.py": "43162df6191679d5db141539e3562e9657816e51a555a4857960dcaf788722cb",
     "tools/verify_repository.py": "1e9b725e568b00a721aca8b30a838b86a9a94b356db1f6a61ca1e3e5afd4d9c3",
     "validation/lcdm-limit/README.md": "b03ac3bba6122bf3e4e505c3f1188e8ddf1203ed27fae0a24f16d88b36e0b555",
     "validation/matched-ablations/README.md": "004b2df17503b5276b0b63e00469e439bb52983d440ee2f286d5dc6f2372a5b9",
