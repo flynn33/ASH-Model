@@ -99,6 +99,15 @@ eigenvalue  multiplicity
 The corresponding unnormalized Laplacian spectral gap is `16`.  These are
 finite graph identities, not a physical spacetime metric.
 
+The Hamming-weight shells in `E` have degeneracies:
+
+```text
+1, 36, 126, 84, 9
+```
+
+ordered by weights `0, 2, 4, 6, 8`.  The uniform law on `E` therefore has
+mean Hamming weight `9/2`, variance `9/4`, and order parameter `0`.
+
 ## 4. Canonical transform code
 
 The code `C` is the row span over `F_2` of

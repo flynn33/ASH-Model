@@ -36,6 +36,10 @@ the even-parity subspace.  It has degree 36, 4,608 undirected edges, adjacency
 spectrum `36^1, 20^9, 8^36, 0^84, (-4)^126`, and unnormalized Laplacian
 spectral gap `16`.  These are state-geometry invariants, not a physical metric.
 
+The corresponding even Hamming shells have degeneracies `(1, 36, 126, 84, 9)`.
+The uniform admissible law therefore has mean Hamming weight `9/2`, variance
+`9/4`, and zero order parameter.
+
 ![Deterministic projection of Q9](../figures/hypercube-3d-projection.png)
 
 *Figure 1. A documented linear visualization of all 512 vertices and all 2,304 hypercube edges. The projection is illustrative, not a physical embedding.*

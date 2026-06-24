@@ -30,6 +30,15 @@ class PhysicsObservables:
     parity_valid_probability: float
 
 
+@dataclass(frozen=True)
+class BackgroundMoments:
+    """Dimensionless Hamming-background moments over parity-valid shells."""
+
+    mean_hamming_weight: float
+    variance_hamming_weight: float
+    order_parameter: float
+
+
 def physical_state_space() -> tuple[BitTuple, ...]:
     """Return the admissible ASH finite-observer state space.
 
@@ -131,9 +140,20 @@ def even_weight_levels() -> tuple[int, ...]:
     return tuple(weight for weight in range(BIT_COUNT + 1) if weight % 2 == 0)
 
 
-def state_distribution_from_weights(weight_distribution: Sequence[float]) -> np.ndarray:
-    """Lift a background distribution to a uniform-within-weight state law."""
+def weight_level_degeneracies() -> tuple[int, ...]:
+    """Return exact state counts for the admissible even Hamming-weight levels."""
 
+    return tuple(comb(BIT_COUNT, weight) for weight in even_weight_levels())
+
+
+def uniform_background_distribution() -> np.ndarray:
+    """Return the Hamming-weight law induced by uniform admissible states."""
+
+    degeneracies = np.asarray(weight_level_degeneracies(), dtype=float)
+    return degeneracies / float(len(physical_state_space()))
+
+
+def _validated_weight_distribution(weight_distribution: Sequence[float]) -> np.ndarray:
     weights = even_weight_levels()
     values = np.asarray(weight_distribution, dtype=float)
     if values.shape != (len(weights),):
@@ -143,6 +163,48 @@ def state_distribution_from_weights(weight_distribution: Sequence[float]) -> np.
     total = float(values.sum())
     if not np.isclose(total, 1.0):
         raise ValueError("probabilities must sum to 1")
+    return values
+
+
+def background_moments(weight_distribution: Sequence[float]) -> BackgroundMoments:
+    """Return mean, variance, and order parameter for a weight law."""
+
+    values = _validated_weight_distribution(weight_distribution)
+    weights = np.asarray(even_weight_levels(), dtype=float)
+    mean = float(values @ weights)
+    centered = weights - mean
+    variance = float(values @ (centered * centered))
+    return BackgroundMoments(
+        mean_hamming_weight=mean,
+        variance_hamming_weight=variance,
+        order_parameter=1.0 - (2.0 * mean / BIT_COUNT),
+    )
+
+
+def evolve_weight_distribution(
+    weight_distribution: Sequence[float],
+    *,
+    probability: float,
+    steps: int = 1,
+) -> np.ndarray:
+    """Evolve a Hamming-weight law through repeated background-kernel steps."""
+
+    if not isinstance(steps, int):
+        raise TypeError("steps must be an integer")
+    if steps < 0:
+        raise ValueError("steps must be non-negative")
+    values = _validated_weight_distribution(weight_distribution).copy()
+    kernel = weight_background_kernel(probability)
+    for _ in range(steps):
+        values = values @ kernel
+    return values
+
+
+def state_distribution_from_weights(weight_distribution: Sequence[float]) -> np.ndarray:
+    """Lift a background distribution to a uniform-within-weight state law."""
+
+    weights = even_weight_levels()
+    values = _validated_weight_distribution(weight_distribution)
 
     states = physical_state_space()
     law = np.zeros(len(states), dtype=float)

@@ -18,15 +18,17 @@ Status: finite-observer obligations partially discharged
    non-negative.
 8. Stationary law: the uniform admissible law is stationary.
 9. Background equation: Hamming-weight lumping is exact.
-10. Perturbation stability: lazy pair-flip mode factors are bounded.
-11. Bridge observables: dimensionless finite-observer observables are defined.
-12. Calibration contract: finite dimensionless observables can be mapped
+10. Background moments: parity-shell degeneracies, stationary shell law,
+    mean, variance, and finite-step normalization are exact.
+11. Perturbation stability: lazy pair-flip mode factors are bounded.
+12. Bridge observables: dimensionless finite-observer observables are defined.
+13. Calibration contract: finite dimensionless observables can be mapped
     through explicit named affine calibrations.
-13. Likelihood contract: diagonal Gaussian comparisons reject invalid vector
+14. Likelihood contract: diagonal Gaussian comparisons reject invalid vector
     shapes and non-positive uncertainty.
-14. Prediction-lock contract: frozen prediction entries can be hashed and
+15. Prediction-lock contract: frozen prediction entries can be hashed and
     validated before evaluation.
-15. Standard-baseline contract: flat standard-baseline distance curves can be
+16. Standard-baseline contract: flat standard-baseline distance curves can be
     computed and ranked by the likelihood contract.
 
 ## Remaining obligations

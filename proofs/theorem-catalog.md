@@ -131,6 +131,23 @@ Limitations: The spectral gap is a finite graph-mixing invariant.  It is not
 a relativistic light cone, physical diffusion constant, or cosmological
 expansion rate without an additional unit-bearing bridge.
 
+## PHY-007: finite background moments
+
+Status: computationally verified
+
+Statement: The even-parity Hamming-weight shells have degeneracies
+`(1, 36, 126, 84, 9)`.  The uniform admissible state law induces shell
+probabilities equal to degeneracy divided by 256, is stationary under the
+lumped background kernel, and has mean `9/2`, variance `9/4`, and order
+parameter `0`.
+
+Definitions used: `ash_model.physics.background_moments`
+
+Executable verification: `tests/test_physics.py`
+
+Limitations: These are finite background moments over Hamming-weight shells,
+not a unit-bearing cosmological expansion history.
+
 ## EMP-001: calibration contract
 
 Status: computationally verified

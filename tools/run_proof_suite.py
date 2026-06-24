@@ -50,12 +50,16 @@ from ash_model.hypercube import (
     theoretical_plane_counts,
 )
 from ash_model.physics import (
+    background_moments,
     bridge_observables,
+    evolve_weight_distribution,
     lazy_pair_flip_eigenvalue,
     pair_flip_generator,
     pair_flip_transition,
     physical_state_space,
+    uniform_background_distribution,
     uniform_physical_distribution,
+    weight_level_degeneracies,
     weight_background_kernel,
 )
 from ash_model.prediction_ledger import canonical_prediction_hash, ledger_lock_status, validate_prediction_ledger
@@ -209,6 +213,15 @@ def _physics_certificate() -> dict[str, object]:
     kernel = pair_flip_transition(probability)
     generator = pair_flip_generator(rate)
     background = weight_background_kernel(probability)
+    background_distribution = uniform_background_distribution()
+    moments = background_moments(background_distribution)
+    initial_weight_distribution = np.zeros(len(weight_level_degeneracies()), dtype=float)
+    initial_weight_distribution[0] = 1.0
+    evolved_weight_distribution = evolve_weight_distribution(
+        initial_weight_distribution,
+        probability=probability,
+        steps=3,
+    )
     uniform = uniform_physical_distribution()
     observables = bridge_observables(uniform)
     mode_factors = [lazy_pair_flip_eigenvalue(weight, probability) for weight in range(10)]
@@ -223,6 +236,16 @@ def _physics_certificate() -> dict[str, object]:
         "generator_row_sum_max_abs_error": float(np.max(np.abs(generator.sum(axis=1)))),
         "generator_symmetry_max_abs_error": float(np.max(np.abs(generator - generator.T))),
         "background_row_sum_max_abs_error": float(np.max(np.abs(background.sum(axis=1) - 1.0))),
+        "weight_level_degeneracies": list(weight_level_degeneracies()),
+        "uniform_background_distribution": [float(value) for value in background_distribution],
+        "uniform_background_stationary_max_abs_error": float(
+            np.max(np.abs(background_distribution @ background - background_distribution))
+        ),
+        "uniform_background_mean_hamming_weight": moments.mean_hamming_weight,
+        "uniform_background_variance_hamming_weight": moments.variance_hamming_weight,
+        "uniform_background_order_parameter": moments.order_parameter,
+        "evolved_weight_distribution_sum": float(np.sum(evolved_weight_distribution)),
+        "evolved_weight_distribution_mean": background_moments(evolved_weight_distribution).mean_hamming_weight,
         "uniform_mean_hamming_weight": observables.mean_hamming_weight,
         "uniform_order_parameter": observables.order_parameter,
         "uniform_entropy_bits": observables.shannon_entropy_bits,
@@ -375,6 +398,15 @@ def build_certificate() -> dict[str, object]:
         "physics_generator_valid": sections["physics"]["generator_row_sum_max_abs_error"] < 1e-15
         and sections["physics"]["generator_symmetry_max_abs_error"] < 1e-15,
         "physics_background_lumped": sections["physics"]["background_row_sum_max_abs_error"] < 1e-15,
+        "physics_background_moments_exact": sections["physics"]["weight_level_degeneracies"]
+        == [1, 36, 126, 84, 9]
+        and sections["physics"]["uniform_background_stationary_max_abs_error"] < 1e-15
+        and abs(sections["physics"]["uniform_background_mean_hamming_weight"] - 4.5) < 1e-15
+        and abs(sections["physics"]["uniform_background_variance_hamming_weight"] - 2.25)
+        < 1e-15
+        and abs(sections["physics"]["uniform_background_order_parameter"]) < 1e-15
+        and abs(sections["physics"]["evolved_weight_distribution_sum"] - 1.0) < 1e-15
+        and sections["physics"]["evolved_weight_distribution_mean"] > 0.0,
         "physics_bridge_observables_normalized": abs(sections["physics"]["uniform_mean_hamming_weight"] - 4.5) < 1e-15
         and abs(sections["physics"]["uniform_order_parameter"]) < 1e-15
         and abs(sections["physics"]["uniform_entropy_bits"] - 8.0) < 1e-15
@@ -486,6 +518,9 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Uniform stationary residual: `{physics['uniform_stationary_max_abs_error']}`",
         f"- Generator row residual: `{physics['generator_row_sum_max_abs_error']}`",
         f"- Lumped background row residual: `{physics['background_row_sum_max_abs_error']}`",
+        f"- Background shell degeneracies: `{physics['weight_level_degeneracies']}`",
+        f"- Uniform background stationary residual: `{physics['uniform_background_stationary_max_abs_error']}`",
+        f"- Uniform background variance: `{physics['uniform_background_variance_hamming_weight']}`",
         f"- Uniform mean Hamming weight: `{physics['uniform_mean_hamming_weight']}`",
         f"- Uniform order parameter: `{physics['uniform_order_parameter']}`",
         f"- Uniform entropy, bits: `{physics['uniform_entropy_bits']}`",

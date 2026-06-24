@@ -59,11 +59,16 @@ from .hypercube import (
     pair_flip_laplacian_spectrum,
 )
 from .physics import (
+    BackgroundMoments,
     PhysicsObservables,
+    background_moments,
     bridge_observables,
+    evolve_weight_distribution,
     pair_flip_transition,
     physical_state_space,
+    uniform_background_distribution,
     uniform_physical_distribution,
+    weight_level_degeneracies,
     weight_background_kernel,
 )
 from .prediction_ledger import (
@@ -79,10 +84,12 @@ __all__ = [
     "CalibratedObservable",
     "FlatLambdaCDMParameters",
     "PhysicsObservables",
+    "BackgroundMoments",
     "DecodeResult",
     "LikelihoodResult",
     "ObservableCalibration",
     "bits_to_int",
+    "background_moments",
     "calibrate_observable",
     "canonical_prediction_hash",
     "chi_square",
@@ -96,6 +103,7 @@ __all__ = [
     "dimensionless_hubble_parameter",
     "encode",
     "even_parity_shell_counts",
+    "evolve_weight_distribution",
     "flat_lcdm_distance_curve",
     "flip_bit",
     "hamming_distance",
@@ -118,7 +126,9 @@ __all__ = [
     "physical_state_space",
     "translate",
     "uniform_physical_distribution",
+    "uniform_background_distribution",
     "validate_prediction_ledger",
+    "weight_level_degeneracies",
     "weight_background_kernel",
     "xor_bits",
 ]

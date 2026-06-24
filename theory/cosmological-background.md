@@ -9,6 +9,7 @@ The current background variables are finite-observer quantities:
 ```text
 W_t(w): Hamming-weight probability over w in {0,2,4,6,8}
 m_t: mean Hamming weight
+sigma_t^2: Hamming-weight variance
 phi_t = 1 - 2 m_t / 9
 S_t: Shannon entropy in bits
 ```
@@ -17,6 +18,14 @@ These variables are derived from the nine-dimensional hypercube state
 geometry.  The full hypercube has distance-shell counts
 `C(9,r)`, and the admissible even-parity hyperplane has Hamming-weight shells
 `C(9,w)` for `w in {0,2,4,6,8}`.
+
+The implemented moment map is:
+
+```text
+m_t = sum_w W_t(w) w
+sigma_t^2 = sum_w W_t(w) (w - m_t)^2
+phi_t = 1 - 2 m_t / 9
+```
 
 ## Evolution law
 
@@ -37,6 +46,7 @@ law.  It has:
 
 ```text
 m = 9/2
+sigma^2 = 9/4
 phi = 0
 S = 8 bits
 ```
@@ -58,6 +68,9 @@ task.
 ## Evidence
 
 - `ash_model.physics.weight_background_kernel`
+- `ash_model.physics.uniform_background_distribution`
+- `ash_model.physics.background_moments`
+- `ash_model.physics.evolve_weight_distribution`
 - `ash_model.physics.bridge_observables`
 - `ash_model.hypercube.even_parity_shell_counts`
 - `ash_model.hypercube.pair_flip_laplacian_spectrum`

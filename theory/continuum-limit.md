@@ -46,6 +46,18 @@ K_p(w, w+2) = p C(9-w,2) / C(9,2)
 
 with terms outside `{0,2,4,6,8}` omitted.
 
+The shell degeneracies are `(1, 36, 126, 84, 9)`, so the uniform admissible
+state law induces `W_* = degeneracy / 256`.  The implemented moment map gives:
+
+```text
+m_* = 9/2
+sigma_*^2 = 9/4
+phi_* = 0
+```
+
+Finite-step background evolution is implemented by repeated application of
+`K_p` and preserves normalization for every checked distribution.
+
 ## Perturbation-mode factors
 
 For a Walsh mode of Hamming weight `k`, the non-lazy pair-flip eigenvalue is
@@ -83,6 +95,8 @@ derive a differentiable spacetime continuum, metric field, or field equation.
 ## Evidence
 
 - `ash_model.physics.weight_background_kernel`
+- `ash_model.physics.background_moments`
+- `ash_model.physics.evolve_weight_distribution`
 - `ash_model.physics.lazy_pair_flip_eigenvalue`
 - `ash_model.hypercube.distance_shell_counts`
 - `ash_model.hypercube.hypercube_laplacian_spectrum`

@@ -57,6 +57,22 @@ undirected edges.  Its adjacency spectrum is
 
 and its unnormalized Laplacian spectral gap is `16`.
 
+For the even-parity Hamming shells `w in {0,2,4,6,8}`, the shell
+degeneracies are
+
+```text
+1, 36, 126, 84, 9
+```
+
+so the uniform admissible law has shell probabilities `C(9,w)/256`.  Its
+finite background moments are
+
+\[
+\mathbb E[W]=9/2,\qquad \operatorname{Var}(W)=9/4,
+\]
+
+and the order parameter `1 - 2 E[W]/9` is zero.
+
 ## 2. The application integrity subspace
 
 Define the linear functional

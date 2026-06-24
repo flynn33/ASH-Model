@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-24T13:18:37Z",
+  "updated_utc": "2026-06-24T13:25:54Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -68,7 +68,7 @@
         "tests/test_bits_hypercube.py",
         "tests/test_physics.py"
       ],
-      "notes": "A finite-observer substitute replaces an unclaimed continuum limit; nine-cube shells, graph spectra, lumped equations, and mode factors are verified."
+      "notes": "A finite-observer substitute replaces an unclaimed continuum limit; nine-cube shells, graph spectra, lumped equations, background moments, and mode factors are verified."
     },
     {
       "id": "COSMO-001",
@@ -81,7 +81,7 @@
         "tests/test_bits_hypercube.py",
         "src/ash_model/physics.py"
       ],
-      "notes": "Finite Hamming-weight background surrogate is implemented on the nine-cube state geometry; physical cosmological background remains outside proved scope."
+      "notes": "Finite Hamming-weight background surrogate, parity-shell degeneracies, uniform shell law, mean, variance, and finite-step evolution are implemented on the nine-cube state geometry; physical cosmological background remains outside proved scope."
     },
     {
       "id": "COSMO-002",
@@ -170,7 +170,7 @@
         "proofs/physics-proof-obligations.md",
         "proofs/computational-certificate.json"
       ],
-      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube and pair-flip graph geometry with executable evidence."
+      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, and finite background moments with executable evidence."
     },
     {
       "id": "SCAN-001",
@@ -202,12 +202,12 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true with exact hypercube shell, hypercube spectrum, pair-flip spectrum, finite-observer physics, empirical-interface, prediction-lock, and standard-baseline checks enabled."
+      "summary": "all_checks_pass true with exact hypercube shell, hypercube spectrum, pair-flip spectrum, background-moment, finite-observer physics, empirical-interface, prediction-lock, and standard-baseline checks enabled."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "69 passed."
+      "summary": "73 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
