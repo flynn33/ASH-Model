@@ -7,7 +7,7 @@
         "pytest",
         "-q"
       ],
-      "duration_seconds": 2.919,
+      "duration_seconds": 3.058,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -18,7 +18,7 @@
         "/tmp/ash-model-validation-venv/bin/python",
         "tools/run_proof_suite.py"
       ],
-      "duration_seconds": 2.075,
+      "duration_seconds": 2.138,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -29,7 +29,7 @@
         "/tmp/ash-model-validation-venv/bin/python",
         "tools/verify_repository.py"
       ],
-      "duration_seconds": 0.061,
+      "duration_seconds": 0.069,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -41,7 +41,7 @@
         "docs/ash-physics-validation/scripts/run_repository_gate.py",
         "."
       ],
-      "duration_seconds": 0.062,
+      "duration_seconds": 0.068,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -53,7 +53,7 @@
         "tools/validate_json_assets.py",
         "."
       ],
-      "duration_seconds": 0.065,
+      "duration_seconds": 0.071,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -66,7 +66,7 @@
         ".",
         "--include-manuscript"
       ],
-      "duration_seconds": 0.545,
+      "duration_seconds": 0.589,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -81,7 +81,7 @@
         "--write-json",
         "docs/remediation/physics-readiness.json"
       ],
-      "duration_seconds": 0.022,
+      "duration_seconds": 0.024,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
@@ -93,14 +93,14 @@
         "tools/audit_live_repository_readiness.py",
         "."
       ],
-      "duration_seconds": 0.015,
+      "duration_seconds": 0.016,
       "passed": true,
       "returncode": 0,
       "stderr_tail": "",
       "stdout_tail": "live repository readiness audit passed\n"
     }
   ],
-  "commit": "7d7f1c0b9ea1d1f1eafe5e30dc1e16306ecd9187",
+  "commit": "e8a61140c8cbe624fe075d3b753e526a18ee54eb",
   "final_status": "repository_remediation_complete",
   "missing_required_paths": [],
   "passed": true,
@@ -232,6 +232,6 @@
   ],
   "root": "/Volumes/NVME/GitHub/ASH-Model",
   "schema_version": "1.0",
-  "timestamp_unix": 1782318529,
-  "tree_hash": "b0d496172d150333d1798a56d032ba622eaf118324864702fe5ddeb2f99804d6"
+  "timestamp_unix": 1782342919,
+  "tree_hash": "3c0b855ea24fdfc3794a36936730ad35f41c53b48877716064d994edf5565e71"
 }
