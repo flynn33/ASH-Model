@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "phases": [
+    {
+      "id": "A",
+      "title": "Enneahcube local alphabet",
+      "objective": "Define local admissible state alphabet; do not mistake it for the whole cosmology.",
+      "required_outputs": [
+        "Ω=F₂⁹ definition",
+        "Enneahcube adjacency",
+        "Hamming planes",
+        "[9,4,4] code",
+        "decoder and defect policy"
+      ],
+      "proof_targets": [
+        "|Ω|=512",
+        "degree=9",
+        "|C|=16",
+        "dim C=4",
+        "d_min=4",
+        "single-bit correction on codewords",
+        "double-bit detect/reject policy"
+      ],
+      "failure_conditions": [
+        "finite counterexample",
+        "ambiguous correction silently accepted",
+        "self-dual length-nine claim reintroduced"
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Branch ontology",
+      "objective": "Define branch histories as first-class cosmological objects.",
+      "required_outputs": [
+        "𝒯_{𝒰₀} branch tree",
+        "leaf set L_t",
+        "branch node type",
+        "edge/child rule",
+        "infinite-depth interpretation"
+      ],
+      "proof_targets": [
+        "nonempty expansion or terminal rule",
+        "admissible child states or explicit defects",
+        "branch count law when finite branching factor exists",
+        "existence of countable or measurable tree",
+        "committed history is a path in 𝒯"
+      ],
+      "failure_conditions": [
+        "branch tree undefined",
+        "leaf not mapped to history/state/record",
+        "branch layer treated as optional decoration"
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Branch measure or amplitude law",
+      "objective": "Define weights/probabilities/amplitudes over leaves.",
+      "required_outputs": [
+        "choose μ or ψ",
+        "normalization law",
+        "action/score relation if used",
+        "update law for weights/amplitudes"
+      ],
+      "proof_targets": [
+        "Σ μ(leaf)=1 for probability model",
+        "Σ |ψ(leaf)|²=1 for amplitude model",
+        "consistent composition under branch expansion",
+        "Born rule or explicit replacement if quantum-like"
+      ],
+      "failure_conditions": [
+        "unnormalized branch probabilities",
+        "post-hoc branch weights",
+        "quantum language without amplitudes/Hilbert structure"
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Observer commitment and memory",
+      "objective": "Define observation as branch-relative memory, not necessarily collapse.",
+      "required_outputs": [
+        "observer memory M_O(t)",
+        "commitment map 𝒞",
+        "record update law",
+        "collapse-vs-many-worlds decision"
+      ],
+      "proof_targets": [
+        "observer record lies on an admissible branch",
+        "commitment rule is well-defined",
+        "memory updates preserve consistency",
+        "other branches persist under many-worlds interpretation"
+      ],
+      "failure_conditions": [
+        "commitment ambiguously deletes/preserves branches",
+        "observer record not connected to branch tree"
+      ]
+    },
+    {
+      "id": "E",
+      "title": "Decoherence and branch separation",
+      "objective": "Make leaf branches world-like through separation/orthogonality/decoherence.",
+      "required_outputs": [
+        "branch distance d_T",
+        "decoherence functional D(b_i,b_j)",
+        "macro-distinctness criterion"
+      ],
+      "proof_targets": [
+        "D(b_i,b_j)≈0 for macro-distinct leaves",
+        "branch memory divergence causes effective non-interference",
+        "orthogonality or suppression scale quantified"
+      ],
+      "failure_conditions": [
+        "branches remain mutually interfering without a rule",
+        "no distinction between computational candidates and worlds"
+      ]
+    },
+    {
+      "id": "F",
+      "title": "Branch-to-spacetime bridge",
+      "objective": "Map branch ensembles, not only finite states, to effective physical quantities.",
+      "required_outputs": [
+        "ℬ_ℓ(Γ,𝒯,μ/ψ,𝓜)",
+        "geometry candidate",
+        "entropy candidate",
+        "matter/field candidate"
+      ],
+      "proof_targets": [
+        "branch ensemble produces stable coarse variables",
+        "bridge is fixed before data",
+        "observables are computable from ASH definitions"
+      ],
+      "failure_conditions": [
+        "no bridge map",
+        "bridge depends only on X_t and ignores branches",
+        "bridge adjusted after seeing data"
+      ]
+    },
+    {
+      "id": "G",
+      "title": "Emergent geometry and effective physics",
+      "objective": "Derive metric, fields, and dynamical equations or a coherent alternative.",
+      "required_outputs": [
+        "dimension estimator",
+        "metric/correlation/information geometry",
+        "effective stress-energy or field variables",
+        "causality/Lorentz tests"
+      ],
+      "proof_targets": [
+        "stable geometry under coarse-graining",
+        "approximate 3+1D or explicit alternative",
+        "bounded Lorentz violations or emergent symmetry",
+        "consistent propagation modes"
+      ],
+      "failure_conditions": [
+        "no stable geometry",
+        "uncontrolled lattice artifacts",
+        "large forbidden Lorentz violation"
+      ]
+    },
+    {
+      "id": "H",
+      "title": "Cosmological observables",
+      "objective": "Produce measurable predictions from the fixed branch-centered ASH theory.",
+      "required_outputs": [
+        "H(z)",
+        "D_L(z)",
+        "D_M(z)",
+        "P_ζ(k)",
+        "P_m(k,z)",
+        "C_ell spectra",
+        "non-Gaussianity shapes",
+        "GW propagation"
+      ],
+      "proof_targets": [
+        "observables computable without post-hoc fitting",
+        "matched controls defined",
+        "prospective prediction ledger initialized"
+      ],
+      "failure_conditions": [
+        "cannot compute observables",
+        "only fits one data sector by breaking another",
+        "matched controls reproduce claimed signal"
+      ]
+    }
+  ]
+}

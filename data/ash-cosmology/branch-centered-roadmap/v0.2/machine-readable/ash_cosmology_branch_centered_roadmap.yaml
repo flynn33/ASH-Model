@@ -1,0 +1,23 @@
+schema_version: 1.0.0
+package_version: 0.2.0-branch-centered-roadmap
+locked_principle: "ASH is finite where it commits and infinite where it explores."
+corrected_cosmology_formula: >
+  ASH Cosmology = finite local Enneahcube state kernel + recursive leaf-branch universe
+  + branch measure/amplitude/score law + commitment/observation rule + physical bridge
+  to spacetime and observables.
+primary_object:
+  formal: "𝔄 = (Ω, C, D, Γ, 𝒯, μ_or_ψ, 𝒞, 𝓜, ℬ_ℓ)"
+  components:
+    Ω: "finite local Enneahcube alphabet"
+    C: "rank-4 doubly-even [9,4,4] code/admissibility/correction structure"
+    D: "decoder and defect policy"
+    Γ: "causal graph or emergent adjacency"
+    𝒯: "unbounded branch tree or branch forest"
+    μ_or_ψ: "branch measure, weight, or amplitude law"
+    𝒞: "commitment, observation, or decoherence rule"
+    𝓜: "committed memory/history graph"
+    ℬ_ℓ: "physical bridge map at scale ℓ"
+revised_one_line_roadmap: >
+  Enneahcube local states → admissible branch histories → branch measure/amplitude law →
+  decoherence and observer-relative commitment → branch-ensemble geometry → cosmological
+  observables → empirical tests.

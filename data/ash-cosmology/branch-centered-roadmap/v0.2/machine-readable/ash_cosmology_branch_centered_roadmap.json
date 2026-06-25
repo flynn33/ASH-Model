@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "0.2.0-branch-centered-roadmap",
+  "created_utc": "2026-06-25T00:00:00Z",
+  "scope": {
+    "focus": [
+      "research",
+      "mathematics",
+      "branch cosmology",
+      "empirical validation",
+      "falsification",
+      "human and machine ingestible documentation"
+    ],
+    "excluded": [
+      "repository management",
+      "storage structure advice",
+      "implementation workflow advice",
+      "governance/process instructions"
+    ],
+    "boundary_statement": "This package describes ASH Cosmology research content only. Storage and implementation decisions are intentionally out of scope."
+  },
+  "locked_principle": "ASH is finite where it commits and infinite where it explores.",
+  "corrected_cosmology_formula": "ASH Cosmology = finite local Enneahcube state kernel + recursive leaf-branch universe + branch measure/amplitude/score law + commitment/observation rule + physical bridge to spacetime and observables.",
+  "primary_object": {
+    "symbol": "A_fraktur",
+    "formal": "𝔄 = (Ω, C, D, Γ, 𝒯, μ_or_ψ, 𝒞, 𝓜, ℬ_ℓ)",
+    "components": [
+      {
+        "symbol": "Ω",
+        "name": "finite local Enneahcube alphabet",
+        "role": "local admissible state space",
+        "nature": "finite"
+      },
+      {
+        "symbol": "C",
+        "name": "ASH code",
+        "role": "rank-4 doubly-even [9,4,4] code/admissibility/correction structure",
+        "nature": "finite algebraic constraint"
+      },
+      {
+        "symbol": "D",
+        "name": "decoder/defect policy",
+        "role": "correct single-bit codeword errors and reject ambiguous defects",
+        "nature": "finite decision rule"
+      },
+      {
+        "symbol": "Γ",
+        "name": "causal graph/admissible event substrate",
+        "role": "supports local state assignments and branch histories",
+        "nature": "finite per model instance, scalable/emergent in theory"
+      },
+      {
+        "symbol": "𝒯",
+        "name": "branch tree/forest",
+        "role": "unbounded family of admissible ASH universe histories",
+        "nature": "mathematically unbounded"
+      },
+      {
+        "symbol": "μ_or_ψ",
+        "name": "branch measure or amplitude law",
+        "role": "assigns probability-like weight or complex amplitude to leaves",
+        "nature": "measure/amplitude"
+      },
+      {
+        "symbol": "𝒞",
+        "name": "commitment/observation/decoherence rule",
+        "role": "relates observer records to leaves without necessarily deleting other leaves",
+        "nature": "observer/selection law"
+      },
+      {
+        "symbol": "𝓜",
+        "name": "committed memory/history graph",
+        "role": "realized observer-relative record embedded in branch history",
+        "nature": "finite along a committed history"
+      },
+      {
+        "symbol": "ℬ_ℓ",
+        "name": "physical bridge map",
+        "role": "maps branch ensembles to spacetime, fields, entropy, and observables at scale ℓ",
+        "nature": "coarse-graining/interpretation map"
+      }
+    ]
+  },
+  "model_layers": [
+    {
+      "layer": "local_finite_layer",
+      "description": "Enneahcube state, parity/integrity coordinate, [9,4,4] code, decoder, defect policy.",
+      "finite": true,
+      "cosmological_role": "local alphabet and admissibility constraints, not the whole universe"
+    },
+    {
+      "layer": "branch_layer",
+      "description": "Unbounded recursive tree/forest of admissible universe histories and leaves.",
+      "finite": false,
+      "cosmological_role": "many-worlds / possible-history structure and candidate source of statistical observables"
+    },
+    {
+      "layer": "commitment_layer",
+      "description": "Observer-relative realized memory path embedded in the full branch field.",
+      "finite": true,
+      "cosmological_role": "explains experienced history without necessarily deleting other branches"
+    },
+    {
+      "layer": "bridge_layer",
+      "description": "Maps branch ensemble plus local state structure to effective geometry, matter, entropy, and data observables.",
+      "finite": false,
+      "cosmological_role": "turns ASH from information architecture into physical cosmology"
+    }
+  ],
+  "many_worlds_options": {
+    "epistemic": {
+      "branches": "possible reconstructions/hypotheses",
+      "cosmology_strength": "weak",
+      "requirements": [
+        "scoring",
+        "pruning",
+        "calibration"
+      ]
+    },
+    "ontic_nonquantum": {
+      "branches": "physically real histories with non-quantum measure",
+      "cosmology_strength": "strong",
+      "requirements": [
+        "branch ontology",
+        "measure law",
+        "conservation law",
+        "observer location rule"
+      ]
+    },
+    "quantum_everett": {
+      "branches": "decohered components of a universal state",
+      "cosmology_strength": "strongest",
+      "requirements": [
+        "Hilbert space",
+        "complex amplitudes",
+        "norm-preserving/unitary evolution or justified alternative",
+        "decoherence/orthogonality theorem",
+        "Born rule or replacement frequency theorem"
+      ]
+    }
+  },
+  "preferred_research_target": "quantum_everett_or_explicit_ontic_nonquantum; branch status must be chosen before empirical claims are made",
+  "one_line_roadmap": "Enneahcube local states → admissible branch histories → branch measure/amplitude law → decoherence and observer-relative commitment → branch-ensemble geometry → cosmological observables → empirical tests."
+}

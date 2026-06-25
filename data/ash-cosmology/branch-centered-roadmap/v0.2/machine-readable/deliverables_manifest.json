@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "deliverables": [
+    {
+      "id": "D-A",
+      "title": "ASH Branch-Centered Canonical Definitions",
+      "format": [
+        "md",
+        "json"
+      ],
+      "purpose": "lock finite-local plus branch-primary model"
+    },
+    {
+      "id": "D-B",
+      "title": "Branch Ontology Decision Memo",
+      "format": [
+        "md",
+        "json"
+      ],
+      "purpose": "choose epistemic, ontic, or quantum/Everett branch interpretation"
+    },
+    {
+      "id": "D-C",
+      "title": "Branch Measure or Amplitude Law",
+      "format": [
+        "md",
+        "json"
+      ],
+      "purpose": "define μ or ψ, normalization, and update law"
+    },
+    {
+      "id": "D-D",
+      "title": "Decoherence and Observer Commitment Theory",
+      "format": [
+        "md",
+        "json"
+      ],
+      "purpose": "define leaf separation and observer memory"
+    },
+    {
+      "id": "D-E",
+      "title": "Branch-to-Geometry Bridge Candidate Set",
+      "format": [
+        "md",
+        "json"
+      ],
+      "purpose": "derive candidate physical maps"
+    },
+    {
+      "id": "D-F",
+      "title": "Synthetic Universe Experiment Plan",
+      "format": [
+        "md",
+        "json",
+        "csv"
+      ],
+      "purpose": "test model before real data"
+    },
+    {
+      "id": "D-G",
+      "title": "Prediction Ledger",
+      "format": [
+        "yaml",
+        "json"
+      ],
+      "purpose": "freeze future predictions and rejection rules"
+    }
+  ]
+}

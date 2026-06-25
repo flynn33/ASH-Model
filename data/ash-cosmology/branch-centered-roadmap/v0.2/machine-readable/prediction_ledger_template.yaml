@@ -1,0 +1,22 @@
+prediction_id: ""
+theory_version: "0.2.0-branch-centered-roadmap"
+status: "draft|frozen|tested|failed|supported|retired"
+branch_model:
+  branch_ontology: "epistemic|ontic_nonquantum|quantum_everett"
+  measure_type: "μ|ψ|action_weight|other"
+  decoherence_rule_id: ""
+  commitment_rule_id: ""
+equations_frozen: []
+parameters_allowed: []
+observable: ""
+dataset_or_future_data_product: ""
+scale_range: ""
+redshift_range: ""
+prediction: ""
+uncertainty: ""
+comparison_models: []
+covariance_or_error_model: ""
+rejection_rule: ""
+date_frozen_utc: ""
+hashes_or_identifiers: {}
+notes: ""

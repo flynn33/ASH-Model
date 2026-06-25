@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Cosmology Branch-Centered Roadmap Schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "package_version",
+    "locked_principle",
+    "corrected_cosmology_formula",
+    "primary_object",
+    "model_layers",
+    "many_worlds_options",
+    "one_line_roadmap"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "locked_principle": {
+      "type": "string"
+    },
+    "corrected_cosmology_formula": {
+      "type": "string"
+    },
+    "primary_object": {
+      "type": "object"
+    },
+    "model_layers": {
+      "type": "array"
+    },
+    "many_worlds_options": {
+      "type": "object"
+    },
+    "one_line_roadmap": {
+      "type": "string"
+    }
+  }
+}

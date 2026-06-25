@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "0.2.0-branch-centered-roadmap",
+  "created_utc": "2026-06-25T00:00:00Z",
+  "file_count": 43,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1785,
+      "sha256": "e53c444f0c39749db54cf12a22c1820a5205bd33abfa1cf4ba3101adcb922956"
+    },
+    {
+      "path": "human_readable/00_LOCKED_POSITION.md",
+      "bytes": 1696,
+      "sha256": "9e963ba03b8ac1524aa9802b394e22c9d54d8d571c4a9faabbc2ac0daf042134"
+    },
+    {
+      "path": "human_readable/01_CANONICAL_MODEL.md",
+      "bytes": 1167,
+      "sha256": "995b81afb673a43a7453d61653fd130b96789df3a11464ae10e838626297f3bf"
+    },
+    {
+      "path": "human_readable/02_BRANCH_MANY_WORLDS_MODEL.md",
+      "bytes": 1665,
+      "sha256": "22110d25acfc6452452430d2c76c569d9098a9a8aa7ec766e489fc3d3dd75e8b"
+    },
+    {
+      "path": "human_readable/03_MATHEMATICAL_PROOF_ROADMAP.md",
+      "bytes": 1811,
+      "sha256": "daa16f06283758bcb87239825f3217a2564e95c4f09b7797802bd03ac609db1f"
+    },
+    {
+      "path": "human_readable/04_EMPIRICAL_VALIDATION_ROADMAP.md",
+      "bytes": 1610,
+      "sha256": "2e70fb0dc7dcb3b801452d53a71258b858d37da19ac8bd5988508a12521a9ab4"
+    },
+    {
+      "path": "human_readable/05_FALSIFICATION_CRITERIA.md",
+      "bytes": 1135,
+      "sha256": "8c9256b07b32215e695dfcb63e62eaacd9c186fb2955db27e99411659cc1f2eb"
+    },
+    {
+      "path": "human_readable/06_RESEARCH_DELIVERABLES.md",
+      "bytes": 962,
+      "sha256": "f48e4ee11004951383169118a80fc4c5e837e469ca83c8d6169e2aa38aa82ce7"
+    },
+    {
+      "path": "human_readable/07_PREDICTION_LEDGER_GUIDE.md",
+      "bytes": 808,
+      "sha256": "fc78f152896117317649b67dde27c907c08e19bf718d53ffac86331ac814feaa"
+    },
+    {
+      "path": "human_readable/08_GLOSSARY.md",
+      "bytes": 943,
+      "sha256": "c765c5d0f9104dd1ed3b7f042a3160b3ffb59ac6184b9c875ece90992dd94265"
+    },
+    {
+      "path": "human_readable/09_SOURCE_EVIDENCE_NOTES.md",
+      "bytes": 635,
+      "sha256": "2ba2fcb6911c17b0cc6718e1a5dec4829c13d5c1e377364a62a5764849a367cb"
+    },
+    {
+      "path": "human_readable/10_FULL_BRANCH_CENTERED_ROADMAP.md",
+      "bytes": 10256,
+      "sha256": "66347004b3e75546850a159857d039c14a5541fc13f91036d33edb79a4ff75c1"
+    },
+    {
+      "path": "human_readable/11_BRANCH_CORRECTION_LOCK.md",
+      "bytes": 1427,
+      "sha256": "748760b910c326e65ad8585a34dcf3168fffdd289bc91b80703ec6c5304a1a77"
+    },
+    {
+      "path": "machine_readable/ash_cosmology_branch_centered_roadmap.json",
+      "bytes": 5547,
+      "sha256": "e0bb1d363821a26f572b4c6dcd3c1916922e486e7de42ec460489abb582e340b"
+    },
+    {
+      "path": "machine_readable/ash_cosmology_branch_centered_roadmap.yaml",
+      "bytes": 1197,
+      "sha256": "ec256006ca758abf9359c0845992f48ee816c0ea2a86aeee1d09cdbdf99d74e3"
+    },
+    {
+      "path": "machine_readable/ash_cosmology_roadmap.schema.json",
+      "bytes": 834,
+      "sha256": "56d98511594dd136957623c7fd997a14289ad3f417efa36c278849c2ea679d7a"
+    },
+    {
+      "path": "machine_readable/branch_correction_lock.json",
+      "bytes": 1136,
+      "sha256": "e10e36dc43d7d933cf0abc562600fd94b891e327028c02ee24b04477d541551d"
+    },
+    {
+      "path": "machine_readable/deliverables_manifest.json",
+      "bytes": 1493,
+      "sha256": "cfa2a4fe57c1f184de1aded8b972a1108037e397dc38317839f19bff84913720"
+    },
+    {
+      "path": "machine_readable/dependency_graph.json",
+      "bytes": 913,
+      "sha256": "63b3d542884052215c86b3b140dbda44368a1781bdfacaf27a0060bd3a85ad59"
+    },
+    {
+      "path": "machine_readable/empirical_experiment_catalog.json",
+      "bytes": 3691,
+      "sha256": "921cb0fb441421dedcebdc4b887e5dd4d6871431bfe0bf14cc6915b73dcad415"
+    },
+    {
+      "path": "machine_readable/evidence_ladder.json",
+      "bytes": 1250,
+      "sha256": "24bc67fa99d10123bf9947c11e4f65e8b359a90e587bba429c4a521fdad24ff3"
+    },
+    {
+      "path": "machine_readable/falsification_rules.json",
+      "bytes": 1408,
+      "sha256": "5fedf766d5a45961ba594b7185d9c063a790e7b1e1034135db278c68b34f9324"
+    },
+    {
+      "path": "machine_readable/glossary.json",
+      "bytes": 1006,
+      "sha256": "d081de062ce7004a67bb7384f39b887a84a406e3b3ca20926e1a4238fd714e3f"
+    },
+    {
+      "path": "machine_readable/mathematical_phase_catalog.json",
+      "bytes": 6073,
+      "sha256": "0b3e375281b9350cca90b5be59cf7f1a7ee0bbea7f5a8e6ac6dfae8d1f1afd51"
+    },
+    {
+      "path": "machine_readable/prediction_ledger_template.json",
+      "bytes": 699,
+      "sha256": "9369b02c2f71a2f1c7b370ef71926d6d64b4ce35b36a5ccf5385e724464cc18b"
+    },
+    {
+      "path": "machine_readable/prediction_ledger_template.yaml",
+      "bytes": 581,
+      "sha256": "b2f7ccec62eb2c13c9cacd34c2589f2b30e34b295fed074dc4ce5c912d385ea4"
+    },
+    {
+      "path": "machine_readable/theorem_catalog.json",
+      "bytes": 4397,
+      "sha256": "66081aadb86d1bee371d897b32f97b243da81cb08d1c7711eaf1818b7a5da2ef"
+    },
+    {
+      "path": "source_evidence/ASH-Model-Preprint-v1.1.0.pdf",
+      "bytes": 1331526,
+      "sha256": "a25e0df4b9567e82e03b29620726d141590770b6eacd138542742b3c893a0629"
+    },
+    {
+      "path": "source_evidence/ASH-Model-v1.1.0-SHA256SUMS.txt",
+      "bytes": 947,
+      "sha256": "e4401e78b4e52c34824e10314c481fc2d4a9f9ac988045b6852c6037cf37f9be"
+    },
+    {
+      "path": "source_evidence/ASH-Model-v1.1.0-computational-certificate.json",
+      "bytes": 12287,
+      "sha256": "e37e4fce9c3e66e20bc70ca864489b37052ef1fd28ad66d9bf02fcf668c0c496"
+    },
+    {
+      "path": "source_evidence/ASH_Model_Audit_Validation_and_Remediation.md",
+      "bytes": 9926,
+      "sha256": "62ad9e0730df8bda97ae2dbebdf30e2cd77bc103230da270fe8e06b21bb92cfa"
+    },
+    {
+      "path": "source_evidence/ASH_Model_Final_Verification.json",
+      "bytes": 3682,
+      "sha256": "f0cc3ce7b9110e5a51f90993535e90289a519b70743cd55a4ed23f5003c44342"
+    },
+    {
+      "path": "source_evidence/ASH_Model_Full_Repository_Audit.md",
+      "bytes": 7993,
+      "sha256": "8cce05a4304ff50312291cec5f836a296dcbf9de55872d4a15487c2d788829bd"
+    },
+    {
+      "path": "source_evidence/ASH_Model_Original_Audit_Reproduction.json",
+      "bytes": 1241,
+      "sha256": "8d13c8b438bd0f7fb8472346caf98ab94ba33b59dce72d3cd9025ab4d36833fe"
+    },
+    {
+      "path": "source_evidence/ASH_Model_Verifier_Negative_Tests.json",
+      "bytes": 2242,
+      "sha256": "8bfb9736eb70c1b82717bfdf333097de18ab2c96ea933bbd0f6162e0d43b8847"
+    },
+    {
+      "path": "source_evidence/Audit Validation and Fix.txt",
+      "bytes": 3952,
+      "sha256": "2db04eb6d6e20cd66a431fa0bf8a1ce9735aeb26ceab47d550a9ed9b914c5d96"
+    },
+    {
+      "path": "source_evidence/Cosmology - Branch.txt",
+      "bytes": 30270,
+      "sha256": "78f0d6a54565e20a8637090a2f226a797ac770e3c567166009be2b14c64b37df"
+    },
+    {
+      "path": "source_evidence/Review ASH Model Issue.txt",
+      "bytes": 13031,
+      "sha256": "b27cb1d1c90c9dd92c476fef455120d32a5d51d33aa7bc96c47fb037b1e05804"
+    },
+    {
+      "path": "tables/evidence_ladder.csv",
+      "bytes": 596,
+      "sha256": "035ad22097f57c0afdeb0931fd3a560ac24eaca3dc52d7e3e492b63c8076d43e"
+    },
+    {
+      "path": "tables/experiment_catalog.csv",
+      "bytes": 1365,
+      "sha256": "e1cb6e238701e3b04cac42656a500847a666500a0d655f86b9750bcfdaf9d201"
+    },
+    {
+      "path": "tables/falsification_rules.csv",
+      "bytes": 883,
+      "sha256": "dbd9c9b438e82be3e3292e202948081dbeba661ce5ba97c0f0656d7d5a282328"
+    },
+    {
+      "path": "tables/phase_catalog.csv",
+      "bytes": 839,
+      "sha256": "c5acf3c625df91e81baa0846c20fd53151cb0080cd0f9204ab38fb69563b65b6"
+    },
+    {
+      "path": "tables/theorem_catalog.csv",
+      "bytes": 1334,
+      "sha256": "3382b81afba0b549223fe7ae965617d909323ede1dd5d2eb670303b867c88525"
+    }
+  ],
+  "repository_publication_adjustments": {
+    "reason": "Public repository policy required neutral source-review references and removal of non-portable citation markers in text evidence files.",
+    "updated_paths": [
+      "source_evidence/Audit Validation and Fix.txt",
+      "source_evidence/Cosmology - Branch.txt",
+      "source_evidence/Review ASH Model Issue.txt"
+    ]
+  }
+}
