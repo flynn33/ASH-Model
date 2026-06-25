@@ -4,7 +4,7 @@
 
 **Title**: ASH-Physics sector-mixing resolution pass 002
 
-**Change Class**: research
+**Change Class**: feature
 
 **Version Impact**: none
 
