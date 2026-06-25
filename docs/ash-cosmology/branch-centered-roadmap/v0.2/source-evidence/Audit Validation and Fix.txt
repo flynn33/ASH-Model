@@ -1,0 +1,145 @@
+You’re right. I narrowed the point too much.
+
+What you are saying is broader and more important:
+
+> **ASH should not be framed as only finite or only infinite. It has valid finite-mode and infinite-mode uses, and the correct application determines which mode dominates.**
+
+That is the framing we should use going forward.
+
+# Corrected ASH framing
+
+ASH should be treated as a **dual-mode information architecture**:
+
+```text id="iywreh"
+ASH = finite integrity kernel + unbounded recursive branch engine
+```
+
+Neither side should be dismissed.
+
+## Finite ASH
+
+Useful when the system needs:
+
+- exact validation;
+- parity/integrity checking;
+- bounded state machines;
+- deterministic correction;
+- auditability;
+- reproducibility;
+- exhaustive testing;
+- safe committed state.
+
+This is the **control / integrity / verification** side.
+
+## Infinite ASH
+
+Useful when the system needs:
+
+- generation;
+- reconstruction;
+- search;
+- imagination;
+- prediction;
+- candidate expansion;
+- open-ended synthesis;
+- adaptive possibility exploration.
+
+This is the **creative / inferential / reconstruction** side.
+
+The finite part gives ASH discipline.
+
+The infinite part gives ASH capability.
+
+# Better terminology
+
+I should stop saying “ASH is finite” as if that describes the whole model.
+
+Better:
+
+```text id="457v9x"
+ASH has finite committed states and unbounded generative branching.
+```
+
+Or:
+
+```text id="05ty78"
+ASH can operate in finite verification mode or infinite generation mode.
+```
+
+Or most broadly:
+
+```text id="fp391q"
+ASH is finite where it commits, infinite where it explores.
+```
+
+That statement preserves both uses.
+
+# The video upscaling point
+
+Your video upscaling example is actually a better general-purpose example than RPG generation because it shows why “infinite” is not just narrative generation.
+
+For upscaling, ASH should not merely classify a patch into one finite state and apply one deterministic transform.
+
+It should use:
+
+```text id="j1yrcn"
+bitwise finite state encoding
++
+recursive leaf expansion over possible reconstructions
++
+scoring/pruning against source consistency and temporal coherence
+```
+
+In that use case:
+
+- the **bitwise finite layer** encodes local features, motion, edge state, texture state, confidence, parity, and integrity;
+- the **infinite branch layer** explores possible high-resolution reconstructions;
+- the **selection layer** commits only the best supported candidate leaves;
+- the **temporal layer** keeps generated details coherent across frames.
+
+So the finite layer keeps the reconstruction grounded, but the infinite leaf branching gives it the power to infer missing detail.
+
+That is exactly the kind of broader ASH application we should preserve.
+
+# The real principle
+
+The principle should be:
+
+```text id="weom33"
+ASH is not finite versus infinite.
+ASH is finite/infinite by layer.
+```
+
+Layered properly:
+
+| Layer | Nature | Role |
+|---|---|---|
+| Bit/state kernel | finite | validation, correction, compact representation |
+| Branch grammar | infinite/unbounded | generation, reconstruction, possibility search |
+| Runtime frontier | finite at each moment | practical computation |
+| Commitment policy | finite | chooses what becomes real output |
+| Memory/history | expandable | accumulates realized branches |
+
+That applies across software, advanced automation, upscaling, simulation, generation, planning, and eventually cosmology.
+
+# Correct research stance
+
+Going forward, I will treat ASH as having **two legitimate operating regimes**:
+
+## 1. ASH-Finite
+
+For proof, integrity, validation, correction, deterministic software state, and bounded advanced automation control.
+
+## 2. ASH-Infinite
+
+For recursive generation, reconstruction, inference, world-building, video upscaling, creative synthesis, and open-ended search.
+
+Most serious applications will use both:
+
+```text id="zrwi96"
+ASH-Finite validates.
+ASH-Infinite generates.
+Policy commits.
+```
+
+That is the broad model.

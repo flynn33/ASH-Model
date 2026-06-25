@@ -148,6 +148,8 @@ The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki
 - `data/codewords.csv` - all 16 codewords and syndromes
 - `data/branch-topology.json` - complete depth-4 branch topology
 - `data/ablation-results.csv` - controlled simulation results
+- `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
+- `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `figures/` - generated, repository-linked evidence figures
 - `docs/` - specification, proof, controls, integration, and paper
 - `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package
