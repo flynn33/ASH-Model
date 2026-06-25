@@ -55,8 +55,14 @@ diagonal Gaussian likelihood comparator, and deterministic hash-lock validation
 for future prediction-ledger entries.  It also includes a dimensionless flat
 standard-baseline comparator for future baseline checks.
 
+Sector-mixing resolution pass 002 adds a separate eight-payload-coordinate
+workbench with deterministic integrity-bit recomputation.  It documents and
+tests a sector-refresh kernel that bridges the two payload Hamming-parity
+sectors without redefining the existing nine-coordinate finite-observer kernel.
+
 This layer is implemented in [`src/ash_model/physics.py`](src/ash_model/physics.py)
-and verified by [`tests/test_physics.py`](tests/test_physics.py).  It is not a
+and verified by [`tests/test_physics.py`](tests/test_physics.py) and
+[`tests/test_sector_mixing.py`](tests/test_sector_mixing.py).  It is not a
 claim of observed spacetime dynamics or empirical cosmology; those remain
 blocked until reviewed physical calibrations, external data products, matched
 baselines, and locked scientific predictions exist.
@@ -150,6 +156,8 @@ The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki
 - `data/ablation-results.csv` - controlled simulation results
 - `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
+- `data/ash-physics-sector-mixing/` - Sector-mixing pass 002 CSV evidence, upstream payload manifest, and reproduction metadata
+- `figures/ash-physics-sector-mixing/` - Sector-mixing pass 002 finite workbench figures
 - `figures/` - generated, repository-linked evidence figures
 - `docs/` - specification, proof, controls, integration, and paper
 - `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package

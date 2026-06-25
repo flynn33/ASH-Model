@@ -1,0 +1,93 @@
+{
+  "title": "ASH sector-mixing resolution pass 002",
+  "created": "2026-06-25",
+  "source_reference": "https://github.com/flynn33/ASH-Model read-only reference",
+  "summary": "Implements minimal admissible sector-refresh kernel that resolves pair-flip parity-sector obstruction.",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "9369962db97f695ca21ff280d8ee0818f445a2e4379940cf059c3f99c0447c2c",
+      "bytes": 1755
+    },
+    {
+      "path": "config/sector_mixing_config.json",
+      "sha256": "a97388eb45efde7f0f07e165ff08b7a06842ddd486eb654df39d039c850ce5ad",
+      "bytes": 408
+    },
+    {
+      "path": "data/admissible_state_metadata_256.csv",
+      "sha256": "1c4ac2d661b7a36b0da309f6af98376bc5a43d53e4e3b507c6e6f42bbf6d31cf",
+      "bytes": 4816
+    },
+    {
+      "path": "data/lumped_weight_transition_epsilon_0.01.csv",
+      "sha256": "207690726773ca4883cbe4a4b10bd0b5f66c0191f4cffe68c6ba4badfa2a1e91",
+      "bytes": 739
+    },
+    {
+      "path": "data/lumped_weight_transition_epsilon_0.05.csv",
+      "sha256": "f89b2c87594e8a14d09fbfc3c31c89424984b1117be70c76987d8a629da4ca92",
+      "bytes": 799
+    },
+    {
+      "path": "data/lumped_weight_transition_epsilon_0.1.csv",
+      "sha256": "ab794c91da1622adc003eba227573b8dd4fd7d966d6f98971a905a853557fc1e",
+      "bytes": 779
+    },
+    {
+      "path": "data/sector_mixing_spectral_scan.csv",
+      "sha256": "14366be30d4125733e9baa3272851cbd340caae8b21226b989a866a35d2d3f3b",
+      "bytes": 809
+    },
+    {
+      "path": "data/sector_mixing_time_series.csv",
+      "sha256": "08befde414ded83b8924155305c1434a7fdc02bb1f49f10517a6354184184666",
+      "bytes": 160192
+    },
+    {
+      "path": "figures/gap_vs_epsilon.png",
+      "sha256": "250c76f73a8394702e46ae7e6da93c4574b4dae104b7898e1066422e111d9000",
+      "bytes": 46044
+    },
+    {
+      "path": "figures/sector_mass_vs_time.png",
+      "sha256": "3c316bab6fe9146c0b3b215573e5c71a6469fed595ddd6bf89106b47b37b2679",
+      "bytes": 74948
+    },
+    {
+      "path": "figures/tv_convergence.png",
+      "sha256": "c11714e8ec6cd1acf43c0e7009287758d7e9a69e09540aa729b9707a06e8b892",
+      "bytes": 70933
+    },
+    {
+      "path": "proof/sector_mixing_resolution.md",
+      "sha256": "17f39d386398a8f792066d1504e3b002cf234ce5d1120f83a47a409efb444704",
+      "bytes": 1781
+    },
+    {
+      "path": "report/sector_mixing_resolution_report.pdf",
+      "sha256": "bef0df105b4e0191d86eaeeb010853d91bc3771a9848c5b3d97d9a22a9877269",
+      "bytes": 195327
+    },
+    {
+      "path": "report_render_check/page-1.png",
+      "sha256": "d71dfcc535d9bb299a1d728d74d97c79cd1506019d660c2af792a5063ce22bd0",
+      "bytes": 137396
+    },
+    {
+      "path": "report_render_check/page-2.png",
+      "sha256": "890984f557e01000b68e01a60d1e22d59815a8aaca0b939f92381c057d2f3c74",
+      "bytes": 71460
+    },
+    {
+      "path": "report_render_check/page-3.png",
+      "sha256": "f00da7ddcbea4d5c6ac7deeabcf668bd9c089d9bfdc1c7ba76aa0b7bfeedb282",
+      "bytes": 79029
+    },
+    {
+      "path": "src/reproduce_sector_mixing.py",
+      "sha256": "b099234f990eed780e364df81fd1517ea347359da36d051f6f95e2bf35ebaca3",
+      "bytes": 1768
+    }
+  ]
+}

@@ -64,6 +64,7 @@ ASH-Physics v0.2 defines and verifies a finite-observer stochastic layer:
 - a dimensionless bridge observable vector;
 - an exact Hamming-weight background equation;
 - bounded finite perturbation-mode factors.
+- a separate payload-sector refresh workbench for finite sector mixing;
 - an explicit affine calibration contract for future unit-bearing observables;
 - a diagonal Gaussian likelihood contract for future matched comparisons;
 - hash-lock validation for future prediction-ledger entries.
@@ -72,3 +73,12 @@ ASH-Physics v0.2 defines and verifies a finite-observer stochastic layer:
 
 This result closes the finite internal theory and validation-mechanics gates.
 It does not close the external physical validation gate.
+
+## Sector-Mixing Extension
+
+Sector-mixing resolution pass 002 is documented in
+[`sector-mixing-resolution-pass-002.md`](sector-mixing-resolution-pass-002.md).
+It adds a finite eight-payload-coordinate workbench, imported CSV/figure
+evidence, an exact proof note, and tests for the sector-refresh kernel.  The
+workbench preserves the boundary between finite ASH-Physics mechanics and
+external empirical validation.

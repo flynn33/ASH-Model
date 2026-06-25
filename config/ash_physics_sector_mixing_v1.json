@@ -1,0 +1,13 @@
+{
+  "name": "ASH sector-mixing resolution pass 002",
+  "n_free_bits": 8,
+  "state_count": 256,
+  "kernel": "K_epsilon=(1-epsilon) K_pair_lazy + epsilon S_single_refresh",
+  "recommended_epsilon_grid": [
+    0.001,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "canonical_policy": "Treat epsilon as a new finite-observer sector-refresh parameter; default epsilon=0.01 for synthetic workbench, not a physical constant."
+}

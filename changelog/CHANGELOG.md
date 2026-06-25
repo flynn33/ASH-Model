@@ -1,5 +1,21 @@
 # Changelog
 
+## Unreleased - 2026-06-25
+
+**Title**: ASH-Physics sector-mixing resolution pass 002
+
+**Change Class**: feature
+
+**Version Impact**: none
+
+**Summary**: Adds a finite payload-coordinate sector-refresh workbench, exact spectral tests, imported research evidence, and a deterministic reproduction command for sector-mixing resolution pass 002.
+
+**Affected Area**: ASH-Physics finite workbench, tests, proof notes, data, figures, and documentation
+
+### Added
+
+- ASH-Physics sector-mixing resolution pass 002 as a finite payload-coordinate workbench with data, figures, proof note, reproduction tool, and tests.
+
 ## Unreleased - 2026-06-24
 
 **Title**: Repository documentation and wiki publication refresh
