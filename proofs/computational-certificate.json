@@ -439,7 +439,7 @@
     ".github/workflows/ai-contributor-check.yml": "63b5126948288a8e84a7867bdf0af7e73d56fadb742f5f1ef4d7efea690fad24",
     ".github/workflows/changelog-validation.yml": "3f561661e0336919569b479d8a0f9d5f5410e6ededb315f6fbfd05bbc1b108f8",
     ".github/workflows/ci.yml": "efba106e9439e9c3860d8e803f90aaa7ef5ce1cd8c5b347fc911ff389226e7c6",
-    ".github/workflows/contributor-identity-check.yml": "a623583fb622b9b4882e9b570f6b95e25375a96f900c61aec8f2117065d8bf93",
+    ".github/workflows/contributor-identity-check.yml": "0448e6b2f3a4ab0b5ebd2dcf718809c96787217929f72e5a86184a0681f9d495",
     ".github/workflows/discussion-agents.yml": "c6533fda5958d4a5d5f66c1412226242b89a11ed5d3eb5e7aa74028f5e315061",
     ".github/workflows/discussion-moderation.yml": "2b39b1fda3ea6af95e764a74a059f73853b863bf2a12d933feae202bd13d4f38",
     ".github/workflows/discussion-topic-seeder.yml": "01793bf70249b85b7031a77bd6bf71e6cb4f9f9fa16bf360fd528f1906a50354",
