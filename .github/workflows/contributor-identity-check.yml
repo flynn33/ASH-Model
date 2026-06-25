@@ -1,0 +1,41 @@
+name: Contributor Identity Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+jobs:
+  check-contributor-identities:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch repository history
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+
+          if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+            git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune origin \
+              "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}" \
+              "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/pr/${PR_NUMBER}"
+            echo "base=${BASE_SHA}" >> "$GITHUB_ENV"
+            echo "head=${HEAD_SHA}" >> "$GITHUB_ENV"
+          else
+            git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune origin "$GITHUB_REF"
+            git checkout --force FETCH_HEAD
+            echo "base=${BEFORE_SHA}" >> "$GITHUB_ENV"
+            echo "head=${GITHUB_SHA}" >> "$GITHUB_ENV"
+          fi
+
+      - name: Check contributor identities
+        run: python3 scripts/github/check_contributor_identities.py --base "$base" --head "$head"
