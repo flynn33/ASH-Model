@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "levels": [
+    {
+      "level": 0,
+      "name": "finite local algebra",
+      "role": "validates local state alphabet"
+    },
+    {
+      "level": 1,
+      "name": "branch existence theorem",
+      "role": "validates leaf-world structure"
+    },
+    {
+      "level": 2,
+      "name": "branch measure/amplitude theorem",
+      "role": "makes branches probabilistic or quantum-like"
+    },
+    {
+      "level": 3,
+      "name": "decoherence/separation theorem",
+      "role": "makes leaves world-like"
+    },
+    {
+      "level": 4,
+      "name": "observer commitment theorem",
+      "role": "explains realized experience"
+    },
+    {
+      "level": 5,
+      "name": "bridge-to-geometry theorem",
+      "role": "turns branch ensemble into cosmology"
+    },
+    {
+      "level": 6,
+      "name": "synthetic universe recovery",
+      "role": "tests generated branch cosmologies"
+    },
+    {
+      "level": 7,
+      "name": "matched controls",
+      "role": "proves effects are ASH-specific"
+    },
+    {
+      "level": 8,
+      "name": "empirical fit",
+      "role": "compares to cosmological data"
+    },
+    {
+      "level": 9,
+      "name": "prospective prediction",
+      "role": "strongest evidence"
+    }
+  ]
+}

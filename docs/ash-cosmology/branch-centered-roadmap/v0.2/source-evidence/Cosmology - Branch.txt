@@ -1,0 +1,1268 @@
+Understood. I will treat storage, implementation management, and project-file organization as out of scope unless you explicitly ask for them. This roadmap is research-only: definitions, mathematics, evidence, experiments, falsification, and documentation targets.
+
+The starting point is this: ASH has a real finite scaffold—`F₂⁹`, XOR translations, a rank-4 doubly-even `[9,4,4]` code, Hamming planes, an averaging operator, and conditional Markov-chain claims—but earlier material also showed that several physical, branching, decoding, and empirical claims had not yet been established. The clean conceptual reset is to treat ASH / Enneahcube as a dual-mode architecture: finite integrity kernel plus unbounded recursive generation, with a commit layer selecting realized states from branch potential.
+
+# ASH Cosmology Research Roadmap
+
+## Mission
+
+Develop ASH Cosmology from a verified finite symbolic kernel into a falsifiable physical cosmology by deriving a bridge from Enneahcube state dynamics to spacetime, fields, statistical observables, and empirical predictions.
+
+The goal is not to “explain everything.” The goal is to produce a theory with:
+
+1. precise definitions;
+2. provable mathematical structure;
+3. numerical simulations with controls;
+4. derived observables;
+5. comparison against real cosmological data;
+6. falsification criteria;
+7. prospective predictions.
+
+---
+
+# 0. Foundational stance
+
+## Core principle
+
+```text id="weasnc"
+ASH Cosmology = finite Enneahcube integrity kernel
+              + recursive branch dynamics
+              + physical bridge map
+              + empirical observables
+              + falsification discipline
+```
+
+The finite layer gives ASH exactness. The infinite branch layer gives ASH generative capacity. The physical bridge determines whether ASH becomes cosmology rather than only information architecture.
+
+## Non-negotiable boundary
+
+ASH may be mathematically interesting before it is physically true.
+
+A theorem about `F₂⁹` does not automatically become a theorem about spacetime. A successful branch reconstruction process does not automatically become quantum mechanics. A binomial or Gaussian-looking distribution does not automatically become cosmological evidence.
+
+That distinction must remain permanent.
+
+---
+
+# 1. Research objects and canonical definitions
+
+## 1.1 Enneahcube state space
+
+Define the finite state kernel:
+
+\[
+\Omega = \mathbb F_2^9.
+\]
+
+Each state is
+
+\[
+x=(x_1,\ldots,x_9),
+\qquad x_i\in\{0,1\}.
+\]
+
+The Enneahcube graph has one vertex for each state and one edge for every one-bit flip:
+
+\[
+x \sim y
+\iff
+d_H(x,y)=1.
+\]
+
+Immediate theorem targets:
+
+| Object | Required proof |
+|---|---|
+| State count | \(|\Omega|=2^9=512\) |
+| Vertex degree | every vertex has 9 neighbors |
+| Hamming planes | \(P_k=\{x:\mathrm{wt}(x)=k\}\) |
+| Plane count | \(|P_k|=\binom{9}{k}\) |
+| Bit-flip graph | regular, bipartite, connected |
+
+## 1.2 ASH code layer
+
+Define a canonical rank-4 doubly-even linear code:
+
+\[
+C \subset \mathbb F_2^9,
+\qquad
+[n,k,d]=[9,4,4].
+\]
+
+Required theorem targets:
+
+| Claim | Proof target |
+|---|---|
+| Linearity | \(C\) is closed under XOR |
+| Rank | \(\dim C=4\) |
+| Size | \(|C|=16\) |
+| Doubly-even | \(\mathrm{wt}(c)\equiv0\pmod4\) for all \(c\in C\) |
+| Minimum distance | \(d_{\min}=4\) |
+| Single-error correction | unique correction for \(t=1\) |
+| Double-error policy | detect/reject, not silently heal |
+| Not self-dual | \(\dim C\neq 9/2\) |
+
+For ASH Cosmology, the code cannot remain merely a convenient error-correcting primitive. The roadmap must determine whether \(C\) functions as:
+
+- a gauge constraint;
+- an admissibility constraint;
+- a local conservation law;
+- a causal update alphabet;
+- a parity/integrity condition;
+- a stabilizing subspace;
+- a microphysical symmetry.
+
+Those are different scientific claims. We must choose and prove the consequences.
+
+## 1.3 Dual-mode branch structure
+
+Define ASH as:
+
+\[
+\mathcal A = (\Omega,C,D,G,B,S,P,M).
+\]
+
+| Symbol | Meaning |
+|---|---|
+| \(\Omega\) | finite state space |
+| \(C\) | code / admissibility / correction structure |
+| \(D\) | decoder and defect policy |
+| \(G\) | recursive branch grammar |
+| \(B\) | branch expansion operators |
+| \(S\) | scoring or action functional |
+| \(P\) | pruning / commitment policy |
+| \(M\) | realized memory / history graph |
+
+The branch layer is not finite in principle. At finite runtime, only a bounded frontier is explored; mathematically, the tree can be unbounded.
+
+Define a branch tree:
+
+\[
+\mathcal T_x
+=
+\{b: b \text{ is a finite branch path rooted at } x\}.
+\]
+
+Each branch has:
+
+\[
+\mathrm{state}(b)\in\Omega,
+\quad
+\mathrm{weight}(b)\in\mathbb R_{\ge0},
+\quad
+\mathrm{score}(b)\in\mathbb R,
+\quad
+\mathrm{parent}(b),
+\quad
+\mathrm{children}(b).
+\]
+
+Commitment selects finite realized output:
+
+\[
+\operatorname{commit}
+:
+\mathcal F_t
+\to
+\Omega
+\quad\text{or}\quad
+\operatorname{commit}
+:
+\mathcal F_t
+\to
+\text{observable event},
+\]
+
+where \(\mathcal F_t\) is the explored frontier at step \(t\).
+
+Required theorem targets:
+
+| Claim | Required proof |
+|---|---|
+| Branch closure | child states remain admissible or are explicitly rejected |
+| Weight normalization | branch weights sum to 1 when interpreted probabilistically |
+| Commit determinism | same inputs produce same committed output if deterministic |
+| Commit stability | small perturbations do not cause pathological branch jumps |
+| Pruning safety | pruning cannot remove all admissible branches unless failure is declared |
+| Infinite limit | if depth \(\to\infty\), the branch measure is well-defined or deliberately non-probabilistic |
+
+---
+
+# 2. ASH Cosmology theory target
+
+The central object must be a universe model, not a single-state model.
+
+## 2.1 Microscopic universe state
+
+Let \(\Gamma\) be a causal graph, lattice, hypergraph, or event network.
+
+A microscopic ASH universe at update index \(t\) is:
+
+\[
+X_t
+=
+\{x_v(t): v\in \Gamma_t,\ x_v(t)\in\Omega\}.
+\]
+
+If the graph itself evolves:
+
+\[
+\mathcal U_t=(\Gamma_t,X_t).
+\]
+
+Research decision required:
+
+| Option | Meaning |
+|---|---|
+| Fixed graph | ASH states live on a pre-existing causal lattice |
+| Dynamic graph | ASH states generate or modify adjacency |
+| Branching graph | many possible graph futures exist, then commit |
+| Emergent graph | adjacency is derived from state correlations |
+
+The most powerful cosmology path is dynamic or emergent graph structure, but the most mathematically tractable first path is fixed causal graph.
+
+## 2.2 Local update law
+
+Define a local transition rule:
+
+\[
+x_v(t+1)
+=
+F_\theta
+\left(
+x_v(t),
+\{x_u(t):u\in N(v)\},
+\eta_v(t)
+\right).
+\]
+
+Or stochastic form:
+
+\[
+K_\theta
+\left(
+X_{t+1}\mid X_t
+\right).
+\]
+
+Or branch form:
+
+\[
+\mathcal F_{t+1}
+=
+\operatorname{expand}
+\left(
+\mathcal F_t;G,B,S
+\right),
+\qquad
+X_{t+1}
+=
+\operatorname{commit}(\mathcal F_{t+1};P).
+\]
+
+Mathematical gates:
+
+1. \(K_\theta\) must be normalized.
+2. Invalid states must be impossible or handled.
+3. Causal influence must be bounded.
+4. Conservation laws must be explicit.
+5. Parameters \(\theta\) must be finite and interpretable.
+6. The rule must not be retrofitted after data.
+
+## 2.3 Physical bridge map
+
+ASH becomes cosmology only when there is a map:
+
+\[
+\mathcal B_\ell:
+(\Gamma,X)
+\longrightarrow
+(g_{\mu\nu},T_{\mu\nu},\phi^A,J^\mu,\rho,p,\ldots)_\ell.
+\]
+
+This is the most important missing theory object.
+
+It must answer:
+
+| ASH object | Physical interpretation needed |
+|---|---|
+| Bit coordinate | field component, constraint, charge, mode, or symbolic state |
+| Codeword | gauge move, transition generator, correction mask, or local symmetry |
+| Hamming distance | physical distance, action cost, defect measure, or none |
+| Branch | possible history, computational hypothesis, quantum-like alternative, or reconstruction candidate |
+| Commit | measurement, decoherence, coarse-graining, classicalization, or inference |
+| Memory graph | spacetime history, causal set, path integral support, or observer record |
+
+Until \(\mathcal B_\ell\) exists, ASH Cosmology has no measurable observables.
+
+---
+
+# 3. Mathematical roadmap
+
+## Phase M1 — finite Enneahcube proof closure
+
+### Objective
+
+Lock all finite state and code facts.
+
+### Outputs
+
+- formal definition of \(\Omega\);
+- formal definition of \(C\);
+- generator and parity-check matrices;
+- exact weight enumerator;
+- syndrome table;
+- decoder theorem;
+- projection theorem;
+- branch-state theorem.
+
+### Proofs
+
+\[
+|C|=16,
+\qquad
+d_{\min}=4,
+\qquad
+T^2=T,
+\qquad
+D(x+e_i)=x\ \text{for valid single-bit corruption}.
+\]
+
+### Acceptance criterion
+
+Every finite claim is either algebraically proved or exhaustively enumerated over 512 states.
+
+### Failure criterion
+
+Any finite counterexample invalidates the corresponding claim immediately.
+
+---
+
+## Phase M2 — branch calculus
+
+### Objective
+
+Turn recursive branching into a mathematically defined object.
+
+### Required definitions
+
+\[
+G:\text{grammar},
+\quad
+B:\text{branch operators},
+\quad
+S:\text{score/action},
+\quad
+P:\text{pruning/commit policy}.
+\]
+
+### Theorem targets
+
+| Theorem | Meaning |
+|---|---|
+| Expansion theorem | number and structure of branches at depth \(n\) |
+| State-label theorem | each branch receives a valid or rejected ASH state |
+| Weight theorem | branch weights normalize or are declared non-probabilistic |
+| Commit theorem | finite frontier always commits or declares failure |
+| Stability theorem | equivalent branches have deterministic tie-breaking |
+| Infinite-frontier theorem | limiting measure exists if probabilistic interpretation is used |
+
+### Critical distinction
+
+Branch weights are not automatically quantum amplitudes. If ASH claims Born-rule behavior, then the branch layer must define complex amplitudes or an equivalent probability rule and derive:
+
+\[
+P_i = |\psi_i|^2
+\]
+
+or a justified alternative.
+
+---
+
+## Phase M3 — causal dynamics
+
+### Objective
+
+Define ASH as an evolving universe model.
+
+### Core object
+
+\[
+\mathcal U_t=(\Gamma_t,X_t,\mathcal F_t,M_t).
+\]
+
+### Theorem targets
+
+| Theorem | Target |
+|---|---|
+| Existence | every valid initial state has at least one future |
+| Uniqueness or branching | future is deterministic or branch-indexed |
+| Causality | finite propagation speed on \(\Gamma_t\) |
+| Integrity preservation | valid states remain valid or defects are explicit |
+| Entropy/action monotonicity | if claimed, define and prove |
+| Reversibility or irreversibility | classify the update rule |
+
+### Research decision
+
+Determine whether ASH is fundamentally:
+
+1. deterministic;
+2. stochastic;
+3. branching-deterministic;
+4. quantum-amplitude-based;
+5. inference-based rather than ontological.
+
+Do not mix these without explicit maps between them.
+
+---
+
+## Phase M4 — emergent geometry
+
+### Objective
+
+Derive spacetime-like geometry from ASH state relations.
+
+### Candidate maps
+
+Graph distance:
+
+\[
+d_\Gamma(u,v).
+\]
+
+State correlation distance:
+
+\[
+d_C(u,v)
+=
+f\left(d_H(x_u,x_v),\operatorname{corr}(x_u,x_v)\right).
+\]
+
+Information metric:
+
+\[
+g_{ij}
+=
+\partial_i\partial_j
+\mathcal I(\theta).
+\]
+
+Coarse-grained metric:
+
+\[
+g_{\mu\nu}
+=
+\mathcal B_\ell(\Gamma,X).
+\]
+
+### Required evidence
+
+- dimension estimator converges to approximately 3 spatial dimensions at large scales;
+- Lorentz symmetry is exact, emergent, or deviations are bounded;
+- curvature can be defined;
+- geodesics or causal paths can be computed;
+- metric perturbations exist.
+
+### Failure criterion
+
+If no stable geometry emerges under coarse-graining, ASH may remain an information architecture but not a cosmology.
+
+---
+
+## Phase M5 — effective field theory or replacement
+
+### Objective
+
+Derive what physical fields ASH produces.
+
+### Required objects
+
+\[
+\rho_{\rm ASH},
+\quad
+p_{\rm ASH},
+\quad
+\delta_{\rm ASH},
+\quad
+\Phi,
+\quad
+\Psi,
+\quad
+h_{ij},
+\quad
+\phi^A.
+\]
+
+### Target equations
+
+Background:
+
+\[
+H^2(a)=H^2_{\rm ASH}(a;\theta).
+\]
+
+Perturbations:
+
+\[
+\delta'' + A(a,k)\delta' + B(a,k)\delta = C_{\rm ASH}(a,k).
+\]
+
+Primordial statistics:
+
+\[
+P_\zeta(k),
+\quad
+B_\zeta(k_1,k_2,k_3),
+\quad
+T_\zeta(k_1,k_2,k_3,k_4).
+\]
+
+### The most valuable theorem
+
+Show that ASH reduces to known successful physics in a limit:
+
+\[
+\text{ASH}
+\longrightarrow
+\Lambda\mathrm{CDM}
+\quad\text{or}\quad
+\text{GR + matter}
+\]
+
+under a controlled parameter limit.
+
+If ASH cannot reduce to known physics, then it must outperform it empirically with very strong evidence.
+
+---
+
+## Phase M6 — observable derivation
+
+### Objective
+
+Produce directly measurable quantities.
+
+ASH must derive predictions for:
+
+| Observable | Symbol |
+|---|---|
+| Expansion rate | \(H(z)\) |
+| Luminosity distance | \(D_L(z)\) |
+| Angular diameter distance | \(D_A(z)\) |
+| Comoving distance | \(D_M(z)\) |
+| Sound horizon | \(r_d\) |
+| CMB spectra | \(C_\ell^{TT},C_\ell^{TE},C_\ell^{EE}\) |
+| Lensing spectrum | \(C_\ell^{\phi\phi}\) |
+| Matter power spectrum | \(P(k,z)\) |
+| Growth rate | \(f\sigma_8(z)\) |
+| Non-Gaussianity | \(f_{\rm NL}, g_{\rm NL}\), shape functions |
+| Gravitational-wave propagation | \(c_T, \alpha_T\), dispersion |
+
+### Acceptance criterion
+
+Each observable must be computable from fixed ASH equations without post-hoc fitting of functional forms.
+
+---
+
+# 4. Empirical roadmap
+
+Current public data products suitable for eventual comparison include Planck final CMB products, DESI DR2 BAO products, ACT DR6 data products, and Pantheon+ / SH0ES supernova materials. Planck’s 2018 legacy release includes final full-mission CMB products and likelihood code; DESI DR2 released BAO measurements and interpretation from the first three survey years; ACT DR6 provides CMB data products; Pantheon+ / SH0ES provides supernova data, chains, and likelihood materials. ([cosmos.esa.int](https://www.cosmos.esa.int/web/planck))
+
+## Phase E1 — synthetic universes
+
+### Objective
+
+Before real data, prove that ASH inference works on universes generated by ASH itself.
+
+### Tests
+
+1. Generate synthetic ASH universes.
+2. Recover known parameters.
+3. Add noise and masking.
+4. Check confidence interval coverage.
+5. Fit ΛCDM to ASH-generated data.
+6. Fit ASH to ΛCDM-generated data.
+7. Verify ASH is distinguishable only when it should be.
+
+### Acceptance criterion
+
+ASH parameters are recovered without bias on synthetic ASH data.
+
+### Failure criterion
+
+If ASH cannot recover its own parameters from synthetic data, empirical cosmology is premature.
+
+---
+
+## Phase E2 — null and matched controls
+
+### Objective
+
+Prevent false attribution.
+
+For every ASH-specific result, compare against:
+
+| ASH element | Control |
+|---|---|
+| `[9,4,4]` code | random rank-4 code |
+| doubly-even constraint | non-doubly-even matched code |
+| parity coordinate | random parity / shuffled parity |
+| branch grammar | random branch grammar |
+| commit policy | greedy, random, and Bayesian baselines |
+| Enneahcube graph | matched 512-state graph |
+| ASH dynamics | cellular automaton with matched entropy |
+| ASH branch statistics | generic branching process |
+
+### Acceptance criterion
+
+The claimed effect disappears or changes significantly under matched controls.
+
+### Failure criterion
+
+If generic controls reproduce the result, the result is not ASH-specific.
+
+---
+
+## Phase E3 — background cosmology
+
+### Objective
+
+Test whether ASH can reproduce or improve the homogeneous expansion history.
+
+### Observables
+
+\[
+H(z),
+\quad
+D_L(z),
+\quad
+D_M(z),
+\quad
+D_A(z),
+\quad
+r_d.
+\]
+
+### Data classes
+
+- BAO;
+- supernovae;
+- cosmic chronometers;
+- CMB-derived distance priors only after ASH perturbation sector is defined.
+
+### Required comparison models
+
+- flat ΛCDM;
+- curved ΛCDM;
+- \(w_0w_a\) dark energy;
+- early dark energy if relevant;
+- matched parameter-count ASH variants.
+
+### Acceptance criterion
+
+ASH fits background data at least as well as the closest conventional model after parameter-count penalty.
+
+### Failure criterion
+
+ASH can fit one distance probe only by breaking another.
+
+---
+
+## Phase E4 — perturbation cosmology
+
+### Objective
+
+Test structure formation and CMB anisotropies.
+
+### Required derived quantities
+
+\[
+P_m(k,z),
+\quad
+f\sigma_8(z),
+\quad
+C_\ell^{TT},
+\quad
+C_\ell^{TE},
+\quad
+C_\ell^{EE},
+\quad
+C_\ell^{\phi\phi}.
+\]
+
+### Data classes
+
+- Planck CMB spectra;
+- ACT DR6 CMB data;
+- weak lensing;
+- galaxy clustering;
+- redshift-space distortions;
+- CMB lensing.
+
+### Acceptance criterion
+
+The same ASH parameter set must fit CMB, BAO, supernovae, and growth simultaneously.
+
+### Failure criterion
+
+ASH cannot use one parameter set across early-universe and late-universe probes.
+
+---
+
+## Phase E5 — non-Gaussianity and parity signatures
+
+### Objective
+
+Search for effects that are more plausibly ASH-specific.
+
+Candidate signatures to derive:
+
+1. parity-conditioned correlations;
+2. Hamming-plane selection rules;
+3. branch-depth imprints in higher-order statistics;
+4. discrete spectral cutoffs;
+5. oscillatory features tied to Enneahcube eigenvalues;
+6. constrained bispectrum or trispectrum shapes;
+7. low-\(\ell\) parity asymmetry predictions;
+8. suppressed or enhanced defect modes.
+
+Important: these are not predictions yet. They become predictions only after derivation from fixed ASH dynamics.
+
+### Acceptance criterion
+
+ASH derives a specific shape, amplitude relation, or selection rule before looking at the data.
+
+### Failure criterion
+
+The signature is chosen after inspecting anomalies.
+
+---
+
+## Phase E6 — gravitational waves and Lorentz constraints
+
+### Objective
+
+Check whether ASH’s discreteness or branch dynamics modifies propagation.
+
+### Derive
+
+\[
+\omega^2
+=
+c^2k^2
++
+\Delta_{\rm ASH}(k;\theta).
+\]
+
+Test:
+
+- gravitational-wave speed;
+- dispersion;
+- polarization;
+- damping;
+- birefringence;
+- multimessenger timing.
+
+### Acceptance criterion
+
+Predicted deviations are either below existing bounds or match a specific anomaly.
+
+### Failure criterion
+
+ASH implies large Lorentz violation, superluminal signaling, or forbidden dispersion.
+
+---
+
+## Phase E7 — prospective prediction
+
+### Objective
+
+Move from explanation to prediction.
+
+A valid prospective ASH prediction must specify:
+
+```text id="za33zz"
+model version
+fixed equations
+fixed parameter priors
+data product to be tested
+observable
+scale range
+redshift range
+statistic
+covariance
+prediction interval
+rejection criterion
+date frozen
+```
+
+### Strong prediction example format
+
+```text id="spvva5"
+ASH predicts a nonzero oscillatory residual in P(k)
+with phase φ and amplitude A in this range,
+not adjustable after date D,
+to be tested on dataset X.
+```
+
+### Acceptance criterion
+
+Future data fall inside ASH’s predicted interval and outside the closest matched control model’s interval.
+
+### Failure criterion
+
+ASH prediction fails or is revised after unblinding.
+
+---
+
+# 5. Evidence ladder
+
+## Level 0 — internal mathematical consistency
+
+ASH proves all finite algebraic claims.
+
+Status: mostly reachable now.
+
+## Level 1 — computational reproducibility
+
+ASH simulations reproduce mathematical theorems and fail when tampered with.
+
+Status: reachable now.
+
+## Level 2 — synthetic recovery
+
+ASH can recover its own parameters from synthetic universes.
+
+Status: next major empirical milestone.
+
+## Level 3 — matched-control superiority
+
+ASH-specific mechanisms outperform matched non-ASH alternatives.
+
+Status: required before physical claims.
+
+## Level 4 — physical bridge
+
+ASH derives spacetime, fields, or cosmological equations.
+
+Status: central missing research.
+
+## Level 5 — observational fit
+
+ASH fits real cosmological data.
+
+Status: impossible until Level 4 exists.
+
+## Level 6 — predictive advantage
+
+ASH predicts held-out or future observations better than competitors.
+
+Status: future milestone.
+
+## Level 7 — independent replication
+
+External researchers reproduce ASH predictions and results.
+
+Status: final credibility milestone.
+
+---
+
+# 6. Falsification criteria
+
+ASH Cosmology should be considered falsified, or at least demoted, if any of the following occur:
+
+| Failure | Consequence |
+|---|---|
+| finite algebra contains contradiction | reject affected theorem |
+| branch probabilities cannot normalize | no probabilistic interpretation |
+| no physical bridge map can be defined | ASH remains non-cosmological information theory |
+| no stable continuum or causal limit emerges | no standard cosmology claim |
+| geometry fails to become approximately 3+1D | reject spacetime emergence claim |
+| Lorentz violations exceed bounds | reject or heavily constrain model |
+| cannot fit CMB + BAO + SNe together | reject cosmological viability |
+| many extra parameters are required | no explanatory advantage |
+| matched controls reproduce effects | not ASH-specific |
+| predictions change after data | invalid empirical protocol |
+| no prospective prediction succeeds | no strong empirical support |
+
+---
+
+# 7. Immediate research deliverables
+
+These are intellectual deliverables, not storage instructions.
+
+## Deliverable A — ASH Cosmology Canonical Definitions
+
+Define:
+
+```text id="dmewdm"
+Ω, C, D, G, B, S, P, M, Γ, X_t, F_θ, K_θ, B_ℓ
+```
+
+with equations and admissibility conditions.
+
+## Deliverable B — Physical Interpretation Table
+
+For every ASH object, state whether it is:
+
+```text id="fom055"
+physical
+gauge
+informational
+computational
+emergent
+auxiliary
+```
+
+No ambiguous metaphors allowed.
+
+## Deliverable C — ASH Dynamics Candidate Set
+
+Develop three candidate dynamics:
+
+1. deterministic local update;
+2. stochastic Markov update;
+3. branch-and-commit update.
+
+For each, prove closure, locality, and invariants.
+
+## Deliverable D — Bridge Map Candidate Set
+
+Develop at least three bridge maps:
+
+1. graph-geometric bridge;
+2. information-metric bridge;
+3. branch-history / path-integral-like bridge.
+
+Each bridge map must yield candidate observables.
+
+## Deliverable E — Continuum-Limit Study
+
+Test whether large ASH graphs produce:
+
+- stable dimension;
+- metric structure;
+- wave propagation;
+- effective diffusion or field equations;
+- curvature-like quantities.
+
+## Deliverable F — Cosmological Background Prototype
+
+Derive:
+
+\[
+H_{\rm ASH}(z),
+\quad
+D_L(z),
+\quad
+D_M(z).
+\]
+
+This is the first point where ASH can touch real cosmological data.
+
+## Deliverable G — Perturbation Prototype
+
+Derive:
+
+\[
+P_\zeta(k),
+\quad
+P_m(k,z),
+\quad
+C_\ell.
+\]
+
+This is the point where ASH becomes a serious cosmology candidate.
+
+## Deliverable H — Prediction Ledger
+
+Every proposed prediction gets a record:
+
+```yaml id="heupb6"
+prediction_id:
+theory_version:
+equations_frozen:
+parameters_allowed:
+observable:
+dataset:
+scale_range:
+prediction:
+uncertainty:
+rejection_rule:
+status:
+```
+
+---
+
+# 8. Candidate mathematical research questions
+
+These are the central problems I would attack first.
+
+## Q1. Can code cosets define conserved sectors?
+
+Study whether ASH code cosets behave like superselection sectors:
+
+\[
+\Omega / C.
+\]
+
+If yes, prove what transitions are allowed and forbidden.
+
+## Q2. Can branch depth produce a natural action?
+
+Try:
+
+\[
+S(b)
+=
+\alpha\,d_H(x_b,x_0)
++
+\beta\,\ell(b)
++
+\gamma\,\mathrm{defect}(b)
++
+\delta\,\mathrm{curvature}(b).
+\]
+
+Then define:
+
+\[
+P(b)
+=
+\frac{e^{-S(b)}}{Z}.
+\]
+
+This may become a bridge between branch scoring and statistical physics.
+
+## Q3. Can Enneahcube spectra create observable scales?
+
+The 9-cube adjacency spectrum is highly structured. Study whether code-projected spectra produce fixed eigenvalue families that could map to physical oscillation or damping modes.
+
+## Q4. Can parity/integrity defects behave like particles?
+
+Define a defect:
+
+\[
+\epsilon(x)=x_9\oplus(x_1\oplus\cdots\oplus x_8).
+\]
+
+Study defect propagation, annihilation, conservation, and interaction.
+
+## Q5. Can committed branch histories generate emergent time?
+
+Let \(M_t\) be committed branch memory. Investigate whether causal order arises from:
+
+\[
+M_0 \subset M_1 \subset M_2 \subset \cdots.
+\]
+
+This may produce an arrow of time from commitment, not from the finite kernel alone.
+
+## Q6. Can branch entropy become cosmological entropy?
+
+Define:
+
+\[
+S_{\rm branch}(t)
+=
+-\sum_{b\in\mathcal F_t}p_b\log p_b.
+\]
+
+Then test whether committed histories obey entropy growth or apparent horizon-like relations.
+
+---
+
+# 9. Candidate empirical signatures to derive
+
+These are not claims yet. They are targets for derivation.
+
+| Candidate ASH signature | Required derivation |
+|---|---|
+| parity-conditioned CMB correlations | from parity/integrity dynamics |
+| low-\(\ell\) selection rule | from code-coset constraints |
+| oscillatory \(P(k)\) residuals | from Enneahcube spectral modes |
+| non-Gaussian branch trispectrum | from branch commitment statistics |
+| modified growth rate | from emergent field equations |
+| dark-sector effective fluid | from unresolved branch entropy |
+| curvature from defect density | from defect-geometric bridge |
+| arrow-of-time relation | from committed branch memory |
+| UV cutoff or smoothing scale | from finite-state coarse-graining |
+
+Each target must pass this sequence:
+
+```text id="357zvt"
+derive mathematically
+simulate synthetically
+test against matched controls
+freeze prediction
+compare to real data
+```
+
+---
+
+# 10. Machine-ingestible roadmap manifest
+
+```yaml id="w3q5cs"
+ash_cosmology_roadmap:
+  scope:
+    repository_guidance: forbidden
+    focus:
+      - mathematics
+      - physics
+      - simulations
+      - empirical validation
+      - falsification
+      - documentation of evidence
+
+  foundational_model:
+    state_space: "Omega = F_2^9"
+    graph: "Enneahcube, edges by Hamming distance 1"
+    code: "rank-4 doubly-even [9,4,4] binary linear code"
+    parity_coordinate: "coordinate 9 as integrity/admissibility coordinate"
+    branch_layer: "unbounded recursive branch tree"
+    commit_layer: "finite realized state/history selection"
+
+  required_theory_objects:
+    - name: "Omega"
+      role: "finite local state alphabet"
+    - name: "C"
+      role: "code/admissibility/correction structure"
+    - name: "D"
+      role: "decoder and defect policy"
+    - name: "G"
+      role: "branch grammar"
+    - name: "B"
+      role: "branch operators"
+    - name: "S"
+      role: "score/action functional"
+    - name: "P"
+      role: "pruning and commitment policy"
+    - name: "M"
+      role: "memory/history graph"
+    - name: "Gamma"
+      role: "causal graph or emergent adjacency"
+    - name: "B_ell"
+      role: "coarse-graining bridge to physical observables"
+
+  mathematical_phases:
+    M1:
+      title: "Finite Enneahcube proof closure"
+      outputs:
+        - state_count_proof
+        - hamming_plane_proof
+        - code_rank_proof
+        - minimum_distance_proof
+        - decoder_theorem
+        - projection_idempotence_theorem
+    M2:
+      title: "Branch calculus"
+      outputs:
+        - branch_expansion_theorem
+        - branch_weight_theorem
+        - commit_policy_theorem
+        - pruning_safety_theorem
+    M3:
+      title: "Causal dynamics"
+      outputs:
+        - local_update_law
+        - closure_theorem
+        - causality_theorem
+        - invariant_catalog
+    M4:
+      title: "Emergent geometry"
+      outputs:
+        - graph_metric_candidates
+        - dimension_estimator
+        - coarse_grained_metric
+        - lorentz_limit_test
+    M5:
+      title: "Effective physics"
+      outputs:
+        - background_equations
+        - perturbation_equations
+        - effective_stress_energy
+        - field_or_fluid_interpretation
+    M6:
+      title: "Observables"
+      outputs:
+        - H_z
+        - D_L_z
+        - D_M_z
+        - CMB_spectra
+        - matter_power_spectrum
+        - non_gaussianity_shapes
+
+  empirical_phases:
+    E1:
+      title: "Synthetic universe validation"
+      pass_condition: "recover known ASH parameters without bias"
+      fail_condition: "cannot recover own parameters"
+    E2:
+      title: "Matched controls"
+      pass_condition: "ASH-specific effects disappear under matched non-ASH controls"
+      fail_condition: "generic controls reproduce claimed ASH effects"
+    E3:
+      title: "Background cosmology"
+      observables: ["H(z)", "D_L(z)", "D_M(z)", "r_d"]
+      datasets: ["BAO", "SNe", "chronometers"]
+    E4:
+      title: "Perturbation cosmology"
+      observables: ["C_l", "P(k,z)", "f_sigma8", "C_l_phi_phi"]
+      datasets: ["CMB", "lensing", "galaxy clustering"]
+    E5:
+      title: "Non-Gaussianity and parity signatures"
+      outputs:
+        - bispectrum_shapes
+        - trispectrum_shapes
+        - parity_selection_rules
+        - spectral_residuals
+    E6:
+      title: "Propagation constraints"
+      observables:
+        - gravitational_wave_speed
+        - dispersion
+        - birefringence
+    E7:
+      title: "Prospective prediction"
+      pass_condition: "future data match frozen ASH prediction"
+      fail_condition: "prediction fails or is revised after unblinding"
+
+  falsification_rules:
+    - "finite algebra contradiction invalidates affected theorem"
+    - "no physical bridge means no cosmology claim"
+    - "no stable continuum means no standard spacetime claim"
+    - "failure on CMB+BAO+SNe joint fit rejects cosmological viability"
+    - "matched controls reproducing results remove ASH-specific attribution"
+    - "post-hoc prediction changes invalidate empirical claim"
+
+  immediate_deliverables:
+    - "ASH Cosmology Canonical Definitions"
+    - "Physical Interpretation Table"
+    - "Candidate Dynamics Set"
+    - "Bridge Map Candidate Set"
+    - "Continuum-Limit Study"
+    - "Cosmological Background Prototype"
+    - "Perturbation Prototype"
+    - "Prediction Ledger"
+```
+
+---
+
+# First milestone I recommend
+
+The first serious ASH Cosmology milestone should be:
+
+> **Define one complete candidate ASH universe model \(\mathcal U_t=(\Gamma_t,X_t,\mathcal F_t,M_t)\), one transition law, and one bridge map \(\mathcal B_\ell\), then prove closure, locality, and at least one nontrivial invariant.**
+
+That comes before real cosmological data.
+
+The second milestone is:
+
+> **Derive \(H_{\rm ASH}(z)\) or \(P_\zeta(k)\) from that fixed model.**
+
+Only then does empirical cosmology begin.
+
+The roadmap, in one line:
+
+```text id="f48hky"
+Enneahcube algebra → branch calculus → causal ASH universe → bridge map → continuum physics → observables → synthetic recovery → matched controls → real data → prospective prediction.
+```

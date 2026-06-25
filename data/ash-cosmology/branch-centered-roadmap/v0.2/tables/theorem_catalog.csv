@@ -1,0 +1,16 @@
+id,name,status,dependencies
+T-A1,Enneahcube cardinality,finite theorem target,Ω definition
+T-A2,Enneahcube degree,finite theorem target,Hamming adjacency
+T-A3,Code parameters,finite theorem target,generator matrix
+T-A4,Doubly-even closure,finite theorem target,code generator/support intersections
+T-A5,Strict radius-one correction,finite theorem target,minimum distance 4; decoder policy
+T-B1,Branch existence,open theorem target,branch child rule; admissibility rule
+T-B2,Branch count law,open theorem target,branch grammar
+T-C1,Branch measure normalization,open theorem target,branch measure μ
+T-C2,Amplitude norm preservation,open theorem target,Hilbert space; amplitude update law
+T-C3,Born-rule or frequency theorem,major open theorem,amplitudes; observer memory; frequency/decision theory or alternative derivation
+T-D1,Observer memory path theorem,open theorem target,commitment map; memory graph
+T-E1,Branch decoherence,major open theorem,decoherence functional; macro-distinctness definition
+T-F1,Branch ensemble bridge,central open theorem,branch measure/amplitude; coarse-graining scale; observable definitions
+T-G1,Emergent geometry stability,open theorem target,bridge map; dimension estimator; large-graph limit
+T-H1,Observable computability,open theorem target,effective dynamics; bridge map; cosmological variables

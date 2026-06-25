@@ -1,18 +1,23 @@
-name: Wiki Sync
+name: Wiki Source Check
 
 on:
   push:
     branches: [main]
     paths:
-      - 'README.md'
-      - 'docs/**'
-      - 'axioms-of-existence.json'
+      - '.github/wiki-sync.json'
+      - 'wiki/**'
+      - 'docs/wiki-publication.md'
+  pull_request:
+    paths:
+      - '.github/wiki-sync.json'
+      - 'wiki/**'
+      - 'docs/wiki-publication.md'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  sync-wiki:
+  check-wiki-source:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,108 +31,35 @@ jobs:
           git -c "http.https://github.com/.extraheader=$AUTH_HEADER" fetch --no-tags --prune --depth=2 origin "$GITHUB_REF"
           git checkout --force FETCH_HEAD
 
-      - name: Detect changed canonical files
-        id: changed
+      - name: Validate wiki page mapping
         run: |
-          CHANGED=$(git diff --name-only HEAD~1 HEAD)
-          echo "files<<EOF" >> "$GITHUB_OUTPUT"
-          echo "$CHANGED" >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
+          python3 - <<'PY'
+          import json
+          import re
+          from pathlib import Path
 
-      - name: Sync wiki pages
-        run: |
-          CHANGED="${{ steps.changed.outputs.files }}"
-          UPDATED=false
-          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+          root = Path(".")
+          payload = json.loads((root / ".github/wiki-sync.json").read_text(encoding="utf-8"))
+          pages = payload.get("pages")
+          if not isinstance(pages, list) or not pages:
+              raise SystemExit(".github/wiki-sync.json must contain a non-empty pages list")
 
-          mkdir -p wiki
+          destinations = set()
+          for index, page in enumerate(pages, start=1):
+              source = page.get("source")
+              destination = page.get("destination")
+              if not isinstance(source, str) or not source.startswith("wiki/") or not source.endswith(".md"):
+                  raise SystemExit(f"pages[{index}].source must be a wiki/*.md path")
+              if not isinstance(destination, str) or "/" in destination or not destination.endswith(".md"):
+                  raise SystemExit(f"pages[{index}].destination must be a root wiki Markdown filename")
+              if destination in destinations:
+                  raise SystemExit(f"duplicate wiki destination: {destination}")
+              destinations.add(destination)
+              if not (root / source).is_file():
+                  raise SystemExit(f"missing mapped wiki source: {source}")
+              text = (root / source).read_text(encoding="utf-8")
+              if not destination.startswith("_") and not re.search(r"^# .+", text, re.MULTILINE):
+                  raise SystemExit(f"mapped wiki source has no H1 heading: {source}")
 
-          # README.md → wiki/Home.md
-          if echo "$CHANGED" | grep -q '^README.md$'; then
-            {
-              echo "> **Canonical source**: \`README.md\`"
-              echo "> **Last synced**: $TIMESTAMP"
-              echo ""
-              cat README.md
-            } > wiki/Home.md
-            UPDATED=true
-            echo "Synced README.md → wiki/Home.md"
-          fi
-
-          # docs/ASH-research-paper.md → wiki/Research-Paper.md
-          if echo "$CHANGED" | grep -q '^docs/'; then
-            if [ -f docs/ASH-research-paper.md ]; then
-              {
-                echo "> **Canonical source**: \`docs/ASH-research-paper.md\`"
-                echo "> **Last synced**: $TIMESTAMP"
-                echo ""
-                cat docs/ASH-research-paper.md
-              } > wiki/Research-Paper.md
-              UPDATED=true
-              echo "Synced docs/ASH-research-paper.md → wiki/Research-Paper.md"
-            fi
-          fi
-
-          # axioms-of-existence.json → wiki/Axioms.md
-          if echo "$CHANGED" | grep -q '^axioms-of-existence.json$'; then
-            {
-              echo "> **Canonical source**: \`axioms-of-existence.json\`"
-              echo "> **Last synced**: $TIMESTAMP"
-              echo ""
-              echo "# Axioms of Existence"
-              echo ""
-              echo "The ASH Model is underpinned by five formal axioms expressed in modal-logic Kripke-frame semantics."
-              echo ""
-              python3 -c "
-          import json, sys
-          with open('axioms-of-existence.json') as f:
-              data = json.load(f)
-          if isinstance(data, list):
-              axioms = data
-          elif isinstance(data, dict):
-              axioms = data.get('axioms', data.get('items', [data]))
-          else:
-              axioms = [data]
-          for i, ax in enumerate(axioms, 1):
-              if isinstance(ax, dict):
-                  name = ax.get('name', ax.get('title', f'Axiom {i}'))
-                  desc = ax.get('description', ax.get('statement', ax.get('content', '')))
-                  formal = ax.get('formal', ax.get('formula', ''))
-                  print(f'## {i}. {name}')
-                  print()
-                  if desc:
-                      print(desc)
-                      print()
-                  if formal:
-                      print(f'**Formal**: \`{formal}\`')
-                      print()
-              else:
-                  print(f'## {i}. {ax}')
-                  print()
-          "
-            } > wiki/Axioms.md
-            UPDATED=true
-            echo "Synced axioms-of-existence.json → wiki/Axioms.md"
-          fi
-
-          if [ "$UPDATED" = "true" ]; then
-            echo "WIKI_UPDATED=true" >> "$GITHUB_ENV"
-          else
-            echo "WIKI_UPDATED=false" >> "$GITHUB_ENV"
-          fi
-
-      - name: Commit wiki updates
-        if: env.WIKI_UPDATED == 'true'
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add wiki/
-          if git diff --cached --quiet; then
-            echo "No wiki changes to commit"
-          else
-            git commit -m "docs: sync wiki pages from canonical sources"
-            AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
-            git -c "http.https://github.com/.extraheader=$AUTH_HEADER" push origin "HEAD:${GITHUB_REF}"
-          fi
+          print(f"validated {len(pages)} mapped wiki pages")
+          PY

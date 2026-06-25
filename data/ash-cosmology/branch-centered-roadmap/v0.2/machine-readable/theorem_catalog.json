@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "theorems": [
+    {
+      "id": "T-A1",
+      "name": "Enneahcube cardinality",
+      "statement": "|F₂⁹| = 512",
+      "status": "finite theorem target",
+      "dependencies": [
+        "Ω definition"
+      ]
+    },
+    {
+      "id": "T-A2",
+      "name": "Enneahcube degree",
+      "statement": "Every vertex has 9 one-bit neighbors",
+      "status": "finite theorem target",
+      "dependencies": [
+        "Hamming adjacency"
+      ]
+    },
+    {
+      "id": "T-A3",
+      "name": "Code parameters",
+      "statement": "The canonical ASH code has [n,k,d]=[9,4,4]",
+      "status": "finite theorem target",
+      "dependencies": [
+        "generator matrix"
+      ]
+    },
+    {
+      "id": "T-A4",
+      "name": "Doubly-even closure",
+      "statement": "All codewords have Hamming weight divisible by 4",
+      "status": "finite theorem target",
+      "dependencies": [
+        "code generator/support intersections"
+      ]
+    },
+    {
+      "id": "T-A5",
+      "name": "Strict radius-one correction",
+      "statement": "Every single-bit corruption of a codeword has a unique nearest codeword; distance ≥2 is not silently healed",
+      "status": "finite theorem target",
+      "dependencies": [
+        "minimum distance 4",
+        "decoder policy"
+      ]
+    },
+    {
+      "id": "T-B1",
+      "name": "Branch existence",
+      "statement": "Every nonterminal admissible branch has at least one admissible continuation or explicit terminal rule",
+      "status": "open theorem target",
+      "dependencies": [
+        "branch child rule",
+        "admissibility rule"
+      ]
+    },
+    {
+      "id": "T-B2",
+      "name": "Branch count law",
+      "statement": "For finite branching factor q, depth-n leaf count is qⁿ unless pruning/terminal rules apply",
+      "status": "open theorem target",
+      "dependencies": [
+        "branch grammar"
+      ]
+    },
+    {
+      "id": "T-C1",
+      "name": "Branch measure normalization",
+      "statement": "For each depth n, Σ_{ℓ∈L_n} μ(ℓ)=1",
+      "status": "open theorem target",
+      "dependencies": [
+        "branch measure μ"
+      ]
+    },
+    {
+      "id": "T-C2",
+      "name": "Amplitude norm preservation",
+      "statement": "For quantum-like ASH, Σ_{ℓ∈L_n}|ψ(ℓ)|²=1",
+      "status": "open theorem target",
+      "dependencies": [
+        "Hilbert space",
+        "amplitude update law"
+      ]
+    },
+    {
+      "id": "T-C3",
+      "name": "Born-rule or frequency theorem",
+      "statement": "Observed branch frequencies follow |ψ|² or a declared replacement law",
+      "status": "major open theorem",
+      "dependencies": [
+        "amplitudes",
+        "observer memory",
+        "frequency/decision theory or alternative derivation"
+      ]
+    },
+    {
+      "id": "T-D1",
+      "name": "Observer memory path theorem",
+      "statement": "Each committed observer record is embedded in at least one admissible branch",
+      "status": "open theorem target",
+      "dependencies": [
+        "commitment map",
+        "memory graph"
+      ]
+    },
+    {
+      "id": "T-E1",
+      "name": "Branch decoherence",
+      "statement": "Macroscopically distinct leaves become effectively non-interfering",
+      "status": "major open theorem",
+      "dependencies": [
+        "decoherence functional",
+        "macro-distinctness definition"
+      ]
+    },
+    {
+      "id": "T-F1",
+      "name": "Branch ensemble bridge",
+      "statement": "A fixed map ℬ_ℓ sends branch ensembles to physical coarse variables",
+      "status": "central open theorem",
+      "dependencies": [
+        "branch measure/amplitude",
+        "coarse-graining scale",
+        "observable definitions"
+      ]
+    },
+    {
+      "id": "T-G1",
+      "name": "Emergent geometry stability",
+      "statement": "Coarse-grained ASH branch ensembles yield stable geometry-like variables",
+      "status": "open theorem target",
+      "dependencies": [
+        "bridge map",
+        "dimension estimator",
+        "large-graph limit"
+      ]
+    },
+    {
+      "id": "T-H1",
+      "name": "Observable computability",
+      "statement": "H(z), P(k), C_ℓ or declared alternatives are computable from fixed ASH equations",
+      "status": "open theorem target",
+      "dependencies": [
+        "effective dynamics",
+        "bridge map",
+        "cosmological variables"
+      ]
+    }
+  ]
+}

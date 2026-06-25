@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "correction": "leaf branches are first-class cosmological objects",
+  "locked_principle": "finite local state + infinite branch histories",
+  "problem_corrected": "roadmap overemphasized finite local kernel and made branches appear secondary",
+  "primary_model": "𝔄=(Ω,C,D,Γ,𝒯,μ/ψ,𝒞,𝓜,ℬ_ℓ)",
+  "required_objects": [
+    "branch_tree_T_U0",
+    "leaf_set_L_t",
+    "branch_measure_mu_or_amplitude_psi",
+    "decoherence_function_D",
+    "observer_memory_M_O",
+    "branch_entropy_S_branch",
+    "branch_to_geometry_bridge_B_ell"
+  ],
+  "many_worlds_minimum_requirements": [
+    "branch ontology",
+    "Hilbert space or explicit nonquantum measure space",
+    "measure/amplitude normalization",
+    "decoherence or branch-separation criterion",
+    "observer-relative memory model",
+    "Born rule or replacement frequency theorem",
+    "empirical signature derivation"
+  ],
+  "corrected_roadmap_one_line": "finite local state -> infinite branch histories -> branch amplitudes/measures -> decoherence -> observer-relative commitment -> emergent geometry -> cosmological observables"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "terms": {
+    "Enneahcube": "The 9-dimensional binary hypercube over F₂⁹, used as local state alphabet.",
+    "Finite local layer": "The local integrity and admissibility structure; finite and exactly testable.",
+    "Leaf branch": "A frontier branch representing a possible ASH history/worldline at a given depth/time.",
+    "Branch tree": "The unbounded family of admissible ASH histories rooted at an initial condition.",
+    "Commitment": "Observer-relative record selection; in many-worlds ASH, does not delete other branches.",
+    "Branch measure μ": "A nonnegative normalized measure over leaves, if using probabilistic branches.",
+    "Branch amplitude ψ": "A complex amplitude over leaves, if using a quantum/Everett-like model.",
+    "Decoherence functional": "A rule measuring effective noninterference/separation between branches.",
+    "Bridge map ℬ_ℓ": "A scale-dependent map from branch ensemble to effective spacetime/fields/observables."
+  }
+}

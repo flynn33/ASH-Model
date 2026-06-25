@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "experiments": [
+    {
+      "id": "E1",
+      "name": "Finite algebra exhaustion",
+      "type": "mathematical/computational",
+      "input": "all 512 states and all 16 codewords",
+      "metric": "counterexample count",
+      "pass_condition": "zero counterexamples",
+      "falsifies": "finite local algebra claim if nonzero"
+    },
+    {
+      "id": "E2",
+      "name": "Branch tree construction test",
+      "type": "synthetic",
+      "input": "small initial universes and declared branch rule",
+      "metric": "leaf count, admissibility rate, terminal count",
+      "pass_condition": "matches theorem T-B1/T-B2",
+      "falsifies": "branch ontology if impossible to construct"
+    },
+    {
+      "id": "E3",
+      "name": "Branch measure normalization test",
+      "type": "synthetic",
+      "input": "finite-depth leaf sets",
+      "metric": "|Σ weights - 1| or |Σ |ψ|² - 1|",
+      "pass_condition": "below declared tolerance or exact symbolic proof",
+      "falsifies": "probabilistic/quantum branch claim if violated"
+    },
+    {
+      "id": "E4",
+      "name": "Decoherence/separation simulation",
+      "type": "synthetic",
+      "input": "pairs of diverging branches",
+      "metric": "decoherence functional or branch inner product",
+      "pass_condition": "macroscopic leaves approach declared noninterference threshold",
+      "falsifies": "world-like branch interpretation if no separation mechanism"
+    },
+    {
+      "id": "E5",
+      "name": "Observer memory consistency",
+      "type": "synthetic",
+      "input": "committed histories sampled from branch tree",
+      "metric": "path membership, record consistency",
+      "pass_condition": "every committed record lies on a valid branch",
+      "falsifies": "commitment model if orphan records exist"
+    },
+    {
+      "id": "E6",
+      "name": "Branch entropy growth study",
+      "type": "synthetic/numerical",
+      "input": "branch frontier over depth/time",
+      "metric": "S_branch(t), monotonicity, saturation, relation to defects",
+      "pass_condition": "matches declared theorem or falsifies it explicitly",
+      "falsifies": "entropy/arrow-of-time claim if unsupported"
+    },
+    {
+      "id": "E7",
+      "name": "Bridge map stability",
+      "type": "numerical/convergence",
+      "input": "large ASH branch ensembles under scaling",
+      "metric": "dimension, metric consistency, curvature proxies, fluctuation decay",
+      "pass_condition": "stable coarse variables emerge",
+      "falsifies": "cosmological bridge if unstable"
+    },
+    {
+      "id": "E8",
+      "name": "Matched branch controls",
+      "type": "ablation",
+      "input": "ASH branch rule versus randomized/matched branch processes",
+      "metric": "effect size of proposed ASH signature",
+      "pass_condition": "claimed effect changes/disappears under controls",
+      "falsifies": "ASH-specific attribution if controls reproduce it"
+    },
+    {
+      "id": "E9",
+      "name": "Synthetic universe recovery",
+      "type": "inference",
+      "input": "universes generated from fixed ASH model",
+      "metric": "parameter bias, coverage, posterior recovery",
+      "pass_condition": "known parameters recovered without bias",
+      "falsifies": "empirical readiness if ASH cannot recover itself"
+    },
+    {
+      "id": "E10",
+      "name": "Prospective prediction test",
+      "type": "empirical",
+      "input": "frozen ASH prediction and future/holdout dataset",
+      "metric": "prediction interval hit/miss, Bayes factor/log predictive density",
+      "pass_condition": "predeclared success criterion satisfied",
+      "falsifies": "specific prediction if missed"
+    }
+  ]
+}

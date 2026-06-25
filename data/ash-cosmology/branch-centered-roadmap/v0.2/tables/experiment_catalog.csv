@@ -1,0 +1,11 @@
+id,name,type,metric,pass_condition
+E1,Finite algebra exhaustion,mathematical/computational,counterexample count,zero counterexamples
+E2,Branch tree construction test,synthetic,leaf count; admissibility rate; terminal count,matches theorem T-B1/T-B2
+E3,Branch measure normalization test,synthetic,|Σ weights - 1| or |Σ |ψ|² - 1|,below declared tolerance or exact symbolic proof
+E4,Decoherence/separation simulation,synthetic,decoherence functional or branch inner product,macroscopic leaves approach declared noninterference threshold
+E5,Observer memory consistency,synthetic,path membership; record consistency,every committed record lies on a valid branch
+E6,Branch entropy growth study,synthetic/numerical,S_branch(t); monotonicity; saturation; relation to defects,matches declared theorem or falsifies it explicitly
+E7,Bridge map stability,numerical/convergence,dimension; metric consistency; curvature proxies; fluctuation decay,stable coarse variables emerge
+E8,Matched branch controls,ablation,effect size of proposed ASH signature,claimed effect changes/disappears under controls
+E9,Synthetic universe recovery,inference,parameter bias; coverage; posterior recovery,known parameters recovered without bias
+E10,Prospective prediction test,empirical,prediction interval hit/miss; Bayes factor/log predictive density,predeclared success criterion satisfied

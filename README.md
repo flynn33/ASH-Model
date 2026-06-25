@@ -132,6 +132,12 @@ The tracked ablations explicitly compare uniform starts, zero starts, ASH transf
 
 ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, and finite perturbation factors.  The current validation program is intentionally not an empirical result. External likelihoods, standard cosmology baselines, unitful bridge maps, continuum interpretations, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
+## Repository readiness and wiki
+
+The final repository-readiness audit is recorded in [`docs/final-live-repository-audit.md`](docs/final-live-repository-audit.md). It verifies the finite ASH layer, the ASH-Physics finite-observer layer, generated data and figure manifests, JSON schemas, repository gates, and current proof evidence while preserving the remaining science blockers.
+
+The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki-publication.md). The tracked wiki source lives under [`wiki/`](wiki/) and is mirrored to the live GitHub wiki at <https://github.com/flynn33/ASH-Model/wiki>.
+
 ## Repository map
 
 - `src/ash_model/` - canonical implementation
@@ -142,6 +148,8 @@ ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics,
 - `data/codewords.csv` - all 16 codewords and syndromes
 - `data/branch-topology.json` - complete depth-4 branch topology
 - `data/ablation-results.csv` - controlled simulation results
+- `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
+- `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `figures/` - generated, repository-linked evidence figures
 - `docs/` - specification, proof, controls, integration, and paper
 - `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package

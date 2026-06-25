@@ -4,6 +4,8 @@
 
 The code, specification, generated data, figures, and manuscript are aligned for version 1.1.0.
 
+The repository-readiness and wiki-publication surfaces are also aligned with the ASH-Physics v0.2 finite-observer boundary. The tracked wiki source is the repository copy under `wiki/`; the live GitHub wiki is a separate publication repository.
+
 ## Alignment checks
 
 | Claim | Source of truth | Verification |
@@ -20,6 +22,7 @@ The code, specification, generated data, figures, and manuscript are aligned for
 | Hamming baseline | Markov proof and ablations | analytical and tracked controls |
 | evidence freshness | source/artifact manifests | recomputed SHA-256 and byte-count checks |
 | release version | VERSION, package, config, citation, certificate | exact equality check |
+| wiki source | `wiki/` and `.github/wiki-sync.json` | mapped page existence and live publication audit |
 
 ## Explicitly excluded statements
 

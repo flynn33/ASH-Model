@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "rules": [
+    {
+      "id": "F0",
+      "rule": "finite local algebra contradiction invalidates affected theorem"
+    },
+    {
+      "id": "F1",
+      "rule": "branch tree undefined or nonconstructible invalidates leaf-world structure"
+    },
+    {
+      "id": "F2",
+      "rule": "unnormalized branch measure/amplitude invalidates probabilistic or quantum-like interpretation"
+    },
+    {
+      "id": "F3",
+      "rule": "failure to derive Born rule or replacement law blocks Everett-style ASH claims"
+    },
+    {
+      "id": "F4",
+      "rule": "no decoherence/separation mechanism blocks many-worlds/world-like branch claims"
+    },
+    {
+      "id": "F5",
+      "rule": "observer memories not embedded in branches invalidate commitment model"
+    },
+    {
+      "id": "F6",
+      "rule": "no branch-to-geometry bridge means no cosmology claim"
+    },
+    {
+      "id": "F7",
+      "rule": "no stable continuum/causal limit means no standard spacetime claim"
+    },
+    {
+      "id": "F8",
+      "rule": "matched controls reproduce branch signatures, removing ASH-specific attribution"
+    },
+    {
+      "id": "F9",
+      "rule": "cosmological observables cannot be computed from fixed equations, blocking empirical validation"
+    },
+    {
+      "id": "F10",
+      "rule": "prospective predictions revised after unblinding are invalid empirical evidence"
+    }
+  ]
+}
