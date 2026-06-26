@@ -16,6 +16,10 @@ ASH is an exploratory simulation-theory and computational-ontology framework. Th
 
 The earlier repository overstated self-duality in nine dimensions, error correction in simulations, ASH-specific Gaussian convergence, and branch/Adinkra implementation maturity. Version 1.1.0 resolves those discrepancies and records the evidence in [`docs/audit-resolution.md`](docs/audit-resolution.md).
 
+## Roadmap tracker
+
+The repository-maintained roadmap status log is [`ROADMAP.md`](ROADMAP.md). It tracks identified roadmap items, completion evidence, verification commands, and remaining blockers.
+
 ## Verified mathematical core
 
 | Component | Verified result |
@@ -169,6 +173,7 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `data/branch-topology.json` - complete depth-4 branch topology
 - `data/ablation-results.csv` - controlled simulation results
 - `data/manifests/data_manifest.json` - consolidated data and synthetic-output inventory
+- `ROADMAP.md` - repository-maintained roadmap tracker and completion log
 - `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `data/ash-physics-sector-mixing/` - Sector-mixing pass 002 CSV evidence, upstream payload manifest, and reproduction metadata

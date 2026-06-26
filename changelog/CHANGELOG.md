@@ -17,10 +17,12 @@
 - Consolidated data manifest for tracked ASH evidence assets and pass 003 synthetic diagnostic outputs.
 - Data manifest schema, validator, and regression test.
 - Data-directory README, repository data audit, and repository data integration plan.
+- Repository roadmap tracker with status, evidence, verification, and completion-log fields.
 
 ### Updated
 
 - README data-governance guidance, `.gitignore` generated-output exclusions, JSON validation wiring, and CI manifest validation.
+- README prominent roadmap link and repository map entry.
 
 ## Unreleased - 2026-06-25
 
