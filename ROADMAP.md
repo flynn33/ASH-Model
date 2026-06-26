@@ -62,7 +62,7 @@ Primary roadmap sources:
 | R-004 | Sector-mixing resolution pass 002 finite workbench | `complete` | 2026-06-25 | [`docs/ash-physics-validation/sector-mixing-resolution-pass-002.md`](docs/ash-physics-validation/sector-mixing-resolution-pass-002.md), [`data/ash-physics-sector-mixing/`](data/ash-physics-sector-mixing/), [`tests/test_sector_mixing.py`](tests/test_sector_mixing.py) |
 | R-005 | Background bridge pass 003 synthetic diagnostics | `complete` | 2026-06-25 | [`docs/ash-cosmology/background-bridge/pass-003/`](docs/ash-cosmology/background-bridge/pass-003/), [`src/ash_model/background_bridge.py`](src/ash_model/background_bridge.py), [`validation/background_bridge/pass_003/`](validation/background_bridge/pass_003/) |
 | R-006 | Consolidated data governance manifest | `complete` | 2026-06-26 | [`data/README.md`](data/README.md), [`data/manifests/data_manifest.json`](data/manifests/data_manifest.json), [`tools/validate_data_manifest.py`](tools/validate_data_manifest.py), [`tests/test_data_manifest.py`](tests/test_data_manifest.py) |
-| R-007 | Branch-centered cosmology model closure | `open` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/`](docs/ash-cosmology/branch-centered-roadmap/v0.2/) |
+| R-007 | Roadmap 007 finite linear perturbation sector | `complete` | 2026-06-26 | [`src/ash_model/linear_perturbations.py`](src/ash_model/linear_perturbations.py), [`tests/test_linear_perturbations.py`](tests/test_linear_perturbations.py), [`tools/generate_linear_perturbations.py`](tools/generate_linear_perturbations.py), [`data/ash-cosmology/linear-perturbations/v0.1/`](data/ash-cosmology/linear-perturbations/v0.1/), [`figures/ash-cosmology/linear-perturbations/v0.1/`](figures/ash-cosmology/linear-perturbations/v0.1/), [`validation/linear-perturbations/roadmap-007/outputs/verification.json`](validation/linear-perturbations/roadmap-007/outputs/verification.json) |
 | R-008 | Branch measure or amplitude law | `blocked` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md`](docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md) |
 | R-009 | Commitment, observer memory, and decoherence rule | `blocked` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md`](docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md) |
 | R-010 | Unit-bearing physical bridge to observables | `blocked` | 2026-06-26 | [`theory/coarse-graining-and-bridge-map.md`](theory/coarse-graining-and-bridge-map.md), [`phenomenology/observables_spec.md`](phenomenology/observables_spec.md), [`validation/status.json`](validation/status.json) |
@@ -71,7 +71,7 @@ Primary roadmap sources:
 | R-013 | Physical perturbation equations and CMB or matter-sector solver | `blocked` | 2026-06-26 | [`theory/linear-perturbations.md`](theory/linear-perturbations.md), [`phenomenology/ash_perturbations_spec.md`](phenomenology/ash_perturbations_spec.md), [`docs/ash-cosmology/linear-perturbations/roadmap-007/README.md`](docs/ash-cosmology/linear-perturbations/roadmap-007/README.md) |
 | R-014 | External likelihoods, matched empirical baselines, and reviewed data products | `blocked` | 2026-06-26 | [`validation/preregistration.md`](validation/preregistration.md), [`validation/matched-ablations/README.md`](validation/matched-ablations/README.md), [`validation/status.json`](validation/status.json) |
 | R-015 | Locked prospective or held-out scientific predictions | `blocked` | 2026-06-26 | [`predictions/prediction-ledger.json`](predictions/prediction-ledger.json), [`predictions/falsification-criteria.md`](predictions/falsification-criteria.md) |
-| R-016 | Roadmap 007 finite linear perturbation sector | `complete` | 2026-06-26 | [`src/ash_model/linear_perturbations.py`](src/ash_model/linear_perturbations.py), [`tests/test_linear_perturbations.py`](tests/test_linear_perturbations.py), [`tools/generate_linear_perturbations.py`](tools/generate_linear_perturbations.py), [`data/ash-cosmology/linear-perturbations/v0.1/`](data/ash-cosmology/linear-perturbations/v0.1/), [`figures/ash-cosmology/linear-perturbations/v0.1/`](figures/ash-cosmology/linear-perturbations/v0.1/), [`validation/linear-perturbations/roadmap-007/outputs/verification.json`](validation/linear-perturbations/roadmap-007/outputs/verification.json) |
+| R-016 | Branch-centered cosmology model closure | `open` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/`](docs/ash-cosmology/branch-centered-roadmap/v0.2/) |
 
 ## Active priority queue
 
@@ -82,12 +82,13 @@ Primary roadmap sources:
 | 3 | R-012 Cosmological background equations and standard-baseline relation | ASH-derived background equation, parameter semantics, standard-baseline relation, numerical implementation, and comparison tests. |
 | 4 | R-014 External likelihoods and matched baselines | Reviewed data products, covariance inputs, matched baseline definitions, preregistered likelihoods, and reproducible validation commands. |
 | 5 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
+| 6 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, amplitude law, observer rule, bridge-map relation, and validation boundary evidence. |
 
 ## Completion log
 
 ### 2026-06-26
 
-- R-016 marked complete for the finite-observer Roadmap 007 linear
+- R-007 marked complete for the finite-observer Roadmap 007 linear
   perturbation sector. Evidence: quotient Walsh-shell implementation,
   targeted tests, deterministic transfer artifacts, generated figures,
   validation JSON, and finite-boundary documentation. This does not close the
