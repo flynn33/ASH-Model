@@ -1,0 +1,6 @@
+branch_id,parent_id,shell_q,action,defect_count,memory_delta,coherence_penalty
+root.q0,root,0,0.02,0,1,1.0
+root.q1,root,1,0.04247285585205863,1,0,0.5
+root.q2,root,2,0.05966525639243152,2,1,0.0
+root.q3,root,3,0.07129329438755058,0,0,0.5
+root.q4,root,4,0.07715841383994863,1,1,1.0
