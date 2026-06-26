@@ -1,0 +1,22 @@
+{
+  "boundary": "Finite observer-relative commitment and branch-separation workbench only; no collapse claim, no Born-rule proof, no unitary Hilbert-space dynamics, no unit-bearing spacetime bridge, no CMB/matter-spectrum solver, and no empirical cosmology validation.",
+  "commitment_distribution_total": 0.9999999999999999,
+  "commitment_memory_classes": 144,
+  "decoherence_summary": {
+    "diagonal_trace": 0.9999999999999999,
+    "leaf_count": 625,
+    "max_offdiag_magnitude": 0.0015691081499510482,
+    "mean_offdiag_magnitude": 1.5606249361686557e-06,
+    "pair_count": 195000,
+    "passed_trace_invariant": true,
+    "suppressed_pair_fraction": 0.9999589743589744,
+    "threshold": 0.001
+  },
+  "frontier_measure_total": 0.9999999999999999,
+  "frontier_size": 625,
+  "law_version": "ash-r009-commitment-memory-decoherence-v0.1",
+  "max_depth": 4,
+  "memory_prefix_embedding_passed": true,
+  "node_count": 781,
+  "passed": true
+}

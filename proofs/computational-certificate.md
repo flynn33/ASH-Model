@@ -95,6 +95,19 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - Best example baseline: `standard`
 - Boundary: this is a reference-baseline comparator, not an ASH-derived standard-cosmology limit.
 
+## Observer commitment workbench
+
+- R-009 law version: `ash-r009-commitment-memory-decoherence-v0.1`
+- Frontier size: `625`
+- Frontier measure total: `0.9999999999999999`
+- Commitment memory classes: `144`
+- Commitment distribution total: `0.9999999999999999`
+- Memory prefix embedding: `True`
+- Diagonal trace: `0.9999999999999999`
+- Diagonal trace invariant: `True`
+- Suppressed pair fraction: `0.9999589743589744`
+- Boundary: finite observer-relative commitment and branch-separation workbench only.
+
 ## Check matrix
 
 - `code_parameters`: `PASS`
@@ -121,3 +134,4 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - `empirical_likelihood_contract`: `PASS`
 - `prediction_lock_contract`: `PASS`
 - `standard_baseline_contract`: `PASS`
+- `observer_commitment_verified`: `PASS`

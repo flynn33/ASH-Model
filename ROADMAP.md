@@ -31,18 +31,20 @@ Snapshot date: 2026-06-26
 
 Current repository posture:
 
-- Repository finite-observer implementation work through Roadmap 008 is
+- Repository finite-observer implementation work through Roadmap 009 is
   complete and verified.
 - Scientific readiness is not complete: the physical bridge, metric or
   continuum interpretation, physical perturbation solver, external likelihoods,
   and locked predictions remain blocked until their required evidence exists in
   the repository.
 - Roadmap 007 adds a finite perturbation sector only. Roadmap 008 adds a finite
-  branch-measure law only. These supply quotient-shell transfer mathematics,
-  finite branch-normalization mathematics, and deterministic artifacts, but
-  they do not close observer commitment, physical bridge, physical
-  perturbation, CMB, matter-spectrum, physical-wavenumber, locked-prediction,
-  or empirical-validation gates.
+  branch-measure law only. Roadmap 009 adds a finite observer-relative
+  commitment and branch-separation workbench only. These supply quotient-shell
+  transfer mathematics, finite branch-normalization mathematics,
+  committed-memory push-forward mathematics, and deterministic artifacts, but
+  they do not close physical bridge, physical perturbation, CMB,
+  matter-spectrum, physical-wavenumber, locked-prediction, empirical-validation,
+  or full model-closure gates.
 
 Primary roadmap sources:
 
@@ -66,7 +68,7 @@ Primary roadmap sources:
 | R-006 | Consolidated data governance manifest | `complete` | 2026-06-26 | [`data/README.md`](data/README.md), [`data/manifests/data_manifest.json`](data/manifests/data_manifest.json), [`tools/validate_data_manifest.py`](tools/validate_data_manifest.py), [`tests/test_data_manifest.py`](tests/test_data_manifest.py) |
 | R-007 | Roadmap 007 finite linear perturbation sector | `complete` | 2026-06-26 | [`src/ash_model/linear_perturbations.py`](src/ash_model/linear_perturbations.py), [`tests/test_linear_perturbations.py`](tests/test_linear_perturbations.py), [`tools/generate_linear_perturbations.py`](tools/generate_linear_perturbations.py), [`data/ash-cosmology/linear-perturbations/v0.1/`](data/ash-cosmology/linear-perturbations/v0.1/), [`figures/ash-cosmology/linear-perturbations/v0.1/`](figures/ash-cosmology/linear-perturbations/v0.1/), [`validation/linear-perturbations/roadmap-007/outputs/verification.json`](validation/linear-perturbations/roadmap-007/outputs/verification.json) |
 | R-008 | Branch measure or amplitude law | `complete` | 2026-06-26 | [`src/ash_model/branch_measure.py`](src/ash_model/branch_measure.py), [`tests/test_branch_measure.py`](tests/test_branch_measure.py), [`tools/generate_branch_measure.py`](tools/generate_branch_measure.py), [`docs/ash-cosmology/branch-measure/roadmap-008/README.md`](docs/ash-cosmology/branch-measure/roadmap-008/README.md), [`data/ash-cosmology/branch-measure/v0.1/`](data/ash-cosmology/branch-measure/v0.1/), [`validation/branch-measure/roadmap-008/outputs/verification.json`](validation/branch-measure/roadmap-008/outputs/verification.json) |
-| R-009 | Commitment, observer memory, and decoherence rule | `blocked` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md`](docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md) |
+| R-009 | Commitment, observer memory, and decoherence rule | `complete` | 2026-06-26 | [`src/ash_model/observer_commitment.py`](src/ash_model/observer_commitment.py), [`tests/test_observer_commitment.py`](tests/test_observer_commitment.py), [`tools/generate_observer_commitment.py`](tools/generate_observer_commitment.py), [`docs/ash-cosmology/observer-commitment/roadmap-009/README.md`](docs/ash-cosmology/observer-commitment/roadmap-009/README.md), [`data/ash-cosmology/observer-commitment/v0.1/`](data/ash-cosmology/observer-commitment/v0.1/), [`validation/observer-commitment/roadmap-009/outputs/verification.json`](validation/observer-commitment/roadmap-009/outputs/verification.json) |
 | R-010 | Unit-bearing physical bridge to observables | `blocked` | 2026-06-26 | [`theory/coarse-graining-and-bridge-map.md`](theory/coarse-graining-and-bridge-map.md), [`phenomenology/observables_spec.md`](phenomenology/observables_spec.md), [`validation/status.json`](validation/status.json) |
 | R-011 | Continuum, geometry, causal-structure, or finite-observer limit closure | `blocked` | 2026-06-26 | [`theory/continuum-limit.md`](theory/continuum-limit.md), [`theory/causal-structure.md`](theory/causal-structure.md), [`proofs/physics-proof-obligations.md`](proofs/physics-proof-obligations.md) |
 | R-012 | Cosmological background equations and standard-baseline relation | `blocked` | 2026-06-26 | [`theory/cosmological-background.md`](theory/cosmological-background.md), [`phenomenology/ash_background_spec.md`](phenomenology/ash_background_spec.md), [`validation/lcdm-limit/README.md`](validation/lcdm-limit/README.md) |
@@ -84,12 +86,28 @@ Primary roadmap sources:
 | 3 | R-012 Cosmological background equations and standard-baseline relation | ASH-derived background equation, parameter semantics, standard-baseline relation, numerical implementation, and comparison tests. |
 | 4 | R-014 External likelihoods and matched baselines | Reviewed data products, covariance inputs, matched baseline definitions, preregistered likelihoods, and reproducible validation commands. |
 | 5 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
-| 6 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, amplitude law, observer rule, bridge-map relation, and validation boundary evidence. |
+| 6 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, integration of the completed finite measure and observer workbenches, bridge-map relation, and validation boundary evidence. |
 
 ## Completion log
 
 ### 2026-06-26
 
+- R-009 marked complete for the finite observer-commitment, committed-memory,
+  and branch-separation workbench. Evidence: deterministic observer commitment
+  implementation, R-008-backed branch allocation in the reproducible demo tree,
+  targeted tests, generated data products, proof-suite coverage, and validation
+  JSON. Boundary: finite observer-relative commitment and branch-separation
+  workbench only; no collapse claim, no Born-rule proof, no unitary
+  Hilbert-space dynamics, no unit-bearing spacetime bridge, no
+  CMB/matter-spectrum solver, and no empirical cosmology validation.
+  Verification: `python tools/generate_observer_commitment.py --out-root . --depth 4 --pair-sample-limit 5000`,
+  `python -m pytest tests/test_observer_commitment.py`,
+  `python tools/run_proof_suite.py`, `python -m pytest`,
+  `python tools/verify_repository.py`,
+  `python docs/ash-physics-validation/scripts/run_repository_gate.py .`,
+  `python tools/validate_json_assets.py .`,
+  `python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`,
+  and `python tools/final_repository_audit.py .`.
 - R-008 marked complete for a finite-observer branch measure law. Evidence:
   explicit classical Gibbs/action-weighted branch measure, optional
   norm-preserving amplitude decoration, deterministic frontier artifacts, and

@@ -2,6 +2,29 @@
 
 ## Unreleased - 2026-06-26
 
+**Title**: Roadmap 009 finite observer-commitment workbench
+
+**Change Class**: feature
+
+**Version Impact**: none
+
+**Summary**: Adds the Roadmap 009 finite observer-commitment, memory-prefix, and branch-separation workbench with deterministic validation artifacts and conservative cosmology boundaries.
+
+**Affected Area**: observer-commitment module, tests, generated data, validation outputs, proof suite, roadmap tracker, README, data documentation, and data manifest
+
+### Added
+
+- Finite observer-relative commitment module with memory-record updates and prefix embedding.
+- Push-forward commitment distribution over finite memory classes.
+- Finite branch-separation score with diagonal-trace and off-diagonal-bound invariants.
+- Deterministic Roadmap 009 generator for frontier, commitment-distribution, decoherence-sample, depth-summary, and verification artifacts.
+- Regression tests and proof-suite coverage for R-009 finite invariants.
+
+### Updated
+
+- Added Roadmap 009 generated artifacts to the data manifest and repository documentation.
+- Marked only R-009 complete while leaving physical bridge, continuum, physical solver, external-likelihood, locked-prediction, and model-closure gates open or blocked.
+
 **Title**: Roadmap 008 finite branch-measure law
 
 **Change Class**: feature
