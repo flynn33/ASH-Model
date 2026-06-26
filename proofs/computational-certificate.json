@@ -447,7 +447,7 @@
     "unit_bridge": {
       "boundary": "Synthetic finite-observer unit bridge only; no empirical cosmology, continuum metric, FRW limit, or external likelihood.",
       "bridge_version": "ash-r010-unit-bridge-v0.1",
-      "covariance_min_eigenvalue": -4.023984967919692e-20,
+      "covariance_min_eigenvalue": 0.0,
       "covariance_psd_tolerance_1e_minus_12": true,
       "covariance_symmetric": true,
       "feature_depths": [
@@ -689,7 +689,7 @@
     "tools/generate_unit_bridge.py": "da624f4021a4ade64d0f6c51ca7bb0de073dd0e8482a424964fbac038f5c3b5f",
     "tools/reproduce_sector_mixing.py": "05a8d4a014c7990b54ba192bc139ad120663c580d2096412da73dbfc7206042c",
     "tools/run_background_bridge_validation.py": "6f05be3d7f11fcf78d671d06058da9686dfce557a719e8736bc8fbc24b514c44",
-    "tools/run_proof_suite.py": "68cb0d79be759c612fa16aae3ef9025d7e6f72cffe4eb48ceea68cf39203455d",
+    "tools/run_proof_suite.py": "b8ac11cf8b52d64591e775ea5e5a98812b3073e2dc55f3b1bdaf89c6393df936",
     "tools/validate_data_manifest.py": "41118b68bf8faae349b7ac3eb04e49f847f3ec22e07af359ba06051c0828e082",
     "tools/validate_json_assets.py": "2865a2d49a0111fb86a56e98b5c26b15d5905de6c87529af5617e04837d240d6",
     "tools/verify_repository.py": "f05ff69a07dd01f211dc6a9a9348a696ae6caee8c3067ab354a1f35dbc5cd126",

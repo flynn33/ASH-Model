@@ -418,7 +418,11 @@ def _unit_bridge_certificate() -> dict[str, object]:
         "finite_physical_values": tests["finite_physical_values"],
         "covariance_symmetric": tests["covariance_symmetric"],
         "covariance_psd_tolerance_1e_minus_12": tests["covariance_psd_tolerance_1e_minus_12"],
-        "covariance_min_eigenvalue": tests["covariance_min_eigenvalue"],
+        "covariance_min_eigenvalue": (
+            None
+            if tests["covariance_min_eigenvalue"] is None
+            else _reported_residual(tests["covariance_min_eigenvalue"])
+        ),
         "boundary": validation["boundary"],
     }
 
