@@ -31,16 +31,18 @@ Snapshot date: 2026-06-26
 
 Current repository posture:
 
-- Repository finite-observer implementation work through Roadmap 007 is
+- Repository finite-observer implementation work through Roadmap 008 is
   complete and verified.
 - Scientific readiness is not complete: the physical bridge, metric or
   continuum interpretation, physical perturbation solver, external likelihoods,
   and locked predictions remain blocked until their required evidence exists in
   the repository.
-- Roadmap 007 adds a finite perturbation sector only. It supplies quotient
-  shell transfer mathematics and deterministic artifacts, but it does not close
-  the physical perturbation, CMB, matter-spectrum, physical-wavenumber, or
-  empirical-validation gates.
+- Roadmap 007 adds a finite perturbation sector only. Roadmap 008 adds a finite
+  branch-measure law only. These supply quotient-shell transfer mathematics,
+  finite branch-normalization mathematics, and deterministic artifacts, but
+  they do not close observer commitment, physical bridge, physical
+  perturbation, CMB, matter-spectrum, physical-wavenumber, locked-prediction,
+  or empirical-validation gates.
 
 Primary roadmap sources:
 
@@ -63,7 +65,7 @@ Primary roadmap sources:
 | R-005 | Background bridge pass 003 synthetic diagnostics | `complete` | 2026-06-25 | [`docs/ash-cosmology/background-bridge/pass-003/`](docs/ash-cosmology/background-bridge/pass-003/), [`src/ash_model/background_bridge.py`](src/ash_model/background_bridge.py), [`validation/background_bridge/pass_003/`](validation/background_bridge/pass_003/) |
 | R-006 | Consolidated data governance manifest | `complete` | 2026-06-26 | [`data/README.md`](data/README.md), [`data/manifests/data_manifest.json`](data/manifests/data_manifest.json), [`tools/validate_data_manifest.py`](tools/validate_data_manifest.py), [`tests/test_data_manifest.py`](tests/test_data_manifest.py) |
 | R-007 | Roadmap 007 finite linear perturbation sector | `complete` | 2026-06-26 | [`src/ash_model/linear_perturbations.py`](src/ash_model/linear_perturbations.py), [`tests/test_linear_perturbations.py`](tests/test_linear_perturbations.py), [`tools/generate_linear_perturbations.py`](tools/generate_linear_perturbations.py), [`data/ash-cosmology/linear-perturbations/v0.1/`](data/ash-cosmology/linear-perturbations/v0.1/), [`figures/ash-cosmology/linear-perturbations/v0.1/`](figures/ash-cosmology/linear-perturbations/v0.1/), [`validation/linear-perturbations/roadmap-007/outputs/verification.json`](validation/linear-perturbations/roadmap-007/outputs/verification.json) |
-| R-008 | Branch measure or amplitude law | `blocked` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md`](docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md) |
+| R-008 | Branch measure or amplitude law | `complete` | 2026-06-26 | [`src/ash_model/branch_measure.py`](src/ash_model/branch_measure.py), [`tests/test_branch_measure.py`](tests/test_branch_measure.py), [`tools/generate_branch_measure.py`](tools/generate_branch_measure.py), [`docs/ash-cosmology/branch-measure/roadmap-008/README.md`](docs/ash-cosmology/branch-measure/roadmap-008/README.md), [`data/ash-cosmology/branch-measure/v0.1/`](data/ash-cosmology/branch-measure/v0.1/), [`validation/branch-measure/roadmap-008/outputs/verification.json`](validation/branch-measure/roadmap-008/outputs/verification.json) |
 | R-009 | Commitment, observer memory, and decoherence rule | `blocked` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md`](docs/ash-cosmology/branch-centered-roadmap/v0.2/human-readable/10_FULL_BRANCH_CENTERED_ROADMAP.md) |
 | R-010 | Unit-bearing physical bridge to observables | `blocked` | 2026-06-26 | [`theory/coarse-graining-and-bridge-map.md`](theory/coarse-graining-and-bridge-map.md), [`phenomenology/observables_spec.md`](phenomenology/observables_spec.md), [`validation/status.json`](validation/status.json) |
 | R-011 | Continuum, geometry, causal-structure, or finite-observer limit closure | `blocked` | 2026-06-26 | [`theory/continuum-limit.md`](theory/continuum-limit.md), [`theory/causal-structure.md`](theory/causal-structure.md), [`proofs/physics-proof-obligations.md`](proofs/physics-proof-obligations.md) |
@@ -88,6 +90,21 @@ Primary roadmap sources:
 
 ### 2026-06-26
 
+- R-008 marked complete for a finite-observer branch measure law. Evidence:
+  explicit classical Gibbs/action-weighted branch measure, optional
+  norm-preserving amplitude decoration, deterministic frontier artifacts, and
+  tests verifying sibling normalization, total-measure preservation, and
+  amplitude-norm preservation. Boundary: this closes only the finite
+  branch-measure law. It does not prove a Born rule, define Hilbert-space
+  dynamics, provide observer commitment or decoherence, define a unit-bearing
+  physical bridge, compute empirical spectra, or validate cosmology.
+  Verification: `python tools/generate_branch_measure.py --out-root .`,
+  `python tools/generate_artifacts.py`, `python tools/run_proof_suite.py`,
+  `python -m pytest`, `python tools/verify_repository.py`,
+  `python docs/ash-physics-validation/scripts/run_repository_gate.py .`,
+  `python tools/validate_json_assets.py .`,
+  `python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`,
+  and `python tools/final_repository_audit.py .`.
 - R-007 marked complete for the finite-observer Roadmap 007 linear
   perturbation sector. Evidence: quotient Walsh-shell implementation,
   targeted tests, deterministic transfer artifacts, generated figures,

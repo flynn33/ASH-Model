@@ -1,0 +1,46 @@
+{
+  "boundary": "Finite ASH branch measure only; no Hilbert-space dynamics, no physical probability calibration, no decoherence rule, no bridge to observables, and no empirical validation.",
+  "classification": {
+    "layer_1": "finite branch normalization law over finite sibling sets",
+    "layer_2": "deterministic branch-frontier artifact generation and normalization checks",
+    "layer_3_boundary": "interpretive branch-cosmology scaffolding only; no empirical cosmology or Born-rule proof"
+  },
+  "entropy_bits": 6.765878592768574,
+  "frontier_depth": 3,
+  "law_summary": {
+    "amplitude_decoration": "psi(c)=sqrt(mu(c))*exp(i*phase_scale*a_c); norm-preserving representation only",
+    "boundary": "Finite ASH branch-frontier measure only; no Born-rule proof, no Hilbert-space dynamics, no collapse/decoherence rule, no physical spacetime bridge, and no empirical validation.",
+    "classification": {
+      "layer_1": "finite normalization theorem over finite branch sibling sets",
+      "layer_2": "deterministic branch-frontier scoring and generated verification artifacts",
+      "layer_3_boundary": "interpretive branch-cosmology workbench only; no empirical probability, Born-rule, or physical amplitude claim"
+    },
+    "config": {
+      "beta": 1.0,
+      "coherence_weight": 0.2,
+      "defect_weight": 0.35,
+      "epsilon": 1e-15,
+      "memory_weight": 0.1,
+      "phase_scale": 1.0,
+      "shell_weight": 0.05,
+      "transfer_probability": 0.05,
+      "transfer_weight": 0.25
+    },
+    "effective_action": "A=a+w_q*q+w_defect*d+w_memory*r+w_coherence*h+w_transfer*(-log(max(|mu_q(p)|, epsilon)))",
+    "law_version": "ash-branch-measure-v0.1-classical-gibbs",
+    "measure_equation": "mu(c)=mu(parent)*exp(-beta*A(c))/sum_sibling exp(-beta*A(u))",
+    "normalization": "For each finite sibling set with at least one child, sum_c pi(c|parent)=1 and sum_c mu(c)=mu(parent).",
+    "title": "ASH Roadmap 008 finite branch measure law"
+  },
+  "normalization_check": {
+    "expected_total": 1.0,
+    "max_local_probability_residual": 0.0,
+    "max_total_amplitude_residual": 1.1102230246251565e-16,
+    "max_total_measure_residual": 1.1102230246251565e-16,
+    "num_rows": 125,
+    "parent_count": 25,
+    "passed": true,
+    "total_amplitude_norm_squared": 0.9999999999999999,
+    "total_measure": 0.9999999999999999
+  }
+}

@@ -147,7 +147,7 @@ The tracked ablations explicitly compare uniform starts, zero starts, ASH transf
 
 `docs/ash-physics-validation/` defines the proof and empirical-validation program. It adds implementation instructions, proof obligations, preregistration templates, claim-language scanning, and task manifests for the ASH-Physics research track.
 
-ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, and finite perturbation factors.  The current validation program is intentionally not an empirical result. External likelihoods, standard cosmology baselines, unitful bridge maps, continuum interpretations, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
+ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, finite perturbation factors, and finite branch-measure normalization law.  The current validation program is intentionally not an empirical result. External likelihoods, standard cosmology baselines, unitful bridge maps, continuum interpretations, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
 `docs/ash-cosmology/background-bridge/pass-003/` records the Pass 003 synthetic background-bridge audit remediation, including numerical convergence checks, deprecation-warning elimination, grid-posterior uncertainty diagnostics, AIC/BIC diagnostics, matched controls, and blocker tracking. This package is synthetic validation only and does not claim observational validation.
 
@@ -183,8 +183,10 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `ROADMAP.md` - repository-maintained roadmap tracker and completion log
 - `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
 - `docs/ash-cosmology/linear-perturbations/roadmap-007/` - Roadmap 007 finite linear perturbation sector notes and boundaries
+- `docs/ash-cosmology/branch-measure/roadmap-008/` - Roadmap 008 finite branch-measure law notes and boundaries
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `data/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation transfer CSV artifacts
+- `data/ash-cosmology/branch-measure/v0.1/` - Roadmap 008 finite branch-measure normalization CSV artifacts
 - `data/ash-physics-sector-mixing/` - Sector-mixing pass 002 CSV evidence, upstream payload manifest, and reproduction metadata
 - `figures/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation generated figures
 - `figures/ash-physics-sector-mixing/` - Sector-mixing pass 002 finite workbench figures
@@ -195,6 +197,7 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `phenomenology/` - internal observable-interface specifications and external-validation blockers
 - `validation/` - finite consistency gates, preregistration surfaces, and external-validation blockers
 - `validation/linear-perturbations/roadmap-007/` - Roadmap 007 finite perturbation validation notes and generated verification JSON
+- `validation/branch-measure/roadmap-008/` - Roadmap 008 finite branch-measure validation notes and generated verification JSON
 - `predictions/` - frozen-prediction ledger and falsification criteria
 - `axioms-of-existence.json` - explicitly labeled interpretive postulates and narrative implications
 - `latex/main.tex` - aligned manuscript source

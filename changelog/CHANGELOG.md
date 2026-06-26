@@ -2,6 +2,28 @@
 
 ## Unreleased - 2026-06-26
 
+**Title**: Roadmap 008 finite branch-measure law
+
+**Change Class**: feature
+
+**Version Impact**: none
+
+**Summary**: Adds the Roadmap 008 finite branch-measure law with deterministic normalization artifacts, validation outputs, and conservative branch-cosmology boundaries.
+
+**Affected Area**: branch-measure module, tests, generated data, validation outputs, roadmap tracker, README, data documentation, and data manifest
+
+### Added
+
+- Finite branch-measure module using Gibbs/action-weighted normalization over finite sibling sets.
+- Optional norm-preserving amplitude decoration for the finite classical measure representation.
+- Deterministic Roadmap 008 generator for branch-frontier, entropy, transfer-penalty, candidate, and verification artifacts.
+- Regression tests for sibling normalization, total-measure preservation, amplitude-norm preservation, finite shell penalties, and boundary-language preservation.
+
+### Updated
+
+- Added Roadmap 008 generated artifacts to the data manifest and repository documentation.
+- Marked only R-008 complete while leaving observer commitment, physical bridge, physical perturbation, external-likelihood, locked-prediction, and branch-centered closure gates open or blocked.
+
 **Title**: Roadmap 007 finite linear perturbation sector
 
 **Change Class**: feature
