@@ -146,6 +146,18 @@ The final repository-readiness audit is recorded in [`docs/final-live-repository
 
 The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki-publication.md). The tracked wiki source lives under [`wiki/`](wiki/) and is mirrored to the live GitHub wiki at <https://github.com/flynn33/ASH-Model/wiki>.
 
+## Data governance
+
+The tracked data inventory is documented in [`data/README.md`](data/README.md) and machine-recorded in [`data/manifests/data_manifest.json`](data/manifests/data_manifest.json). The manifest covers repository evidence files under `data/`, pass 003 synthetic diagnostics under `validation/background_bridge/pass_003/outputs/`, and `validation/status.json`.
+
+Validate the manifest with:
+
+```bash
+python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
+```
+
+No new raw dataset is imported by the 2026-06-26 repository-data governance pass. Future raw data requires explicit provenance, sensitivity, license, and tracking-policy review before it is committed.
+
 ## Repository map
 
 - `src/ash_model/` - canonical implementation
@@ -156,6 +168,7 @@ The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki
 - `data/codewords.csv` - all 16 codewords and syndromes
 - `data/branch-topology.json` - complete depth-4 branch topology
 - `data/ablation-results.csv` - controlled simulation results
+- `data/manifests/data_manifest.json` - consolidated data and synthetic-output inventory
 - `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `data/ash-physics-sector-mixing/` - Sector-mixing pass 002 CSV evidence, upstream payload manifest, and reproduction metadata

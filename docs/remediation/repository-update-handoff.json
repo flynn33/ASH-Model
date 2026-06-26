@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "summary": "Added repository-data governance for existing ASH evidence assets without importing new raw data.",
+  "changes": [
+    {
+      "path": "data/README.md",
+      "status": "added",
+      "purpose": "Documents data layout, provenance, validation, privacy, license, and large-file policy."
+    },
+    {
+      "path": "data/manifests/data_manifest.json",
+      "status": "added",
+      "purpose": "Provides a consolidated manifest for tracked data and synthetic validation-output assets."
+    },
+    {
+      "path": "tools/validate_data_manifest.py",
+      "status": "added",
+      "purpose": "Validates manifest paths, file sizes, and SHA-256 hashes."
+    },
+    {
+      "path": "tests/test_data_manifest.py",
+      "status": "added",
+      "purpose": "Covers the data-manifest validator."
+    }
+  ],
+  "data_assets": [
+    {
+      "path": "data/manifests/data_manifest.json",
+      "role": "documentation-asset",
+      "tracked_with": "git",
+      "validation_status": "passed"
+    }
+  ],
+  "validation": [
+    {
+      "check": "Data manifest validation",
+      "command": "python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json",
+      "result": "passed",
+      "notes": "Checked 44 tracked assets with no failures."
+    }
+  ],
+  "security_privacy": {
+    "secrets_committed": false,
+    "sensitive_data_detected": "no",
+    "data_publication_safety": "public",
+    "gitignore_updated": "yes",
+    "git_lfs_recommended": false,
+    "license_provenance_status": "partial"
+  },
+  "assumptions": [
+    "No new raw dataset was supplied with the instruction package.",
+    "Existing tracked data assets remain public repository evidence.",
+    "Package-derived data assets retain their existing repository provenance notes."
+  ],
+  "risks_limitations": [
+    "Package-derived roadmap and sector-mixing assets do not all include separate standalone data license statements.",
+    "Future raw data still requires owner approval for publication safety and tracking policy."
+  ],
+  "next_steps": [
+    "Review whether package-derived data assets need a separate license note.",
+    "Run the data manifest validator after future data changes.",
+    "Decide Git, Git LFS, or external storage policy before adding future raw datasets."
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ASH Data Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_on",
+    "project",
+    "assets"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_on": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "project": {
+      "type": "string"
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "format",
+          "description",
+          "size_bytes",
+          "checksum_sha256",
+          "sensitivity",
+          "provenance",
+          "license",
+          "usage_restrictions",
+          "tracked_with",
+          "validation_status",
+          "notes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "original_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "role": {
+            "enum": [
+              "raw",
+              "processed",
+              "sample",
+              "synthetic",
+              "external-reference",
+              "generated-output",
+              "documentation-asset"
+            ]
+          },
+          "format": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "size_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "checksum_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "sensitivity": {
+            "enum": [
+              "public",
+              "internal",
+              "confidential",
+              "regulated",
+              "unknown"
+            ]
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1
+          },
+          "usage_restrictions": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tracked_with": {
+            "enum": [
+              "git",
+              "git-lfs",
+              "ignored",
+              "external",
+              "unknown"
+            ]
+          },
+          "validation_status": {
+            "enum": [
+              "passed",
+              "failed",
+              "not run",
+              "not applicable"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

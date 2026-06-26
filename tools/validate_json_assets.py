@@ -20,6 +20,10 @@ except Exception:  # pragma: no cover - reported at runtime
 
 SCHEMA_PAIRS = [
     (
+        "data/manifests/data_manifest.json",
+        "docs/ash-physics-validation/configs/data_manifest.schema.json",
+    ),
+    (
         "docs/ash-physics-validation/tasks/task_manifest.json",
         "docs/ash-physics-validation/configs/task_manifest.schema.json",
     ),
