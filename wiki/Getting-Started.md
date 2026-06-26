@@ -34,8 +34,9 @@ Expected current result:
 | `tools/generate_artifacts.py` | 6 data artifacts generated, 5 figure artifacts verified |
 | `tools/build_manuscript.py` | 9 source inputs recorded |
 | `tools/run_proof_suite.py` | `all_checks_pass: true` |
-| `python -m pytest` | 83 tests pass |
+| `python -m pytest` | 143 collected tests pass |
 | `tools/verify_repository.py` | no manifest, version, or proof mismatches |
+| `tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json` | data-manifest validation passes |
 
 ## Next reading step
 
@@ -44,5 +45,7 @@ Read these in order:
 1. `README.md`
 2. `docs/canonical-computational-specification.md`
 3. `docs/mathematical-proof.md`
-4. `docs/final-live-repository-audit.md`
+4. `ROADMAP.md`
 5. `docs/ash-physics-validation/README.md`
+6. `docs/ash-cosmology/unit-bridge/roadmap-010/README.md`
+7. `docs/ash-cosmology/finite-observer-limit/roadmap-011/README.md`
