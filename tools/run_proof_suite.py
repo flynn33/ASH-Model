@@ -33,6 +33,7 @@ from ash_model.empirical import (
     compare_gaussian_models,
     diagonal_gaussian_log_likelihood,
 )
+from ash_model.observer_commitment import verify_r009
 from ash_model.hypercube import (
     coset_partition,
     distance_shell_counts,
@@ -369,6 +370,24 @@ def _standard_baseline_certificate() -> dict[str, object]:
     }
 
 
+def _observer_commitment_certificate() -> dict[str, object]:
+    report = verify_r009(max_depth=4)
+    summary = report["decoherence_summary"]
+    return {
+        "law_version": report["law_version"],
+        "frontier_size": report["frontier_size"],
+        "frontier_measure_total": report["frontier_measure_total"],
+        "commitment_memory_classes": report["commitment_memory_classes"],
+        "commitment_distribution_total": report["commitment_distribution_total"],
+        "memory_prefix_embedding_passed": report["memory_prefix_embedding_passed"],
+        "diagonal_trace": summary["diagonal_trace"],
+        "passed_trace_invariant": summary["passed_trace_invariant"],
+        "suppressed_pair_fraction": summary["suppressed_pair_fraction"],
+        "passed": report["passed"],
+        "boundary": report["boundary"],
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -382,6 +401,7 @@ def build_certificate() -> dict[str, object]:
         "empirical_bridge": _empirical_bridge_certificate(),
         "prediction_ledger": _prediction_ledger_certificate(),
         "standard_baseline": _standard_baseline_certificate(),
+        "observer_commitment": _observer_commitment_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -446,6 +466,11 @@ def build_certificate() -> dict[str, object]:
         and sections["standard_baseline"]["distance_curve_monotonic"] is True
         and sections["standard_baseline"]["best_baseline"] == "standard"
         and abs(sections["standard_baseline"]["best_baseline_chi_square"]) < 1e-15,
+        "observer_commitment_verified": sections["observer_commitment"]["passed"] is True
+        and abs(sections["observer_commitment"]["frontier_measure_total"] - 1.0) < 1e-12
+        and abs(sections["observer_commitment"]["commitment_distribution_total"] - 1.0) < 1e-12
+        and sections["observer_commitment"]["memory_prefix_embedding_passed"] is True
+        and sections["observer_commitment"]["passed_trace_invariant"] is True,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -470,6 +495,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     empirical = certificate["sections"]["empirical_bridge"]
     prediction = certificate["sections"]["prediction_ledger"]
     standard = certificate["sections"]["standard_baseline"]
+    observer_commitment = certificate["sections"]["observer_commitment"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -567,6 +593,19 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Distance curve monotonic: `{standard['distance_curve_monotonic']}`",
         f"- Best example baseline: `{standard['best_baseline']}`",
         "- Boundary: this is a reference-baseline comparator, not an ASH-derived standard-cosmology limit.",
+        "",
+        "## Observer commitment workbench",
+        "",
+        f"- R-009 law version: `{observer_commitment['law_version']}`",
+        f"- Frontier size: `{observer_commitment['frontier_size']}`",
+        f"- Frontier measure total: `{observer_commitment['frontier_measure_total']}`",
+        f"- Commitment memory classes: `{observer_commitment['commitment_memory_classes']}`",
+        f"- Commitment distribution total: `{observer_commitment['commitment_distribution_total']}`",
+        f"- Memory prefix embedding: `{observer_commitment['memory_prefix_embedding_passed']}`",
+        f"- Diagonal trace: `{observer_commitment['diagonal_trace']}`",
+        f"- Diagonal trace invariant: `{observer_commitment['passed_trace_invariant']}`",
+        f"- Suppressed pair fraction: `{observer_commitment['suppressed_pair_fraction']}`",
+        "- Boundary: finite observer-relative commitment and branch-separation workbench only.",
         "",
         "## Check matrix",
         "",
