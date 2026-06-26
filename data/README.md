@@ -39,13 +39,14 @@ The authoritative data inventory is `data/manifests/data_manifest.json`. It reco
 | Roadmap 007 finite perturbation outputs | `data/ash-cosmology/linear-perturbations/v0.1/`, `figures/ash-cosmology/linear-perturbations/v0.1/`, `validation/linear-perturbations/roadmap-007/outputs/` | Deterministic finite-observer perturbation transfer, Green-function, shell-power, figure, and verification outputs generated from tracked source code |
 | Roadmap 008 finite branch-measure outputs | `data/ash-cosmology/branch-measure/v0.1/`, `validation/branch-measure/roadmap-008/outputs/` | Deterministic finite branch-measure frontier, entropy, transfer-penalty, candidate, and verification outputs generated from tracked source code |
 | Roadmap 009 finite observer-commitment outputs | `data/ash-cosmology/observer-commitment/v0.1/`, `validation/observer-commitment/roadmap-009/outputs/` | Deterministic finite observer-commitment frontier, commitment distribution, branch-separation sample, depth summary, and verification outputs generated from tracked source code |
+| Roadmap 010 unit-bearing bridge outputs | `data/ash-cosmology/unit-bridge/v0.1/`, `validation/unit-bridge/roadmap-010/outputs/` | Deterministic synthetic finite-observer unit-bearing bridge features, proxy observables, bootstrap samples, covariance, provenance, and verification outputs generated from tracked source code |
 | Sector-mixing evidence | `data/ash-physics-sector-mixing/` | Project-owner-provided pass 002 finite workbench evidence |
 | Background bridge diagnostics | `validation/background_bridge/pass_003/outputs/` | Pass 003 synthetic diagnostic outputs |
 | Validation status | `validation/status.json` | Repository-maintained validation-status manifest |
 
 ## Provenance
 
-Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, `tools/generate_linear_perturbations.py`, `tools/generate_branch_measure.py`, and `tools/generate_observer_commitment.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
+Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, `tools/generate_linear_perturbations.py`, `tools/generate_branch_measure.py`, `tools/generate_observer_commitment.py`, and `tools/generate_unit_bridge.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
 
 ## Validation
 

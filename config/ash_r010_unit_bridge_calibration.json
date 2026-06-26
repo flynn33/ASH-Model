@@ -1,0 +1,61 @@
+{
+  "schema_version": "ash-r010-unit-bridge-calibration-v0.1",
+  "status": "declared fiducial calibration for synthetic validation; not reviewed empirical calibration",
+  "constants": {
+    "tau_star_s": {
+      "value": 1.0,
+      "unit": "s/branch_step",
+      "role": "branch-depth to clock-time scale"
+    },
+    "ell_star_m": {
+      "value": 1.0,
+      "unit": "m/causal_edge",
+      "role": "coarse cell length scale"
+    },
+    "epsilon_star_J": {
+      "value": 1.0,
+      "unit": "J/defect",
+      "role": "defect excitation energy scale"
+    },
+    "alpha_entropy": {
+      "value": 0.125,
+      "unit": "dimensionless",
+      "role": "entropy-to-scale-factor coupling"
+    },
+    "theta_shell_K": {
+      "value": 1.0,
+      "unit": "K",
+      "role": "finite shell-temperature response scale"
+    },
+    "theta0_K": {
+      "value": 2.7255,
+      "unit": "K",
+      "role": "named reference temperature offset used for synthetic units only"
+    },
+    "G_m3_kg_s2": {
+      "value": 6.6743e-11,
+      "unit": "m^3 kg^-1 s^-2",
+      "role": "CODATA SI constant"
+    },
+    "c_m_s": {
+      "value": 299792458.0,
+      "unit": "m s^-1",
+      "role": "exact SI speed of light"
+    }
+  },
+  "calibration_policy": {
+    "required_for_empirical_use": [
+      "source of tau_star_s and ell_star_m",
+      "source of epsilon_star_J",
+      "data release identifier and access date",
+      "estimator definition",
+      "cuts and masks",
+      "covariance source or bootstrap protocol",
+      "nuisance parameter treatment",
+      "matched non-ASH baselines",
+      "prediction lock before unblinding"
+    ],
+    "allowed_transform": "dimensionful nonlinear map with fixed SI units; no post-hoc refitting after prediction lock",
+    "recalibration_rule": "new constants define a new bridge version and invalidate prior empirical claims unless preregistered"
+  }
+}

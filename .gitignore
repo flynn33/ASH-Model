@@ -12,6 +12,8 @@ dist/
 *.egg-info/
 data/processed/
 outputs/
+!validation/**/outputs/
+!validation/**/outputs/verification.json
 reports/generated/
 figures/*-generated.png
 latex/*.aux

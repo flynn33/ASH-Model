@@ -66,6 +66,14 @@ from ash_model.physics import (
 from ash_model.prediction_ledger import canonical_prediction_hash, ledger_lock_status, validate_prediction_ledger
 from ash_model.projection import projection_certificate
 from ash_model.simulation import binomial_distribution, noise_kernel
+from ash_model.unit_bridge import (
+    bootstrap_covariance,
+    finite_features_by_depth,
+    load_calibration,
+    physical_bridge,
+    read_csv_records,
+    validate_unit_bridge_artifacts,
+)
 
 
 def _reported_residual(value: float) -> float:
@@ -388,6 +396,37 @@ def _observer_commitment_certificate() -> dict[str, object]:
     }
 
 
+def _unit_bridge_certificate() -> dict[str, object]:
+    data_root = REPO_ROOT / "data" / "ash-cosmology"
+    frontier = read_csv_records(data_root / "observer-commitment" / "v0.1" / "r009_frontier.csv")
+    decoherence = read_csv_records(
+        data_root / "observer-commitment" / "v0.1" / "r009_decoherence_summary_by_depth.csv"
+    )
+    calibration = load_calibration(REPO_ROOT / "config" / "ash_r010_unit_bridge_calibration.json")
+    features = finite_features_by_depth(frontier, decoherence)
+    observables = physical_bridge(features, calibration)
+    covariance = bootstrap_covariance(frontier, decoherence, calibration, samples=80, seed=10010)
+    validation = validate_unit_bridge_artifacts(features, observables, calibration, covariance).as_dict()
+    tests = validation["tests"]
+    return {
+        "bridge_version": validation["bridge_version"],
+        "feature_depths": [row["depth"] for row in features],
+        "unit_columns": [column for column in observables[0] if column.endswith(("_s", "_m", "_K", "_m3", "_m_inv2"))],
+        "measure_normalization_by_depth": tests["measure_normalization_by_depth"],
+        "unit_columns_present": tests["unit_columns_present"],
+        "positive_declared_scales": tests["positive_declared_scales"],
+        "finite_physical_values": tests["finite_physical_values"],
+        "covariance_symmetric": tests["covariance_symmetric"],
+        "covariance_psd_tolerance_1e_minus_12": tests["covariance_psd_tolerance_1e_minus_12"],
+        "covariance_min_eigenvalue": (
+            None
+            if tests["covariance_min_eigenvalue"] is None
+            else _reported_residual(tests["covariance_min_eigenvalue"])
+        ),
+        "boundary": validation["boundary"],
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -402,6 +441,7 @@ def build_certificate() -> dict[str, object]:
         "prediction_ledger": _prediction_ledger_certificate(),
         "standard_baseline": _standard_baseline_certificate(),
         "observer_commitment": _observer_commitment_certificate(),
+        "unit_bridge": _unit_bridge_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -471,6 +511,12 @@ def build_certificate() -> dict[str, object]:
         and abs(sections["observer_commitment"]["commitment_distribution_total"] - 1.0) < 1e-12
         and sections["observer_commitment"]["memory_prefix_embedding_passed"] is True
         and sections["observer_commitment"]["passed_trace_invariant"] is True,
+        "unit_bridge_verified": sections["unit_bridge"]["measure_normalization_by_depth"] is True
+        and sections["unit_bridge"]["unit_columns_present"] is True
+        and sections["unit_bridge"]["positive_declared_scales"] is True
+        and sections["unit_bridge"]["finite_physical_values"] is True
+        and sections["unit_bridge"]["covariance_symmetric"] is True
+        and sections["unit_bridge"]["covariance_psd_tolerance_1e_minus_12"] is True,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -496,6 +542,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     prediction = certificate["sections"]["prediction_ledger"]
     standard = certificate["sections"]["standard_baseline"]
     observer_commitment = certificate["sections"]["observer_commitment"]
+    unit_bridge = certificate["sections"]["unit_bridge"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -606,6 +653,20 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Diagonal trace invariant: `{observer_commitment['passed_trace_invariant']}`",
         f"- Suppressed pair fraction: `{observer_commitment['suppressed_pair_fraction']}`",
         "- Boundary: finite observer-relative commitment and branch-separation workbench only.",
+        "",
+        "## Unit-bearing bridge workbench",
+        "",
+        f"- R-010 bridge version: `{unit_bridge['bridge_version']}`",
+        f"- Feature depths: `{unit_bridge['feature_depths']}`",
+        f"- Unit columns checked: `{unit_bridge['unit_columns']}`",
+        f"- Measure normalization by depth: `{unit_bridge['measure_normalization_by_depth']}`",
+        f"- Unit columns present: `{unit_bridge['unit_columns_present']}`",
+        f"- Positive declared scales: `{unit_bridge['positive_declared_scales']}`",
+        f"- Finite physical-proxy values: `{unit_bridge['finite_physical_values']}`",
+        f"- Covariance symmetric: `{unit_bridge['covariance_symmetric']}`",
+        f"- Covariance PSD tolerance: `{unit_bridge['covariance_psd_tolerance_1e_minus_12']}`",
+        f"- Covariance minimum eigenvalue: `{unit_bridge['covariance_min_eigenvalue']}`",
+        "- Boundary: synthetic finite-observer unit-bearing bridge only.",
         "",
         "## Check matrix",
         "",
