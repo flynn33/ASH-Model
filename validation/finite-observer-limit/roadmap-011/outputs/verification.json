@@ -1,0 +1,104 @@
+{
+  "interval_rows": 56,
+  "levels": [
+    {
+      "cone_final": 1,
+      "degree": 0,
+      "diameter": 0,
+      "edges": 0,
+      "laplacian_gap": 0,
+      "n": 1,
+      "shell_sum": 1,
+      "spectrum_multiplicity_sum": 1,
+      "states": 1
+    },
+    {
+      "cone_final": 4,
+      "degree": 3,
+      "diameter": 1,
+      "edges": 6,
+      "laplacian_gap": 4,
+      "n": 3,
+      "shell_sum": 4,
+      "spectrum_multiplicity_sum": 4,
+      "states": 4
+    },
+    {
+      "cone_final": 16,
+      "degree": 10,
+      "diameter": 2,
+      "edges": 80,
+      "laplacian_gap": 8,
+      "n": 5,
+      "shell_sum": 16,
+      "spectrum_multiplicity_sum": 16,
+      "states": 16
+    },
+    {
+      "cone_final": 64,
+      "degree": 21,
+      "diameter": 3,
+      "edges": 672,
+      "laplacian_gap": 12,
+      "n": 7,
+      "shell_sum": 64,
+      "spectrum_multiplicity_sum": 64,
+      "states": 64
+    },
+    {
+      "cone_final": 256,
+      "degree": 36,
+      "diameter": 4,
+      "edges": 4608,
+      "laplacian_gap": 16,
+      "n": 9,
+      "shell_sum": 256,
+      "spectrum_multiplicity_sum": 256,
+      "states": 256
+    }
+  ],
+  "n9_cone_sizes": {
+    "0": 1,
+    "1": 37,
+    "2": 163,
+    "3": 247,
+    "4": 256
+  },
+  "n9_shell_counts": {
+    "0": 1,
+    "1": 36,
+    "2": 126,
+    "3": 84,
+    "4": 9
+  },
+  "n9_spectrum": [
+    [
+      0,
+      36,
+      1
+    ],
+    [
+      1,
+      20,
+      9
+    ],
+    [
+      2,
+      8,
+      36
+    ],
+    [
+      3,
+      0,
+      84
+    ],
+    [
+      4,
+      -4,
+      126
+    ]
+  ],
+  "projection_lipschitz_on_events": true,
+  "projective_consistency": true,
+  "r011_scope": "finite_observer_limit_closure_not_differentiable_continuum"
+}
