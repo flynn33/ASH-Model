@@ -119,7 +119,7 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - Finite physical-proxy values: `True`
 - Covariance symmetric: `True`
 - Covariance PSD tolerance: `True`
-- Covariance minimum eigenvalue: `-4.023984967919692e-20`
+- Covariance minimum eigenvalue: `0.0`
 - Boundary: synthetic finite-observer unit-bearing bridge only.
 
 ## Finite-observer limit workbench
