@@ -51,6 +51,7 @@ jobs:
           python3 docs/ash-physics-validation/scripts/check_sensitive_language.py .
           python3 docs/ash-physics-validation/scripts/run_repository_gate.py .
           python3 tools/validate_json_assets.py .
+          python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
           python3 tools/check_generated_outputs.py . --include-manuscript
           python3 tools/audit_physics_readiness.py . --expect-open --write-json docs/remediation/physics-readiness.json
           python3 tools/audit_live_repository_readiness.py .

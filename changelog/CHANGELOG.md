@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased - 2026-06-26
+
+**Title**: Repository data governance manifest
+
+**Change Class**: metadata
+
+**Version Impact**: none
+
+**Summary**: Adds a consolidated data manifest, data-directory documentation, manifest validation tooling, and repository audit notes for tracked evidence assets.
+
+**Affected Area**: data manifest, validation tooling, tests, documentation, CI, git hygiene
+
+### Added
+
+- Consolidated data manifest for tracked ASH evidence assets and pass 003 synthetic diagnostic outputs.
+- Data manifest schema, validator, and regression test.
+- Data-directory README, repository data audit, and repository data integration plan.
+
+### Updated
+
+- README data-governance guidance, `.gitignore` generated-output exclusions, JSON validation wiring, and CI manifest validation.
+
 ## Unreleased - 2026-06-25
 
 **Title**: ASH-Physics sector-mixing resolution pass 002

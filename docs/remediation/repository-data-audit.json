@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "project_summary": {
+    "project_type": "Python research package and validation repository",
+    "description": "ASH Model contains a deterministic finite-state reference implementation, proof tooling, tracked evidence data, documentation, and validation outputs.",
+    "primary_language": "Python",
+    "frameworks": [
+      "pytest",
+      "jsonschema",
+      "numpy",
+      "matplotlib"
+    ]
+  },
+  "structure": {
+    "root_files": [
+      "README.md",
+      "LICENSE",
+      ".gitignore",
+      ".gitattributes",
+      "pyproject.toml",
+      "VERSION",
+      "CITATION.cff"
+    ],
+    "source_dirs": [
+      "src/ash_model",
+      "tools",
+      "scripts"
+    ],
+    "test_dirs": [
+      "tests"
+    ],
+    "data_dirs": [
+      "data",
+      "validation/background_bridge/pass_003/outputs",
+      "figures",
+      "proofs"
+    ],
+    "docs_dirs": [
+      "docs",
+      "wiki",
+      "changelog"
+    ]
+  },
+  "tooling": {
+    "dependency_files": [
+      "pyproject.toml"
+    ],
+    "test_commands": [
+      "python -m pytest",
+      "python tools/verify_repository.py",
+      "python tools/validate_json_assets.py .",
+      "python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json"
+    ],
+    "ci_workflows": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/wiki-sync.yml",
+      ".github/workflows/changelog-validation.yml",
+      ".github/workflows/version-tracking.yml"
+    ],
+    "formatters_linters": [
+      "python -m compileall",
+      "git diff --check"
+    ]
+  },
+  "risks": {
+    "security": "low",
+    "privacy": "low",
+    "licensing": "medium",
+    "maintainability": "low",
+    "large_files": "low"
+  },
+  "recommendations": [
+    "Maintain data/manifests/data_manifest.json as the consolidated data inventory.",
+    "Run tools/validate_data_manifest.py after changing tracked data or validation-output assets.",
+    "Do not add future raw data until publication safety, license, provenance, and tracking policy are confirmed.",
+    "Use external storage or Git LFS for future large raw datasets."
+  ],
+  "open_questions": [
+    "Should future raw datasets be committed, stored through Git LFS, or referenced externally?",
+    "Should package-derived roadmap and sector-mixing assets receive a separate explicit data license statement?"
+  ]
+}
