@@ -11,7 +11,7 @@ Controlled simulations show that the familiar bell-shaped Hamming-weight histogr
 
 ## 1. Motivation and research status
 
-ASH investigates whether a compact binary state space can combine code symmetries, graph quotients, procedural branching, and reproducible media-processing semantics. Its contribution at this stage is a coherent finite construction and reference implementation. It is not presented as an empirically confirmed cosmology.
+ASH investigates whether a compact binary state space can combine code symmetries, graph quotients, procedural branching, and reproducible media-processing semantics. Its contribution at this stage is a coherent finite construction and reference implementation. It is not presented as an empirical cosmology result.
 
 The model's earlier implementation contained a useful coding-theory scaffold but described it imprecisely. In particular, a length-nine code was called self-dual, simulations without a decoder were described as error-correcting, and a random Hamming-weight baseline was described as ASH-specific convergence. Version 1.1.0 repairs those points and makes every executable claim testable.
 

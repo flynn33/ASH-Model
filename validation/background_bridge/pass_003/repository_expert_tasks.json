@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "model_version": "ash_background_bridge_pass_003_remediated",
+  "tasks": [
+    {
+      "id": "BB-P003-001",
+      "title": "Review phenomenological bridge status",
+      "status": "open",
+      "owner_domain": "theory",
+      "description": "Assess whether the scalar branch template can be derived from a branch measure or amplitude law."
+    },
+    {
+      "id": "BB-P003-002",
+      "title": "Design external-data likelihood adapters",
+      "status": "blocked",
+      "owner_domain": "phenomenology",
+      "description": "Specify BAO and SNe adapters only after bridge equations, covariance handling, and preregistration rules are frozen."
+    },
+    {
+      "id": "BB-P003-003",
+      "title": "Prototype perturbation-sector observables",
+      "status": "open",
+      "owner_domain": "cosmology",
+      "description": "Define whether the branch bridge predicts perturbation growth, matter power, or CMB-facing quantities."
+    },
+    {
+      "id": "BB-P003-004",
+      "title": "Replace grid diagnostic with production inference",
+      "status": "open",
+      "owner_domain": "statistics",
+      "description": "Add priors, sampling, coverage tests, and model-comparison protocol before external-data use."
+    },
+    {
+      "id": "BB-P003-005",
+      "title": "Lock prospective predictions",
+      "status": "blocked",
+      "owner_domain": "validation",
+      "description": "Create prediction-ledger entries only after observables, data products, statistics, and rejection rules are fixed."
+    }
+  ]
+}

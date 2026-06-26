@@ -1,0 +1,57 @@
+{
+  "files": [
+    {
+      "bytes": 1484,
+      "path": "validation/background_bridge/pass_003/blockers.json",
+      "sha256": "817377012df978daddbcbfa7d3460099b154224d7c15d800a0020c5059ef5d2e"
+    },
+    {
+      "bytes": 59664,
+      "path": "validation/background_bridge/pass_003/outputs/ash_grid_fit_records.csv",
+      "sha256": "3cbaadb75eff061db8bfcedeb8c71c161413d3313730ac27e41748cfd43c6e72"
+    },
+    {
+      "bytes": 9114,
+      "path": "validation/background_bridge/pass_003/outputs/background_curves.csv",
+      "sha256": "4e7dcb3b65ac5ab55f17828730c42c87360b889373b2fcd31ab10fe5baa54b87"
+    },
+    {
+      "bytes": 80,
+      "path": "validation/background_bridge/pass_003/outputs/pytest_validation.log",
+      "sha256": "06955fb47f16312e5d13266c774a2aa4648c46e423cbe6564a92e25b68e39131"
+    },
+    {
+      "bytes": 4424,
+      "path": "validation/background_bridge/pass_003/outputs/run_validation_stdout.json",
+      "sha256": "26ae5e370b3e0c7a01ee090a563f84e430f751584f6aa7bae120c2b32aa67d98"
+    },
+    {
+      "bytes": 651,
+      "path": "validation/background_bridge/pass_003/outputs/synthetic_H_ash.csv",
+      "sha256": "2c5ef06aba356f9d72c8e6bacd43b0f5620f9502ffcb271716d3d20a6b723b87"
+    },
+    {
+      "bytes": 961,
+      "path": "validation/background_bridge/pass_003/outputs/synthetic_supernova_ash.csv",
+      "sha256": "09b189a6961d782f9d0335d9cdff1966341c15b55025d47dd883e9eb38b91ee5"
+    },
+    {
+      "bytes": 4424,
+      "path": "validation/background_bridge/pass_003/outputs/validation_summary.json",
+      "sha256": "c1c0f9baeced20f8d05f60ee3b678ead3137a8878a5b5a9d3a2ceced44d79e36"
+    },
+    {
+      "bytes": 1934,
+      "path": "validation/background_bridge/pass_003/remediation_manifest.json",
+      "sha256": "f49afac1261c9b77a4b15c4c4103d8626cc125ecbfdcca054e0cdcd02533a5d3"
+    },
+    {
+      "bytes": 1548,
+      "path": "validation/background_bridge/pass_003/repository_expert_tasks.json",
+      "sha256": "363f31f650d36df2d3df5b3b393eae2c6aa953a68201556f646a42234e04b176"
+    }
+  ],
+  "hash_algorithm": "sha256",
+  "model_version": "ash_background_bridge_pass_003_remediated",
+  "schema_version": "1.0.0"
+}

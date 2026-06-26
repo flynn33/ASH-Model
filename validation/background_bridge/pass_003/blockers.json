@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "model_version": "ash_background_bridge_pass_003_remediated",
+  "resolved": [
+    {
+      "id": "B003-1",
+      "title": "No computable background bridge",
+      "resolution": "Added src/ash_model/background_bridge.py with synthetic background observables."
+    },
+    {
+      "id": "B003-2",
+      "title": "No synthetic recovery gate",
+      "resolution": "Added deterministic synthetic ASH data and parameter recovery checks."
+    },
+    {
+      "id": "B003-3",
+      "title": "No matched null comparison",
+      "resolution": "Added nested LCDM and smooth random-template controls."
+    },
+    {
+      "id": "B003-4",
+      "title": "No numerical remediation diagnostics",
+      "resolution": "Added trapezoid integration, posterior-grid uncertainty, AIC/BIC, and convergence diagnostics."
+    }
+  ],
+  "open": [
+    {
+      "id": "B003-O1",
+      "title": "Bridge is phenomenological",
+      "status": "open"
+    },
+    {
+      "id": "B003-O2",
+      "title": "No perturbation sector",
+      "status": "open"
+    },
+    {
+      "id": "B003-O3",
+      "title": "No external-data inference",
+      "status": "blocked"
+    },
+    {
+      "id": "B003-O4",
+      "title": "No full stress-energy mapping",
+      "status": "open"
+    },
+    {
+      "id": "B003-O5",
+      "title": "No production Bayesian inference",
+      "status": "open"
+    },
+    {
+      "id": "B003-O6",
+      "title": "No locked prediction",
+      "status": "blocked"
+    }
+  ]
+}
