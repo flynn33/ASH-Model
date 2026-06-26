@@ -33,6 +33,19 @@ from ash_model.empirical import (
     compare_gaussian_models,
     diagonal_gaussian_log_likelihood,
 )
+from ash_model.finite_observer_limit import (
+    ODD_LEVELS,
+    adjacency_spectrum as finite_observer_adjacency_spectrum,
+    causal_cone_sizes,
+    causal_interval_size,
+    fiber_sizes,
+    laplacian_gap as finite_observer_laplacian_gap,
+    shell_counts as finite_observer_shell_counts,
+    unit_scale_table,
+    validate_lipschitz,
+    validate_projective_consistency,
+    validation_summary as finite_observer_validation_summary,
+)
 from ash_model.observer_commitment import verify_r009
 from ash_model.hypercube import (
     coset_partition,
@@ -423,6 +436,35 @@ def _unit_bridge_certificate() -> dict[str, object]:
     }
 
 
+def _finite_observer_limit_certificate() -> dict[str, object]:
+    summary = finite_observer_validation_summary()
+    n9_shell_counts = finite_observer_shell_counts(9)
+    n9_cone_sizes = causal_cone_sizes(9)
+    n9_spectrum = finite_observer_adjacency_spectrum(9)
+    fiber_uniform = {}
+    for source_n in ODD_LEVELS:
+        for target_m in ODD_LEVELS:
+            if source_n < target_m:
+                continue
+            values = set(fiber_sizes(source_n, target_m).values())
+            fiber_uniform[f"{source_n}_to_{target_m}"] = values == {2 ** (source_n - target_m)}
+    scale_rows = unit_scale_table(ell9_m=1.0, tau9_s=1.0)
+    return {
+        "scope": summary["r011_scope"],
+        "levels": summary["levels"],
+        "projective_consistency": validate_projective_consistency(),
+        "projection_lipschitz_on_events": validate_lipschitz(),
+        "n9_shell_counts": n9_shell_counts,
+        "n9_cone_sizes": n9_cone_sizes,
+        "n9_spectrum": n9_spectrum,
+        "n9_laplacian_gap": finite_observer_laplacian_gap(9),
+        "uniform_fiber_checks": fiber_uniform,
+        "unit_scale_rows": [row.__dict__ for row in scale_rows],
+        "sample_interval_nodes_n9_dt4_d2": causal_interval_size(9, delta_t=4, distance=2),
+        "boundary": "Finite-observer limit closure only; no differentiable continuum, Lorentzian metric, physical light cone, or empirical cosmology is claimed.",
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -438,6 +480,7 @@ def build_certificate() -> dict[str, object]:
         "standard_baseline": _standard_baseline_certificate(),
         "observer_commitment": _observer_commitment_certificate(),
         "unit_bridge": _unit_bridge_certificate(),
+        "finite_observer_limit": _finite_observer_limit_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -513,6 +556,17 @@ def build_certificate() -> dict[str, object]:
         and sections["unit_bridge"]["finite_physical_values"] is True
         and sections["unit_bridge"]["covariance_symmetric"] is True
         and sections["unit_bridge"]["covariance_psd_tolerance_1e_minus_12"] is True,
+        "finite_observer_limit_verified": sections["finite_observer_limit"]["scope"]
+        == "finite_observer_limit_closure_not_differentiable_continuum"
+        and sections["finite_observer_limit"]["projective_consistency"] is True
+        and sections["finite_observer_limit"]["projection_lipschitz_on_events"] is True
+        and sections["finite_observer_limit"]["n9_shell_counts"] == {0: 1, 1: 36, 2: 126, 3: 84, 4: 9}
+        and sections["finite_observer_limit"]["n9_spectrum"]
+        == [(0, 36, 1), (1, 20, 9), (2, 8, 36), (3, 0, 84), (4, -4, 126)]
+        and sections["finite_observer_limit"]["n9_laplacian_gap"] == 16
+        and all(sections["finite_observer_limit"]["uniform_fiber_checks"].values())
+        and sections["finite_observer_limit"]["unit_scale_rows"][-1]["ell_m"] == 1.0
+        and sections["finite_observer_limit"]["unit_scale_rows"][-1]["tau_s"] == 1.0,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -539,6 +593,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     standard = certificate["sections"]["standard_baseline"]
     observer_commitment = certificate["sections"]["observer_commitment"]
     unit_bridge = certificate["sections"]["unit_bridge"]
+    finite_observer_limit = certificate["sections"]["finite_observer_limit"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -663,6 +718,21 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Covariance PSD tolerance: `{unit_bridge['covariance_psd_tolerance_1e_minus_12']}`",
         f"- Covariance minimum eigenvalue: `{unit_bridge['covariance_min_eigenvalue']}`",
         "- Boundary: synthetic finite-observer unit-bearing bridge only.",
+        "",
+        "## Finite-observer limit workbench",
+        "",
+        f"- Scope: `{finite_observer_limit['scope']}`",
+        f"- Levels checked: `{[row['n'] for row in finite_observer_limit['levels']]}`",
+        f"- Projective consistency: `{finite_observer_limit['projective_consistency']}`",
+        f"- Projection non-expansion: `{finite_observer_limit['projection_lipschitz_on_events']}`",
+        f"- `n=9` shell counts: `{finite_observer_limit['n9_shell_counts']}`",
+        f"- `n=9` cone sizes: `{finite_observer_limit['n9_cone_sizes']}`",
+        f"- `n=9` spectrum: `{finite_observer_limit['n9_spectrum']}`",
+        f"- `n=9` Laplacian gap: `{finite_observer_limit['n9_laplacian_gap']}`",
+        f"- Uniform fiber checks: `{finite_observer_limit['uniform_fiber_checks']}`",
+        f"- Unit scale rows: `{finite_observer_limit['unit_scale_rows']}`",
+        f"- Sample interval nodes: `{finite_observer_limit['sample_interval_nodes_n9_dt4_d2']}`",
+        "- Boundary: finite-observer limit closure only.",
         "",
         "## Check matrix",
         "",

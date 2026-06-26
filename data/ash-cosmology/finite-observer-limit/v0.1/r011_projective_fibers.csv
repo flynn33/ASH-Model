@@ -1,0 +1,16 @@
+source_n,target_m,target_states,min_fiber,max_fiber,expected_uniform_fiber,uniform
+1,1,1,1,1,1,True
+3,1,1,4,4,4,True
+3,3,4,1,1,1,True
+5,1,1,16,16,16,True
+5,3,4,4,4,4,True
+5,5,16,1,1,1,True
+7,1,1,64,64,64,True
+7,3,4,16,16,16,True
+7,5,16,4,4,4,True
+7,7,64,1,1,1,True
+9,1,1,256,256,256,True
+9,3,4,64,64,64,True
+9,5,16,16,16,16,True
+9,7,64,4,4,4,True
+9,9,256,1,1,1,True

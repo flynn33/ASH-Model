@@ -122,6 +122,21 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - Covariance minimum eigenvalue: `-4.023984967919692e-20`
 - Boundary: synthetic finite-observer unit-bearing bridge only.
 
+## Finite-observer limit workbench
+
+- Scope: `finite_observer_limit_closure_not_differentiable_continuum`
+- Levels checked: `[1, 3, 5, 7, 9]`
+- Projective consistency: `True`
+- Projection non-expansion: `True`
+- `n=9` shell counts: `{0: 1, 1: 36, 2: 126, 3: 84, 4: 9}`
+- `n=9` cone sizes: `{0: 1, 1: 37, 2: 163, 3: 247, 4: 256}`
+- `n=9` spectrum: `[(0, 36, 1), (1, 20, 9), (2, 8, 36), (3, 0, 84), (4, -4, 126)]`
+- `n=9` Laplacian gap: `16`
+- Uniform fiber checks: `{'1_to_1': True, '3_to_1': True, '3_to_3': True, '5_to_1': True, '5_to_3': True, '5_to_5': True, '7_to_1': True, '7_to_3': True, '7_to_5': True, '7_to_7': True, '9_to_1': True, '9_to_3': True, '9_to_5': True, '9_to_7': True, '9_to_9': True}`
+- Unit scale rows: `[{'n': 1, 'states': 1, 'ell_m': 16.0, 'tau_s': 16.0, 'max_pair_diameter': 0, 'max_signal_radius_m': 0.0}, {'n': 3, 'states': 4, 'ell_m': 8.0, 'tau_s': 8.0, 'max_pair_diameter': 1, 'max_signal_radius_m': 8.0}, {'n': 5, 'states': 16, 'ell_m': 4.0, 'tau_s': 4.0, 'max_pair_diameter': 2, 'max_signal_radius_m': 8.0}, {'n': 7, 'states': 64, 'ell_m': 2.0, 'tau_s': 2.0, 'max_pair_diameter': 3, 'max_signal_radius_m': 6.0}, {'n': 9, 'states': 256, 'ell_m': 1.0, 'tau_s': 1.0, 'max_pair_diameter': 4, 'max_signal_radius_m': 4.0}]`
+- Sample interval nodes: `184`
+- Boundary: finite-observer limit closure only.
+
 ## Check matrix
 
 - `code_parameters`: `PASS`
@@ -150,3 +165,4 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - `standard_baseline_contract`: `PASS`
 - `observer_commitment_verified`: `PASS`
 - `unit_bridge_verified`: `PASS`
+- `finite_observer_limit_verified`: `PASS`
