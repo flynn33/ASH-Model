@@ -1,0 +1,157 @@
+{
+  "acceptance_checks": {
+    "beats_nested_lcdm_on_ash_synthetic": true,
+    "beats_random_matched_null_on_ash_synthetic": true,
+    "convergence_384_to_768": true,
+    "does_not_force_beta_on_lcdm_synthetic": true,
+    "posterior_std_positive": true,
+    "recovers_beta_within_0p03": true,
+    "recovers_gamma_within_0p30": true
+  },
+  "ash_chi2_on_ash_synthetic": 36.62601445532549,
+  "ash_chi2_on_lcdm_synthetic": 36.306697133344215,
+  "ash_fit_on_ash_synthetic": {
+    "H0": 70.0,
+    "Omega_lambda": 0.7,
+    "Omega_m": 0.3,
+    "Omega_r": 0.0,
+    "beta_branch": 0.2,
+    "gamma_branch": 1.4
+  },
+  "ash_fit_on_lcdm_synthetic": {
+    "H0": 70.0,
+    "Omega_lambda": 0.7,
+    "Omega_m": 0.3,
+    "Omega_r": 0.0,
+    "beta_branch": -0.0050000000000000044,
+    "gamma_branch": 1.0
+  },
+  "convergence_diagnostics": {
+    "beta_difference": 0.0,
+    "chi2_difference": 0.00031592678889325043,
+    "fit_384": {
+      "best_chi2": 36.62601445532549,
+      "best_params": {
+        "H0": 70.0,
+        "Omega_lambda": 0.7,
+        "Omega_m": 0.3,
+        "Omega_r": 0.0,
+        "beta_branch": 0.2,
+        "gamma_branch": 1.4
+      }
+    },
+    "fit_768": {
+      "best_chi2": 36.625698528536596,
+      "best_params": {
+        "H0": 70.0,
+        "Omega_lambda": 0.7,
+        "Omega_m": 0.3,
+        "Omega_r": 0.0,
+        "beta_branch": 0.2,
+        "gamma_branch": 1.4
+      }
+    },
+    "gamma_difference": 0.0,
+    "n_grid_values": [
+      384,
+      768
+    ],
+    "passes": true
+  },
+  "evidence_diagnostics": {
+    "ash_grid_on_ash_synthetic": {
+      "diagnostic_label": "coarse uniform-grid likelihood integral; diagnostic only",
+      "grid_point_count": 2501,
+      "log_evidence": -22.286177822303486
+    },
+    "ash_grid_on_lcdm_synthetic": {
+      "diagnostic_label": "coarse uniform-grid likelihood integral; diagnostic only",
+      "grid_point_count": 2501,
+      "log_evidence": -21.21442050414562
+    }
+  },
+  "information_criteria": {
+    "ash_grid": {
+      "aic": 40.62601445532549,
+      "bic": 44.19439372316201,
+      "chi2": 36.62601445532549,
+      "n_observations": 44.0,
+      "n_parameters": 2.0
+    },
+    "delta_aic_lcdm_minus_ash": 1300.8146464241117,
+    "delta_aic_null_minus_ash": 279.6483032950456,
+    "delta_bic_lcdm_minus_ash": 1297.2462671562753,
+    "delta_bic_null_minus_ash": 279.6483032950456,
+    "matched_random_null": {
+      "aic": 320.2743177503711,
+      "bic": 323.8426970182076,
+      "chi2": 316.2743177503711,
+      "n_observations": 44.0,
+      "n_parameters": 2.0
+    },
+    "nested_lcdm": {
+      "aic": 1341.4406608794372,
+      "bic": 1341.4406608794372,
+      "chi2": 1341.4406608794372,
+      "n_observations": 44.0,
+      "n_parameters": 0.0
+    }
+  },
+  "lcdm_chi2_on_ash_synthetic": 1341.4406608794372,
+  "lcdm_chi2_on_lcdm_synthetic": 36.69945305868113,
+  "matched_random_null_on_ash_synthetic": {
+    "beta": -0.2,
+    "chi2": 316.2743177503711,
+    "gamma_like": 3.0,
+    "null_coefficients": [
+      -0.7901524999630146,
+      -2.0346254818318728,
+      0.6033017469247647,
+      0.7442945298799118
+    ]
+  },
+  "model_version": "ash_background_bridge_pass_003_remediated",
+  "posterior_uncertainty_grid": {
+    "beta_branch_16_50_84": [
+      0.15999999999999998,
+      0.195,
+      0.23000000000000004
+    ],
+    "beta_branch_mean": 0.1934921035592484,
+    "beta_branch_std": 0.031199499477161326,
+    "effective_sample_size": 82.7433350927314,
+    "gamma_branch_16_50_84": [
+      1.2000000000000002,
+      1.4500000000000002,
+      1.85
+    ],
+    "gamma_branch_mean": 1.5218612344797484,
+    "gamma_branch_std": 0.3323602622640855
+  },
+  "remediates_audit_findings": {
+    "has_matched_lcdm_control": true,
+    "has_matched_random_null_control": true,
+    "reports_convergence_diagnostics": true,
+    "reports_information_criteria": true,
+    "reports_posterior_uncertainty_grid": true,
+    "uses_np_trapezoid": true
+  },
+  "scientific_boundary": "Synthetic validation and statistical diagnostics only; no observational validation claim is made.",
+  "truth_ash": {
+    "H0": 70.0,
+    "Omega_lambda": 0.7,
+    "Omega_m": 0.3,
+    "Omega_r": 0.0,
+    "beta_branch": 0.18,
+    "gamma_branch": 1.55
+  },
+  "truth_lcdm": {
+    "H0": 70.0,
+    "Omega_lambda": 0.7,
+    "Omega_m": 0.3,
+    "Omega_r": 0.0,
+    "beta_branch": 0.0,
+    "gamma_branch": 1.55
+  },
+  "validation_scope": "synthetic background-observable recovery and numerical diagnostics"
+}

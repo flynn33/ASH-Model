@@ -138,6 +138,8 @@ The tracked ablations explicitly compare uniform starts, zero starts, ASH transf
 
 ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, and finite perturbation factors.  The current validation program is intentionally not an empirical result. External likelihoods, standard cosmology baselines, unitful bridge maps, continuum interpretations, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
+`docs/ash-cosmology/background-bridge/pass-003/` records the Pass 003 synthetic background-bridge audit remediation, including numerical convergence checks, deprecation-warning elimination, grid-posterior uncertainty diagnostics, AIC/BIC diagnostics, matched controls, and blocker tracking. This package is synthetic validation only and does not claim observational validation.
+
 ## Repository readiness and wiki
 
 The final repository-readiness audit is recorded in [`docs/final-live-repository-audit.md`](docs/final-live-repository-audit.md). It verifies the finite ASH layer, the ASH-Physics finite-observer layer, generated data and figure manifests, JSON schemas, repository gates, and current proof evidence while preserving the remaining science blockers.
@@ -171,7 +173,7 @@ The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki
 
 ## Scientific boundary
 
-This release proves the finite algebra and validates the executable mapping semantics. The feature thresholds, branch priors, reconstruction operators, and score weights are versioned reference-design choices rather than uniquely derived physical constants. It does **not** establish that ASH is an empirically confirmed cosmology, that its branching realizes quantum measurement, or that its code translations uniquely generate Gaussian statistics. Those questions require separately stated falsifiable predictions and external evidence.
+This release proves the finite algebra and validates the executable mapping semantics. The feature thresholds, branch priors, reconstruction operators, and score weights are versioned reference-design choices rather than uniquely derived physical constants. It does **not** establish ASH as an empirical cosmology result, does not establish that its branching realizes quantum measurement, and does not establish that its code translations uniquely generate Gaussian statistics. Those questions require separately stated falsifiable predictions and external evidence.
 
 ## License and citation
 
