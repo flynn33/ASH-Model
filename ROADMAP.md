@@ -29,6 +29,19 @@ Use these statuses consistently:
 
 Snapshot date: 2026-06-26
 
+Current repository posture:
+
+- Repository finite-observer implementation work through Roadmap 007 is
+  complete and verified.
+- Scientific readiness is not complete: the physical bridge, metric or
+  continuum interpretation, physical perturbation solver, external likelihoods,
+  and locked predictions remain blocked until their required evidence exists in
+  the repository.
+- Roadmap 007 adds a finite perturbation sector only. It supplies quotient
+  shell transfer mathematics and deterministic artifacts, but it does not close
+  the physical perturbation, CMB, matter-spectrum, physical-wavenumber, or
+  empirical-validation gates.
+
 Primary roadmap sources:
 
 - [`docs/ash-cosmology/branch-centered-roadmap/v0.2/`](docs/ash-cosmology/branch-centered-roadmap/v0.2/)
@@ -55,10 +68,20 @@ Primary roadmap sources:
 | R-010 | Unit-bearing physical bridge to observables | `blocked` | 2026-06-26 | [`theory/coarse-graining-and-bridge-map.md`](theory/coarse-graining-and-bridge-map.md), [`phenomenology/observables_spec.md`](phenomenology/observables_spec.md), [`validation/status.json`](validation/status.json) |
 | R-011 | Continuum, geometry, causal-structure, or finite-observer limit closure | `blocked` | 2026-06-26 | [`theory/continuum-limit.md`](theory/continuum-limit.md), [`theory/causal-structure.md`](theory/causal-structure.md), [`proofs/physics-proof-obligations.md`](proofs/physics-proof-obligations.md) |
 | R-012 | Cosmological background equations and standard-baseline relation | `blocked` | 2026-06-26 | [`theory/cosmological-background.md`](theory/cosmological-background.md), [`phenomenology/ash_background_spec.md`](phenomenology/ash_background_spec.md), [`validation/lcdm-limit/README.md`](validation/lcdm-limit/README.md) |
-| R-013 | Physical perturbation equations and CMB or matter-sector solver | `blocked` | 2026-06-26 | [`theory/linear-perturbations.md`](theory/linear-perturbations.md), [`phenomenology/ash_perturbations_spec.md`](phenomenology/ash_perturbations_spec.md) |
+| R-013 | Physical perturbation equations and CMB or matter-sector solver | `blocked` | 2026-06-26 | [`theory/linear-perturbations.md`](theory/linear-perturbations.md), [`phenomenology/ash_perturbations_spec.md`](phenomenology/ash_perturbations_spec.md), [`docs/ash-cosmology/linear-perturbations/roadmap-007/README.md`](docs/ash-cosmology/linear-perturbations/roadmap-007/README.md) |
 | R-014 | External likelihoods, matched empirical baselines, and reviewed data products | `blocked` | 2026-06-26 | [`validation/preregistration.md`](validation/preregistration.md), [`validation/matched-ablations/README.md`](validation/matched-ablations/README.md), [`validation/status.json`](validation/status.json) |
 | R-015 | Locked prospective or held-out scientific predictions | `blocked` | 2026-06-26 | [`predictions/prediction-ledger.json`](predictions/prediction-ledger.json), [`predictions/falsification-criteria.md`](predictions/falsification-criteria.md) |
-| R-016 | Roadmap 007 finite linear perturbation sector | `complete` | 2026-06-26 | [`src/ash_model/linear_perturbations.py`](src/ash_model/linear_perturbations.py), [`tests/test_linear_perturbations.py`](tests/test_linear_perturbations.py), [`tools/generate_linear_perturbations.py`](tools/generate_linear_perturbations.py), [`validation/linear-perturbations/roadmap-007/outputs/verification.json`](validation/linear-perturbations/roadmap-007/outputs/verification.json) |
+| R-016 | Roadmap 007 finite linear perturbation sector | `complete` | 2026-06-26 | [`src/ash_model/linear_perturbations.py`](src/ash_model/linear_perturbations.py), [`tests/test_linear_perturbations.py`](tests/test_linear_perturbations.py), [`tools/generate_linear_perturbations.py`](tools/generate_linear_perturbations.py), [`data/ash-cosmology/linear-perturbations/v0.1/`](data/ash-cosmology/linear-perturbations/v0.1/), [`figures/ash-cosmology/linear-perturbations/v0.1/`](figures/ash-cosmology/linear-perturbations/v0.1/), [`validation/linear-perturbations/roadmap-007/outputs/verification.json`](validation/linear-perturbations/roadmap-007/outputs/verification.json) |
+
+## Active priority queue
+
+| Priority | Roadmap item | Required closure evidence |
+|---:|---|---|
+| 1 | R-010 Unit-bearing physical bridge to observables | Explicit unit map, calibration contract beyond affine placeholder status, covariance policy, data provenance, and tests connecting finite observables to physical observables. |
+| 2 | R-013 Physical perturbation equations and solver | Derivation that maps finite shell variables to physical perturbation variables, executable solver, gauge or boundary policy where applicable, synthetic recovery tests, and boundary documentation. |
+| 3 | R-012 Cosmological background equations and standard-baseline relation | ASH-derived background equation, parameter semantics, standard-baseline relation, numerical implementation, and comparison tests. |
+| 4 | R-014 External likelihoods and matched baselines | Reviewed data products, covariance inputs, matched baseline definitions, preregistered likelihoods, and reproducible validation commands. |
+| 5 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
 
 ## Completion log
 
@@ -70,6 +93,13 @@ Primary roadmap sources:
   validation JSON, and finite-boundary documentation. This does not close the
   physical perturbation, CMB, matter-spectrum, physical-wavenumber, or
   empirical-validation gates tracked by R-013 and R-014.
+  Verification: `python tools/generate_linear_perturbations.py --out-root . --refresh-figures`,
+  `python tools/generate_artifacts.py`, `python tools/run_proof_suite.py`,
+  `python -m pytest`, `python tools/verify_repository.py`,
+  `python docs/ash-physics-validation/scripts/run_repository_gate.py .`,
+  `python tools/validate_json_assets.py .`,
+  `python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`,
+  and `python tools/final_repository_audit.py .`.
 - R-006 marked complete for repository data governance. Evidence: consolidated
   data manifest, data README, manifest validator, regression test, and
   repository audit notes.
