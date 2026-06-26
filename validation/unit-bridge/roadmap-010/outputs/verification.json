@@ -1,0 +1,30 @@
+{
+  "assumptions": [
+    "R-008 accepted: normalized branch measure.",
+    "R-009 accepted: observer commitment memory and decoherence rule.",
+    "Default calibration is synthetic and fiducial; no empirical validation is claimed."
+  ],
+  "boundary": "Synthetic finite-observer unit bridge only; no empirical cosmology, continuum metric, FRW limit, or external likelihood.",
+  "bridge_version": "ash-r010-unit-bridge-v0.1",
+  "inputs": {
+    "calibration": "config/ash_r010_unit_bridge_calibration.json",
+    "decoherence": "data/ash-cosmology/observer-commitment/v0.1/r009_decoherence_summary_by_depth.csv",
+    "frontier": "data/ash-cosmology/observer-commitment/v0.1/r009_frontier.csv"
+  },
+  "outputs": {
+    "bootstrap_samples": "data/ash-cosmology/unit-bridge/v0.1/r010_bootstrap_samples_final_depth.csv",
+    "covariance": "data/ash-cosmology/unit-bridge/v0.1/r010_bootstrap_covariance_final_depth.csv",
+    "features": "data/ash-cosmology/unit-bridge/v0.1/r010_finite_bridge_features.csv",
+    "observables": "data/ash-cosmology/unit-bridge/v0.1/r010_unit_bearing_observables.csv"
+  },
+  "schema_version": "ash-r010-validation-v0.1",
+  "tests": {
+    "covariance_min_eigenvalue": -3.167059413138391e-21,
+    "covariance_psd_tolerance_1e_minus_12": true,
+    "covariance_symmetric": true,
+    "finite_physical_values": true,
+    "measure_normalization_by_depth": true,
+    "positive_declared_scales": true,
+    "unit_columns_present": true
+  }
+}

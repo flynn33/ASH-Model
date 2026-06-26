@@ -650,7 +650,7 @@
     ".github/workflows/version-assignment.yml": "16da058a4aae7b307f10b42edb9bbb01915c330e163e4601e389c61fc066a69d",
     ".github/workflows/version-tracking.yml": "c0b48320c709597eac441fa7851ebfda645cf57530ca0bc1ac47a279bffdbcc7",
     ".github/workflows/wiki-sync.yml": "253b57f4a311ac1b2c4ab1f73f8fc901a8fb187069dc124e7ee294f5a10e33a2",
-    ".gitignore": "c01819236747f6ed2a77d17df1189da490b097db216fba9557a97fc53bdc4fff",
+    ".gitignore": "b88c861b5015e26e6ed65219cc63f46b5f7f9ec44dea9af80d75f29adf0b93e2",
     "CITATION.cff": "ce7ea23d646e1ed15f317e141b03773a64d71146fdf1bed904c1dea626c6058e",
     "CODE_OF_CONDUCT.md": "d62908e6788db8f909131bd0ef64a38a943758d68653b5e29f942b448ede2b60",
     "CONTRIBUTING.md": "df82eb27c381df7d89e8e7bd87ceef8458268e7c3b54cebc320d158a082a449d",
