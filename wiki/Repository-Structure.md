@@ -4,8 +4,8 @@
 - `tests/` - exhaustive deterministic tests
 - `config/` - normative mapping configuration
 - `proofs/` - computational certificate and hashes
-- `data/` - generated code, state, branch, simulation, and ablation artifacts
-- `figures/` - generated evidence figures
+- `data/` - generated code, state, branch, simulation, ablation, and ASH-Cosmology roadmap artifacts
+- `figures/` - generated evidence figures, including finite perturbation and finite-observer hierarchy figures
 - `docs/` - specification, proof, controls, integration, and paper
 - `docs/ash-physics-validation/` - ASH-Physics proof and empirical-validation planning package
 - `docs/remediation/` - final repository-readiness and physics-readiness evidence
@@ -25,7 +25,10 @@ flowchart LR
     SRC["src/ash_model"] --> TESTS["tests"]
     SRC --> DATA["data"]
     DATA --> ART["proofs/artifact-manifest.json"]
+    DATA --> MAN["data/manifests/data_manifest.json"]
     TESTS --> CERT["proofs/computational-certificate.json"]
+    CERT --> VERIFY["tools/verify_repository.py"]
+    MAN --> VERIFY
     WIKI["wiki"] --> PUB["Live GitHub wiki"]
     DOCS["docs"] --> WIKI
 ```
@@ -36,5 +39,6 @@ flowchart LR
 |---|---|
 | `README.md` | repository entry point |
 | `docs/` | authoritative reports, specifications, audits, and planning packages |
+| `ROADMAP.md` | canonical roadmap tracker and completion log |
 | `wiki/` | reviewable wiki source |
 | live GitHub wiki | public wiki pages |

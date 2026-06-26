@@ -20,6 +20,14 @@ The earlier repository overstated self-duality in nine dimensions, error correct
 
 The repository-maintained roadmap status log is [`ROADMAP.md`](ROADMAP.md). It tracks identified roadmap items, completion evidence, verification commands, and remaining blockers.
 
+Current roadmap posture after the Roadmap 010 and Roadmap 011 merges:
+
+| Roadmap band | Repository state | Scientific boundary |
+|---|---|---|
+| R-001 through R-006 | Complete finite core, finite-observer physics layer, prediction-ledger mechanics, sector-mixing workbench, background-bridge diagnostics, and data governance manifest. | Repository mechanics and finite checks only. |
+| R-007 through R-011 | Complete finite perturbation sector, branch-measure law, observer-commitment workbench, synthetic unit-bearing bridge, and finite-observer limit hierarchy. | Does not close physical calibration, differentiable geometry, physical perturbation equations, external likelihoods, empirical validation, or locked predictions. |
+| R-012 through R-016 | Open or blocked science work. | Requires new derivations, reviewed calibration, executable solvers, external-data validation, and prediction locking before closure. |
+
 ## Verified mathematical core
 
 | Component | Verified result |
@@ -78,6 +86,13 @@ tests.  This is finite graph and projection mathematics only; it does not
 derive a differentiable continuum, Lorentzian metric, physical light cone,
 Einstein equations, FRW/LCDM dynamics, physical perturbation equations,
 CMB/matter spectra, external likelihoods, or empirical cosmology.
+
+Post-R011 finite-observer evidence is now split across:
+
+- [`docs/ash-cosmology/unit-bridge/roadmap-010/`](docs/ash-cosmology/unit-bridge/roadmap-010/) for the synthetic unit-bearing bridge.
+- [`docs/ash-cosmology/finite-observer-limit/roadmap-011/`](docs/ash-cosmology/finite-observer-limit/roadmap-011/) for the finite projective hierarchy.
+- [`validation/unit-bridge/roadmap-010/outputs/verification.json`](validation/unit-bridge/roadmap-010/outputs/verification.json) and [`validation/finite-observer-limit/roadmap-011/outputs/verification.json`](validation/finite-observer-limit/roadmap-011/outputs/verification.json) for machine-readable validation records.
+- [`figures/ash-cosmology/finite-observer-limit/v0.1/`](figures/ash-cosmology/finite-observer-limit/v0.1/) for finite-observer hierarchy visual artifacts.
 
 The repository also includes the first validation mechanics around this layer:
 an explicit affine calibration contract for future unit-bearing observables, a

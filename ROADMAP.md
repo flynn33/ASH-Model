@@ -33,6 +33,8 @@ Current repository posture:
 
 - Repository finite-observer implementation work through Roadmap 011 is
   complete and verified.
+- Roadmap 010 and Roadmap 011 are merged into `main` and are part of the
+  repository's current proof, data-manifest, and validation surfaces.
 - Scientific readiness is not complete: reviewed physical calibration,
   differentiable continuum or physical metric interpretation, physical
   perturbation solver, external likelihoods, and locked predictions remain
@@ -52,6 +54,16 @@ Current repository posture:
   continuum geometry, physical perturbation, CMB, matter-spectrum,
   physical-wavenumber, locked-prediction, empirical-validation, or full
   model-closure gates.
+
+Post-R011 publication state:
+
+| Surface | Current state |
+|---|---|
+| Repository roadmap | R-001 through R-011 are complete within their stated finite scopes. |
+| README and data documentation | Current through the synthetic unit bridge and finite-observer hierarchy. |
+| Proof certificate | Covers finite ASH, finite-observer physics, R-010 bridge checks, and R-011 finite-observer checks. |
+| Data manifest | Tracks R-007 through R-011 generated CSV/JSON/PNG evidence. |
+| Wiki | Mirrors the current finite-observer state and keeps empirical cosmology boundaries open. |
 
 Primary roadmap sources:
 
@@ -94,10 +106,25 @@ Primary roadmap sources:
 | 4 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
 | 5 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, integration of the completed finite measure and observer workbenches, bridge-map relation, and validation boundary evidence. |
 
+Priority interpretation:
+
+- R-013 and R-012 are mathematical and computational derivation tasks, not
+  documentation tasks.
+- R-014 cannot close until external data products, covariance handling,
+  preregistration, and matched controls exist in the repository.
+- R-015 cannot close without frozen prediction-ledger entries.
+- R-016 remains open until the completed finite workbenches are integrated into
+  a closed branch-centered cosmology model with explicit validation boundaries.
+
 ## Completion log
 
 ### 2026-06-26
 
+- Post-merge publication state refreshed after R-010 and R-011 landed on
+  `main`. Repository documentation, roadmap status, changelog, tracked wiki
+  mirror, and live wiki publication are aligned to the current finite-observer
+  state. Boundary: this is a documentation/publication update only; it does
+  not close R-012 through R-016.
 - R-011 marked complete for finite-observer limit closure only. Evidence:
   nested parity-valid observer hierarchy over odd levels `1,3,5,7,9`,
   projective consistency and uniform-fiber verification, finite pair-flip

@@ -2,6 +2,23 @@
 
 ## Unreleased - 2026-06-26
 
+**Title**: Post-Roadmap 011 documentation and wiki publication refresh
+
+**Change Class**: docs
+
+**Version Impact**: none
+
+**Summary**: Aligns README, roadmap tracker, changelog, tracked wiki pages, and live wiki publication content with the merged Roadmap 010 and Roadmap 011 repository state.
+
+**Affected Area**: README, roadmap tracker, changelog, tracked wiki mirror, live wiki publication, validation summaries, and science-roadmap navigation
+
+### Updated
+
+- Added a current roadmap posture table to the README.
+- Clarified that Roadmap 010 and Roadmap 011 are merged, verified finite-scope work while Roadmap 012 through Roadmap 016 remain open or blocked.
+- Refreshed wiki navigation, evidence pages, validation counts, and finite-observer physics summaries for the synthetic unit-bearing bridge and finite-observer hierarchy.
+- Preserved physical-calibration, differentiable-geometry, physical-perturbation, external-likelihood, empirical-validation, model-closure, and locked-prediction boundaries.
+
 **Title**: Roadmap 011 finite-observer limit closure
 
 **Change Class**: feature
