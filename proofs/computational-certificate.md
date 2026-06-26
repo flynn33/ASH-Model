@@ -108,6 +108,20 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - Suppressed pair fraction: `0.9999589743589744`
 - Boundary: finite observer-relative commitment and branch-separation workbench only.
 
+## Unit-bearing bridge workbench
+
+- R-010 bridge version: `ash-r010-unit-bridge-v0.1`
+- Feature depths: `[4]`
+- Unit columns checked: `['time_s', 'coarse_length_m', 'energy_density_J_m3', 'mass_density_kg_m3', 'einstein_curvature_proxy_m_inv2', 'memory_length_m', 'temperature_proxy_K']`
+- Measure normalization by depth: `True`
+- Unit columns present: `True`
+- Positive declared scales: `True`
+- Finite physical-proxy values: `True`
+- Covariance symmetric: `True`
+- Covariance PSD tolerance: `True`
+- Covariance minimum eigenvalue: `-4.023984967919692e-20`
+- Boundary: synthetic finite-observer unit-bearing bridge only.
+
 ## Check matrix
 
 - `code_parameters`: `PASS`
@@ -135,3 +149,4 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - `prediction_lock_contract`: `PASS`
 - `standard_baseline_contract`: `PASS`
 - `observer_commitment_verified`: `PASS`
+- `unit_bridge_verified`: `PASS`

@@ -2,6 +2,29 @@
 
 ## Unreleased - 2026-06-26
 
+**Title**: Roadmap 010 unit-bearing bridge workbench
+
+**Change Class**: feature
+
+**Version Impact**: none
+
+**Summary**: Adds the Roadmap 010 synthetic finite-observer unit-bearing bridge with deterministic validation artifacts and conservative physical-claim boundaries.
+
+**Affected Area**: unit-bridge module, tests, generated data, validation outputs, proof suite, roadmap tracker, README, data documentation, and data manifest
+
+### Added
+
+- Unit-bearing bridge module mapping finite R009 branch-frontier data to named SI-unit proxy observables.
+- Versioned fiducial calibration contract with empirical-use gate policy.
+- Deterministic generator for finite features, unit-bearing observables, bootstrap samples, covariance, and verification artifacts.
+- Regression tests for package fixtures, live R009 CSV schema normalization, covariance symmetry, and validation output.
+- Proof-suite coverage for R010 bridge invariants.
+
+### Updated
+
+- Added Roadmap 010 generated artifacts to the data manifest and repository documentation.
+- Marked only R010 complete while leaving continuum, calibrated background, physical perturbation, external-likelihood, locked-prediction, and model-closure gates blocked.
+
 **Title**: Roadmap 009 finite observer-commitment workbench
 
 **Change Class**: feature

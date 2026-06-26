@@ -1,0 +1,27 @@
+{
+  "schema_version": "ash-r010-provenance-v0.1",
+  "source_inputs": [
+    {
+      "path": "data/r009_frontier_assumed_input.csv",
+      "origin": "uploaded R-009 package accepted by user as upstream assumption",
+      "role": "synthetic branch frontier with measure, shell, defect, memory"
+    },
+    {
+      "path": "data/r009_decoherence_assumed_input.csv",
+      "origin": "uploaded R-009 package accepted by user as upstream assumption",
+      "role": "decoherence summary by branch depth"
+    },
+    {
+      "path": "configs/r010_calibration_contract.json",
+      "origin": "new R-010 fiducial calibration contract",
+      "role": "unit map and empirical-use gate policy"
+    }
+  ],
+  "external_data_products": [],
+  "external_data_status": "none; no empirical validation claimed",
+  "generated_outputs": [
+    "data/r010_finite_bridge_features.csv",
+    "data/r010_unit_bearing_observables.csv",
+    "data/r010_bootstrap_covariance_final_depth.csv"
+  ]
+}

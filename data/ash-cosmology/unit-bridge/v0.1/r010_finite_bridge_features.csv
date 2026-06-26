@@ -1,0 +1,2 @@
+depth,measure_sum,mean_shell_q,var_shell_q,defect_rate,mean_memory_length,branch_entropy_bits,memory_entropy_bits,suppressed_pair_fraction,max_offdiag_magnitude
+4,1.0,1.6125731963267367,1.8008505455361439,0.10614937957302059,1.7713601678897466,9.033896162165265,6.165765794208751,0.9999589743589744,0.0015691081499510482
