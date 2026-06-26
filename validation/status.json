@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-26T15:44:50Z",
+  "updated_utc": "2026-06-26T15:57:56Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -42,9 +42,16 @@
       "evidence": [
         "theory/causal-structure.md",
         "src/ash_model/hypercube.py",
-        "tests/test_bits_hypercube.py"
+        "tests/test_bits_hypercube.py",
+        "src/ash_model/finite_observer_limit.py",
+        "tests/test_finite_observer_limit.py",
+        "tools/generate_finite_observer_limit.py",
+        "docs/ash-cosmology/finite-observer-limit/roadmap-011/README.md",
+        "data/ash-cosmology/finite-observer-limit/v0.1/",
+        "validation/finite-observer-limit/roadmap-011/outputs/verification.json",
+        "theory/causal-structure_R011_addendum.md"
       ],
-      "notes": "Finite event graph, graph-distance bound, pair-flip degree, edge count, and spectral gap are specified and tested."
+      "notes": "Finite event graph, graph-distance bound, pair-flip degree, edge count, spectral gap, and R-011 nested finite causal hierarchy are specified and tested. R-011 closes only the finite-observer route; no physical light cone, relativistic metric, or observed spacetime propagation is derived."
     },
     {
       "id": "THEORY-004",
@@ -66,9 +73,21 @@
         "src/ash_model/hypercube.py",
         "src/ash_model/physics.py",
         "tests/test_bits_hypercube.py",
-        "tests/test_physics.py"
+        "tests/test_physics.py",
+        "src/ash_model/finite_observer_limit.py",
+        "tests/test_finite_observer_limit.py",
+        "tools/generate_finite_observer_limit.py",
+        "config/ash_r011_finite_observer_limit_contract.json",
+        "docs/ash-cosmology/finite-observer-limit/roadmap-011/README.md",
+        "docs/ash-cosmology/finite-observer-limit/roadmap-011/r011_formal_expressions.json",
+        "data/ash-cosmology/finite-observer-limit/v0.1/",
+        "figures/ash-cosmology/finite-observer-limit/v0.1/",
+        "validation/finite-observer-limit/roadmap-011/outputs/verification.json",
+        "theory/continuum-limit_R011_addendum.md",
+        "theory/causal-structure_R011_addendum.md",
+        "proofs/physics-proof-obligations_R011_addendum.md"
       ],
-      "notes": "A finite-observer substitute replaces an unclaimed continuum limit; nine-cube shells, graph spectra, lumped equations, background moments, and mode factors are verified."
+      "notes": "A finite-observer substitute replaces an unclaimed continuum limit. R-011 adds nested parity-valid observer levels, parity-preserving projective maps, uniform fibers, finite causal cones, event non-expansion, and normalized scale annotations with deterministic tests and artifacts. No differentiable continuum, Lorentzian metric, Einstein equation, FRW/LCDM dynamics, or external observational validation is derived."
     },
     {
       "id": "COSMO-001",
@@ -176,9 +195,13 @@
         "proofs/theorem-catalog.md",
         "proofs/finite-algebra-status.md",
         "proofs/physics-proof-obligations.md",
-        "proofs/computational-certificate.json"
+        "proofs/computational-certificate.json",
+        "proofs/physics-proof-obligations_R011_addendum.md",
+        "src/ash_model/finite_observer_limit.py",
+        "tests/test_finite_observer_limit.py",
+        "validation/finite-observer-limit/roadmap-011/outputs/verification.json"
       ],
-      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, and finite background moments with executable evidence."
+      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, and R-011 finite-observer limit checks with executable evidence."
     },
     {
       "id": "SCAN-001",
@@ -203,29 +226,29 @@
   ],
   "verification_commands": [
     {
-      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_unit_bridge.py --out-root .",
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_finite_observer_limit.py --out-root . --refresh-figures",
       "result": "passed",
-      "summary": "Generated R-010 finite features, unit-bearing proxy observables, bootstrap samples, covariance, and validation JSON from the current R-009 observer-commitment artifacts."
+      "summary": "Generated R-011 finite hierarchy, shell, cone, spectrum, projective-fiber, normalized-scale, interval, figure, and validation artifacts."
     },
     {
-      "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_unit_bridge.py",
+      "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_finite_observer_limit.py",
       "result": "passed",
-      "summary": "8 passed for R-010 unit-bridge fixtures, live R-009 schema normalization, covariance, and validation-record checks."
+      "summary": "8 passed for R-011 finite state counts, graph invariants, projective hierarchy, causal relation, interval diagnostics, scale annotations, and boundary scope."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_artifacts.py",
       "result": "passed",
-      "summary": "Generated 6 core data artifacts, verified 5 tracked figure artifacts, and wrote proofs/artifact-manifest.json."
+      "summary": "Generated 6 core data artifacts, verified tracked figure artifacts, and wrote proofs/artifact-manifest.json."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true with the unit_bridge_verified check included."
+      "summary": "all_checks_pass true with the finite_observer_limit_verified check included."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
       "result": "passed",
-      "summary": "135 passed."
+      "summary": "143 passed."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/verify_repository.py",
@@ -255,9 +278,9 @@
   ],
   "open_blockers": [
     "No reviewed physical calibration constants map finite ASH observables to measured spacetime, fields, or data products; R-010 uses fiducial synthetic scales only.",
-    "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph.",
+    "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph; R-011 closes only the finite-observer limit route.",
     "No unit-bearing bridge with reviewed physical calibration, external covariance source, matched baseline, and prediction lock is committed; R-010 is a synthetic finite-observer bridge workbench only.",
-    "No gauge convention or physical degrees-of-freedom map exists for a continuum interpretation.",
+    "No gauge convention or physical degrees-of-freedom map exists for a differentiable continuum interpretation.",
     "No ASH-derived standard cosmological background or baseline limit is derived.",
     "No physical perturbation solver produces CMB or matter-spectrum observables.",
     "No external data product, covariance source, or matched empirical baseline is committed.",
@@ -268,6 +291,7 @@
     "Exact hypercube and pair-flip graph spectra are finite state-geometry results, not a physical metric or cosmological expansion law.",
     "Finite background and perturbation equations are internal dimensionless equations, not empirical cosmology.",
     "R-010 supplies a synthetic unit-bearing bridge workbench with fiducial scales; it is not reviewed physical calibration or empirical validation.",
+    "R-011 supplies a finite-observer hierarchy and finite causal graph workbench; it is not a differentiable continuum, Lorentzian metric, physical light cone, or empirical cosmology result.",
     "Calibration and likelihood mechanics are contracts; they are not external empirical validation.",
     "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist."
   ]

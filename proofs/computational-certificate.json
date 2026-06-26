@@ -9,6 +9,7 @@
     "double_errors_rejected": true,
     "empirical_calibration_contract": true,
     "empirical_likelihood_contract": true,
+    "finite_observer_limit_verified": true,
     "garden_algebra_exact": true,
     "hypercube_edges_and_shells_exact": true,
     "hypercube_spectrum_exact": true,
@@ -151,6 +152,171 @@
       "example_chi_square": 1.25,
       "example_log_likelihood": -1.7697298858494,
       "interpretation": "Calibration and likelihood contracts only; no external data fit is claimed."
+    },
+    "finite_observer_limit": {
+      "boundary": "Finite-observer limit closure only; no differentiable continuum, Lorentzian metric, physical light cone, or empirical cosmology is claimed.",
+      "levels": [
+        {
+          "cone_final": 1,
+          "degree": 0,
+          "diameter": 0,
+          "edges": 0,
+          "laplacian_gap": 0,
+          "n": 1,
+          "shell_sum": 1,
+          "spectrum_multiplicity_sum": 1,
+          "states": 1
+        },
+        {
+          "cone_final": 4,
+          "degree": 3,
+          "diameter": 1,
+          "edges": 6,
+          "laplacian_gap": 4,
+          "n": 3,
+          "shell_sum": 4,
+          "spectrum_multiplicity_sum": 4,
+          "states": 4
+        },
+        {
+          "cone_final": 16,
+          "degree": 10,
+          "diameter": 2,
+          "edges": 80,
+          "laplacian_gap": 8,
+          "n": 5,
+          "shell_sum": 16,
+          "spectrum_multiplicity_sum": 16,
+          "states": 16
+        },
+        {
+          "cone_final": 64,
+          "degree": 21,
+          "diameter": 3,
+          "edges": 672,
+          "laplacian_gap": 12,
+          "n": 7,
+          "shell_sum": 64,
+          "spectrum_multiplicity_sum": 64,
+          "states": 64
+        },
+        {
+          "cone_final": 256,
+          "degree": 36,
+          "diameter": 4,
+          "edges": 4608,
+          "laplacian_gap": 16,
+          "n": 9,
+          "shell_sum": 256,
+          "spectrum_multiplicity_sum": 256,
+          "states": 256
+        }
+      ],
+      "n9_cone_sizes": {
+        "0": 1,
+        "1": 37,
+        "2": 163,
+        "3": 247,
+        "4": 256
+      },
+      "n9_laplacian_gap": 16,
+      "n9_shell_counts": {
+        "0": 1,
+        "1": 36,
+        "2": 126,
+        "3": 84,
+        "4": 9
+      },
+      "n9_spectrum": [
+        [
+          0,
+          36,
+          1
+        ],
+        [
+          1,
+          20,
+          9
+        ],
+        [
+          2,
+          8,
+          36
+        ],
+        [
+          3,
+          0,
+          84
+        ],
+        [
+          4,
+          -4,
+          126
+        ]
+      ],
+      "projection_lipschitz_on_events": true,
+      "projective_consistency": true,
+      "sample_interval_nodes_n9_dt4_d2": 184,
+      "scope": "finite_observer_limit_closure_not_differentiable_continuum",
+      "uniform_fiber_checks": {
+        "1_to_1": true,
+        "3_to_1": true,
+        "3_to_3": true,
+        "5_to_1": true,
+        "5_to_3": true,
+        "5_to_5": true,
+        "7_to_1": true,
+        "7_to_3": true,
+        "7_to_5": true,
+        "7_to_7": true,
+        "9_to_1": true,
+        "9_to_3": true,
+        "9_to_5": true,
+        "9_to_7": true,
+        "9_to_9": true
+      },
+      "unit_scale_rows": [
+        {
+          "ell_m": 16.0,
+          "max_pair_diameter": 0,
+          "max_signal_radius_m": 0.0,
+          "n": 1,
+          "states": 1,
+          "tau_s": 16.0
+        },
+        {
+          "ell_m": 8.0,
+          "max_pair_diameter": 1,
+          "max_signal_radius_m": 8.0,
+          "n": 3,
+          "states": 4,
+          "tau_s": 8.0
+        },
+        {
+          "ell_m": 4.0,
+          "max_pair_diameter": 2,
+          "max_signal_radius_m": 8.0,
+          "n": 5,
+          "states": 16,
+          "tau_s": 4.0
+        },
+        {
+          "ell_m": 2.0,
+          "max_pair_diameter": 3,
+          "max_signal_radius_m": 6.0,
+          "n": 7,
+          "states": 64,
+          "tau_s": 2.0
+        },
+        {
+          "ell_m": 1.0,
+          "max_pair_diameter": 4,
+          "max_signal_radius_m": 4.0,
+          "n": 9,
+          "states": 256,
+          "tau_s": 1.0
+        }
+      ]
     },
     "hypercube": {
       "adjacency_spectrum": [
@@ -489,15 +655,16 @@
     "CODE_OF_CONDUCT.md": "d62908e6788db8f909131bd0ef64a38a943758d68653b5e29f942b448ede2b60",
     "CONTRIBUTING.md": "df82eb27c381df7d89e8e7bd87ceef8458268e7c3b54cebc320d158a082a449d",
     "LICENSE": "213910e1405c0866a1200da12f1dcd5a4f41ed3d4a82c9c78acf85e6f5f304a6",
-    "README.md": "f993cb240ce44900c400262c3fa4998293628883abc74f0f49d2cadd5a660df3",
-    "ROADMAP.md": "b2fd9a65d325df08452271a934436ae690f0a7c4647fce2bc80abdf47eec47ed",
+    "README.md": "aeaaae1144422207fc89a14d95490b9069b0d7fe2a1f1e47eb01588c61153bed",
+    "ROADMAP.md": "d51898710235a34ee0c14530b8f1906ddd7bd3b5d6baa409688f45ef8dc03fe8",
     "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8",
     "axioms-of-existence.json": "f1a71833bb53b31e120d0591bd717999aeb23d729f58a29b8c9104a915bf25ef",
-    "changelog/CHANGELOG.md": "2a43338d367a6535fa9b02a824903c12e74bca74adecec0f334f4cac2f1d4a56",
+    "changelog/CHANGELOG.md": "31785cf2a597eebac6be8829cc61a1a7002aeef5eeb65589c783af9bf8d4036d",
     "config/ash_mapping_v1.json": "aef24e8eba2441025e1e440e2791215d32d163e0b7b91d25bb7e9b7018260c79",
     "config/ash_physics_sector_mixing_v1.json": "01b94f02303e514aca5ae38af2269cfd12020a3fa43df3c0951ffa1aebb0ebd1",
     "config/ash_r010_unit_bridge_calibration.json": "03ef220d066e58e9b8749d75808a570243dc685fa433f85d5eca5129448e573e",
-    "data/README.md": "b9437ebbe08c28a3327781688030513fd88f5666ef33882759043ac59cc9eb57",
+    "config/ash_r011_finite_observer_limit_contract.json": "61b3ef65ab5144a2603033ccaa1233a0b30101267b59dc7be9be0360bd435193",
+    "data/README.md": "dd68303b612b04f85f63f3138750d8705b4958cb7697de2de5747c9e36b8adba",
     "data/ash-cosmology/branch-centered-roadmap/v0.2/MANIFEST.json": "ab87059196c387e2afa45b75bb661f72b50e5927d0231338c71074f6088eb384",
     "data/ash-cosmology/branch-centered-roadmap/v0.2/README.md": "b13137670e6e1b2c900fa10d6310ca1a95089d63056d0a527dcd49e85dddd156",
     "data/ash-cosmology/branch-centered-roadmap/v0.2/machine-readable/ash_cosmology_branch_centered_roadmap.json": "e0bb1d363821a26f572b4c6dcd3c1916922e486e7de42ec460489abb582e340b",
@@ -518,7 +685,7 @@
     "data/ash-physics-sector-mixing/README.md": "79e47ec0d2b1ab1bad16ff9296a17389c7216940e3536f4fa784d4bb25953134",
     "data/ash-physics-sector-mixing/upstream-payload-manifest.json": "858724465ab5145feb71c603019376a103c4df83dbfb51a7fba1500e081a039a",
     "data/branch-topology.json": "e114168b20ce2842126b949399b07750160fb0acbdf3971a028f5fcc15d3748c",
-    "data/manifests/data_manifest.json": "6d1d41f6ffb57c231f7185d039ad28d8e657a045f06c59cdc826abbe4c4ed45b",
+    "data/manifests/data_manifest.json": "397c4ef973275f0b747bebc5801cf9d61a5a5bcb1d227d5742098cf01fa8984e",
     "data/simulation-metadata.json": "666915a7c6d93b37e26eb9d1eca44b6fcba68f8d412871c8f40476727cc7b43a",
     "docs/ASH-research-paper.md": "2bc9d058301c998e7dda37e979e7699aa78967289bbcf036b3e1fa212ffda059",
     "docs/ash-cosmology/background-bridge/pass-003/AUDITOR_CHECKLIST.md": "54348a7bd41e84f5538fe90eb889ef580afdc82fba8b00846adc14a70c9cbbdf",
@@ -551,6 +718,8 @@
     "docs/ash-cosmology/branch-centered-roadmap/v0.2/source-evidence/ASH_Model_Verifier_Negative_Tests.json": "8bfb9736eb70c1b82717bfdf333097de18ab2c96ea933bbd0f6162e0d43b8847",
     "docs/ash-cosmology/branch-centered-roadmap/v0.2/source-evidence/README.md": "27e00e2f8bc1af8b4249cfc547332de5724884f27ff967c139ff6a5ea5db2c99",
     "docs/ash-cosmology/branch-measure/roadmap-008/README.md": "da9215cf6f9104cdb660d45b3feb25f7203a0fbc6792e82c8b12efda794bbc8b",
+    "docs/ash-cosmology/finite-observer-limit/roadmap-011/README.md": "6f6b4298fa46b14b4e02fb23b2fde91499e712844c17dec234da7d6e35c3af27",
+    "docs/ash-cosmology/finite-observer-limit/roadmap-011/r011_formal_expressions.json": "e4c2d1ef5ebf7d6df84ca3974b6b212b113f3efd8b1c301049d93fea6729f166",
     "docs/ash-cosmology/linear-perturbations/roadmap-007/README.md": "101a2dad84b28506c4e4383b4588507630c09aa640f0199cc9e8382a8573e6f2",
     "docs/ash-cosmology/observer-commitment/roadmap-009/README.md": "bda6c62dfb133b13e43fa25be4d8c72863b17edc5fbab885e0ab00a5a012f151",
     "docs/ash-cosmology/unit-bridge/roadmap-010/README.md": "7de889d17e0c35a862e0fd58b6746794aa72404c4735d9c540bc6c92867ae1cc",
@@ -623,7 +792,7 @@
     "scripts/github/discussion_moderation_agent.py": "02430dd7c1a761aa31cc20b84627d2151d80a09071b94c5fe43752d13c0a7c2a",
     "scripts/github/discussion_topic_agent.py": "1a5bad3b569dc065589b3cf1553be253fdf628d28741d07c98bf9214b5059c94",
     "simulation.py": "3f3cdb342062deb2c19d10d561abed6918556ea40516b53d0e424b7bf11054f9",
-    "src/ash_model/__init__.py": "378d8151841e114ebd2dbd13bc5682ad7b938585fe24edec3586951c7175dcf1",
+    "src/ash_model/__init__.py": "910541ee5c1cd063df1177885caa1c7aefad1440558e13526615b22e232a2a70",
     "src/ash_model/adinkra.py": "13f360b11b95033940ead7fd507664e3ce81b14c53921bc68d7223ff223f86c0",
     "src/ash_model/background_bridge.py": "c06c83a9651442816b585cd2ca95d98f97cff47b0000dc0c16e1c53230f30e27",
     "src/ash_model/bits.py": "cdcc9027da11b4dcae5d6bd53dda404d021dee10b01bbf0f86dd9be1c9d481cb",
@@ -633,6 +802,7 @@
     "src/ash_model/cosmology.py": "3839c1ddabffc7aa364f595eef78c86a62f13e89793917f3be7a1f2c2a39ffdb",
     "src/ash_model/empirical.py": "320b1013c6770c153d56fe9235ac8299551003937151c5326790f005b90ce41f",
     "src/ash_model/features.py": "47f31bde543768caee3e325edffb60770c2a93428a32479dfbfeeccfda77de30",
+    "src/ash_model/finite_observer_limit.py": "775e1571af393da66b7118fa1cc74da27a0b9977c22256b1660c79071470207b",
     "src/ash_model/hypercube.py": "d1adcc25e569b889f1a2b7e218dcc1c2bd47e5a37de25342db7296c681d6270a",
     "src/ash_model/linear_perturbations.py": "99e5bdaeecd478f4cd12ac205a5ad7191d841827466ff6aa2cd9dc398f8639ab",
     "src/ash_model/observer_commitment.py": "6dbe4bb33764f991f52151c603c5bd9f71396f151bd4f674c551296fc05ca220",
@@ -657,6 +827,7 @@
     "tests/test_empirical_bridge.py": "70c122a8d4df6763e50caa986949dc0b8354c698c28d846cb7de8cd42d9f03ac",
     "tests/test_features.py": "684952b4a4a6583cab344a9aab25de78e6a6a7bab0735faf1f4d7076186919ab",
     "tests/test_final_repository_remediation.py": "55a27227dd231c208b368305b670bb8e420ebc8a6f9077956eea252b3d5f0cac",
+    "tests/test_finite_observer_limit.py": "8b9f85f35199289a4f832de96580256b81f5424c310751559ecde56904330c9e",
     "tests/test_linear_perturbations.py": "1f6a02b8e42988fbd7c1bd6676feb08aa78fdf1df223e7e5f805039e362c0628",
     "tests/test_observer_commitment.py": "077ef082a9cd06e3107fafca71d0882a19a956ce037609da2e9cafc17fbc7f72",
     "tests/test_physics.py": "326df9bb2444304f35c9c201efbe88e8924012698621be1ff799071deba263b8",
@@ -668,9 +839,11 @@
     "tests/test_simulation.py": "d18efb724b9d4e6e658c460cd92a287c9d7f3500a6e902b84dd01d479b4e1eca",
     "tests/test_unit_bridge.py": "bd82f48af36f6386ac40a1cc7b6ca8c6d49c4615119ab4c1e4090339a39cf661",
     "theory/causal-structure.md": "c80b59885e9251dffbb3337e129de3dfc63482a6f9d03aee5334dc69f359d137",
+    "theory/causal-structure_R011_addendum.md": "79f30ace29e6e5bbd892a5a96d9aed513aa446052ae75298675e7e080bda7cd6",
     "theory/coarse-graining-and-bridge-map.md": "4fe127fcdc36487305ca520624ec9e249c6ed8024eb79210c98f3c7feb487296",
     "theory/coarse-graining-and-bridge-map_R010_addendum.md": "d1198eaa985937f3903af9a505f7b84a4d2fb1f4df65642c2c90d0bfdd49236e",
     "theory/continuum-limit.md": "40f645992328e96cfff0f597aebd07da42d24151b4d70dd9e2465f2c94cb1e37",
+    "theory/continuum-limit_R011_addendum.md": "d2f0ded4f174c00163e5b211aca03814be09d736be45ce990045e2afa20cf48d",
     "theory/cosmological-background.md": "e0d5bd699a45097b0b3aa1c28294a96b60dcf1748d8e5a9d5c6a34868d95c868",
     "theory/linear-perturbations.md": "f3e42fe115154cc54487bc3216eabd994401e71b1b1bc0ae01ae1e91a12bdc34",
     "theory/microscopic-state-and-dynamics.md": "a543635fa29116e2c4e6c3f7627e13ad838b7b09885b749871ee921490e06543",
@@ -684,12 +857,13 @@
     "tools/final_repository_audit.py": "ba12ee95ed31886daa627e15e3840fa011043a270adee26af495eaf20567e417",
     "tools/generate_artifacts.py": "92c8c6f8c2e2bbdc12a6b4bd3da50ac1f85e5cd8f76f89e14a3415d4818142bf",
     "tools/generate_branch_measure.py": "c83ec21870a133329ba70b15e06463082a027cf32ddc3a41ded659289d4bc174",
+    "tools/generate_finite_observer_limit.py": "7e2a9847e20fb46d5e7df3f3a9d184814d02f4c6113d2ee3e9ce88e9cc7c7eb3",
     "tools/generate_linear_perturbations.py": "67749660438c26898385f93b7f6834ccdbd2553156d9e04dfa8164a66bac2977",
     "tools/generate_observer_commitment.py": "5d536810747f46890c786c2cb154c8a4543de6643dd0d8acf5d46fcf06a0b812",
     "tools/generate_unit_bridge.py": "da624f4021a4ade64d0f6c51ca7bb0de073dd0e8482a424964fbac038f5c3b5f",
     "tools/reproduce_sector_mixing.py": "05a8d4a014c7990b54ba192bc139ad120663c580d2096412da73dbfc7206042c",
     "tools/run_background_bridge_validation.py": "6f05be3d7f11fcf78d671d06058da9686dfce557a719e8736bc8fbc24b514c44",
-    "tools/run_proof_suite.py": "b8ac11cf8b52d64591e775ea5e5a98812b3073e2dc55f3b1bdaf89c6393df936",
+    "tools/run_proof_suite.py": "4a59f2af765bbce71149b0cd531c1828b976623b3a3df276d933173ee7d8a8de",
     "tools/validate_data_manifest.py": "41118b68bf8faae349b7ac3eb04e49f847f3ec22e07af359ba06051c0828e082",
     "tools/validate_json_assets.py": "2865a2d49a0111fb86a56e98b5c26b15d5905de6c87529af5617e04837d240d6",
     "tools/verify_repository.py": "f05ff69a07dd01f211dc6a9a9348a696ae6caee8c3067ab354a1f35dbc5cd126",
@@ -701,6 +875,8 @@
     "validation/background_bridge/pass_003/repository_expert_tasks.json": "363f31f650d36df2d3df5b3b393eae2c6aa953a68201556f646a42234e04b176",
     "validation/branch-measure/roadmap-008/README.md": "b6e3f8f1c1074ba711e22b3ef9fe06a767b0cb3fa89f203dbba03ebaa5ac3076",
     "validation/branch-measure/roadmap-008/outputs/verification.json": "3d44388f3c0734e245f98ed2924cb3156aae85adaf0da6f6e78110cf23bf734c",
+    "validation/finite-observer-limit/roadmap-011/README.md": "1142d6eb917e817af9d24fca7f773db19b9914816a03e82e859b79963146290e",
+    "validation/finite-observer-limit/roadmap-011/outputs/verification.json": "b882401784b6359528ba80a91428d9cecb67a6f9099dde0f5c50288451922888",
     "validation/lcdm-limit/README.md": "b03ac3bba6122bf3e4e505c3f1188e8ddf1203ed27fae0a24f16d88b36e0b555",
     "validation/linear-perturbations/roadmap-007/README.md": "85c97815c590013fb084b1a36dde90a8907e2f022c26060c8590e9f4a1b9f611",
     "validation/linear-perturbations/roadmap-007/outputs/verification.json": "e248c0f9f2e9f647e68ed33a6154b97d91740df7408137722e86149bcc8a2d69",
@@ -709,7 +885,7 @@
     "validation/observer-commitment/roadmap-009/README.md": "be92df7645ffb5e7f9c511a2d18b14ae4abeec998dfd18b22bdd9e31bc35bb78",
     "validation/observer-commitment/roadmap-009/outputs/verification.json": "50467ff271f60cccb13dc7eab1d63de55d07b009b012368861c129c5902fa85c",
     "validation/preregistration.md": "74d5875c196627430cc959cbbcacfbdfec13c011e1b5f82b1c03b38782ca0fd6",
-    "validation/status.json": "4e3f018b27f4d9fd531e040747b777b65f885eba10eab1c1d03fcbd001ccb86c",
+    "validation/status.json": "68ef8f61e87b944d7ab0f1ce0ba22926ce2724feb4386ab1d2b63501b95ffaa8",
     "validation/synthetic-recovery/README.md": "f74a411ab65daef967315632f19b362b81f96602ff4b4e1451047e3e2b31063f",
     "validation/unit-bridge/roadmap-010/README.md": "165069f524acffedfd2b90f2fbf40468f82fcb968d750c2ab4df62f59b39ba43",
     "validation/unit-bridge/roadmap-010/outputs/verification.json": "7a8e1c999a55f9b8e01fc6386b395862b3bf92917393edc08f2f8110fef9fed0",

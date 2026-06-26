@@ -2,6 +2,29 @@
 
 ## Unreleased - 2026-06-26
 
+**Title**: Roadmap 011 finite-observer limit closure
+
+**Change Class**: feature
+
+**Version Impact**: none
+
+**Summary**: Adds the Roadmap 011 finite-observer limit hierarchy with deterministic projection, finite-causal, spectrum, figure, validation, and proof-suite artifacts while preserving physical-claim boundaries.
+
+**Affected Area**: finite-observer-limit module, tests, generated data, figures, validation outputs, proof suite, roadmap tracker, README, data documentation, and data manifest
+
+### Added
+
+- Finite-observer limit module over nested parity-valid odd levels `1,3,5,7,9`.
+- Projective observer maps with consistency, uniform-fiber, and event non-expansion checks.
+- Deterministic generator for shell, cone, spectrum, projective-fiber, normalized-scale, interval, figure, and verification artifacts.
+- Regression tests for finite state counts, graph invariants, projective hierarchy, causal relation, interval diagnostics, normalized scale annotations, and boundary scope.
+- Proof-suite coverage for R011 finite-observer limit invariants.
+
+### Updated
+
+- Added Roadmap 011 generated artifacts to the data manifest and repository documentation.
+- Marked only the finite-observer R011 route complete while leaving differentiable continuum, physical metric, background dynamics, perturbation solver, external-likelihood, locked-prediction, and empirical-cosmology gates blocked.
+
 **Title**: Roadmap 010 unit-bearing bridge workbench
 
 **Change Class**: feature
