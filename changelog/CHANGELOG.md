@@ -2,6 +2,28 @@
 
 ## Unreleased - 2026-06-26
 
+**Title**: Roadmap 007 finite linear perturbation sector
+
+**Change Class**: feature
+
+**Version Impact**: none
+
+**Summary**: Adds the Roadmap 007 finite-observer linear perturbation sector with quotient Walsh shells, deterministic transfer generation, validation outputs, figures, and conservative documentation boundaries.
+
+**Affected Area**: finite perturbation module, tests, generated data, figures, validation outputs, theory documentation, phenomenology documentation, roadmap tracker, and data manifest
+
+### Added
+
+- Finite quotient-shell perturbation module for restricted Walsh characters on the ASH admissible state space.
+- Deterministic Roadmap 007 generator for transfer CSVs, validation JSON, and figures.
+- Roadmap 007 documentation and validation notes for the finite perturbation sector.
+- Regression tests for shell counts, eigenvalues, transfer laws, eigenmode residuals, shell-power evolution, and impulse responses.
+
+### Updated
+
+- Expanded linear-perturbation theory and phenomenology docs while preserving metric, unit-bearing, CMB, matter-spectrum, and empirical-validation boundaries.
+- Added Roadmap 007 generated artifacts to the data manifest and repository roadmap tracker.
+
 **Title**: Repository data governance manifest
 
 **Change Class**: metadata

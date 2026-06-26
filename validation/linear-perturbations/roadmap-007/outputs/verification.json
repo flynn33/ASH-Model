@@ -1,0 +1,117 @@
+{
+  "boundary": "Finite-observer perturbation sector only; no metric perturbation, physical power spectrum, CMB spectrum, or empirical redshift calibration claimed.",
+  "classification": {
+    "layer_1": "finite Walsh quotient shell mathematics and pair-flip spectral law",
+    "layer_2": "deterministic generated transfer, power-check, and Green-function artifacts",
+    "layer_3_boundary": "synthetic dimensionless solver-test outputs only; no empirical cosmology"
+  },
+  "eigenmode_verification": {
+    "max_eigen_residual": 5.551115123125783e-16,
+    "num_characters": 256,
+    "num_states": 256,
+    "p_values": [
+      0.01,
+      0.05,
+      0.1,
+      0.5,
+      1.0
+    ],
+    "shell_counts": {
+      "0": 1,
+      "1": 9,
+      "2": 36,
+      "3": 84,
+      "4": 126
+    }
+  },
+  "formal_expressions": {
+    "boundary": "finite-observer perturbations only; no metric perturbation or empirical spectrum claimed",
+    "character_quotient": "F_2^9/<111111111>; q=min(|a|,9-|a|)",
+    "continuous_clock_limit": "d alpha_a/d tau = - r(tau) gamma_q alpha_a + s_a(tau)",
+    "discrete_equation": "alpha_a(t+1)=mu_q(p_t) alpha_a(t)+s_a(t), mu_q=1-p_t gamma_q",
+    "power_equation": "P_q(t1)=|prod_t mu_q(p_t)|^2 P_q(t0)",
+    "shells": [
+      {
+        "K2": 36,
+        "gamma": 0.0,
+        "lambda": 1.0,
+        "multiplicity": 1,
+        "q": 0
+      },
+      {
+        "K2": 20,
+        "gamma": 0.4444444444444444,
+        "lambda": 0.5555555555555556,
+        "multiplicity": 9,
+        "q": 1
+      },
+      {
+        "K2": 8,
+        "gamma": 0.7777777777777778,
+        "lambda": 0.2222222222222222,
+        "multiplicity": 36,
+        "q": 2
+      },
+      {
+        "K2": 0,
+        "gamma": 1.0,
+        "lambda": 0.0,
+        "multiplicity": 84,
+        "q": 3
+      },
+      {
+        "K2": -4,
+        "gamma": 1.1111111111111112,
+        "lambda": -0.1111111111111111,
+        "multiplicity": 126,
+        "q": 4
+      }
+    ],
+    "state_space": "H={x in F_2^9 : sum_i x_i = 0 mod 2}, |H|=256",
+    "status": "finite-observer perturbation refinement; no metric or empirical spectrum claim",
+    "title": "ASH Roadmap 007 finite linear perturbation sector"
+  },
+  "random_power_check": {
+    "max_relative_error": 6.465207717056804e-12,
+    "p": 0.05,
+    "rows": [
+      {
+        "evolved_shell_power": 4.330995465605231e-28,
+        "initial_shell_power": 6.612155723375367e-39,
+        "predicted_shell_power": 6.612155723375367e-39,
+        "q": 0.0,
+        "relative_error": 0.0
+      },
+      {
+        "evolved_shell_power": 1.3007237118180352e-07,
+        "initial_shell_power": 3.19579232155932e-07,
+        "predicted_shell_power": 1.3007237118264447e-07,
+        "q": 1.0,
+        "relative_error": 6.465207717056804e-12
+      },
+      {
+        "evolved_shell_power": 5.154646131350657e-08,
+        "initial_shell_power": 2.519155262676677e-07,
+        "predicted_shell_power": 5.154646131351373e-08,
+        "q": 2.0,
+        "relative_error": 1.3890527496563337e-13
+      },
+      {
+        "evolved_shell_power": 4.116039402664456e-08,
+        "initial_shell_power": 3.202840503714877e-07,
+        "predicted_shell_power": 4.1160394026646e-08,
+        "q": 3.0,
+        "relative_error": 3.5048327947458e-14
+      },
+      {
+        "evolved_shell_power": 3.3654715876437733e-08,
+        "initial_shell_power": 3.311229461020808e-07,
+        "predicted_shell_power": 3.36547158764393e-08,
+        "q": 4.0,
+        "relative_error": 4.6600733375927454e-14
+      }
+    ],
+    "seed": 20260626,
+    "ticks": 20
+  }
+}
