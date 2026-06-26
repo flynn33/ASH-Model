@@ -36,13 +36,14 @@ The authoritative data inventory is `data/manifests/data_manifest.json`. It reco
 |---|---|---|
 | Core generated evidence | `data/ash-state-reference.csv`, `data/codewords.csv`, `data/branch-topology.json`, `data/ablation-results.csv`, `data/simulation-*` | Deterministic finite ASH data generated from tracked source code |
 | Branch-centered roadmap assets | `data/ash-cosmology/branch-centered-roadmap/v0.2/` | Project-owner-provided roadmap package assets |
+| Roadmap 007 finite perturbation outputs | `data/ash-cosmology/linear-perturbations/v0.1/`, `figures/ash-cosmology/linear-perturbations/v0.1/`, `validation/linear-perturbations/roadmap-007/outputs/` | Deterministic finite-observer perturbation transfer, Green-function, shell-power, figure, and verification outputs generated from tracked source code |
 | Sector-mixing evidence | `data/ash-physics-sector-mixing/` | Project-owner-provided pass 002 finite workbench evidence |
 | Background bridge diagnostics | `validation/background_bridge/pass_003/outputs/` | Pass 003 synthetic diagnostic outputs |
 | Validation status | `validation/status.json` | Repository-maintained validation-status manifest |
 
 ## Provenance
 
-Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, and `tools/run_background_bridge_validation.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
+Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, and `tools/generate_linear_perturbations.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
 
 ## Validation
 

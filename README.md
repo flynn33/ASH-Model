@@ -53,6 +53,13 @@ probability.  The finite background equation is the exact Hamming-weight
 lumping of the pair-flip dynamics, and the finite perturbation layer is given
 by bounded lazy pair-flip mode factors.
 
+Roadmap 007 refines the finite perturbation layer into quotient Walsh-character
+shells on the admissible even-parity state space.  It adds exact shell counts,
+finite transfer laws, deterministic generated transfer artifacts, and internal
+validation outputs.  This remains a finite-observer result; it does not define
+metric perturbations, physical wavenumbers, matter power spectra, CMB spectra,
+or empirical redshift calibration.
+
 The repository also includes the first validation mechanics around this layer:
 an explicit affine calibration contract for future unit-bearing observables, a
 diagonal Gaussian likelihood comparator, and deterministic hash-lock validation
@@ -175,8 +182,11 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `data/manifests/data_manifest.json` - consolidated data and synthetic-output inventory
 - `ROADMAP.md` - repository-maintained roadmap tracker and completion log
 - `docs/ash-cosmology/branch-centered-roadmap/v0.2/` - Branch-centered ASH Cosmology roadmap, correction lock, canonical model notes, proof roadmap, empirical validation plan, falsification criteria, and source-evidence package
+- `docs/ash-cosmology/linear-perturbations/roadmap-007/` - Roadmap 007 finite linear perturbation sector notes and boundaries
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
+- `data/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation transfer CSV artifacts
 - `data/ash-physics-sector-mixing/` - Sector-mixing pass 002 CSV evidence, upstream payload manifest, and reproduction metadata
+- `figures/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation generated figures
 - `figures/ash-physics-sector-mixing/` - Sector-mixing pass 002 finite workbench figures
 - `figures/` - generated, repository-linked evidence figures
 - `docs/` - specification, proof, controls, integration, and paper
@@ -184,6 +194,7 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `theory/` - finite-observer ASH-Physics postulates, dynamics, bridge, and equation boundaries
 - `phenomenology/` - internal observable-interface specifications and external-validation blockers
 - `validation/` - finite consistency gates, preregistration surfaces, and external-validation blockers
+- `validation/linear-perturbations/roadmap-007/` - Roadmap 007 finite perturbation validation notes and generated verification JSON
 - `predictions/` - frozen-prediction ledger and falsification criteria
 - `axioms-of-existence.json` - explicitly labeled interpretive postulates and narrative implications
 - `latex/main.tex` - aligned manuscript source
