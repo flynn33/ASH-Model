@@ -1,0 +1,26 @@
+{
+  "P_unit": "dimensionless proxy amplitude, not calibrated survey P(k)",
+  "alpha_mu_recovered_grid": 0.07,
+  "alpha_mu_recovery_abs_error": 0.0,
+  "alpha_mu_truth": 0.07,
+  "assumed_upstream": [
+    "R-008 accepted",
+    "R-009 accepted",
+    "R-010 accepted",
+    "R-011 accepted",
+    "R-012 accepted"
+  ],
+  "boundary_policy": "initial growing mode at a_ini=1e-3; regular positive k in Mpc^-1; normalized D(z)/D(0)",
+  "closure_route": "matter-sector solver with low-ell CMB interface proxy",
+  "finite_mode_count": 5,
+  "gauge_policy": "Newtonian gauge, scalar sector, sub-horizon/quasi-static growth equation; no full Boltzmann hierarchy claim",
+  "k_unit": "Mpc^-1",
+  "lcdm_limit_max_abs_P_error": 0.0,
+  "max_mu_eff": 1.0523091355575278,
+  "min_P_proxy": 4.290989081286377e-22,
+  "min_mu_eff": 1.0,
+  "roadmap_item": "R-013",
+  "rows_cmb_proxy": 59,
+  "rows_matter_power": 240,
+  "title": "Physical perturbation equations and matter-sector solver"
+}

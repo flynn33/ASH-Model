@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-28T11:45:48Z",
+  "updated_utc": "2026-06-28T12:00:03Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -118,9 +118,21 @@
       "evidence": [
         "theory/linear-perturbations.md",
         "phenomenology/ash_perturbations_spec.md",
-        "src/ash_model/physics.py"
+        "src/ash_model/physics.py",
+        "theory/linear-perturbations_R013_addendum.md",
+        "phenomenology/ash_perturbations_spec_R013_addendum.md",
+        "src/ash_model/physical_perturbations.py",
+        "tests/test_physical_perturbations.py",
+        "tools/generate_physical_perturbations.py",
+        "config/ash_r013_perturbation_contract.json",
+        "docs/ash-cosmology/physical-perturbations/roadmap-013/README.md",
+        "docs/ash-cosmology/physical-perturbations/roadmap-013/r013_formal_expressions.json",
+        "data/ash-cosmology/physical-perturbations/v0.1/",
+        "figures/ash-cosmology/physical-perturbations/v0.1/",
+        "validation/physical-perturbations/roadmap-013/README.md",
+        "validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json"
       ],
-      "notes": "Finite perturbation-mode decay factors are implemented; metric perturbations remain outside proved scope."
+      "notes": "Finite perturbation-mode decay factors remain implemented. R-013 adds a bounded finite-to-physical scalar-sector map, Newtonian-gauge sub-horizon matter-growth equation, executable RK4 solver, matter-power proxy, low-ell CMB interface proxy, deterministic synthetic alpha_mu recovery, and generated validation artifacts. Relativistic metric-sector derivations, a full photon-baryon Boltzmann hierarchy, CLASS/CAMB replacement, external likelihoods, empirical CMB or matter validation, and locked predictions remain outside scope."
     },
     {
       "id": "OBS-001",
@@ -216,9 +228,12 @@
         "validation/finite-observer-limit/roadmap-011/outputs/verification.json",
         "src/ash_model/cosmological_background.py",
         "tests/test_cosmological_background.py",
-        "validation/background-equations/roadmap-012/outputs/verification.json"
+        "validation/background-equations/roadmap-012/outputs/verification.json",
+        "src/ash_model/physical_perturbations.py",
+        "tests/test_physical_perturbations.py",
+        "validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json"
       ],
-      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, and the R-012 synthetic background-equation standard-baseline identity."
+      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, and R-013 bounded perturbation workbench evidence."
     },
     {
       "id": "SCAN-001",
@@ -301,15 +316,25 @@
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_cosmological_background.py",
       "result": "passed",
       "summary": "7 passed for the R-012 standard-baseline identity, source normalization, positive expansion, monotone integrals, synthetic recovery, aliases, and covariance shape."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_physical_perturbations.py --out-root . --copy-source-figures ../R13/source_research/files/ASH_R013_physical_perturbation_solver_package/figures",
+      "result": "passed",
+      "summary": "Generated R-013 matter-power proxy, low-ell CMB proxy, finite-mode, synthetic-observation, alpha_mu grid-fit, figure, and validation artifacts."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_physical_perturbations.py",
+      "result": "passed",
+      "summary": "6 passed for finite spectral modes, k validation, finite positive growth, zero-amplitude baseline consistency, synthetic alpha_mu recovery, artifact generation, and summary boundaries."
     }
   ],
   "open_blockers": [
     "No reviewed physical calibration constants map finite ASH observables to measured spacetime, fields, or data products; R-010 uses fiducial synthetic scales only.",
     "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph; R-011 closes only the finite-observer limit route.",
-    "No unit-bearing bridge with reviewed physical calibration, external covariance source, matched baseline, and prediction lock is committed; R-010 and R-012 are synthetic finite-observer workbenches only.",
+    "No unit-bearing bridge with reviewed physical calibration, external covariance source, matched baseline, and prediction lock is committed; R-010, R-012, and R-013 are synthetic finite-observer or matter-sector workbenches only.",
     "No gauge convention or physical degrees-of-freedom map exists for a differentiable continuum interpretation.",
     "No ASH-derived standard cosmological background with reviewed physical FRW or Einstein-equation status is committed; R-012 closes only a synthetic finite-observer background-equation workbench and standard-baseline relation.",
-    "No physical perturbation solver produces CMB or matter-spectrum observables.",
+    "No full photon-baryon Boltzmann hierarchy, CLASS/CAMB replacement, survey-calibrated CMB or matter-spectrum observable solver, or external perturbation likelihood is committed; R-013 closes only a bounded matter-sector workbench and proxy interface.",
     "No external data product, covariance source, or matched empirical baseline is committed.",
     "No scientific prospective or held-out prediction is locked."
   ],
@@ -321,6 +346,7 @@
     "R-010 supplies a synthetic unit-bearing bridge workbench with fiducial scales; it is not reviewed physical calibration or empirical validation.",
     "R-011 supplies a finite-observer hierarchy and finite causal graph workbench; it is not a differentiable continuum, Lorentzian metric, physical light cone, or empirical cosmology result.",
     "Calibration and likelihood mechanics are contracts; they are not external empirical validation.",
-    "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist."
+    "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist.",
+    "R-013 supplies a bounded matter-sector perturbation workbench and low-ell CMB interface proxy; it is not a full Boltzmann solver, empirical CMB or matter-spectrum validation, external likelihood, or locked prediction."
   ]
 }

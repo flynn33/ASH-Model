@@ -1,0 +1,35 @@
+{
+  "equations": {
+    "background": "E_ASH(a)^2 = Omega_r a^{-4}+Omega_m a^{-3}+Omega_k a^{-2}+Omega_Lambda+Omega_ASH S_ASH(a)",
+    "drag_modifier": "gamma_ASH(a,k)=beta_drag S_ASH(a)|K_ASH(k)|",
+    "finite_kernel": "K_ASH(k)=exp[-(ln(k/k_*))^2/(2 sigma^2)] exp[-k^2/(2 k_uv^2)] sum_q c_q cos(q pi log_2(k/k_*))/(1+lambda_q/40)",
+    "growth": "D_xx + [2+dlnH/dlna+gamma_ASH(a,k)] D_x - 3/2 Omega_m(a) mu_ASH(a,k)D = 0, x=ln a",
+    "poisson_modifier": "mu_ASH(a,k)=1+alpha_mu S_ASH(a) K_ASH(k)",
+    "power_proxy": "P_ASH(k,z)=A(k/k_*)^{n_s-1} T(k)^2 [D(k,z)/D(k,0)]^2 [1+A_res K_ASH(k)]"
+  },
+  "finite_spectrum": {
+    "adjacency": [
+      36,
+      20,
+      8,
+      0,
+      -4
+    ],
+    "laplacian": [
+      0,
+      16,
+      28,
+      36,
+      40
+    ],
+    "multiplicity": [
+      1,
+      9,
+      36,
+      84,
+      126
+    ]
+  },
+  "latex": "\\frac{d^2D}{dx^2}+\\left(2+\\frac{d\\ln H}{d\\ln a}+\\gamma_{\\rm ASH}\\right)\\frac{dD}{dx}-\\frac{3}{2}\\Omega_m(a)\\mu_{\\rm ASH}D=0,\\quad x=\\ln a.",
+  "schema": "ash.r013.formal_expressions.v1"
+}
