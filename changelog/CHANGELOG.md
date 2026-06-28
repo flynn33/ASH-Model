@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased - 2026-06-28
+
+**Title**: Roadmap 016 documentation consistency refresh
+
+**Change Class**: docs
+
+**Version Impact**: none
+
+**Summary**: Aligns public README, data documentation, changelog, and tracked wiki pages with the merged Roadmap 012 through Roadmap 016 repository state while preserving empirical-validation boundaries.
+
+**Affected Area**: README, data documentation, changelog, tracked wiki mirror, roadmap summaries, validation summaries, and science-boundary language
+
+### Updated
+
+- Refreshed the README roadmap posture from the post-R011 state to the current R001-R016 scoped-completion state.
+- Added R012-R016 documentation, data, figure, validation, prediction-lock, and closure-contract paths to public repository maps.
+- Updated data documentation to match the current manifest coverage for R007-R016 generated, synthetic, readiness, lock, and formal-closure assets.
+- Refreshed tracked wiki summaries for science roadmap, roadmap tracker, finite-observer physics, validation coverage, locked prediction templates, and current evidence paths.
+- Preserved that reviewed physical calibration, observed-data likelihood scoring, empirical preference, physical model validation, and independent replication remain open science work.
+
 ## Unreleased - 2026-06-26
 
 **Title**: Post-Roadmap 011 documentation and wiki publication refresh
@@ -15,7 +35,7 @@
 ### Updated
 
 - Added a current roadmap posture table to the README.
-- Clarified that Roadmap 010 and Roadmap 011 are merged, verified finite-scope work while Roadmap 012 through Roadmap 016 remain open or blocked.
+- Clarified the then-current post-R011 state before the later Roadmap 012 through Roadmap 016 integrations.
 - Refreshed wiki navigation, evidence pages, validation counts, and finite-observer physics summaries for the synthetic unit-bearing bridge and finite-observer hierarchy.
 - Preserved physical-calibration, differentiable-geometry, physical-perturbation, external-likelihood, empirical-validation, model-closure, and locked-prediction boundaries.
 

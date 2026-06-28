@@ -20,13 +20,13 @@ The earlier repository overstated self-duality in nine dimensions, error correct
 
 The repository-maintained roadmap status log is [`ROADMAP.md`](ROADMAP.md). It tracks identified roadmap items, completion evidence, verification commands, and remaining blockers.
 
-Current roadmap posture after the Roadmap 010 and Roadmap 011 merges:
+Current roadmap posture after the Roadmap 016 merge:
 
 | Roadmap band | Repository state | Scientific boundary |
 |---|---|---|
 | R-001 through R-006 | Complete finite core, finite-observer physics layer, prediction-ledger mechanics, sector-mixing workbench, background-bridge diagnostics, and data governance manifest. | Repository mechanics and finite checks only. |
-| R-007 through R-011 | Complete finite perturbation sector, branch-measure law, observer-commitment workbench, synthetic unit-bearing bridge, and finite-observer limit hierarchy. | Does not close physical calibration, differentiable geometry, physical perturbation equations, external likelihoods, empirical validation, or locked predictions. |
-| R-012 through R-016 | Open or blocked science work. | Requires new derivations, reviewed calibration, executable solvers, external-data validation, and prediction locking before closure. |
+| R-007 through R-011 | Complete finite perturbation sector, branch-measure law, observer-commitment workbench, synthetic unit-bearing bridge, and finite-observer limit hierarchy. | Does not close reviewed physical calibration, differentiable geometry, observed-data likelihoods, empirical validation, or physical model validation. |
+| R-012 through R-016 | Complete within their stated synthetic-workbench, readiness, lock-mechanics, and formal-contract scopes: background-equation workbench, bounded matter-sector perturbation workbench, external-likelihood readiness, locked prospective templates, and branch-centered closure contract. | Does not close reviewed physical calibration, a full photon-baryon Boltzmann hierarchy, observed-data scoring, empirical preference, independent replication, or validation of ASH as observed physical cosmology. |
 
 ## Verified mathematical core
 
@@ -87,18 +87,23 @@ derive a differentiable continuum, Lorentzian metric, physical light cone,
 Einstein equations, FRW/LCDM dynamics, physical perturbation equations,
 CMB/matter spectra, external likelihoods, or empirical cosmology.
 
-Post-R011 finite-observer evidence is now split across:
+Post-R016 finite-observer and branch-centered evidence is split across:
 
 - [`docs/ash-cosmology/unit-bridge/roadmap-010/`](docs/ash-cosmology/unit-bridge/roadmap-010/) for the synthetic unit-bearing bridge.
 - [`docs/ash-cosmology/finite-observer-limit/roadmap-011/`](docs/ash-cosmology/finite-observer-limit/roadmap-011/) for the finite projective hierarchy.
-- [`validation/unit-bridge/roadmap-010/outputs/verification.json`](validation/unit-bridge/roadmap-010/outputs/verification.json) and [`validation/finite-observer-limit/roadmap-011/outputs/verification.json`](validation/finite-observer-limit/roadmap-011/outputs/verification.json) for machine-readable validation records.
+- [`docs/ash-cosmology/background-equations/roadmap-012/`](docs/ash-cosmology/background-equations/roadmap-012/) for the synthetic finite-observer background-equation workbench.
+- [`docs/ash-cosmology/physical-perturbations/roadmap-013/`](docs/ash-cosmology/physical-perturbations/roadmap-013/) for the bounded matter-sector perturbation workbench.
+- [`docs/ash-cosmology/external-likelihoods/roadmap-014/`](docs/ash-cosmology/external-likelihoods/roadmap-014/) for likelihood-readiness contracts and synthetic fixtures.
+- [`docs/ash-cosmology/locked-predictions/roadmap-015/`](docs/ash-cosmology/locked-predictions/roadmap-015/) for immutable prospective prediction templates.
+- [`docs/ash-cosmology/branch-centered-closure/roadmap-016/`](docs/ash-cosmology/branch-centered-closure/roadmap-016/) for the formal branch-centered closure contract.
+- `validation/*/roadmap-0*/outputs/` for machine-readable validation records.
 - [`figures/ash-cosmology/finite-observer-limit/v0.1/`](figures/ash-cosmology/finite-observer-limit/v0.1/) for finite-observer hierarchy visual artifacts.
 
-The repository also includes the first validation mechanics around this layer:
-an explicit affine calibration contract for future unit-bearing observables, a
-diagonal Gaussian likelihood comparator, and deterministic hash-lock validation
-for future prediction-ledger entries.  It also includes a dimensionless flat
-standard-baseline comparator for future baseline checks.
+The repository also includes validation mechanics around this layer: explicit
+affine and fiducial calibration contracts, a diagonal Gaussian likelihood
+comparator, matched synthetic baselines, deterministic hash-lock validation for
+locked prediction templates, and a dimensionless flat standard-baseline
+relation for baseline checks.
 
 Sector-mixing resolution pass 002 adds a separate eight-payload-coordinate
 workbench with deterministic integrity-bit recomputation.  It documents and
@@ -108,9 +113,10 @@ sectors without redefining the existing nine-coordinate finite-observer kernel.
 This layer is implemented in [`src/ash_model/physics.py`](src/ash_model/physics.py)
 and verified by [`tests/test_physics.py`](tests/test_physics.py) and
 [`tests/test_sector_mixing.py`](tests/test_sector_mixing.py).  It is not a
-claim of observed spacetime dynamics or empirical cosmology; those remain
-blocked until reviewed physical calibrations, external data products, matched
-baselines, and locked scientific predictions exist.
+claim of observed spacetime dynamics or empirical cosmology. Reviewed physical
+calibration, observed-data scoring, empirical preference over matched
+baselines, and independent replication remain outside the completed repository
+scopes.
 
 ## Canonical state coordinates
 
@@ -133,18 +139,18 @@ Exact formulas, thresholds, bit ordering, and transition rules are normative in 
 ## Install and verify
 
 ```bash
-python -m pip install -e ".[dev]"
-python tools/generate_artifacts.py
-python tools/run_proof_suite.py
-pytest
-python tools/verify_repository.py
+python3 -m pip install -e ".[dev]"
+python3 tools/generate_artifacts.py
+python3 tools/run_proof_suite.py
+python3 -m pytest
+python3 tools/verify_repository.py
 ```
 
 After changing manuscript source, bibliography inputs, generated figures, or the committed PDF, refresh the source-input manifest before regenerating the proof certificate:
 
 ```bash
-python tools/generate_artifacts.py --refresh-figures  # only when figure PNGs intentionally change
-python tools/build_manuscript.py
+python3 tools/generate_artifacts.py --refresh-figures  # only when figure PNGs intentionally change
+python3 tools/build_manuscript.py
 ```
 
 The proof suite exhaustively checks all 512 states, all 16 codewords, every one-bit neighborhood, every two-bit corruption of every codeword, all parity-valid affine anchors, all code orbits, and the exact Garden identities.
@@ -171,8 +177,8 @@ It is a CPU reference for validating semantics before a production GPU or Metal 
 ## Controlled simulation
 
 ```bash
-python simulation.py
-python src/simulate.py --agents 1000 --ticks 250 --noise 0.01 --seed 20260624
+python3 simulation.py
+python3 src/simulate.py --agents 1000 --ticks 250 --noise 0.01 --seed 20260624
 ```
 
 The tracked ablations explicitly compare uniform starts, zero starts, ASH transforms, no transforms, random weight-four transforms, and bit-flip noise. The resulting binomial envelope is documented as a uniform-hypercube baseline, not as evidence uniquely caused by ASH.
@@ -181,27 +187,27 @@ The tracked ablations explicitly compare uniform starts, zero starts, ASH transf
 
 `docs/ash-physics-validation/` defines the proof and empirical-validation program. It adds implementation instructions, proof obligations, preregistration templates, claim-language scanning, and task manifests for the ASH-Physics research track.
 
-ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, finite perturbation factors, finite branch-measure normalization law, finite observer-commitment workbench, synthetic unit-bearing bridge workbench, and finite-observer limit hierarchy.  The current validation program is intentionally not an empirical result. External likelihoods, standard cosmology baselines, reviewed physical calibrations, continuum interpretations beyond the finite route, and locked predictions remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
+ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, finite perturbation factors, finite branch-measure normalization law, finite observer-commitment workbench, synthetic unit-bearing bridge workbench, finite-observer limit hierarchy, synthetic background-equation workbench, bounded matter-sector perturbation workbench, likelihood-readiness layer, locked prediction-template mechanics, and branch-centered formal closure contract.  The current validation program is intentionally not an empirical result. Reviewed physical calibrations, observed-data likelihood scoring, physical model validation, and independent replication remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
 `docs/ash-cosmology/background-bridge/pass-003/` records the Pass 003 synthetic background-bridge audit remediation, including numerical convergence checks, deprecation-warning elimination, grid-posterior uncertainty diagnostics, AIC/BIC diagnostics, matched controls, and blocker tracking. This package is synthetic validation only and does not claim observational validation.
 
 ## Repository readiness and wiki
 
-The final repository-readiness audit is recorded in [`docs/final-live-repository-audit.md`](docs/final-live-repository-audit.md). It verifies the finite ASH layer, the ASH-Physics finite-observer layer, generated data and figure manifests, JSON schemas, repository gates, and current proof evidence while preserving the remaining science blockers.
+The historical repository-readiness audit is recorded in [`docs/final-live-repository-audit.md`](docs/final-live-repository-audit.md). Current readiness evidence is summarized by [`ROADMAP.md`](ROADMAP.md), [`validation/status.json`](validation/status.json), and [`docs/remediation/final-remediation-evidence.json`](docs/remediation/final-remediation-evidence.json); these verify the finite ASH layer, the ASH-Physics finite-observer and branch-centered layers, generated data and figure manifests, JSON schemas, repository gates, and current proof evidence while preserving the remaining science blockers.
 
 The wiki publication map is documented in [`docs/wiki-publication.md`](docs/wiki-publication.md). The tracked wiki source lives under [`wiki/`](wiki/) and is mirrored to the live GitHub wiki at <https://github.com/flynn33/ASH-Model/wiki>.
 
 ## Data governance
 
-The tracked data inventory is documented in [`data/README.md`](data/README.md) and machine-recorded in [`data/manifests/data_manifest.json`](data/manifests/data_manifest.json). The manifest covers repository evidence files under `data/`, Roadmap 007-011 synthetic outputs, pass 003 synthetic diagnostics under `validation/background_bridge/pass_003/outputs/`, and `validation/status.json`.
+The tracked data inventory is documented in [`data/README.md`](data/README.md) and machine-recorded in [`data/manifests/data_manifest.json`](data/manifests/data_manifest.json). The manifest covers repository evidence files under `data/`, Roadmap 007-016 synthetic/readiness/lock/closure outputs, pass 003 synthetic diagnostics under `validation/background_bridge/pass_003/outputs/`, and `validation/status.json`.
 
 Validate the manifest with:
 
 ```bash
-python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
+python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
 ```
 
-No new raw dataset is imported by the 2026-06-26 repository-data governance pass. Future raw data requires explicit provenance, sensitivity, license, and tracking-policy review before it is committed.
+No new raw observational dataset is imported by the R012-R016 integration. Future raw data requires explicit provenance, sensitivity, license, and tracking-policy review before it is committed.
 
 ## Repository map
 
@@ -221,15 +227,30 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `docs/ash-cosmology/observer-commitment/roadmap-009/` - Roadmap 009 finite observer-commitment and branch-separation notes and boundaries
 - `docs/ash-cosmology/unit-bridge/roadmap-010/` - Roadmap 010 synthetic unit-bearing bridge notes and boundaries
 - `docs/ash-cosmology/finite-observer-limit/roadmap-011/` - Roadmap 011 finite-observer limit notes, formal expressions, and boundaries
+- `docs/ash-cosmology/background-equations/roadmap-012/` - Roadmap 012 synthetic finite-observer background-equation workbench notes and boundaries
+- `docs/ash-cosmology/physical-perturbations/roadmap-013/` - Roadmap 013 bounded matter-sector perturbation workbench notes and boundaries
+- `docs/ash-cosmology/external-likelihoods/roadmap-014/` - Roadmap 014 likelihood-readiness notes, contracts, and boundaries
+- `docs/ash-cosmology/locked-predictions/roadmap-015/` - Roadmap 015 locked prediction-template notes and boundaries
+- `docs/ash-cosmology/branch-centered-closure/roadmap-016/` - Roadmap 016 formal branch-centered closure notes and boundaries
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `data/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation transfer CSV artifacts
 - `data/ash-cosmology/branch-measure/v0.1/` - Roadmap 008 finite branch-measure normalization CSV artifacts
 - `data/ash-cosmology/observer-commitment/v0.1/` - Roadmap 009 finite observer-commitment and branch-separation CSV artifacts
 - `data/ash-cosmology/unit-bridge/v0.1/` - Roadmap 010 synthetic unit-bearing bridge CSV artifacts
 - `data/ash-cosmology/finite-observer-limit/v0.1/` - Roadmap 011 finite-observer limit CSV artifacts
+- `data/ash-cosmology/background-equations/v0.1/` - Roadmap 012 background-equation CSV artifacts
+- `data/ash-cosmology/physical-perturbations/v0.1/` - Roadmap 013 physical-perturbation CSV artifacts
+- `data/ash-cosmology/external-likelihoods/v0.1/` - Roadmap 014 likelihood-readiness CSV artifacts
+- `data/ash-cosmology/locked-predictions/v0.1/` - Roadmap 015 locked prediction-template CSV artifacts
+- `data/ash-cosmology/branch-centered-closure/v0.1/` - Roadmap 016 closure-matrix CSV artifacts
 - `data/ash-physics-sector-mixing/` - Sector-mixing pass 002 CSV evidence, upstream payload manifest, and reproduction metadata
 - `figures/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation generated figures
 - `figures/ash-cosmology/finite-observer-limit/v0.1/` - Roadmap 011 finite-observer limit generated figures
+- `figures/ash-cosmology/background-equations/v0.1/` - Roadmap 012 background-equation generated figures
+- `figures/ash-cosmology/physical-perturbations/v0.1/` - Roadmap 013 perturbation-workbench generated figures
+- `figures/ash-cosmology/external-likelihoods/v0.1/` - Roadmap 014 likelihood-readiness generated figures
+- `figures/ash-cosmology/locked-predictions/v0.1/` - Roadmap 015 locked-template generated figures
+- `figures/ash-cosmology/branch-centered-closure/v0.1/` - Roadmap 016 closure generated figures
 - `figures/ash-physics-sector-mixing/` - Sector-mixing pass 002 finite workbench figures
 - `figures/` - generated, repository-linked evidence figures
 - `docs/` - specification, proof, controls, integration, and paper
@@ -242,7 +263,12 @@ No new raw dataset is imported by the 2026-06-26 repository-data governance pass
 - `validation/observer-commitment/roadmap-009/` - Roadmap 009 finite observer-commitment validation notes and generated verification JSON
 - `validation/unit-bridge/roadmap-010/` - Roadmap 010 synthetic unit-bearing bridge validation notes and generated verification JSON
 - `validation/finite-observer-limit/roadmap-011/` - Roadmap 011 finite-observer limit validation notes and generated verification JSON
-- `predictions/` - frozen-prediction ledger and falsification criteria
+- `validation/background-equations/roadmap-012/` - Roadmap 012 background-equation validation notes and generated verification JSON
+- `validation/physical-perturbations/roadmap-013/` - Roadmap 013 perturbation-workbench validation notes and generated summary JSON
+- `validation/external-likelihoods/roadmap-014/` - Roadmap 014 likelihood-readiness validation notes and generated verification JSON
+- `validation/locked-predictions/roadmap-015/` - Roadmap 015 locked prediction-template validation notes and generated verification JSON
+- `validation/branch-centered-closure/roadmap-016/` - Roadmap 016 formal closure validation notes and generated certificate JSON
+- `predictions/` - prediction ledger, locked R015 templates, and falsification criteria
 - `axioms-of-existence.json` - explicitly labeled interpretive postulates and narrative implications
 - `latex/main.tex` - aligned manuscript source
 - `CITATION.cff` - machine-readable citation metadata
