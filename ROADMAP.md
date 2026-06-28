@@ -33,21 +33,24 @@ Current repository posture:
 
 - Repository finite-observer implementation work through Roadmap 011 is
   complete and verified.
-- Roadmap 010, Roadmap 011, Roadmap 012, Roadmap 013, and Roadmap 014 are part of the repository's
+- Roadmap 010, Roadmap 011, Roadmap 012, Roadmap 013, Roadmap 014,
+  and Roadmap 015 are part of the repository's
   current proof, data-manifest, and validation surfaces.
 - Scientific readiness is not complete: reviewed physical calibration,
   differentiable continuum or physical metric interpretation,
   perturbation-to-survey calibration, observed-data likelihood scoring, and
-  locked predictions remain blocked until their required evidence exists in
+  branch-centered model closure remain blocked until their required evidence exists in
   the repository. Roadmap 010 supplies a synthetic unit-bearing bridge workbench,
   Roadmap 011 closes only the finite-observer limit route, Roadmap 012 supplies
   a synthetic finite-observer background-equation workbench, and Roadmap 013
   supplies a bounded matter-sector perturbation workbench. Roadmap 014 supplies
   external-likelihood readiness, matched synthetic baselines, metadata-only
   reviewed product registry contracts, covariance policy, and deterministic
-  synthetic recovery validation. These do not close reviewed physical
+  synthetic recovery validation. Roadmap 015 supplies immutable prospective
+  prediction templates, hash-locked CSV artifacts, and falsification metadata
+  for future held-out tests. These do not close reviewed physical
   calibration, empirical validation, full photon-baryon Boltzmann hierarchy,
-  observed-data likelihood scoring, or prediction-lock gates.
+  observed-data likelihood scoring, or branch-centered model closure.
 - Roadmap 007 adds a finite perturbation sector only. Roadmap 008 adds a finite
   branch-measure law only. Roadmap 009 adds a finite observer-relative
   commitment and branch-separation workbench only. Roadmap 010 adds a synthetic
@@ -70,16 +73,19 @@ Current repository posture:
   preregistration/hash policy, matched synthetic baselines, and deterministic
   synthetic likelihood fixtures only; it does not bundle or score real
   external data, establish empirical preference, or close locked-prediction
-  gates.
+  gates. Roadmap 015 adds hash-locked prospective prediction templates and
+  preregistered falsification metadata only; it does not analyze external
+  data, score observed likelihoods, establish empirical preference, or close
+  model-closure gates.
 
 Post-R011 publication state:
 
 | Surface | Current state |
 |---|---|
-| Repository roadmap | R-001 through R-014 are complete within their stated finite, readiness, or synthetic-workbench scopes. |
-| README and data documentation | Current through the R-014 external-likelihood readiness workbench. |
-| Proof certificate | Covers finite ASH, finite-observer physics, R-010 bridge checks, R-011 finite-observer checks, R-012 background checks, R-013 perturbation workbench checks, and R-014 likelihood-readiness evidence. |
-| Data manifest | Tracks R-007 through R-014 generated CSV/JSON/PNG evidence. |
+| Repository roadmap | R-001 through R-015 are complete within their stated finite, readiness, lock-mechanics, or synthetic-workbench scopes. |
+| README and data documentation | Current through the R-015 locked prospective prediction package. |
+| Proof certificate | Covers finite ASH, finite-observer physics, R-010 bridge checks, R-011 finite-observer checks, R-012 background checks, R-013 perturbation workbench checks, R-014 likelihood-readiness evidence, and R-015 lock-integrity evidence. |
+| Data manifest | Tracks R-007 through R-015 generated CSV/JSON/PNG evidence. |
 | Wiki | Mirrors the current finite-observer state and keeps empirical cosmology boundaries open. |
 
 Primary roadmap sources:
@@ -110,19 +116,17 @@ Primary roadmap sources:
 | R-012 | Cosmological background equations and standard-baseline relation | `complete` | 2026-06-28 | [`src/ash_model/cosmological_background.py`](src/ash_model/cosmological_background.py), [`tests/test_cosmological_background.py`](tests/test_cosmological_background.py), [`tools/generate_cosmological_background.py`](tools/generate_cosmological_background.py), [`config/ash_r012_background_contract.json`](config/ash_r012_background_contract.json), [`docs/ash-cosmology/background-equations/roadmap-012/README.md`](docs/ash-cosmology/background-equations/roadmap-012/README.md), [`data/ash-cosmology/background-equations/v0.1/`](data/ash-cosmology/background-equations/v0.1/), [`figures/ash-cosmology/background-equations/v0.1/`](figures/ash-cosmology/background-equations/v0.1/), [`validation/background-equations/roadmap-012/outputs/verification.json`](validation/background-equations/roadmap-012/outputs/verification.json) |
 | R-013 | Physical perturbation equations and CMB or matter-sector solver | `complete` | 2026-06-28 | [`src/ash_model/physical_perturbations.py`](src/ash_model/physical_perturbations.py), [`tests/test_physical_perturbations.py`](tests/test_physical_perturbations.py), [`tools/generate_physical_perturbations.py`](tools/generate_physical_perturbations.py), [`config/ash_r013_perturbation_contract.json`](config/ash_r013_perturbation_contract.json), [`docs/ash-cosmology/physical-perturbations/roadmap-013/README.md`](docs/ash-cosmology/physical-perturbations/roadmap-013/README.md), [`data/ash-cosmology/physical-perturbations/v0.1/`](data/ash-cosmology/physical-perturbations/v0.1/), [`figures/ash-cosmology/physical-perturbations/v0.1/`](figures/ash-cosmology/physical-perturbations/v0.1/), [`validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json`](validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json) |
 | R-014 | External likelihoods, matched empirical baselines, and reviewed data products | `complete` | 2026-06-28 | [`src/ash_model/external_likelihoods.py`](src/ash_model/external_likelihoods.py), [`tests/test_external_likelihoods.py`](tests/test_external_likelihoods.py), [`tools/generate_external_likelihoods.py`](tools/generate_external_likelihoods.py), [`config/ash_r014_likelihood_contract.json`](config/ash_r014_likelihood_contract.json), [`config/ash_r014_data_product_registry.json`](config/ash_r014_data_product_registry.json), [`docs/ash-cosmology/external-likelihoods/roadmap-014/README.md`](docs/ash-cosmology/external-likelihoods/roadmap-014/README.md), [`data/ash-cosmology/external-likelihoods/v0.1/`](data/ash-cosmology/external-likelihoods/v0.1/), [`figures/ash-cosmology/external-likelihoods/v0.1/`](figures/ash-cosmology/external-likelihoods/v0.1/), [`validation/external-likelihoods/roadmap-014/outputs/verification.json`](validation/external-likelihoods/roadmap-014/outputs/verification.json) |
-| R-015 | Locked prospective or held-out scientific predictions | `blocked` | 2026-06-26 | [`predictions/prediction-ledger.json`](predictions/prediction-ledger.json), [`predictions/falsification-criteria.md`](predictions/falsification-criteria.md) |
+| R-015 | Locked prospective or held-out scientific predictions | `complete` | 2026-06-28 | [`src/ash_model/locked_predictions.py`](src/ash_model/locked_predictions.py), [`tests/test_locked_predictions.py`](tests/test_locked_predictions.py), [`tools/generate_locked_predictions.py`](tools/generate_locked_predictions.py), [`config/ash_r015_prediction_lock_contract.json`](config/ash_r015_prediction_lock_contract.json), [`predictions/locked/r015_prediction_ledger.locked.json`](predictions/locked/r015_prediction_ledger.locked.json), [`predictions/locked/r015_lock_certificate.json`](predictions/locked/r015_lock_certificate.json), [`data/ash-cosmology/locked-predictions/v0.1/`](data/ash-cosmology/locked-predictions/v0.1/), [`docs/ash-cosmology/locked-predictions/roadmap-015/README.md`](docs/ash-cosmology/locked-predictions/roadmap-015/README.md), [`validation/locked-predictions/roadmap-015/outputs/verification.json`](validation/locked-predictions/roadmap-015/outputs/verification.json) |
 | R-016 | Branch-centered cosmology model closure | `open` | 2026-06-26 | [`docs/ash-cosmology/branch-centered-roadmap/v0.2/`](docs/ash-cosmology/branch-centered-roadmap/v0.2/) |
 
 ## Active priority queue
 
 | Priority | Roadmap item | Required closure evidence |
 |---:|---|---|
-| 1 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
-| 2 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, integration of the completed finite measure and observer workbenches, bridge-map relation, and validation boundary evidence. |
+| 1 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, integration of the completed finite measure and observer workbenches, bridge-map relation, and validation boundary evidence. |
 
 Priority interpretation:
 
-- R-015 cannot close without frozen prediction-ledger entries.
 - R-016 remains open until the completed finite workbenches are integrated into
   a closed branch-centered cosmology model with explicit validation boundaries.
 
@@ -130,6 +134,20 @@ Priority interpretation:
 
 ### 2026-06-28
 
+- R-015 marked complete for immutable prospective/held-out prediction lock
+  mechanics. Evidence: frozen three-entry prediction ledger, SHA-256 lock
+  certificate, hash-locked expansion, matter-sector, and low-ell CSV
+  templates, falsification metadata, non-mutating verifier, targeted tests,
+  validation JSON, generated figures, and boundary documentation. This does
+  not analyze external data, score observed likelihoods, establish empirical
+  preference for ASH, or close R-016 model closure.
+  Verification: `python3 tools/generate_locked_predictions.py --out-root . --require-pass`,
+  `python3 -m pytest tests/test_locked_predictions.py`,
+  `python3 tools/validate_json_assets.py .`,
+  `python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`,
+  `python3 tools/run_proof_suite.py`, `python3 -m pytest`,
+  `python3 tools/verify_repository.py`, and
+  `python3 tools/final_repository_audit.py .`.
 - R-014 marked complete for external-likelihood readiness, matched synthetic
   baselines, metadata-only reviewed-data registry contracts, covariance/hash
   policy, and deterministic synthetic recovery validation. Evidence:

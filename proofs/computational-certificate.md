@@ -137,6 +137,17 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - Sample interval nodes: `184`
 - Boundary: finite-observer limit closure only.
 
+## R-015 locked predictions
+
+- Schema: `ash.r015.locked_prediction_ledger.v1`
+- Freeze date: `2026-06-26`
+- Prediction IDs: `['ASH-R015-P001', 'ASH-R015-P002', 'ASH-R015-P003']`
+- Locked prediction count: `3`
+- Ledger hash matches: `True`
+- Locked CSV hashes match: `True`
+- Locked CSV rows: `{'r015_locked_expansion_prediction.csv': 126, 'r015_locked_lowell_template.csv': 59, 'r015_locked_matter_template.csv': 160}`
+- Boundary: immutable prospective synthetic templates and falsification metadata only.
+
 ## Check matrix
 
 - `code_parameters`: `PASS`
@@ -166,3 +177,4 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - `observer_commitment_verified`: `PASS`
 - `unit_bridge_verified`: `PASS`
 - `finite_observer_limit_verified`: `PASS`
+- `locked_predictions_verified`: `PASS`

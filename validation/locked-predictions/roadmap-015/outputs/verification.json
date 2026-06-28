@@ -1,0 +1,41 @@
+{
+  "all_locked_files_match": true,
+  "freeze_date": "2026-06-26",
+  "ledger_errors": [],
+  "ledger_hash_matches": true,
+  "ledger_sha256_actual": "adde5d7129fa2dfb59291960f8ddbfcf4aad16bb44fac7beda1362343a678b9e",
+  "ledger_sha256_expected": "adde5d7129fa2dfb59291960f8ddbfcf4aad16bb44fac7beda1362343a678b9e",
+  "locked_files": {
+    "r015_locked_expansion_prediction.csv": {
+      "actual_sha256": "6b2e78430cda61f9b87b4c64da0e5c26dd2d11a3104a9d00ec15ae0c09d0c4f1",
+      "exists": true,
+      "expected_sha256": "6b2e78430cda61f9b87b4c64da0e5c26dd2d11a3104a9d00ec15ae0c09d0c4f1",
+      "matches": true,
+      "rows": 126
+    },
+    "r015_locked_lowell_template.csv": {
+      "actual_sha256": "4cc76e38a589bf43d938b6596a3631eeb51d60369639a7645a1920eb9da56f50",
+      "exists": true,
+      "expected_sha256": "4cc76e38a589bf43d938b6596a3631eeb51d60369639a7645a1920eb9da56f50",
+      "matches": true,
+      "rows": 59
+    },
+    "r015_locked_matter_template.csv": {
+      "actual_sha256": "3d375a704dde4789507f7ff2b3a8d89be17d9557a15d9d43554c79fb96df68a6",
+      "exists": true,
+      "expected_sha256": "3d375a704dde4789507f7ff2b3a8d89be17d9557a15d9d43554c79fb96df68a6",
+      "matches": true,
+      "rows": 160
+    }
+  },
+  "locked_prediction_count": 3,
+  "passed": true,
+  "prediction_ids": [
+    "ASH-R015-P001",
+    "ASH-R015-P002",
+    "ASH-R015-P003"
+  ],
+  "roadmap_item": "R-015 Locked prospective or held-out scientific predictions",
+  "schema": "ash.r015.locked_prediction_ledger.v1",
+  "scientific_boundary": "R-015 validates lock mechanics and immutable synthetic prediction templates only; it does not analyze external data or validate empirical cosmology."
+}

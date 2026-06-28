@@ -1,0 +1,21 @@
+{
+  "schema": "ash.r015.prediction_lock_contract.v1",
+  "roadmap_item": "R-015 Locked prospective or held-out scientific predictions",
+  "freeze_date": "2026-06-26",
+  "timezone": "America/Chicago",
+  "locked_prediction_ids": [
+    "ASH-R015-P001",
+    "ASH-R015-P002",
+    "ASH-R015-P003"
+  ],
+  "required_repository_evidence": [
+    "predictions/locked/r015_prediction_ledger.locked.json",
+    "predictions/locked/r015_lock_certificate.json",
+    "data/ash-cosmology/locked-predictions/v0.1/*.csv",
+    "validation/locked-predictions/roadmap-015/outputs/verification.json",
+    "docs/ash-cosmology/locked-predictions/roadmap-015/README.md",
+    "tests/test_locked_predictions.py"
+  ],
+  "mutation_policy": "Locked numerical claims, domains, nuisance/baseline policies, and falsification rules may only be superseded by new prediction IDs; original R-015 entries remain immutable.",
+  "boundary": "Prospective/held-out lock mechanics and synthetic templates only; no external data analysis or empirical validation claim."
+}

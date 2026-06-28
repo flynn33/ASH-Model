@@ -46,6 +46,7 @@ from ash_model.finite_observer_limit import (
     validate_projective_consistency,
     validation_summary as finite_observer_validation_summary,
 )
+from ash_model.locked_predictions import LOCKED_PREDICTION_IDS, verify_lock
 from ash_model.observer_commitment import verify_r009
 from ash_model.hypercube import (
     coset_partition,
@@ -469,6 +470,25 @@ def _finite_observer_limit_certificate() -> dict[str, object]:
     }
 
 
+def _locked_predictions_certificate() -> dict[str, object]:
+    verification = verify_lock(REPO_ROOT)
+    locked_files = verification["locked_files"]
+    return {
+        "schema": verification["schema"],
+        "freeze_date": verification["freeze_date"],
+        "prediction_ids": verification["prediction_ids"],
+        "locked_prediction_count": verification["locked_prediction_count"],
+        "ledger_hash_matches": verification["ledger_hash_matches"],
+        "all_locked_files_match": verification["all_locked_files_match"],
+        "locked_file_rows": {
+            filename: metadata["rows"]
+            for filename, metadata in sorted(locked_files.items())
+        },
+        "passed": verification["passed"],
+        "boundary": verification["scientific_boundary"],
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -485,6 +505,7 @@ def build_certificate() -> dict[str, object]:
         "observer_commitment": _observer_commitment_certificate(),
         "unit_bridge": _unit_bridge_certificate(),
         "finite_observer_limit": _finite_observer_limit_certificate(),
+        "locked_predictions": _locked_predictions_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -571,6 +592,14 @@ def build_certificate() -> dict[str, object]:
         and all(sections["finite_observer_limit"]["uniform_fiber_checks"].values())
         and sections["finite_observer_limit"]["unit_scale_rows"][-1]["ell_m"] == 1.0
         and sections["finite_observer_limit"]["unit_scale_rows"][-1]["tau_s"] == 1.0,
+        "locked_predictions_verified": sections["locked_predictions"]["passed"] is True
+        and sections["locked_predictions"]["prediction_ids"] == list(LOCKED_PREDICTION_IDS)
+        and sections["locked_predictions"]["locked_prediction_count"] == 3
+        and sections["locked_predictions"]["ledger_hash_matches"] is True
+        and sections["locked_predictions"]["all_locked_files_match"] is True
+        and sections["locked_predictions"]["locked_file_rows"]["r015_locked_expansion_prediction.csv"] >= 100
+        and sections["locked_predictions"]["locked_file_rows"]["r015_locked_matter_template.csv"] >= 100
+        and sections["locked_predictions"]["locked_file_rows"]["r015_locked_lowell_template.csv"] >= 30,
     }
     return {
         "certificate_schema": "1.0.0",
@@ -598,6 +627,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     observer_commitment = certificate["sections"]["observer_commitment"]
     unit_bridge = certificate["sections"]["unit_bridge"]
     finite_observer_limit = certificate["sections"]["finite_observer_limit"]
+    locked_predictions = certificate["sections"]["locked_predictions"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -737,6 +767,17 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Unit scale rows: `{finite_observer_limit['unit_scale_rows']}`",
         f"- Sample interval nodes: `{finite_observer_limit['sample_interval_nodes_n9_dt4_d2']}`",
         "- Boundary: finite-observer limit closure only.",
+        "",
+        "## R-015 locked predictions",
+        "",
+        f"- Schema: `{locked_predictions['schema']}`",
+        f"- Freeze date: `{locked_predictions['freeze_date']}`",
+        f"- Prediction IDs: `{locked_predictions['prediction_ids']}`",
+        f"- Locked prediction count: `{locked_predictions['locked_prediction_count']}`",
+        f"- Ledger hash matches: `{locked_predictions['ledger_hash_matches']}`",
+        f"- Locked CSV hashes match: `{locked_predictions['all_locked_files_match']}`",
+        f"- Locked CSV rows: `{locked_predictions['locked_file_rows']}`",
+        "- Boundary: immutable prospective synthetic templates and falsification metadata only.",
         "",
         "## Check matrix",
         "",
