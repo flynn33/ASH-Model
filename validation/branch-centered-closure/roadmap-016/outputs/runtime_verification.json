@@ -1,0 +1,53 @@
+{
+  "closure": {
+    "closed_formal_candidate": true,
+    "closure_certificate_sha256": "21609a1b6a06a75082c4644e508cc94ade9a1a3c921be90023a8886b523c9387",
+    "closure_predicate": "Closed_R016(A_BC) iff all roadmap contracts are present, prediction ledger is hash locked, and boundaries are declared",
+    "component_count": 13,
+    "external_empirical_status": "not empirically validated",
+    "falsification_gate_count": 5,
+    "formal_model_tuple": "A_BC=(Omega,C,D,Gamma,T,mu,C_commit,M,B_l,E_ASH,P_ASH,L,Pi)",
+    "missing_components": [],
+    "missing_falsification_gates": [],
+    "missing_upstream_hashes": [],
+    "non_empirical_boundary": true,
+    "required_component_count": 13,
+    "roadmap_id": "R-016",
+    "scientific_status": "closed formal branch-centered model candidate with synthetic/readiness validation; not empirically validated",
+    "upstream_hashes_recorded": [
+      "R009",
+      "R010",
+      "R011",
+      "R012",
+      "R013",
+      "R014",
+      "R015"
+    ],
+    "verification_summary_sha256": "1a9bfd8c4fbb476c36c3c535ddf454efc67f222fe5cd3a10158bcf220a9f7d10"
+  },
+  "model_card": {
+    "closure_date": "2026-06-26",
+    "definition_components": [
+      "Omega",
+      "C,D",
+      "Gamma",
+      "T",
+      "mu",
+      "C_commit",
+      "M",
+      "B_l",
+      "limit",
+      "background",
+      "perturbations",
+      "likelihoods",
+      "predictions"
+    ],
+    "model_name": "ASH branch-centered cosmology closure candidate v0.1",
+    "scientific_status": "closed formal branch-centered model candidate with synthetic/readiness validation; not empirically validated",
+    "synthetic_closure_observables": {
+      "lowell_template_dynamic_range": 0.04005746118171283,
+      "matter_template_dynamic_range": 0.013966102000335656,
+      "max_delta_H_over_H": 0.0029124783268044
+    }
+  }
+}

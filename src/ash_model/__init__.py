@@ -32,6 +32,13 @@ from .background_bridge import (
     posterior_from_grid,
     run_validation as run_background_bridge_validation,
 )
+from .branch_centered_closure import (
+    REQUIRED_COMPONENT_SYMBOLS,
+    branch_centered_model_card,
+    load_component_matrix,
+    load_falsification_matrix,
+    verify_branch_centered_closure,
+)
 from .code import (
     CODEWORDS,
     GENERATOR_MATRIX,
@@ -211,6 +218,7 @@ __all__ = [
     "ObservableCalibration",
     "ObserverCommitmentConfig",
     "PerturbationParameters",
+    "REQUIRED_COMPONENT_SYMBOLS",
     "LimitLevelSummary",
     "UnitScaleRow",
     "angular_diameter_distance",
@@ -219,6 +227,7 @@ __all__ = [
     "bits_to_int",
     "background_moments",
     "branch_entropy_template",
+    "branch_centered_model_card",
     "bootstrap_covariance",
     "bootstrap_observable_samples",
     "calibrate_observable",
@@ -280,6 +289,8 @@ __all__ = [
     "load_calibration",
     "load_lock_certificate",
     "load_locked_ledger",
+    "load_component_matrix",
+    "load_falsification_matrix",
     "make_integrity_state",
     "matter_grid",
     "matter_power",
@@ -328,6 +339,7 @@ __all__ = [
     "validate_unit_bridge_artifacts",
     "verify_memory_prefix_embedding",
     "verify_lock",
+    "verify_branch_centered_closure",
     "verify_r009",
     "weight_level_degeneracies",
     "weight_background_kernel",

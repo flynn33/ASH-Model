@@ -148,6 +148,16 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - Locked CSV rows: `{'r015_locked_expansion_prediction.csv': 126, 'r015_locked_lowell_template.csv': 59, 'r015_locked_matter_template.csv': 160}`
 - Boundary: immutable prospective synthetic templates and falsification metadata only.
 
+## R-016 branch-centered closure
+
+- Roadmap ID: `R-016`
+- Component count: `13` / `13`
+- Falsification gates: `5`
+- Upstream hashes recorded: `['R009', 'R010', 'R011', 'R012', 'R013', 'R014', 'R015']`
+- Formal candidate closed: `True`
+- External empirical status: `not empirically validated`
+- Boundary: formal repository-contract closure with synthetic/readiness validation only.
+
 ## Check matrix
 
 - `code_parameters`: `PASS`
@@ -178,3 +188,4 @@ This certificate is written by `tools/run_proof_suite.py`. Finite code, decoder,
 - `unit_bridge_verified`: `PASS`
 - `finite_observer_limit_verified`: `PASS`
 - `locked_predictions_verified`: `PASS`
+- `branch_centered_closure_verified`: `PASS`

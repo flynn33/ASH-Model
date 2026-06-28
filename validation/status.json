@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-28T12:55:00Z",
+  "updated_utc": "2026-06-28T13:15:00Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -189,9 +189,12 @@
         "figures/ash-cosmology/external-likelihoods/v0.1/",
         "validation/external-likelihoods/roadmap-014/README.md",
         "validation/external-likelihoods/roadmap-014/outputs/verification.json",
-        "validation/external-likelihoods/roadmap-014/outputs/r014_preregistration_lock.json"
+        "validation/external-likelihoods/roadmap-014/outputs/r014_preregistration_lock.json",
+        "validation/branch-centered-closure/roadmap-016/outputs/r016_closure_certificate.json",
+        "validation/branch-centered-closure/roadmap-016/outputs/runtime_verification.json",
+        "data/ash-cosmology/branch-centered-closure/v0.1/r016_falsification_gate_matrix.csv"
       ],
-      "notes": "Diagonal Gaussian likelihood and model-comparison mechanics remain implemented. R-014 adds external-likelihood readiness with Cholesky covariance handling, metadata-only reviewed product registry contracts, preregistration/hash policy, matched synthetic baselines, and deterministic synthetic recovery validation. Official external data vectors, official covariance files, observed-data scoring, empirical validation, and locked predictions remain outside scope."
+      "notes": "Diagonal Gaussian likelihood and model-comparison mechanics remain implemented. R-014 adds external-likelihood readiness with Cholesky covariance handling, metadata-only reviewed product registry contracts, preregistration/hash policy, matched synthetic baselines, and deterministic synthetic recovery validation. R-016 records formal falsification gates for the assembled branch-centered contract. Official external data vectors, official covariance files, observed-data scoring, empirical validation, and physical model validation remain outside scope."
     },
     {
       "id": "VAL-003",
@@ -241,9 +244,11 @@
         "docs/ash-cosmology/locked-predictions/roadmap-015/r015_formal_expressions.json",
         "validation/locked-predictions/roadmap-015/README.md",
         "validation/locked-predictions/roadmap-015/outputs/verification.json",
-        "theory/locked-prospective-predictions_R015_addendum.md"
+        "theory/locked-prospective-predictions_R015_addendum.md",
+        "validation/branch-centered-closure/roadmap-016/outputs/r016_closure_certificate.json",
+        "docs/ash-cosmology/branch-centered-closure/roadmap-016/README.md"
       ],
-      "notes": "Prediction ledger hash-lock mechanics, gate validation, and R-015 immutable prospective/held-out prediction templates are implemented. R-015 locks three synthetic-template prediction entries, CSV artifact hashes, freeze metadata, and falsification rules; no external data is analyzed and future held-out comparison remains pending."
+      "notes": "Prediction ledger hash-lock mechanics, gate validation, and R-015 immutable prospective/held-out prediction templates are implemented. R-016 consumes the R-015 lock hash as a formal dependency in the branch-centered closure certificate. No external data is analyzed and future held-out comparison remains pending."
     },
     {
       "id": "PROOF-001",
@@ -272,9 +277,24 @@
         "tools/generate_locked_predictions.py",
         "predictions/locked/r015_prediction_ledger.locked.json",
         "predictions/locked/r015_lock_certificate.json",
-        "validation/locked-predictions/roadmap-015/outputs/verification.json"
+        "validation/locked-predictions/roadmap-015/outputs/verification.json",
+        "src/ash_model/branch_centered_closure.py",
+        "tests/test_branch_centered_closure.py",
+        "tools/generate_branch_centered_closure.py",
+        "config/ash_r016_branch_centered_closure_contract.json",
+        "docs/ash-cosmology/branch-centered-closure/roadmap-016/README.md",
+        "docs/ash-cosmology/branch-centered-closure/roadmap-016/r016_formal_expressions.json",
+        "data/ash-cosmology/branch-centered-closure/v0.1/",
+        "figures/ash-cosmology/branch-centered-closure/v0.1/",
+        "validation/branch-centered-closure/roadmap-016/README.md",
+        "validation/branch-centered-closure/roadmap-016/outputs/r016_closure_certificate.json",
+        "validation/branch-centered-closure/roadmap-016/outputs/verification.json",
+        "validation/branch-centered-closure/roadmap-016/outputs/runtime_verification.json",
+        "theory/branch-centered-model-closure_R016_addendum.md",
+        "theory/branch_centered_model_closure_R016_formal_definition.tex",
+        "phenomenology/branch_centered_closure_spec_R016_addendum.md"
       ],
-      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, R-013 bounded perturbation workbench evidence, R-014 external-likelihood readiness evidence, and R-015 lock-integrity evidence."
+      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, R-013 bounded perturbation workbench evidence, R-014 external-likelihood readiness evidence, R-015 lock-integrity evidence, and R-016 formal branch-centered contract-closure evidence. R-016 is not empirical validation or physical model validation."
     },
     {
       "id": "SCAN-001",
@@ -316,7 +336,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true with locked_predictions_verified included in the computational certificate."
+      "summary": "all_checks_pass true with locked_predictions_verified and branch_centered_closure_verified included in the computational certificate."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
@@ -331,7 +351,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python docs/ash-physics-validation/scripts/run_repository_gate.py .",
       "result": "passed",
-      "summary": "Repository gate passed."
+      "summary": "Repository gate passed after R-016 integration."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/validate_json_assets.py .",
@@ -341,7 +361,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json",
       "result": "passed",
-      "summary": "155 data-manifest entries matched tracked file sizes and SHA-256 checksums."
+      "summary": "169 data-manifest entries matched tracked file sizes and SHA-256 checksums."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/final_repository_audit.py .",
@@ -391,7 +411,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q src tools",
       "result": "passed",
-      "summary": "Compiled repository source and tool modules after adding the R-015 lock verifier."
+      "summary": "Compiled repository source and tool modules after adding the R-016 branch-centered closure verifier."
     },
     {
       "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /tmp/ash-model-validation-venv/bin/python -m pytest -q tests/test_locked_predictions.py",
@@ -401,17 +421,27 @@
     {
       "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /tmp/ash-model-validation-venv/bin/python -m pytest -q",
       "result": "passed",
-      "summary": "Full repository test suite passed after R-015 integration."
+      "summary": "Full repository test suite passed after R-016 integration."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_branch_centered_closure.py --out-root . --require-pass",
+      "result": "passed",
+      "summary": "Verified R-016 component matrix, falsification gates, R009-R015 dependency hashes, non-empirical boundary, and wrote runtime verification JSON."
+    },
+    {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /tmp/ash-model-validation-venv/bin/python -m pytest -q tests/test_branch_centered_closure.py",
+      "result": "passed",
+      "summary": "6 passed for R-016 component coverage, falsification gates, upstream hash recording, non-empirical boundary, and model-card observables."
     }
   ],
   "open_blockers": [
     "No reviewed physical calibration constants map finite ASH observables to measured spacetime, fields, or data products; R-010 uses fiducial synthetic scales only.",
     "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph; R-011 closes only the finite-observer limit route.",
-    "No unit-bearing bridge with reviewed physical calibration, official external covariance source, observed-data matched baseline, and prediction lock is committed; R-010, R-012, R-013, and R-014 are synthetic finite-observer, matter-sector, or readiness workbenches only.",
+    "No unit-bearing bridge with reviewed physical calibration, official external covariance source, observed-data matched baseline, and prediction lock is committed; R-010, R-012, R-013, R-014, R-015, and R-016 are synthetic finite-observer, matter-sector, readiness, lock-mechanics, or formal-contract workbenches only.",
     "No gauge convention or physical degrees-of-freedom map exists for a differentiable continuum interpretation.",
     "No ASH-derived standard cosmological background with reviewed physical FRW or Einstein-equation status is committed; R-012 closes only a synthetic finite-observer background-equation workbench and standard-baseline relation.",
     "No full photon-baryon Boltzmann hierarchy, CLASS/CAMB replacement, survey-calibrated CMB or matter-spectrum observable solver, or external perturbation likelihood is committed; R-013 closes only a bounded matter-sector workbench and proxy interface.",
-    "No external data product, official covariance source, or observed-data matched empirical baseline is committed; R-014 supplies metadata-only registry/contracts and synthetic fixtures only.",
+    "No external data product, official covariance source, or observed-data matched empirical baseline is committed; R-014 supplies metadata-only registry/contracts and synthetic fixtures, and R-016 supplies formal closure gates only.",
     "No scientific prospective or held-out prediction is scored against external observed data; R-015 locks prospective synthetic templates, hashes, freeze metadata, and falsification rules only."
   ],
   "claim_downgrades": [
@@ -425,6 +455,7 @@
     "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist.",
     "R-013 supplies a bounded matter-sector perturbation workbench and low-ell CMB interface proxy; it is not a full Boltzmann solver, empirical CMB or matter-spectrum validation, external likelihood, or locked prediction.",
     "R-014 supplies external-likelihood readiness with metadata-only reviewed product contracts and synthetic fixtures; it is not observed-data scoring, empirical validation, or a locked prediction.",
-    "R-015 supplies immutable prospective synthetic-template locks and falsification metadata; it is not external observed-data scoring, empirical validation, or branch-centered model closure."
+    "R-015 supplies immutable prospective synthetic-template locks and falsification metadata; it is not external observed-data scoring, empirical validation, or branch-centered model closure.",
+    "R-016 supplies formal branch-centered repository-contract closure with synthetic/readiness validation; it is not empirical validation, physical model validation, external observed-data scoring, or evidence of preference over matched baselines."
   ]
 }

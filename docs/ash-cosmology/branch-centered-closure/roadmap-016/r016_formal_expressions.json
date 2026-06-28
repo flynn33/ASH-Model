@@ -1,0 +1,10 @@
+{
+  "model_tuple": "A_BC=(Omega,C,D,Gamma,T,mu,C_commit,M,B_l,E_ASH,P_ASH,L,Pi)",
+  "closure_predicate": "Closed_R016(A_BC) iff all roadmap contracts are present, prediction ledger is hash locked, and boundaries are declared",
+  "non_claims": [
+    "differentiable continuum metric",
+    "Born-rule proof",
+    "external empirical validation",
+    "full Boltzmann hierarchy"
+  ]
+}
