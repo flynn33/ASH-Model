@@ -71,6 +71,11 @@ from .physical_perturbations import (
     solve_growth,
     synthetic_observations,
 )
+from .external_likelihoods import (
+    Params as ExternalLikelihoodParams,
+    gaussian_loglike,
+    validation_summary as external_likelihood_validation_summary,
+)
 from .empirical import (
     CalibratedObservable,
     LikelihoodResult,
@@ -184,6 +189,7 @@ __all__ = [
     "BranchRecord",
     "BRIDGE_VERSION",
     "DecodeResult",
+    "ExternalLikelihoodParams",
     "H_ash",
     "H_km_s_Mpc",
     "LikelihoodResult",
@@ -234,6 +240,7 @@ __all__ = [
     "flip_bit",
     "fit_alpha_mu_grid",
     "frontier",
+    "external_likelihood_validation_summary",
     "finite_background_features",
     "finite_features_by_depth",
     "finite_observer_adjacency_spectrum",
@@ -248,6 +255,7 @@ __all__ = [
     "fiber_sizes",
     "hamming_distance",
     "hamming_weight",
+    "gaussian_loglike",
     "hypercube_adjacency_spectrum",
     "hypercube_edge_count",
     "hypercube_laplacian_spectrum",

@@ -1,0 +1,42 @@
+{
+  "closure_route": "external-likelihood readiness with synthetic fixtures and reviewed-data contracts",
+  "external_data_policy": "No third-party data are bundled. Registry defines required official products, covariance source, provenance, and lock hashes to be computed after ingestion.",
+  "falsification_thresholds": {
+    "ASH_grid_recovery_abs_error_alpha_mu_gt_0.02_on_synthetic": "fail synthetic readiness",
+    "ASH_grid_recovery_abs_error_omega_ash_gt_0.005_on_synthetic": "fail synthetic readiness",
+    "covariance_not_spd": "fail",
+    "locked_prediction_modified_after_freeze": "fail R-015, not R-014",
+    "matched_LCDM_or_control_DeltaAIC_le_0_on_claimed_signature": "demote ASH-specific claim",
+    "unregistered_external_hash_change_after_unblinding": "fail"
+  },
+  "likelihood": "Gaussian -0.5[(d-m)^T C^-1 (d-m)+log det C+n log(2pi)] with Cholesky solve",
+  "limitations": [
+    "synthetic validation only",
+    "not a real-data likelihood run",
+    "not a Planck/Pantheon/DESI/BOSS redistribution",
+    "not an empirical claim"
+  ],
+  "matched_baselines": [
+    "LCDM_nested_baseline",
+    "ASH_background_only",
+    "ASH_perturbation_only",
+    "ASH_truth_family"
+  ],
+  "package": "ASH R-014 external likelihoods and matched baselines",
+  "probes": [
+    "SN_mu",
+    "BAO_DM_rd",
+    "BAO_DH_rd",
+    "GROWTH_fsigma8",
+    "CMB_lowell_Dl"
+  ],
+  "upstream_assumed": [
+    "R-008 accepted",
+    "R-009 accepted",
+    "R-010 accepted",
+    "R-011 accepted",
+    "R-012 accepted",
+    "R-013 accepted"
+  ],
+  "version": "0.1.0-repository-overlay"
+}
