@@ -33,8 +33,8 @@ Current repository posture:
 
 - Repository finite-observer implementation work through Roadmap 011 is
   complete and verified.
-- Roadmap 010 and Roadmap 011 are merged into `main` and are part of the
-  repository's current proof, data-manifest, and validation surfaces.
+- Roadmap 010, Roadmap 011, and Roadmap 012 are part of the repository's
+  current proof, data-manifest, and validation surfaces.
 - Scientific readiness is not complete: reviewed physical calibration,
   differentiable continuum or physical metric interpretation, physical
   perturbation solver, external likelihoods, and locked predictions remain
@@ -53,13 +53,17 @@ Current repository posture:
   outputs, but they do not close physical calibration, differentiable
   continuum geometry, physical perturbation, CMB, matter-spectrum,
   physical-wavenumber, locked-prediction, empirical-validation, or full
-  model-closure gates.
+  model-closure gates. Roadmap 012 adds a synthetic finite-observer
+  cosmological background-equation workbench and exact standard-baseline
+  relation only; it does not close physical perturbation equations, CMB,
+  matter-spectrum, external-likelihood, empirical-validation, or
+  locked-prediction gates.
 
 Post-R011 publication state:
 
 | Surface | Current state |
 |---|---|
-| Repository roadmap | R-001 through R-011 are complete within their stated finite scopes. |
+| Repository roadmap | R-001 through R-012 are complete within their stated finite scopes. |
 | README and data documentation | Current through the synthetic unit bridge and finite-observer hierarchy. |
 | Proof certificate | Covers finite ASH, finite-observer physics, R-010 bridge checks, and R-011 finite-observer checks. |
 | Data manifest | Tracks R-007 through R-011 generated CSV/JSON/PNG evidence. |
@@ -90,7 +94,7 @@ Primary roadmap sources:
 | R-009 | Commitment, observer memory, and decoherence rule | `complete` | 2026-06-26 | [`src/ash_model/observer_commitment.py`](src/ash_model/observer_commitment.py), [`tests/test_observer_commitment.py`](tests/test_observer_commitment.py), [`tools/generate_observer_commitment.py`](tools/generate_observer_commitment.py), [`docs/ash-cosmology/observer-commitment/roadmap-009/README.md`](docs/ash-cosmology/observer-commitment/roadmap-009/README.md), [`data/ash-cosmology/observer-commitment/v0.1/`](data/ash-cosmology/observer-commitment/v0.1/), [`validation/observer-commitment/roadmap-009/outputs/verification.json`](validation/observer-commitment/roadmap-009/outputs/verification.json) |
 | R-010 | Unit-bearing physical bridge to observables | `complete` | 2026-06-26 | [`src/ash_model/unit_bridge.py`](src/ash_model/unit_bridge.py), [`tests/test_unit_bridge.py`](tests/test_unit_bridge.py), [`tools/generate_unit_bridge.py`](tools/generate_unit_bridge.py), [`config/ash_r010_unit_bridge_calibration.json`](config/ash_r010_unit_bridge_calibration.json), [`docs/ash-cosmology/unit-bridge/roadmap-010/README.md`](docs/ash-cosmology/unit-bridge/roadmap-010/README.md), [`data/ash-cosmology/unit-bridge/v0.1/`](data/ash-cosmology/unit-bridge/v0.1/), [`validation/unit-bridge/roadmap-010/outputs/verification.json`](validation/unit-bridge/roadmap-010/outputs/verification.json) |
 | R-011 | Continuum, geometry, causal-structure, or finite-observer limit closure | `complete` | 2026-06-26 | [`src/ash_model/finite_observer_limit.py`](src/ash_model/finite_observer_limit.py), [`tests/test_finite_observer_limit.py`](tests/test_finite_observer_limit.py), [`tools/generate_finite_observer_limit.py`](tools/generate_finite_observer_limit.py), [`config/ash_r011_finite_observer_limit_contract.json`](config/ash_r011_finite_observer_limit_contract.json), [`docs/ash-cosmology/finite-observer-limit/roadmap-011/README.md`](docs/ash-cosmology/finite-observer-limit/roadmap-011/README.md), [`data/ash-cosmology/finite-observer-limit/v0.1/`](data/ash-cosmology/finite-observer-limit/v0.1/), [`figures/ash-cosmology/finite-observer-limit/v0.1/`](figures/ash-cosmology/finite-observer-limit/v0.1/), [`validation/finite-observer-limit/roadmap-011/outputs/verification.json`](validation/finite-observer-limit/roadmap-011/outputs/verification.json), [`theory/continuum-limit_R011_addendum.md`](theory/continuum-limit_R011_addendum.md), [`theory/causal-structure_R011_addendum.md`](theory/causal-structure_R011_addendum.md), [`proofs/physics-proof-obligations_R011_addendum.md`](proofs/physics-proof-obligations_R011_addendum.md) |
-| R-012 | Cosmological background equations and standard-baseline relation | `blocked` | 2026-06-26 | [`theory/cosmological-background.md`](theory/cosmological-background.md), [`phenomenology/ash_background_spec.md`](phenomenology/ash_background_spec.md), [`validation/lcdm-limit/README.md`](validation/lcdm-limit/README.md) |
+| R-012 | Cosmological background equations and standard-baseline relation | `complete` | 2026-06-28 | [`src/ash_model/cosmological_background.py`](src/ash_model/cosmological_background.py), [`tests/test_cosmological_background.py`](tests/test_cosmological_background.py), [`tools/generate_cosmological_background.py`](tools/generate_cosmological_background.py), [`config/ash_r012_background_contract.json`](config/ash_r012_background_contract.json), [`docs/ash-cosmology/background-equations/roadmap-012/README.md`](docs/ash-cosmology/background-equations/roadmap-012/README.md), [`data/ash-cosmology/background-equations/v0.1/`](data/ash-cosmology/background-equations/v0.1/), [`figures/ash-cosmology/background-equations/v0.1/`](figures/ash-cosmology/background-equations/v0.1/), [`validation/background-equations/roadmap-012/outputs/verification.json`](validation/background-equations/roadmap-012/outputs/verification.json) |
 | R-013 | Physical perturbation equations and CMB or matter-sector solver | `blocked` | 2026-06-26 | [`theory/linear-perturbations.md`](theory/linear-perturbations.md), [`phenomenology/ash_perturbations_spec.md`](phenomenology/ash_perturbations_spec.md), [`docs/ash-cosmology/linear-perturbations/roadmap-007/README.md`](docs/ash-cosmology/linear-perturbations/roadmap-007/README.md) |
 | R-014 | External likelihoods, matched empirical baselines, and reviewed data products | `blocked` | 2026-06-26 | [`validation/preregistration.md`](validation/preregistration.md), [`validation/matched-ablations/README.md`](validation/matched-ablations/README.md), [`validation/status.json`](validation/status.json) |
 | R-015 | Locked prospective or held-out scientific predictions | `blocked` | 2026-06-26 | [`predictions/prediction-ledger.json`](predictions/prediction-ledger.json), [`predictions/falsification-criteria.md`](predictions/falsification-criteria.md) |
@@ -101,15 +105,14 @@ Primary roadmap sources:
 | Priority | Roadmap item | Required closure evidence |
 |---:|---|---|
 | 1 | R-013 Physical perturbation equations and solver | Derivation that maps finite shell variables to physical perturbation variables, executable solver, gauge or boundary policy where applicable, synthetic recovery tests, and boundary documentation. |
-| 2 | R-012 Cosmological background equations and standard-baseline relation | ASH-derived background equation, parameter semantics, standard-baseline relation, numerical implementation, and comparison tests. |
-| 3 | R-014 External likelihoods and matched baselines | Reviewed data products, covariance inputs, matched baseline definitions, preregistered likelihoods, and reproducible validation commands. |
-| 4 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
-| 5 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, integration of the completed finite measure and observer workbenches, bridge-map relation, and validation boundary evidence. |
+| 2 | R-014 External likelihoods and matched baselines | Reviewed data products, covariance inputs, matched baseline definitions, preregistered likelihoods, and reproducible validation commands. |
+| 3 | R-015 Locked prospective or held-out predictions | Frozen prediction entries with hashes, falsification criteria, input freeze date, and repository validation. |
+| 4 | R-016 Branch-centered cosmology model closure | Closed branch-centered model definition, integration of the completed finite measure and observer workbenches, bridge-map relation, and validation boundary evidence. |
 
 Priority interpretation:
 
-- R-013 and R-012 are mathematical and computational derivation tasks, not
-  documentation tasks.
+- R-013 is a mathematical and computational derivation task, not a
+  documentation task.
 - R-014 cannot close until external data products, covariance handling,
   preregistration, and matched controls exist in the repository.
 - R-015 cannot close without frozen prediction-ledger entries.
@@ -117,6 +120,25 @@ Priority interpretation:
   a closed branch-centered cosmology model with explicit validation boundaries.
 
 ## Completion log
+
+### 2026-06-28
+
+- R-012 marked complete for a synthetic finite-observer cosmological
+  background-equation workbench and exact standard-baseline relation. Evidence:
+  explicit background parameters and source normalization,
+  \(\Omega_{\mathrm{ASH}}=0\) standard-baseline identity, deterministic
+  generator, targeted tests, generated CSV/PNG artifacts, validation JSON,
+  covariance output, and boundary documentation. This does not derive
+  Einstein equations, prove physical FRW continuum cosmology, validate or
+  replace \(\Lambda\)CDM, compute CMB or matter spectra, provide external
+  likelihoods, detect dark energy or modified gravity, or lock prospective
+  predictions.
+  Verification: `python3 tools/generate_cosmological_background.py --out-root . --refresh-figures`,
+  `python3 -m pytest tests/test_cosmological_background.py`,
+  `python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`,
+  `python3 tools/run_proof_suite.py`, `python3 -m pytest`,
+  `python3 tools/verify_repository.py`, and
+  `python3 tools/final_repository_audit.py .`.
 
 ### 2026-06-26
 

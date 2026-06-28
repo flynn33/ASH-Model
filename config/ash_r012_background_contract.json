@@ -1,0 +1,31 @@
+{
+  "schema": "ash.r012.background_calibration_contract.v1",
+  "roadmap_item": "R-012",
+  "assumed_upstream": [
+    "R-008",
+    "R-009",
+    "R-010",
+    "R-011"
+  ],
+  "units": {
+    "H0": "km s^-1 Mpc^-1",
+    "a": "dimensionless scale factor with a_today=1",
+    "t": "Gyr",
+    "chi": "Mpc",
+    "density_parameters": "dimensionless relative to critical density today"
+  },
+  "default_parameters": {
+    "H0_km_s_Mpc": 70.0,
+    "Omega_r": 9e-05,
+    "Omega_m": 0.315,
+    "Omega_k": 0.0,
+    "Omega_Lambda": 0.66491,
+    "Omega_ash": 0.02,
+    "ash_alpha_entropy": 0.45,
+    "ash_beta_defect": 0.35,
+    "ash_gamma_memory": 0.2
+  },
+  "baseline_relation": "Omega_ash=0 exactly recovers LCDM background E2(a).",
+  "provenance": "Independent R-012 package generated from accepted R-008..R-011 interfaces; no repository mutation.",
+  "external_data_status": "none; synthetic only"
+}

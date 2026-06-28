@@ -1,0 +1,9 @@
+{
+  "E_ASH_squared": "E_{ASH}^2(a)=\\Omega_r a^{-4}+\\Omega_m a^{-3}+\\Omega_k a^{-2}+\\Omega_\\Lambda+\\Omega_{ASH}\\Xi_{ASH}(a)",
+  "ASH_source": "\\Xi_{ASH}(a)=\\frac{\\alpha S_b(a)+\\beta D_b(a)+\\gamma M_b(a)}{\\alpha+\\beta+\\gamma}",
+  "LCDM_limit": "\\Omega_{ASH}=0 \\Rightarrow E_{ASH}^2(a)=E_{\\Lambda CDM}^2(a)",
+  "closure_today": "E_{ASH}^2(1)=\\Omega_r+\\Omega_m+\\Omega_k+\\Omega_\\Lambda+\\Omega_{ASH}",
+  "effective_w": "w_{ASH}(a)=-1-\\frac{1}{3}\\frac{d\\ln \\Xi_{ASH}}{d\\ln a}",
+  "age_integral": "t(a)-t(a_{min})=\\int_{a_{min}}^{a}\\frac{da'}{a'H(a')}",
+  "comoving_distance": "\\chi(a)=c\\int_{a_{min}}^a\\frac{da'}{a'^2H(a')}"
+}
