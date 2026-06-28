@@ -1,0 +1,9 @@
+{
+  "ledger_sha256": "adde5d7129fa2dfb59291960f8ddbfcf4aad16bb44fac7beda1362343a678b9e",
+  "locked_files": {
+    "r015_locked_expansion_prediction.csv": "6b2e78430cda61f9b87b4c64da0e5c26dd2d11a3104a9d00ec15ae0c09d0c4f1",
+    "r015_locked_matter_template.csv": "3d375a704dde4789507f7ff2b3a8d89be17d9557a15d9d43554c79fb96df68a6",
+    "r015_locked_lowell_template.csv": "4cc76e38a589bf43d938b6596a3631eeb51d60369639a7645a1920eb9da56f50"
+  },
+  "status": "locked"
+}

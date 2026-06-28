@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-28T12:17:33Z",
+  "updated_utc": "2026-06-28T12:55:00Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -227,9 +227,23 @@
         "predictions/falsification-criteria.md",
         "src/ash_model/prediction_ledger.py",
         "tests/test_prediction_ledger.py",
-        "docs/ash-physics-validation/configs/prediction_ledger.schema.json"
+        "docs/ash-physics-validation/configs/prediction_ledger.schema.json",
+        "src/ash_model/locked_predictions.py",
+        "tests/test_locked_predictions.py",
+        "tools/generate_locked_predictions.py",
+        "config/ash_r015_prediction_lock_contract.json",
+        "predictions/locked/r015_prediction_ledger.locked.json",
+        "predictions/locked/r015_lock_certificate.json",
+        "predictions/falsification-criteria_R015_addendum.md",
+        "data/ash-cosmology/locked-predictions/v0.1/",
+        "figures/ash-cosmology/locked-predictions/v0.1/",
+        "docs/ash-cosmology/locked-predictions/roadmap-015/README.md",
+        "docs/ash-cosmology/locked-predictions/roadmap-015/r015_formal_expressions.json",
+        "validation/locked-predictions/roadmap-015/README.md",
+        "validation/locked-predictions/roadmap-015/outputs/verification.json",
+        "theory/locked-prospective-predictions_R015_addendum.md"
       ],
-      "notes": "Prediction ledger hash-lock mechanics and gate validation are implemented; no scientific prediction is currently locked."
+      "notes": "Prediction ledger hash-lock mechanics, gate validation, and R-015 immutable prospective/held-out prediction templates are implemented. R-015 locks three synthetic-template prediction entries, CSV artifact hashes, freeze metadata, and falsification rules; no external data is analyzed and future held-out comparison remains pending."
     },
     {
       "id": "PROOF-001",
@@ -252,9 +266,15 @@
         "validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json",
         "src/ash_model/external_likelihoods.py",
         "tests/test_external_likelihoods.py",
-        "validation/external-likelihoods/roadmap-014/outputs/verification.json"
+        "validation/external-likelihoods/roadmap-014/outputs/verification.json",
+        "src/ash_model/locked_predictions.py",
+        "tests/test_locked_predictions.py",
+        "tools/generate_locked_predictions.py",
+        "predictions/locked/r015_prediction_ledger.locked.json",
+        "predictions/locked/r015_lock_certificate.json",
+        "validation/locked-predictions/roadmap-015/outputs/verification.json"
       ],
-      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, R-013 bounded perturbation workbench evidence, and R-014 external-likelihood readiness evidence."
+      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, R-013 bounded perturbation workbench evidence, R-014 external-likelihood readiness evidence, and R-015 lock-integrity evidence."
     },
     {
       "id": "SCAN-001",
@@ -296,7 +316,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/run_proof_suite.py",
       "result": "passed",
-      "summary": "all_checks_pass true with the finite_observer_limit_verified check included."
+      "summary": "all_checks_pass true with locked_predictions_verified included in the computational certificate."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest",
@@ -321,7 +341,7 @@
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json",
       "result": "passed",
-      "summary": "Data manifest entries matched tracked file sizes and SHA-256 checksums."
+      "summary": "155 data-manifest entries matched tracked file sizes and SHA-256 checksums."
     },
     {
       "command": "/tmp/ash-model-validation-venv/bin/python tools/final_repository_audit.py .",
@@ -357,6 +377,31 @@
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_external_likelihoods.py",
       "result": "passed",
       "summary": "5 passed for SPD covariance likelihood, nested LCDM limit, synthetic grid recovery, matched baselines, and deterministic preregistration hash behavior."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_locked_predictions.py --out-root . --require-pass",
+      "result": "passed",
+      "summary": "Verified R-015 frozen ledger hash, three locked CSV hashes, row counts, prediction IDs, and wrote validation JSON."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_locked_predictions.py",
+      "result": "passed",
+      "summary": "5 passed for R-015 schema, prediction IDs, falsification metadata, locked artifact hashes, row counts, and boundary language."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m compileall -q src tools",
+      "result": "passed",
+      "summary": "Compiled repository source and tool modules after adding the R-015 lock verifier."
+    },
+    {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /tmp/ash-model-validation-venv/bin/python -m pytest -q tests/test_locked_predictions.py",
+      "result": "passed",
+      "summary": "5 passed for R-015 schema, prediction IDs, falsification metadata, locked artifact hashes, row counts, and boundary language."
+    },
+    {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /tmp/ash-model-validation-venv/bin/python -m pytest -q",
+      "result": "passed",
+      "summary": "Full repository test suite passed after R-015 integration."
     }
   ],
   "open_blockers": [
@@ -367,7 +412,7 @@
     "No ASH-derived standard cosmological background with reviewed physical FRW or Einstein-equation status is committed; R-012 closes only a synthetic finite-observer background-equation workbench and standard-baseline relation.",
     "No full photon-baryon Boltzmann hierarchy, CLASS/CAMB replacement, survey-calibrated CMB or matter-spectrum observable solver, or external perturbation likelihood is committed; R-013 closes only a bounded matter-sector workbench and proxy interface.",
     "No external data product, official covariance source, or observed-data matched empirical baseline is committed; R-014 supplies metadata-only registry/contracts and synthetic fixtures only.",
-    "No scientific prospective or held-out prediction is locked."
+    "No scientific prospective or held-out prediction is scored against external observed data; R-015 locks prospective synthetic templates, hashes, freeze metadata, and falsification rules only."
   ],
   "claim_downgrades": [
     "ASH-Physics v0.2 completes a finite-observer stochastic foundation only.",
@@ -379,6 +424,7 @@
     "Calibration and likelihood mechanics are contracts; they are not external empirical validation.",
     "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist.",
     "R-013 supplies a bounded matter-sector perturbation workbench and low-ell CMB interface proxy; it is not a full Boltzmann solver, empirical CMB or matter-spectrum validation, external likelihood, or locked prediction.",
-    "R-014 supplies external-likelihood readiness with metadata-only reviewed product contracts and synthetic fixtures; it is not observed-data scoring, empirical validation, or a locked prediction."
+    "R-014 supplies external-likelihood readiness with metadata-only reviewed product contracts and synthetic fixtures; it is not observed-data scoring, empirical validation, or a locked prediction.",
+    "R-015 supplies immutable prospective synthetic-template locks and falsification metadata; it is not external observed-data scoring, empirical validation, or branch-centered model closure."
   ]
 }

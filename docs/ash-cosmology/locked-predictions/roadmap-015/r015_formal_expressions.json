@@ -1,0 +1,5 @@
+{
+  "prediction_lock": "Pi={p_i}; Lock(Pi)=SHA256(Pi, data_vectors, freeze_date)",
+  "mutation_rule": "p_i may be superseded only by p_j with a new identifier; p_i remains auditable",
+  "falsification_schema": "F_i(data)=true when preregistered likelihood excludes p_i at declared threshold"
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "ash.r015.locked_prediction_ledger.v1",
+  "freeze_date": "2026-06-26",
+  "timezone": "America/Chicago",
+  "roadmap_item": "R-015 Locked prospective or held-out scientific predictions",
+  "upstream_assumed_accepted": {
+    "R012": "4af0c4e5043135e4abcf6e9ff069ec86bfee3669baffa8dff465bdb985e63890",
+    "R013": "deb6fb6d45262f84ccd83c206222d1f6b8e5ab6d565cb96eec960c2ebdab3aa5",
+    "R014": "c6e8e816bb3c9ee028be7e9352c672c70def6741a1c2f832156208623e0c12a9"
+  },
+  "model_family": "ASH branch-centered synthetic-readiness model, R012-R014 accepted assumptions",
+  "predictions": [
+    {
+      "prediction_id": "ASH-R015-P001",
+      "title": "Late-time branch-entropy expansion residual",
+      "observable": "Delta_H_over_H relative to matched flat LCDM with same H0 and Omega_m",
+      "domain": "0 <= z <= 2.5",
+      "locked_numeric_claim": {
+        "max_delta_H_over_H": 0.002912478326804413,
+        "z_at_max": 1.04,
+        "delta_H_over_H_at_z_1": 0.002901964021648995,
+        "sign": "nonnegative on the locked interval"
+      },
+      "falsification_rule": "Falsify this locked branch if a preregistered external expansion-data likelihood with matched LCDM baseline and published covariance excludes every point of the locked envelope at Delta chi^2 >= 9 while the matched LCDM baseline remains acceptable.",
+      "held_out_data_classes": [
+        "future/reprocessed BAO expansion compilations",
+        "held-out cosmic-chronometer H(z) compilation",
+        "held-out Type-Ia SN distance-ladder-free residual compilation"
+      ]
+    },
+    {
+      "prediction_id": "ASH-R015-P002",
+      "title": "Finite-shell matter-spectrum residual template",
+      "observable": "P_ASH(k)/P_LCDM(k) after matched broadband marginalization",
+      "domain": "1e-3 <= k/[h Mpc^-1] <= 1",
+      "locked_numeric_claim": {
+        "min_ratio": 0.9937461402744073,
+        "max_ratio": 1.0077122422747429,
+        "k_at_max": 0.08047488733750892,
+        "k_at_min": 0.16126761746240661,
+        "oscillatory_zero_crossings_after_mean_removal": 11
+      },
+      "falsification_rule": "Falsify if a held-out matter-sector likelihood with the specified broadband nuisance model finds no nonzero shell-template amplitude and excludes the locked alpha_mu=0.07 template at Delta chi^2 >= 9.",
+      "held_out_data_classes": [
+        "held-out galaxy-clustering P(k) shape vector",
+        "weak-lensing shear-ratio compression",
+        "future/reprocessed matter power summary with covariance"
+      ]
+    },
+    {
+      "prediction_id": "ASH-R015-P003",
+      "title": "Low-ell finite-parity even/odd proxy sign",
+      "observable": "compressed low-ell shell/parity asymmetry statistic A_2_30",
+      "domain": "2 <= ell <= 30",
+      "locked_numeric_claim": {
+        "A_2_30_proxy": 0.025911762310551256,
+        "sign": "positive in the frozen proxy convention",
+        "template_max": 1.0207152953748184,
+        "template_min": 0.9806578341931056
+      },
+      "falsification_rule": "Falsify if a held-out low-ell likelihood using the locked compression and covariance excludes the positive-sign parity statistic at >=3 sigma after look-elsewhere corrections declared in the preregistration.",
+      "held_out_data_classes": [
+        "future/reprocessed low-ell CMB temperature likelihood",
+        "simulated null sky ensemble generated before unblinding"
+      ]
+    }
+  ],
+  "mutation_policy": "After the freeze date, prediction numerical claims, domains, nuisance policies, and falsification rules may only be superseded by new IDs; original entries remain immutable."
+}
