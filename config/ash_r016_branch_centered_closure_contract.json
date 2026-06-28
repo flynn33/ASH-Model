@@ -1,0 +1,30 @@
+{
+  "roadmap_id": "R-016",
+  "title": "Branch-centered cosmology model closure",
+  "version": "v0.1",
+  "status_scope": "formal contract/readiness closure, not empirical validation",
+  "assumed_upstream": [
+    "R-008",
+    "R-009",
+    "R-010",
+    "R-011",
+    "R-012",
+    "R-013",
+    "R-014",
+    "R-015"
+  ],
+  "required_repository_evidence": [
+    "docs/ash-cosmology/branch-centered-closure/roadmap-016/README.md",
+    "data/ash-cosmology/branch-centered-closure/v0.1/r016_model_component_closure_matrix.csv",
+    "data/ash-cosmology/branch-centered-closure/v0.1/r016_falsification_gate_matrix.csv",
+    "validation/branch-centered-closure/roadmap-016/outputs/r016_closure_certificate.json",
+    "tests/test_branch_centered_closure.py"
+  ],
+  "non_claims": [
+    "empirical validation",
+    "preference over matched LCDM baselines",
+    "differentiable continuum metric",
+    "Born-rule proof",
+    "full Boltzmann hierarchy"
+  ]
+}

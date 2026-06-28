@@ -1,0 +1,6 @@
+gate,criterion,failure_action
+internal consistency,any component contract missing or hash mismatch,demote model to incomplete formal scaffold
+LCDM matched baseline,ASH cannot reduce to or compare against matched LCDM limit in frozen background/perturbation contracts,reopen R012/R013
+external likelihood,matched baselines outperform locked ASH signatures on held-out data after preregistered tests,reject or revise only under new prediction IDs
+prediction immutability,R015 lock mutation after unblinding,invalidate empirical claim
+bridge semantics,unit-bearing outputs cannot be traced to finite/branch features,reopen R010

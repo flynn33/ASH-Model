@@ -1,0 +1,14 @@
+symbol,definition,closure_evidence,layer
+Omega,local finite alphabet F2^9,complete under R001/R008 assumptions,finite/local
+"C,D",rank-4 doubly-even admissibility code and decoder policy,complete under local finite layer,finite/local
+Gamma,event graph/causal adjacency,closed as finite-observer graph hierarchy in R011,finite causal
+T,recursive branch tree/frontier,closed with R008 branch measure and R009 commitment assumptions,branch
+mu,normalized finite branch-measure law,accepted from R008,branch probability
+C_commit,observer-relative commitment/decoherence rule,accepted from R009,observer
+M,committed memory/history graph,accepted from R009,observer
+B_l,unit-bearing bridge map,accepted from R010,physical bridge
+limit,finite-observer limit closure,accepted from R011,geometry boundary
+background,ASH background equations with LCDM baseline relation,accepted from R012,cosmology
+perturbations,matter-sector physical perturbation solver,accepted from R013,cosmology
+likelihoods,external-likelihood readiness/contracts,accepted from R014,validation
+predictions,locked prospective predictions,provided by R015,validation

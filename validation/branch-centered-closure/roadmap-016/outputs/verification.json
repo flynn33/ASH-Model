@@ -1,0 +1,19 @@
+{
+  "pytest_expected": "5 passed",
+  "closure_date": "2026-06-26",
+  "component_count": 13,
+  "closure_certificate_sha256": "21609a1b6a06a75082c4644e508cc94ade9a1a3c921be90023a8886b523c9387",
+  "dependency_hashes": {
+    "R009": "3d28137a798b8116fc6f882b743571ffa94d3953a4eb7dffdfe595b66fc514d5",
+    "R010": "6a92839ce6a2467ee19cb14e793bf865660b9615f5e5a5b5c525259200536b7b",
+    "R011": "9e1f3b77e5aa1cc651bfeee78d236543a0d2a37303d925e351154d3a17e441a6",
+    "R012": "4af0c4e5043135e4abcf6e9ff069ec86bfee3669baffa8dff465bdb985e63890",
+    "R013": "deb6fb6d45262f84ccd83c206222d1f6b8e5ab6d565cb96eec960c2ebdab3aa5",
+    "R014": "c6e8e816bb3c9ee028be7e9352c672c70def6741a1c2f832156208623e0c12a9",
+    "R015": "adde5d7129fa2dfb59291960f8ddbfcf4aad16bb44fac7beda1362343a678b9e"
+  },
+  "external_empirical_status": "not empirically validated",
+  "boundary": "formal branch-centered model closure with synthetic/readiness validation only",
+  "pdf_render": "passed, 2 pages rendered",
+  "pytest": "5 passed"
+}

@@ -17,6 +17,11 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from ash_model.adinkra import adinkra_certificate
 from ash_model.bits import flip_bit, is_integrity_valid, xor_bits
+from ash_model.branch_centered_closure import (
+    REQUIRED_COMPONENT_SYMBOLS,
+    branch_centered_model_card,
+    verify_branch_centered_closure,
+)
 from ash_model.branching import branch_certificate
 from ash_model.code import CODEWORDS, code_certificate, decode, decode_affine
 from ash_model.cosmology import (
@@ -489,6 +494,28 @@ def _locked_predictions_certificate() -> dict[str, object]:
     }
 
 
+def _branch_centered_closure_certificate() -> dict[str, object]:
+    verification = verify_branch_centered_closure(REPO_ROOT)
+    model_card = branch_centered_model_card(REPO_ROOT)
+    return {
+        "roadmap_id": verification["roadmap_id"],
+        "component_count": verification["component_count"],
+        "required_component_count": verification["required_component_count"],
+        "missing_components": verification["missing_components"],
+        "falsification_gate_count": verification["falsification_gate_count"],
+        "missing_falsification_gates": verification["missing_falsification_gates"],
+        "upstream_hashes_recorded": verification["upstream_hashes_recorded"],
+        "missing_upstream_hashes": verification["missing_upstream_hashes"],
+        "formal_model_tuple": verification["formal_model_tuple"],
+        "closure_predicate": verification["closure_predicate"],
+        "non_empirical_boundary": verification["non_empirical_boundary"],
+        "external_empirical_status": verification["external_empirical_status"],
+        "closed_formal_candidate": verification["closed_formal_candidate"],
+        "scientific_status": verification["scientific_status"],
+        "model_card_name": model_card["model_name"],
+    }
+
+
 def build_certificate() -> dict[str, object]:
     sections = {
         "code": code_certificate(),
@@ -506,6 +533,7 @@ def build_certificate() -> dict[str, object]:
         "unit_bridge": _unit_bridge_certificate(),
         "finite_observer_limit": _finite_observer_limit_certificate(),
         "locked_predictions": _locked_predictions_certificate(),
+        "branch_centered_closure": _branch_centered_closure_certificate(),
     }
     checks = {
         "code_parameters": sections["code"]["rank"] == 4
@@ -600,6 +628,13 @@ def build_certificate() -> dict[str, object]:
         and sections["locked_predictions"]["locked_file_rows"]["r015_locked_expansion_prediction.csv"] >= 100
         and sections["locked_predictions"]["locked_file_rows"]["r015_locked_matter_template.csv"] >= 100
         and sections["locked_predictions"]["locked_file_rows"]["r015_locked_lowell_template.csv"] >= 30,
+        "branch_centered_closure_verified": sections["branch_centered_closure"]["closed_formal_candidate"] is True
+        and sections["branch_centered_closure"]["component_count"] == len(REQUIRED_COMPONENT_SYMBOLS)
+        and sections["branch_centered_closure"]["missing_components"] == []
+        and sections["branch_centered_closure"]["missing_falsification_gates"] == []
+        and sections["branch_centered_closure"]["missing_upstream_hashes"] == []
+        and sections["branch_centered_closure"]["non_empirical_boundary"] is True
+        and sections["branch_centered_closure"]["external_empirical_status"] == "not empirically validated",
     }
     return {
         "certificate_schema": "1.0.0",
@@ -628,6 +663,7 @@ def _markdown(certificate: dict[str, object]) -> str:
     unit_bridge = certificate["sections"]["unit_bridge"]
     finite_observer_limit = certificate["sections"]["finite_observer_limit"]
     locked_predictions = certificate["sections"]["locked_predictions"]
+    branch_centered_closure = certificate["sections"]["branch_centered_closure"]
     lines = [
         "# ASH Computational Proof Certificate",
         "",
@@ -778,6 +814,16 @@ def _markdown(certificate: dict[str, object]) -> str:
         f"- Locked CSV hashes match: `{locked_predictions['all_locked_files_match']}`",
         f"- Locked CSV rows: `{locked_predictions['locked_file_rows']}`",
         "- Boundary: immutable prospective synthetic templates and falsification metadata only.",
+        "",
+        "## R-016 branch-centered closure",
+        "",
+        f"- Roadmap ID: `{branch_centered_closure['roadmap_id']}`",
+        f"- Component count: `{branch_centered_closure['component_count']}` / `{branch_centered_closure['required_component_count']}`",
+        f"- Falsification gates: `{branch_centered_closure['falsification_gate_count']}`",
+        f"- Upstream hashes recorded: `{branch_centered_closure['upstream_hashes_recorded']}`",
+        f"- Formal candidate closed: `{branch_centered_closure['closed_formal_candidate']}`",
+        f"- External empirical status: `{branch_centered_closure['external_empirical_status']}`",
+        "- Boundary: formal repository-contract closure with synthetic/readiness validation only.",
         "",
         "## Check matrix",
         "",
