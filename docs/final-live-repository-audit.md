@@ -11,6 +11,8 @@ Audit date UTC: `2026-06-24T16:12:54Z`
 
 This audit covers repository readiness only. It preserves the finite-observer ASH-Physics v0.2 work and does not mark empirical cosmology, physical spacetime derivation, or external validation complete.
 
+Current-status note, 2026-06-28: this page records the historical 2026-06-24 live audit. Current R012-R016 repository evidence and boundaries are tracked in `ROADMAP.md`, `validation/status.json`, and `docs/remediation/final-remediation-evidence.json`.
+
 ## Commands run
 
 ```text
@@ -64,7 +66,7 @@ python -m pip install -e ".[dev]" -> passed
 python tools/generate_artifacts.py -> passed, 6 data artifacts generated and 5 figure artifacts verified
 python tools/build_manuscript.py -> passed, 9 tracked source inputs recorded
 python tools/run_proof_suite.py -> passed, all_checks_pass true
-python -m pytest -> passed, 83 tests
+python -m pytest -> passed for the then-current test suite
 python tools/verify_repository.py -> passed, no mismatches
 python docs/ash-physics-validation/scripts/check_claim_language.py . -> passed
 python docs/ash-physics-validation/scripts/check_sensitive_language.py . -> passed
@@ -81,15 +83,15 @@ git diff --check -> passed
 ## Remaining Science Blockers
 
 - Physical ontology connecting ASH states to real physical degrees of freedom.
-- Unit-bearing bridge to spacetime, matter, radiation, fields, and observables.
+- Reviewed unit-bearing bridge to spacetime, matter, radiation, fields, and observables.
 - Metric, light-cone, or relativistic interpretation.
-- ASH-derived background law.
-- Perturbation equations tied to observable cosmology.
-- External dataset ingestion with covariance.
-- Synthetic recovery tests.
-- Matched ablations against standard and non-ASH baselines.
-- Locked prospective or held-out prediction.
+- Physical ASH-derived background law beyond the R012 synthetic workbench.
+- Perturbation equations tied to observable cosmology beyond the R013 bounded workbench.
+- Official external dataset ingestion with covariance and observed-data scoring beyond the R014 readiness layer.
+- Empirical validation or falsification of the R015 locked templates.
+- Physical model validation beyond the R016 formal closure contract.
+- Independent replication.
 
 ## Final Decision
 
-Repository remediation is complete only when the final PR head passes the repository gates. The next phase is science-first work on the blockers above.
+Repository remediation is complete only when the final PR head passes the repository gates. The current roadmap now marks R001-R016 complete within their scoped repository boundaries; the next phase remains science-first work on the blockers above.

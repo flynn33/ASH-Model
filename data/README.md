@@ -2,7 +2,7 @@
 
 ## Overview
 
-This directory contains tracked ASH evidence data, research-package data, and generated validation outputs that support the repository documentation and proof boundaries. No new raw dataset was supplied for the 2026-06-26 repository update; this pass documents and validates the data assets already committed to the repository.
+This directory contains tracked ASH evidence data, research-package data, and generated validation outputs that support the repository documentation and proof boundaries. No raw observational dataset is bundled with the R012-R016 integration; this documentation records generated, synthetic, readiness, lock, and formal-closure assets already tracked by the repository manifest.
 
 ## Directory Structure
 
@@ -24,6 +24,7 @@ Related synthetic validation outputs are tracked under:
 
 ```text
 validation/background_bridge/pass_003/outputs/
+validation/*/roadmap-0*/outputs/
 ```
 
 ## File Inventory
@@ -41,30 +42,35 @@ The authoritative data inventory is `data/manifests/data_manifest.json`. It reco
 | Roadmap 009 finite observer-commitment outputs | `data/ash-cosmology/observer-commitment/v0.1/`, `validation/observer-commitment/roadmap-009/outputs/` | Deterministic finite observer-commitment frontier, commitment distribution, branch-separation sample, depth summary, and verification outputs generated from tracked source code |
 | Roadmap 010 unit-bearing bridge outputs | `data/ash-cosmology/unit-bridge/v0.1/`, `validation/unit-bridge/roadmap-010/outputs/` | Deterministic synthetic finite-observer unit-bearing bridge features, proxy observables, bootstrap samples, covariance, provenance, and verification outputs generated from tracked source code |
 | Roadmap 011 finite-observer limit outputs | `data/ash-cosmology/finite-observer-limit/v0.1/`, `figures/ash-cosmology/finite-observer-limit/v0.1/`, `validation/finite-observer-limit/roadmap-011/outputs/` | Deterministic finite hierarchy, shell, cone, spectrum, projective-fiber, scale-annotation, figure, and verification outputs generated from tracked source code |
+| Roadmap 012 background-equation outputs | `data/ash-cosmology/background-equations/v0.1/`, `figures/ash-cosmology/background-equations/v0.1/`, `validation/background-equations/roadmap-012/outputs/` | Deterministic synthetic finite-observer background curves, source features, covariance, grid-fit, figure, and verification outputs generated from tracked source code |
+| Roadmap 013 physical-perturbation outputs | `data/ash-cosmology/physical-perturbations/v0.1/`, `figures/ash-cosmology/physical-perturbations/v0.1/`, `validation/physical-perturbations/roadmap-013/outputs/` | Deterministic bounded matter-sector perturbation workbench outputs, proxy spectra, figure, and validation summary generated from tracked source code |
+| Roadmap 014 external-likelihood readiness outputs | `data/ash-cosmology/external-likelihoods/v0.1/`, `figures/ash-cosmology/external-likelihoods/v0.1/`, `validation/external-likelihoods/roadmap-014/outputs/` | Deterministic synthetic likelihood fixtures, covariance summaries, matched baseline comparisons, figure, preregistration lock, and verification outputs generated from tracked source code |
+| Roadmap 015 locked prediction-template outputs | `data/ash-cosmology/locked-predictions/v0.1/`, `figures/ash-cosmology/locked-predictions/v0.1/`, `predictions/locked/`, `validation/locked-predictions/roadmap-015/outputs/` | Immutable prospective prediction templates, lock certificate, generated figures, and validation outputs; these are templates for future held-out comparison, not observed-data results |
+| Roadmap 016 branch-centered closure outputs | `data/ash-cosmology/branch-centered-closure/v0.1/`, `figures/ash-cosmology/branch-centered-closure/v0.1/`, `validation/branch-centered-closure/roadmap-016/outputs/` | Deterministic closure-matrix, falsification-gate, model-card, closure-certificate, runtime verification, and figure outputs generated from tracked source code |
 | Sector-mixing evidence | `data/ash-physics-sector-mixing/` | Project-owner-provided pass 002 finite workbench evidence |
 | Background bridge diagnostics | `validation/background_bridge/pass_003/outputs/` | Pass 003 synthetic diagnostic outputs |
 | Validation status | `validation/status.json` | Repository-maintained validation-status manifest |
 
 ## Provenance
 
-Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, `tools/generate_linear_perturbations.py`, `tools/generate_branch_measure.py`, `tools/generate_observer_commitment.py`, `tools/generate_unit_bridge.py`, and `tools/generate_finite_observer_limit.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
+Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, `tools/generate_linear_perturbations.py`, `tools/generate_branch_measure.py`, `tools/generate_observer_commitment.py`, `tools/generate_unit_bridge.py`, `tools/generate_finite_observer_limit.py`, `tools/generate_cosmological_background.py`, `tools/generate_physical_perturbations.py`, `tools/generate_external_likelihoods.py`, `tools/generate_locked_predictions.py`, and `tools/generate_branch_centered_closure.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
 
 ## Validation
 
 Validate the manifest and referenced files with:
 
 ```bash
-python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
-python tools/validate_json_assets.py .
+python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
+python3 tools/validate_json_assets.py .
 ```
 
 Run the broader repository evidence checks with:
 
 ```bash
-python tools/generate_artifacts.py
-python tools/run_proof_suite.py
-python -m pytest
-python tools/verify_repository.py
+python3 tools/generate_artifacts.py
+python3 tools/run_proof_suite.py
+python3 -m pytest
+python3 tools/verify_repository.py
 ```
 
 ## Privacy and Sensitivity
@@ -83,6 +89,6 @@ Large raw data should not be added directly unless approved for repository stora
 
 1. Add or regenerate data using repository tools.
 2. Update `data/manifests/data_manifest.json` with exact size and SHA-256 values.
-3. Run `python tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`.
+3. Run `python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json`.
 4. Run the relevant proof, artifact, and test commands.
 5. Keep scientific claim wording aligned with the current validation scope.

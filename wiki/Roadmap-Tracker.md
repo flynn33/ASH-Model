@@ -8,7 +8,7 @@
 |---|---|---|
 | R-001 finite ASH algebra and canonical mapping | Complete | Verified finite mathematics and mapping semantics. |
 | R-002 finite-observer state layer | Complete | Finite parity-valid state space and pair-flip dynamics. |
-| R-003 prediction-ledger mechanics | Complete | Hash-lock validation mechanics; no scientific prediction is locked. |
+| R-003 prediction-ledger mechanics | Complete | Hash-lock validation mechanics; R-015 later adds locked prospective templates. |
 | R-004 sector-mixing pass 002 | Complete | Finite payload-coordinate workbench. |
 | R-005 background bridge pass 003 | Complete | Synthetic diagnostics only. |
 | R-006 data governance manifest | Complete | Manifest, validator, and regression coverage. |
@@ -17,35 +17,32 @@
 | R-009 observer commitment | Complete | Finite committed-memory and branch-separation workbench only. |
 | R-010 unit-bearing bridge | Complete | Synthetic fiducial proxy bridge only. |
 | R-011 finite-observer limit | Complete | Nested finite observer hierarchy only. |
-| R-012 background equations | Blocked | Requires ASH-derived physical background equations. |
-| R-013 physical perturbation solver | Blocked | Requires physical perturbation variables and solver. |
-| R-014 external likelihoods | Blocked | Requires reviewed data, covariance, baselines, and preregistration. |
-| R-015 locked predictions | Blocked | Requires frozen prediction-ledger entries. |
-| R-016 model closure | Open | Requires integrated branch-centered cosmology closure. |
+| R-012 background equations | Complete | Synthetic finite-observer background-equation workbench and standard-baseline relation only. |
+| R-013 physical perturbation solver | Complete | Bounded matter-sector perturbation workbench only; no full Boltzmann hierarchy. |
+| R-014 external likelihoods | Complete | Likelihood-readiness contracts, matched synthetic baselines, metadata-only registry, and synthetic fixtures only. |
+| R-015 locked predictions | Complete | Immutable prospective prediction templates and falsification metadata only; no observed-data result. |
+| R-016 model closure | Complete | Formal branch-centered repository-contract closure only; no empirical validation or physical model validation. |
 
 ## Evidence flow
 
 ```mermaid
 flowchart TD
     A["Finite core R-001..R-006"] --> B["Finite cosmology workbenches R-007..R-011"]
-    B --> C["Proof certificate"]
-    B --> D["Data manifest"]
-    B --> E["Validation outputs"]
-    C --> F["Repository verifier"]
-    D --> F
-    E --> F
-    F --> G["Open physical science gates R-012..R-016"]
+    B --> C["Synthetic/readiness/lock/formal workbenches R-012..R-016"]
+    C --> D["Proof certificate"]
+    C --> E["Data manifest"]
+    C --> F["Validation outputs"]
+    D --> G["Repository verifier"]
+    E --> G
+    F --> G
+    G --> H["Open physical validation and replication"]
 ```
 
 ## Current priority queue
 
 | Priority | Work | Required closure evidence |
 |---:|---|---|
-| 1 | Physical perturbation equations and solver | Derivation, solver, parameter semantics, tests, and boundary documentation. |
-| 2 | Background equations and standard-baseline relation | ASH-derived background equation, implementation, comparison tests, and documented limits. |
-| 3 | External likelihoods and matched baselines | Data products, covariance inputs, preregistered likelihoods, and matched controls. |
-| 4 | Locked prospective or held-out predictions | Frozen prediction records, hashes, input freeze date, and falsification criteria. |
-| 5 | Branch-centered cosmology model closure | Integrated finite workbenches, bridge-map relation, validation boundaries, and model-closure evidence. |
+| - | No active R-001 through R-016 integration item | Remaining work is reviewed physical calibration, observed-data likelihood scoring, empirical validation, physical model validation, and independent replication. |
 
 ## Rule for completion
 
