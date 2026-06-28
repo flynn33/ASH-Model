@@ -1,0 +1,32 @@
+{
+  "roadmap_item": "R-012",
+  "title": "Cosmological background equations and standard-baseline relation",
+  "assumed_upstream": [
+    "R-008 accepted",
+    "R-009 accepted",
+    "R-010 accepted",
+    "R-011 accepted"
+  ],
+  "lcdm_limit_max_abs_E2_error": 0.0,
+  "closure_sum_today": 1.0,
+  "omega_ash_truth": 0.02,
+  "omega_ash_recovered_grid": 0.02,
+  "omega_ash_recovery_abs_error": 0.0,
+  "min_E2_ash": 1.0,
+  "max_abs_w_ash": 1.018105694459536,
+  "final_age_Gyr_since_a_min": 13.275332551315158,
+  "final_comoving_Mpc_from_a_min": 13331.323784032738,
+  "data_files": [
+    "data/r012_background_lcdm.csv",
+    "data/r012_background_ash.csv",
+    "data/r012_ash_source_features.csv",
+    "data/r012_synthetic_H_observations.csv",
+    "data/r012_omega_ash_grid_fit.csv",
+    "data/r012_background_covariance.csv"
+  ],
+  "figure_files": [
+    "figures/r012_H_of_z.png",
+    "figures/r012_ash_source.png",
+    "figures/r012_grid_fit.png"
+  ]
+}
