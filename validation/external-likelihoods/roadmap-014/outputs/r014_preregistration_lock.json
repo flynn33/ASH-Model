@@ -1,0 +1,16 @@
+{
+  "data_vector_sha256": "f1bbb389d9a9bf1731f829814ec240eb2b99169db038058a9b6a456765b4d055",
+  "freeze_date_utc": "2026-06-26T00:00:00Z",
+  "freeze_label": "R014_SYNTHETIC_EXTERNAL_LIKELIHOOD_FIXTURE",
+  "is_blinded_fixture": true,
+  "model_grid": {
+    "alpha_mu_max": 0.14,
+    "alpha_mu_min": 0.0,
+    "alpha_mu_step": 0.005,
+    "omega_ash_max": 0.04,
+    "omega_ash_min": 0.0,
+    "omega_ash_step": 0.001
+  },
+  "synthetic_seed": 20260626,
+  "unblinding_policy": "External products may be evaluated only after registry entry includes official source, license note, covariance file hash, data-vector hash, and baseline freeze."
+}

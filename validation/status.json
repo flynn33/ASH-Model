@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "model_version": "ash-physics-v0.2",
   "commit": "",
-  "updated_utc": "2026-06-28T12:00:03Z",
+  "updated_utc": "2026-06-28T12:17:33Z",
   "tasks": [
     {
       "id": "PKG-001",
@@ -151,9 +151,14 @@
         "config/ash_r010_unit_bridge_calibration.json",
         "docs/ash-cosmology/unit-bridge/roadmap-010/README.md",
         "data/ash-cosmology/unit-bridge/v0.1/",
-        "validation/unit-bridge/roadmap-010/outputs/verification.json"
+        "validation/unit-bridge/roadmap-010/outputs/verification.json",
+        "config/ash_r014_data_product_registry.json",
+        "config/ash_r014_likelihood_contract.json",
+        "src/ash_model/external_likelihoods.py",
+        "tests/test_external_likelihoods.py",
+        "validation/external-likelihoods/roadmap-014/outputs/verification.json"
       ],
-      "notes": "Internal finite-observer observable vector, affine calibration contract, and R-010 synthetic finite-observer unit-bearing bridge are implemented and tested. R-010 uses fiducial synthetic scales and does not supply reviewed physical calibration, a continuum metric, FRW/LCDM derivation, external likelihood, empirical data validation, or a locked scientific prediction."
+      "notes": "Internal finite-observer observable vector, affine calibration contract, R-010 synthetic finite-observer unit-bearing bridge, and R-014 metadata-only external likelihood readiness contracts are implemented and tested. R-010 uses fiducial synthetic scales, and R-014 uses synthetic fixtures only; neither supplies reviewed physical calibration, official external data scoring, empirical validation, or a locked scientific prediction."
     },
     {
       "id": "VAL-001",
@@ -171,9 +176,22 @@
       "evidence": [
         "validation/matched-ablations/README.md",
         "src/ash_model/empirical.py",
-        "tests/test_empirical_bridge.py"
+        "tests/test_empirical_bridge.py",
+        "theory/external-likelihoods_R014_addendum.md",
+        "phenomenology/external_likelihoods_spec_R014_addendum.md",
+        "src/ash_model/external_likelihoods.py",
+        "tests/test_external_likelihoods.py",
+        "tools/generate_external_likelihoods.py",
+        "config/ash_r014_likelihood_contract.json",
+        "config/ash_r014_data_product_registry.json",
+        "docs/ash-cosmology/external-likelihoods/roadmap-014/README.md",
+        "data/ash-cosmology/external-likelihoods/v0.1/",
+        "figures/ash-cosmology/external-likelihoods/v0.1/",
+        "validation/external-likelihoods/roadmap-014/README.md",
+        "validation/external-likelihoods/roadmap-014/outputs/verification.json",
+        "validation/external-likelihoods/roadmap-014/outputs/r014_preregistration_lock.json"
       ],
-      "notes": "Diagonal Gaussian likelihood and model-comparison mechanics are implemented; external matched ablations remain blocked until data products, covariance sources, and baselines exist."
+      "notes": "Diagonal Gaussian likelihood and model-comparison mechanics remain implemented. R-014 adds external-likelihood readiness with Cholesky covariance handling, metadata-only reviewed product registry contracts, preregistration/hash policy, matched synthetic baselines, and deterministic synthetic recovery validation. Official external data vectors, official covariance files, observed-data scoring, empirical validation, and locked predictions remain outside scope."
     },
     {
       "id": "VAL-003",
@@ -231,9 +249,12 @@
         "validation/background-equations/roadmap-012/outputs/verification.json",
         "src/ash_model/physical_perturbations.py",
         "tests/test_physical_perturbations.py",
-        "validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json"
+        "validation/physical-perturbations/roadmap-013/outputs/r013_validation_summary.json",
+        "src/ash_model/external_likelihoods.py",
+        "tests/test_external_likelihoods.py",
+        "validation/external-likelihoods/roadmap-014/outputs/verification.json"
       ],
-      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, and R-013 bounded perturbation workbench evidence."
+      "notes": "Finite-observer theorem catalog and proof obligations include exact nine-cube geometry, pair-flip graph geometry, finite background moments, R-010 unit-bridge checks, R-011 finite-observer checks, the R-012 synthetic background-equation standard-baseline identity, R-013 bounded perturbation workbench evidence, and R-014 external-likelihood readiness evidence."
     },
     {
       "id": "SCAN-001",
@@ -326,16 +347,26 @@
       "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_physical_perturbations.py",
       "result": "passed",
       "summary": "6 passed for finite spectral modes, k validation, finite positive growth, zero-amplitude baseline consistency, synthetic alpha_mu recovery, artifact generation, and summary boundaries."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python tools/generate_external_likelihoods.py --out-root .",
+      "result": "passed",
+      "summary": "Generated R-014 metadata contracts, synthetic observations, covariance, matched model comparison, grid likelihood, whitened residual, preregistration lock, and validation artifacts."
+    },
+    {
+      "command": "/tmp/ash-model-validation-venv/bin/python -m pytest tests/test_external_likelihoods.py",
+      "result": "passed",
+      "summary": "5 passed for SPD covariance likelihood, nested LCDM limit, synthetic grid recovery, matched baselines, and deterministic preregistration hash behavior."
     }
   ],
   "open_blockers": [
     "No reviewed physical calibration constants map finite ASH observables to measured spacetime, fields, or data products; R-010 uses fiducial synthetic scales only.",
     "No metric, light-cone, or relativistic spacetime interpretation is derived from the finite event graph; R-011 closes only the finite-observer limit route.",
-    "No unit-bearing bridge with reviewed physical calibration, external covariance source, matched baseline, and prediction lock is committed; R-010, R-012, and R-013 are synthetic finite-observer or matter-sector workbenches only.",
+    "No unit-bearing bridge with reviewed physical calibration, official external covariance source, observed-data matched baseline, and prediction lock is committed; R-010, R-012, R-013, and R-014 are synthetic finite-observer, matter-sector, or readiness workbenches only.",
     "No gauge convention or physical degrees-of-freedom map exists for a differentiable continuum interpretation.",
     "No ASH-derived standard cosmological background with reviewed physical FRW or Einstein-equation status is committed; R-012 closes only a synthetic finite-observer background-equation workbench and standard-baseline relation.",
     "No full photon-baryon Boltzmann hierarchy, CLASS/CAMB replacement, survey-calibrated CMB or matter-spectrum observable solver, or external perturbation likelihood is committed; R-013 closes only a bounded matter-sector workbench and proxy interface.",
-    "No external data product, covariance source, or matched empirical baseline is committed.",
+    "No external data product, official covariance source, or observed-data matched empirical baseline is committed; R-014 supplies metadata-only registry/contracts and synthetic fixtures only.",
     "No scientific prospective or held-out prediction is locked."
   ],
   "claim_downgrades": [
@@ -347,6 +378,7 @@
     "R-011 supplies a finite-observer hierarchy and finite causal graph workbench; it is not a differentiable continuum, Lorentzian metric, physical light cone, or empirical cosmology result.",
     "Calibration and likelihood mechanics are contracts; they are not external empirical validation.",
     "External validation remains blocked until reviewed physical calibrations, external data products, matched baselines, and locked scientific predictions exist.",
-    "R-013 supplies a bounded matter-sector perturbation workbench and low-ell CMB interface proxy; it is not a full Boltzmann solver, empirical CMB or matter-spectrum validation, external likelihood, or locked prediction."
+    "R-013 supplies a bounded matter-sector perturbation workbench and low-ell CMB interface proxy; it is not a full Boltzmann solver, empirical CMB or matter-spectrum validation, external likelihood, or locked prediction.",
+    "R-014 supplies external-likelihood readiness with metadata-only reviewed product contracts and synthetic fixtures; it is not observed-data scoring, empirical validation, or a locked prediction."
   ]
 }

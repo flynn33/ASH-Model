@@ -1,0 +1,52 @@
+{
+  "alpha_recovery_abs_error": 0.0,
+  "best_grid_alpha_mu": 0.07,
+  "best_grid_omega_ash": 0.02,
+  "best_model_by_AIC": "ASH_truth_family",
+  "closure_boundary": "R-014 external-likelihood readiness and synthetic validation, not empirical validation",
+  "covariance_condition_number": 177157.07031939802,
+  "covariance_spd": true,
+  "external_data_claim": "none; contracts only",
+  "model_comparison": [
+    {
+      "aic": -217.70806510698543,
+      "bic": -199.6066260906549,
+      "chi2": 0.0,
+      "loglike": 116.85403255349271,
+      "model": "ASH_truth_family",
+      "n_params": 8
+    },
+    {
+      "aic": -213.01358776711066,
+      "bic": -197.17482862782146,
+      "chi2": 6.694477339874755,
+      "loglike": 113.50679388355533,
+      "model": "ASH_perturbation_only",
+      "n_params": 7
+    },
+    {
+      "aic": -204.72992359048044,
+      "bic": -188.89116445119123,
+      "chi2": 14.978141516504966,
+      "loglike": 109.36496179524022,
+      "model": "ASH_background_only",
+      "n_params": 7
+    },
+    {
+      "aic": -197.04553724893515,
+      "bic": -183.46945798668725,
+      "chi2": 24.662527858050293,
+      "loglike": 104.52276862446757,
+      "model": "LCDM_nested_baseline",
+      "n_params": 6
+    }
+  ],
+  "n_data": 71,
+  "omega_recovery_abs_error": 0.0,
+  "pytest_expected": "see tests/test_external_likelihoods.py",
+  "synthetic_data_hash": "f1bbb389d9a9bf1731f829814ec240eb2b99169db038058a9b6a456765b4d055",
+  "truth_alpha_mu": 0.07,
+  "truth_omega_ash": 0.02,
+  "whitened_residual_mean": 0.0,
+  "whitened_residual_std": 0.0
+}

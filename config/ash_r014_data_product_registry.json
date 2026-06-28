@@ -1,0 +1,38 @@
+[
+  {
+    "covariance_policy": "use official Planck likelihood/covariance where licensed",
+    "data_status": "not bundled; contract only",
+    "id": "Planck2018_PLC",
+    "license_note": "external user must obtain from official release",
+    "probe": "CMB TTTEEE+lensing",
+    "role": "reviewed external target",
+    "source": "ESA Planck Legacy Archive / Planck 2018 papers"
+  },
+  {
+    "covariance_policy": "use Pantheon+ statistical+systematic covariance",
+    "data_status": "not bundled; contract only",
+    "id": "PantheonPlus",
+    "license_note": "external user must obtain from official release",
+    "probe": "Type Ia SN distance moduli",
+    "role": "reviewed external target",
+    "source": "Pantheon+ public release/papers"
+  },
+  {
+    "covariance_policy": "use DESI DR2 published covariance/likelihood",
+    "data_status": "not bundled; contract only",
+    "id": "DESI_DR2_BAO",
+    "license_note": "external user must obtain from official release",
+    "probe": "BAO distances",
+    "role": "current reviewed BAO target",
+    "source": "DESI DR2 publications/data portal"
+  },
+  {
+    "covariance_policy": "use SDSS/BOSS DR12 measurement covariance/likelihood",
+    "data_status": "not bundled; contract only",
+    "id": "BOSS_DR12_BAO",
+    "license_note": "external user must obtain from official release",
+    "probe": "BAO/RSD distances",
+    "role": "stable matched baseline target",
+    "source": "SDSS/BOSS publications and SAS"
+  }
+]
