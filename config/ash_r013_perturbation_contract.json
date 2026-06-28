@@ -1,0 +1,52 @@
+{
+  "acceptance_tests": [
+    "finite n=9 mode multiplicities sum to 256",
+    "positive unit-bearing k validation",
+    "finite positive growth solution",
+    "exact zero-amplitude LCDM limit",
+    "deterministic synthetic recovery of alpha_mu"
+  ],
+  "assumed_upstream": [
+    "R-008",
+    "R-009",
+    "R-010",
+    "R-011",
+    "R-012"
+  ],
+  "date": "2026-06-26",
+  "default_parameters": {
+    "A_proxy": 2.1e-09,
+    "H0_km_s_Mpc": 70.0,
+    "Omega_Lambda": 0.66491,
+    "Omega_ash": 0.02,
+    "Omega_k": 0.0,
+    "Omega_m": 0.315,
+    "Omega_r": 9e-05,
+    "alpha_mu": 0.07,
+    "beta_drag": 0.018,
+    "k_pivot_Mpc_inv": 0.05,
+    "ns": 0.965,
+    "residual_amp": 0.03
+  },
+  "gauge_policy": {
+    "exclusions": [
+      "no full photon-baryon Boltzmann hierarchy",
+      "no tensor modes",
+      "no reviewed empirical calibration"
+    ],
+    "gauge": "Newtonian gauge",
+    "regime": "linear sub-horizon/quasi-static matter growth",
+    "sector": "scalar"
+  },
+  "roadmap_item": "R-013",
+  "schema": "ash.r013.physical_perturbations.config.v1",
+  "solver_route": "matter-sector scalar perturbation solver plus CMB low-ell interface proxy",
+  "title": "Physical perturbation equations and matter-sector solver",
+  "units": {
+    "H0": "km s^-1 Mpc^-1",
+    "P_proxy": "dimensionless transfer-amplitude proxy",
+    "a": "dimensionless scale factor, a_today=1",
+    "k": "Mpc^-1",
+    "z": "dimensionless redshift"
+  }
+}
