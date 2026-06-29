@@ -1,0 +1,169 @@
+{
+  "package_name": "ASH_R012_R016_science_remediation_handoff",
+  "created_utc": "2026-06-28T15:33:54Z",
+  "purpose": "Independent science remediation artifacts for ASH R012-R016 handoff to repository expert.",
+  "source_boundary": "Does not modify or manage the ASH-Model repository.",
+  "file_count": 32,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2353,
+      "sha256": "ee7cb722047cd58e3d06857824b4c0ebe1fa7e0913e783ab7a5dae2ed76834f0"
+    },
+    {
+      "path": "audit_science_finding_to_remediation_mapping.csv",
+      "bytes": 1669,
+      "sha256": "e02f48f3d58ee01681834e75fe5a82620361b9c1f8fe1fac9a63e11a9c04f71f"
+    },
+    {
+      "path": "data/ash_pair_flip_spectrum.csv",
+      "bytes": 564,
+      "sha256": "bd41812446186c57f0ed1476cdf601f364cdc619d31c4a24a69e921e1511e9c5"
+    },
+    {
+      "path": "data/compact_external_priors.csv",
+      "bytes": 268,
+      "sha256": "0034c9959a0270df68729640cc968ead1d23259d2226fb3e56021409a7c700fb"
+    },
+    {
+      "path": "data/desi_dr2_bao_bgs_dv_table_iv.csv",
+      "bytes": 43,
+      "sha256": "60a58d4ad1e2f84d326eae3e5b71410de449f4b4b204c34503488ae0576f3306"
+    },
+    {
+      "path": "data/desi_dr2_bao_compact_table_iv.csv",
+      "bytes": 316,
+      "sha256": "8a9ab9399ce0e5e1e767931cb09de47f7e73e5ab014017d13b3742338ecf9d47"
+    },
+    {
+      "path": "environment.json",
+      "bytes": 276,
+      "sha256": "00041c4f105c3de5d00eb058106051c5d68d926d904c2eeb1c074663d3f0a987"
+    },
+    {
+      "path": "executive_summary.md",
+      "bytes": 1711,
+      "sha256": "a61ce21aa691d590815d062e6755687421e527581cffbd8a2f5cc867145af9a1"
+    },
+    {
+      "path": "figures/finite_pair_flip_spectrum.png",
+      "bytes": 47143,
+      "sha256": "2a0019599ee5b1c9125ba5d3b382bef55b846681543cf3bd4595d21455a2ca6e"
+    },
+    {
+      "path": "figures/r012_delta_H_over_H.png",
+      "bytes": 75889,
+      "sha256": "a3e2895c73ef47f443f0532058a7dc9f2de829161194fedf1b3940b6019dc057"
+    },
+    {
+      "path": "figures/r012_equation_of_state.png",
+      "bytes": 57095,
+      "sha256": "ea875988c5d42caedaec90ed03fbf4da5aebcd9497eae4bd9b689a4c63a8e656"
+    },
+    {
+      "path": "figures/r013_growth_curves.png",
+      "bytes": 93177,
+      "sha256": "08a43c2bd6de257f8919856b9440989f1c10f8f06c0ca263cea535f66ace364d"
+    },
+    {
+      "path": "figures/r013_s8_proxy_comparison.png",
+      "bytes": 69172,
+      "sha256": "3dd08dad447bb2130bce2c0ce28de44fc928be9a6f2f4c5adfd45f23c1b410f8"
+    },
+    {
+      "path": "figures/r014_bao_residual_pulls.png",
+      "bytes": 70464,
+      "sha256": "3c734825bd18a385a3dbacd3b6a6dfe06cfb36f7cb501a0524c0e5832083dc06"
+    },
+    {
+      "path": "formal/formal_expressions_latex.json",
+      "bytes": 887,
+      "sha256": "42d99a087fca678e106d08a2f0ed7cf7c75b8f9a0856f65a3760be44930049c5"
+    },
+    {
+      "path": "outputs/bao_residuals_planck_compressed_fits.csv",
+      "bytes": 3072,
+      "sha256": "351e679b127f8d119422164bfc8bc7e422709c27416d4a7783de1f12fffa8a72"
+    },
+    {
+      "path": "outputs/executive_numeric_summary.json",
+      "bytes": 5099,
+      "sha256": "27f442632b6b7e19535d87481728742dd3a22c2a34dd67bc8b698b84c854adb7"
+    },
+    {
+      "path": "outputs/growth_predictions.csv",
+      "bytes": 3822,
+      "sha256": "44dbf2b458354cd9d9d8331ec332a594c24c348af5fda5f9470923e19b104d82"
+    },
+    {
+      "path": "outputs/local_hessian_covariance_estimates.json",
+      "bytes": 3018,
+      "sha256": "9ef6ff0fd77f3fc03b32caa92314762012895956e0250a73c80f62fd31de6c52"
+    },
+    {
+      "path": "outputs/locked_prediction_pilot_scores.csv",
+      "bytes": 2271,
+      "sha256": "796acccea2d87f91f832104d710ead8b7070091def643a114ab647e280f90376"
+    },
+    {
+      "path": "outputs/locked_prediction_pilot_scores.json",
+      "bytes": 2870,
+      "sha256": "0652d2da978b220fb78ae6683f141ce8407eaf7d1efef355477501e1d2e93cf3"
+    },
+    {
+      "path": "outputs/model_fit_summary.csv",
+      "bytes": 1487,
+      "sha256": "cf053caaf0f4c7bc39db1094e2f280c0e3532b8b3810d15df780bc444b3235ba"
+    },
+    {
+      "path": "outputs/model_fit_summary.json",
+      "bytes": 2987,
+      "sha256": "e5380294a8431d9c91f9d8846523a4ae3f37fb37292bc19a0ba7db4447566dff"
+    },
+    {
+      "path": "outputs/r012_ash_background_solution.csv",
+      "bytes": 61845,
+      "sha256": "de70e6a14a92a7f2d5790d0ab5bd032a0e1941c366060bb60c44b1cfabe9b7b7"
+    },
+    {
+      "path": "outputs/r016_formal_closure_certificate.json",
+      "bytes": 1784,
+      "sha256": "1335c6f656cf82b78722a6caee8abe54196fff35653dae6a70fd24c12d00fa70"
+    },
+    {
+      "path": "quality_control/pdf_render_contact_sheet.jpg",
+      "bytes": 75102,
+      "sha256": "57d169656d0f40d7c0f4efb513fd614c80147faf71adff871a091ab1b6ece16c"
+    },
+    {
+      "path": "quality_control/quality_control_manifest.json",
+      "bytes": 562,
+      "sha256": "8f9154dfa2c4e6e29c4708aa20afd9e79e56a07f7b697df80d164512d2b969cf"
+    },
+    {
+      "path": "report/ASH_R012_R016_science_remediation_report.md",
+      "bytes": 14731,
+      "sha256": "9a4a895e3afe6ed8859fbd4b7cf37cb76be5e890ae3f66e1969e1dc119929ff4"
+    },
+    {
+      "path": "report/ASH_R012_R016_science_remediation_report.pdf",
+      "bytes": 425473,
+      "sha256": "69b86fb4adba6c647ea0496147ee5d648b87bd28b02664909babd40b9587f4ef"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 77,
+      "sha256": "9c172bb35c30e6d4344b7b6366e723fe980097fe1cd28c2596996cc74490d0bf"
+    },
+    {
+      "path": "scripts/reproduce_ash_r012_r016_science.py",
+      "bytes": 34164,
+      "sha256": "78a00d56f36db19d8e404a8453b2c063a62a3d553bb2f9386f8da6474c9ee83f"
+    },
+    {
+      "path": "sources_and_values.json",
+      "bytes": 2063,
+      "sha256": "bda2f223b9104534c219adb0b93f2e79edb1d095b8a56e0ba7dd7d17f39489c7"
+    }
+  ]
+}

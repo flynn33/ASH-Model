@@ -1,0 +1,36 @@
+{
+  "model_tuple": {
+    "finite_state_space": "X={x in F2^9: x9=x1 xor ... xor x8}, |X|=256",
+    "move_set_in_payload_coordinates": "all 8 one-bit and all 28 two-bit flips induced by 9D pair flips",
+    "kernel": "K_l = l I + (1-l)/36 sum_{s in S} T_s with l=1/2",
+    "spectrum": "Walsh eigenvalue eta_r = 1/2 + 1/2*(r^2-9r+18)/18, multiplicity C(8,r)",
+    "background_map": "rho_DE/rho_DE0=exp[b1(a^p1-1)+b2(a^p2-1)], p1=1, p2=kappa2/kappa1",
+    "growth_map": "D''+[2+dlnH/dlna]D'-(3/2)Omega_m(a)(1+alpha_mu a^p1)D=0",
+    "likelihood": "Gaussian DESI DR2 BAO Table IV with 2x2 DM/DH covariance blocks plus optional compressed Planck priors"
+  },
+  "closure_status": {
+    "R012_background_equation": "closed for finite-spectral FRW extension in this package",
+    "R013_growth_observable": "closed for sub-horizon scalar growth and S8 proxy in this package",
+    "R014_real_data_likelihood": "closed for compact DESI DR2 BAO covariance pilot and compressed priors",
+    "R015_locked_prediction_execution": "pilot-scored for P001-P003; P001/P002 not confirmed, P003 sign only",
+    "R016_formal_closure": "closed as deterministic finite-kernel-to-observable map with explicit limitations"
+  },
+  "not_closed": [
+    "full photon-baryon Boltzmann hierarchy",
+    "map-level CMB likelihood",
+    "full Pantheon+/DES-SN covariance likelihood",
+    "full galaxy P(k) or weak-lensing shear covariance likelihood",
+    "peer-reviewed physical ontology of ASH as spacetime"
+  ],
+  "best_fit_ash_desi_planck": {
+    "H0": 67.23533713594409,
+    "Omega_m": 0.31381926857546083,
+    "b1": 1.271223761423903,
+    "b2": -0.9659086080873414,
+    "p1": 1.0,
+    "p2": 1.9596029104518016,
+    "w0_eff": -0.7928088139285001,
+    "wa_eff": -0.8126357916782933,
+    "chi2": 8.79897899793125
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "ash_spectral_exponents": {
+    "p1": 1.0,
+    "p2": 1.9596029104518016,
+    "kappa1": 0.25131442828090605,
+    "kappa2": 0.49247648509779407
+  },
+  "best_fit_DESI_plus_Planck": [
+    {
+      "fit": "DESI_DR2_BAO_plus_Planck_H0_Om",
+      "model": "lcdm",
+      "chi2": 16.2014546943,
+      "ndata": 15,
+      "nparams": 2,
+      "dof": 13,
+      "AIC": 20.2014546943,
+      "BIC": 21.6175550965,
+      "H0": 68.1382898502,
+      "Omega_m": 0.312786462,
+      "param_2": null,
+      "param_3": null,
+      "parameter_labels": "H0,Omega_m",
+      "bao_chi2_at_fit": 13.9211721731,
+      "w0": null,
+      "wa": null,
+      "p1": null,
+      "p2": null,
+      "w0_eff": null,
+      "wa_eff": null
+    },
+    {
+      "fit": "DESI_DR2_BAO_plus_Planck_H0_Om",
+      "model": "cpl",
+      "chi2": 8.4595147924,
+      "ndata": 15,
+      "nparams": 4,
+      "dof": 11,
+      "AIC": 16.4595147924,
+      "BIC": 19.2917155968,
+      "H0": 67.2812081758,
+      "Omega_m": 0.3149538624,
+      "param_2": -0.8203725118,
+      "param_3": -0.5340942575,
+      "parameter_labels": "H0,Omega_m,w0,wa",
+      "bao_chi2_at_fit": 8.40302536,
+      "w0": -0.8203725118,
+      "wa": -0.5340942575,
+      "p1": null,
+      "p2": null,
+      "w0_eff": null,
+      "wa_eff": null
+    },
+    {
+      "fit": "DESI_DR2_BAO_plus_Planck_H0_Om",
+      "model": "ash",
+      "chi2": 8.7989789979,
+      "ndata": 15,
+      "nparams": 4,
+      "dof": 11,
+      "AIC": 16.7989789979,
+      "BIC": 19.6311798023,
+      "H0": 67.2353371359,
+      "Omega_m": 0.3138192686,
+      "param_2": 1.2712237614,
+      "param_3": -0.9659086081,
+      "parameter_labels": "H0,Omega_m,b1,b2",
+      "bao_chi2_at_fit": 8.6620719975,
+      "w0": null,
+      "wa": null,
+      "p1": 1.0,
+      "p2": 1.9596029105,
+      "w0_eff": -0.7928088139,
+      "wa_eff": -0.8126357917
+    }
+  ],
+  "s8_calibration": {
+    "alpha_mu_required_for_DESY3_S8": -0.17424534303771316,
+    "S8_background_only": 0.820367303251754,
+    "S8_locked_alpha_mu_plus_0p07": 0.8404496497286015,
+    "S8_calibrated": 0.7719999994127477
+  },
+  "locked_prediction_pilot_assessments": [
+    {
+      "prediction_id": "ASH-R015-P001",
+      "observable": "Delta_H_over_H relative to matched LCDM",
+      "locked_claim": {
+        "max_delta_H_over_H": 0.002912478326804413,
+        "z_at_max": 1.04,
+        "delta_H_over_H_at_z_1": 0.002901964021648995,
+        "sign": "nonnegative"
+      },
+      "pilot_external_data_used": "DESI DR2 BAO Table IV + Planck H0/Omega_m compressed priors",
+      "pilot_fit_value": {
+        "max_delta_H_over_H": 0.024557382987014584,
+        "z_at_max": 0.315,
+        "delta_H_over_H_at_z_1": 0.009125546412692342,
+        "min_delta_H_over_H": -0.0006004167000576796,
+        "z_at_min": 2.5
+      },
+      "assessment": "not_confirmed_by_pilot_fit",
+      "reason": "The DESI+Planck calibrated ASH finite-spectral background requires percent-level residuals and develops a small high-z sign crossing, unlike the locked 0.29% nonnegative envelope. This is not a formal preregistered falsification of P001, but it is a substantive failed pilot match."
+    },
+    {
+      "prediction_id": "ASH-R015-P002",
+      "observable": "matter-sector amplitude / S8 compression proxy",
+      "locked_claim": {
+        "alpha_mu_locked": 0.07,
+        "min_ratio": 0.9937461402744073,
+        "max_ratio": 1.0077122422747429
+      },
+      "pilot_external_data_used": "DES Y3 3x2pt optimized-scale-cuts S8 compression",
+      "pilot_fit_value": {
+        "alpha_mu_required_for_DESY3_S8": -0.17424534303771316,
+        "S8_background_only": 0.820367303251754,
+        "S8_locked_alpha_mu_plus_0p07": 0.8404496497286015,
+        "S8_calibrated": 0.7719999994127477,
+        "DESY3_S8": 0.772,
+        "locked_alpha_pull_sigma_vs_DESY3": 4.02644998403538
+      },
+      "assessment": "tension_in_sign_and_magnitude_under_S8_proxy",
+      "reason": "The locked positive alpha_mu=0.07 increases the S8 proxy; the DES Y3 compression requires alpha_mu\u2248-0.174 in this finite-spectral growth equation. A full P(k) covariance likelihood is still required for formal falsification."
+    },
+    {
+      "prediction_id": "ASH-R015-P003",
+      "observable": "low-ell finite parity proxy sign",
+      "locked_claim": {
+        "A_2_30_proxy": 0.025911762310551256,
+        "sign": "positive",
+        "template_min": 0.9806578341931056,
+        "template_max": 1.0207152953748184
+      },
+      "pilot_external_data_used": "published CMB low-ell parity sign literature; no map-level likelihood ingested",
+      "pilot_fit_value": {
+        "finite_spectrum_sign": "positive_odd_over_even",
+        "tau_matching_locked_A_2_30_proxy": 1.3988903555840269,
+        "A_at_tau": 0.025911762310551152,
+        "A_at_tau_1": 0.015437392795883364
+      },
+      "assessment": "sign_consistent_only",
+      "reason": "The exact finite ASH spectrum gives a positive odd-over-even proxy for all tested relaxation times; published CMB anomaly literature reports odd-over-even preference in temperature. This is only a sign check and not an empirical likelihood."
+    }
+  ]
+}

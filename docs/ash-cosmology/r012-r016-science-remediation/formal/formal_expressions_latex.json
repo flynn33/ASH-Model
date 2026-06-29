@@ -1,0 +1,9 @@
+{
+  "pair_flip_eigenvalue": "\\eta_r = \\ell + (1-\\ell)\\frac{r^2-9r+18}{18},\\quad r=0,\\ldots,8,\\quad m_r=\\binom{8}{r}",
+  "ash_dark_energy_density": "\\rho_X(a)/\\rho_{X0}=\\exp\\left[b_1(a^{1}-1)+b_2(a^{1.9596029}-1)\\right]",
+  "ash_equation_of_state": "w_X(a)=-1-\\frac{1}{3}\\left[1b_1a^{1}+1.9596029b_2a^{1.9596029}\\right]",
+  "friedmann": "E^2(a)=\\Omega_m a^{-3}+(1-\\Omega_m)\\rho_X(a)/\\rho_{X0}",
+  "growth_equation": "\\frac{d^2D}{d(\\ln a)^2}+\\left[2+\\frac{d\\ln H}{d\\ln a}\\right]\\frac{dD}{d\\ln a}-\\frac{3}{2}\\Omega_m(a)\\left(1+\\alpha_\\mu a^{1}\\right)D=0",
+  "bao_distances": "D_H=c/H(z),\\quad D_M=cH_0^{-1}\\int_0^z dz'/E(z'),\\quad D_V=(zD_M^2D_H)^{1/3}",
+  "parity_proxy": "A(\\tau)=\\frac{\\sum_{r\\ {\\rm odd}} \\binom{8}{r}\\eta_r^{2\\tau}-\\sum_{r>0,\\ r\\ {\\rm even}}\\binom{8}{r}\\eta_r^{2\\tau}}{\\sum_{r=1}^{8}\\binom{8}{r}\\eta_r^{2\\tau}}"
+}

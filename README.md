@@ -26,7 +26,7 @@ Current roadmap posture after the Roadmap 016 merge:
 |---|---|---|
 | R-001 through R-006 | Complete finite core, finite-observer physics layer, prediction-ledger mechanics, sector-mixing workbench, background-bridge diagnostics, and data governance manifest. | Repository mechanics and finite checks only. |
 | R-007 through R-011 | Complete finite perturbation sector, branch-measure law, observer-commitment workbench, synthetic unit-bearing bridge, and finite-observer limit hierarchy. | Does not close reviewed physical calibration, differentiable geometry, observed-data likelihoods, empirical validation, or physical model validation. |
-| R-012 through R-016 | Complete within their stated synthetic-workbench, readiness, lock-mechanics, and formal-contract scopes: background-equation workbench, bounded matter-sector perturbation workbench, external-likelihood readiness, locked prospective templates, and branch-centered closure contract. | Does not close reviewed physical calibration, a full photon-baryon Boltzmann hierarchy, observed-data scoring, empirical preference, independent replication, or validation of ASH as observed physical cosmology. |
+| R-012 through R-016 | Complete within their stated synthetic-workbench, readiness, lock-mechanics, and formal-contract scopes: background-equation workbench, bounded matter-sector perturbation workbench, external-likelihood readiness, locked prospective templates, and branch-centered closure contract. A supplemental R012-R016 science-remediation package now records a compact first-pass finite-spectral FRW extension, DESI DR2 BAO pilot fit, DES Y3 S8 proxy calibration, and locked-prediction pilot scoring. | The supplement performs observed-data pilot scoring, but it does not close reviewed physical calibration, a full photon-baryon Boltzmann hierarchy, official full-survey likelihoods, empirical validation, independent replication, or validation of ASH as observed physical cosmology. |
 
 ## Verified mathematical core
 
@@ -96,6 +96,7 @@ Post-R016 finite-observer and branch-centered evidence is split across:
 - [`docs/ash-cosmology/external-likelihoods/roadmap-014/`](docs/ash-cosmology/external-likelihoods/roadmap-014/) for likelihood-readiness contracts and synthetic fixtures.
 - [`docs/ash-cosmology/locked-predictions/roadmap-015/`](docs/ash-cosmology/locked-predictions/roadmap-015/) for immutable prospective prediction templates.
 - [`docs/ash-cosmology/branch-centered-closure/roadmap-016/`](docs/ash-cosmology/branch-centered-closure/roadmap-016/) for the formal branch-centered closure contract.
+- [`docs/ash-cosmology/r012-r016-science-remediation/`](docs/ash-cosmology/r012-r016-science-remediation/) for a supplemental first-pass science remediation handoff: finite pair-flip spectrum derivation, finite-spectral FRW dark-sector ansatz, compact DESI DR2 BAO + Planck pilot fits, DES Y3 S8 proxy calibration, R015 pilot scoring, generated figures, and an explicit non-validation boundary.
 - `validation/*/roadmap-0*/outputs/` for machine-readable validation records.
 - [`figures/ash-cosmology/finite-observer-limit/v0.1/`](figures/ash-cosmology/finite-observer-limit/v0.1/) for finite-observer hierarchy visual artifacts.
 
@@ -187,7 +188,7 @@ The tracked ablations explicitly compare uniform starts, zero starts, ASH transf
 
 `docs/ash-physics-validation/` defines the proof and empirical-validation program. It adds implementation instructions, proof obligations, preregistration templates, claim-language scanning, and task manifests for the ASH-Physics research track.
 
-ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, finite perturbation factors, finite branch-measure normalization law, finite observer-commitment workbench, synthetic unit-bearing bridge workbench, finite-observer limit hierarchy, synthetic background-equation workbench, bounded matter-sector perturbation workbench, likelihood-readiness layer, locked prediction-template mechanics, and branch-centered formal closure contract.  The current validation program is intentionally not an empirical result. Reviewed physical calibrations, observed-data likelihood scoring, physical model validation, and independent replication remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
+ASH-Physics v0.2 implements the finite-observer state space, pair-flip dynamics, internal bridge observables, finite background surrogate, finite perturbation factors, finite branch-measure normalization law, finite observer-commitment workbench, synthetic unit-bearing bridge workbench, finite-observer limit hierarchy, synthetic background-equation workbench, bounded matter-sector perturbation workbench, likelihood-readiness layer, locked prediction-template mechanics, and branch-centered formal closure contract. The supplemental R012-R016 science-remediation handoff adds a compact first-pass scientific execution over public summary values, including DESI DR2 BAO pilot scoring and DES Y3 S8 proxy calibration. Reviewed physical calibrations, official full likelihood products, physical model validation, and independent replication remain explicit open gates in `theory/`, `phenomenology/`, `validation/`, `predictions/`, and `proofs/`.
 
 `docs/ash-cosmology/background-bridge/pass-003/` records the Pass 003 synthetic background-bridge audit remediation, including numerical convergence checks, deprecation-warning elimination, grid-posterior uncertainty diagnostics, AIC/BIC diagnostics, matched controls, and blocker tracking. This package is synthetic validation only and does not claim observational validation.
 
@@ -207,7 +208,7 @@ Validate the manifest with:
 python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
 ```
 
-No new raw observational dataset is imported by the R012-R016 integration. Future raw data requires explicit provenance, sensitivity, license, and tracking-policy review before it is committed.
+No raw survey-level observational dataset or official full likelihood product is imported by the R012-R016 integration. The supplemental science-remediation handoff includes compact public numerical summaries and provenance notes under `docs/ash-cosmology/r012-r016-science-remediation/`; future raw data requires explicit provenance, sensitivity, license, and tracking-policy review before it is committed.
 
 ## Repository map
 
@@ -232,6 +233,7 @@ No new raw observational dataset is imported by the R012-R016 integration. Futur
 - `docs/ash-cosmology/external-likelihoods/roadmap-014/` - Roadmap 014 likelihood-readiness notes, contracts, and boundaries
 - `docs/ash-cosmology/locked-predictions/roadmap-015/` - Roadmap 015 locked prediction-template notes and boundaries
 - `docs/ash-cosmology/branch-centered-closure/roadmap-016/` - Roadmap 016 formal branch-centered closure notes and boundaries
+- `docs/ash-cosmology/r012-r016-science-remediation/` - supplemental R012-R016 first-pass science remediation handoff, report, reproduction script, compact public input values, generated outputs, figures, and QC manifest
 - `data/ash-cosmology/branch-centered-roadmap/v0.2/` - Machine-readable JSON/YAML catalogs, JSON schema, prediction-ledger templates, CSV summaries, checksums, and provenance manifest for the branch-centered roadmap
 - `data/ash-cosmology/linear-perturbations/v0.1/` - Roadmap 007 finite perturbation transfer CSV artifacts
 - `data/ash-cosmology/branch-measure/v0.1/` - Roadmap 008 finite branch-measure normalization CSV artifacts
