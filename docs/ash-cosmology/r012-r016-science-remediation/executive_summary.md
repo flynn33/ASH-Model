@@ -14,4 +14,4 @@ Key numerical result: in the compressed DESI DR2 BAO + Planck H0/Omega_m pilot, 
 
 Important scientific warning: the current locked R015 P001 expansion residual and P002 positive matter-sector coupling do not survive this first real-data pilot as stated. They should be treated as needing supersession or formal falsification review, not as supported predictions.
 
-This package still does not claim ASH is empirically validated cosmology. The full next layer requires full survey likelihood products: SN covariance, DESI likelihood products, weak-lensing or galaxy-clustering covariance, and map-level low-ell CMB likelihoods.
+This package is still not presented as empirical validation of ASH as observed cosmology. The full next layer requires full survey likelihood products: SN covariance, DESI likelihood products, weak-lensing or galaxy-clustering covariance, and map-level low-ell CMB likelihoods.

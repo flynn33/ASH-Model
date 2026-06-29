@@ -280,7 +280,7 @@ The machine-readable closure certificate is `outputs/r016_formal_closure_certifi
 
 1. The finite ASH pair-flip kernel yields a real spectral calculus. This is a mathematically nontrivial bridge from the 256-state finite core to a falsifiable FRW dark-sector ansatz.
 2. The minimal two-mode ASH finite-spectral background fits DESI DR2 BAO nearly as well as CPL under the compressed pilot likelihood and better than flat ΛCDM by chi-square and AIC.
-3. The ASH finite-spectral model is not yet a validated cosmology. The best fit uses phenomenological calibration parameters and has not been tested against full SN, CMB, weak-lensing, or matter-spectrum covariance products.
+3. The ASH finite-spectral model is still only a compact pilot cosmology extension. The best fit uses phenomenological calibration parameters and has not been tested against full SN, CMB, weak-lensing, or matter-spectrum covariance products.
 4. The current R015 P001 and P002 locked templates are not supported by this first real-data pilot. P003 has only sign-level consistency.
 5. The most important next science work is not more scaffolding; it is full covariance ingestion for Pantheon+/DES-SN, DESI likelihood products, weak-lensing or galaxy-clustering `P(k)`, and low-ell CMB map/likelihood evaluation.
 

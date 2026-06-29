@@ -7,8 +7,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2337,
-      "sha256": "bb2e48bab17a39ae8d315f5ed65d9ea9f2cff74fb143641444fdd0f6dfac3727"
+      "bytes": 2353,
+      "sha256": "ee7cb722047cd58e3d06857824b4c0ebe1fa7e0913e783ab7a5dae2ed76834f0"
     },
     {
       "path": "audit_science_finding_to_remediation_mapping.csv",
@@ -42,8 +42,8 @@
     },
     {
       "path": "executive_summary.md",
-      "bytes": 1695,
-      "sha256": "c9835b6fe62794ff306ab3a4890fa9a082edeeeeccae6010bf365cea98e33002"
+      "bytes": 1711,
+      "sha256": "a61ce21aa691d590815d062e6755687421e527581cffbd8a2f5cc867145af9a1"
     },
     {
       "path": "figures/finite_pair_flip_spectrum.png",
@@ -142,8 +142,8 @@
     },
     {
       "path": "report/ASH_R012_R016_science_remediation_report.md",
-      "bytes": 14714,
-      "sha256": "6b53423226f84b224623bc7f3820052283dd308bb20f1ada6e3f834d969adb48"
+      "bytes": 14731,
+      "sha256": "9a4a895e3afe6ed8859fbd4b7cf37cb76be5e890ae3f66e1969e1dc119929ff4"
     },
     {
       "path": "report/ASH_R012_R016_science_remediation_report.pdf",

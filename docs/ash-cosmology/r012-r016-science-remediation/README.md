@@ -40,7 +40,7 @@ The script regenerates the data tables, outputs, and figures under `data/`, `out
 
 ## Scientific boundary
 
-This package does not claim ASH is empirically validated cosmology. It is a concrete first-pass science execution. Remaining work includes full DESI likelihood products, supernova covariance, weak-lensing or galaxy P(k) covariance, and map-level low-ell CMB likelihoods.
+This package is not presented as empirical validation of ASH as observed cosmology. It is a concrete first-pass science execution. Remaining work includes full DESI likelihood products, supernova covariance, weak-lensing or galaxy P(k) covariance, and map-level low-ell CMB likelihoods.
 
 ## Citation of original ASH Model
 
