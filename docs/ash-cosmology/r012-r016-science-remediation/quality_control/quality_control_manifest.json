@@ -1,0 +1,14 @@
+{
+  "pdf_render_check": {
+    "tool": "/home/oai/skills/pdfs/scripts/render_pdf.py",
+    "dpi": 120,
+    "pages_rendered": 7,
+    "status": "rendered successfully",
+    "contact_sheet": "quality_control/pdf_render_contact_sheet.jpg"
+  },
+  "script_reproduction_check": {
+    "command": "python scripts/reproduce_ash_r012_r016_science.py",
+    "status": "completed successfully in active runtime",
+    "note": "runtime stderr contained an unrelated artifact_tool spreadsheet warmup warning; reproduction script returned 0 and produced all expected outputs."
+  }
+}

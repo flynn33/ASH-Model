@@ -14,6 +14,8 @@ data/processed/
 outputs/
 !validation/**/outputs/
 !validation/**/outputs/verification.json
+!docs/ash-cosmology/r012-r016-science-remediation/outputs/
+!docs/ash-cosmology/r012-r016-science-remediation/outputs/**
 reports/generated/
 figures/*-generated.png
 latex/*.aux

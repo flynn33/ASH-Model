@@ -1,0 +1,48 @@
+{
+  "ash_model_reference": {
+    "citation": "Daley, J. (2026). Adinkra-Stabilized Hypercube Model: Canonical Computational Specification and Reference Implementation, version 1.1.0.",
+    "readme_url": "https://raw.githubusercontent.com/flynn33/ASH-Model/main/README.md",
+    "roadmap_url": "https://raw.githubusercontent.com/flynn33/ASH-Model/main/ROADMAP.md",
+    "code_url": "https://raw.githubusercontent.com/flynn33/ASH-Model/main/src/ash_model/code.py",
+    "r015_locked_ledger_url": "https://raw.githubusercontent.com/flynn33/ASH-Model/main/predictions/locked/r015_prediction_ledger.locked.json"
+  },
+  "external_data_sources": {
+    "DESI_DR2_BAO": {
+      "source": "DESI Collaboration, DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints (2025), Table IV",
+      "url": "https://arxiv.org/abs/2503.14738",
+      "values_file": "data/desi_dr2_bao_compact_table_iv.csv"
+    },
+    "Planck_2018": {
+      "source": "Planck Collaboration, Planck 2018 results VI: Cosmological parameters, A&A 641, A6 (2020)",
+      "url": "https://arxiv.org/abs/1807.06209",
+      "values": {
+        "H0": "67.4 \u00b1 0.5 km/s/Mpc",
+        "Omega_m": "0.315 \u00b1 0.007",
+        "sigma8": "0.811 \u00b1 0.006",
+        "rd": "147.09 \u00b1 0.26 Mpc"
+      }
+    },
+    "SH0ES_2022": {
+      "source": "Riess et al. 2022 SH0ES H0 measurement",
+      "url": "https://arxiv.org/abs/2112.04510",
+      "values": {
+        "H0": "73.04 \u00b1 1.04 km/s/Mpc"
+      }
+    },
+    "DES_Y3": {
+      "source": "DES Year 3 3x2pt optimized scale cuts S8 summary",
+      "url": "https://www.darkenergysurvey.org/des-year-3-cosmology-results-papers/",
+      "values": {
+        "S8": "0.772 \u00b1 0.017"
+      }
+    },
+    "CMB_low_ell_parity": {
+      "source": "Planck/WMAP low-ell parity anomaly literature, sign-only use",
+      "urls": [
+        "https://arxiv.org/abs/1002.0148",
+        "https://arxiv.org/abs/1703.07070",
+        "https://www.aanda.org/articles/aa/full_html/2022/04/aa42296-21/aa42296-21.html"
+      ]
+    }
+  }
+}

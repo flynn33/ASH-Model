@@ -2,7 +2,7 @@
 
 ## Overview
 
-This directory contains tracked ASH evidence data, research-package data, and generated validation outputs that support the repository documentation and proof boundaries. No raw observational dataset is bundled with the R012-R016 integration; this documentation records generated, synthetic, readiness, lock, and formal-closure assets already tracked by the repository manifest.
+This directory contains tracked ASH evidence data, research-package data, and generated validation outputs that support the repository documentation and proof boundaries. No raw survey-level observational dataset or official full likelihood product is bundled with the R012-R016 integration. The supplemental R012-R016 science-remediation handoff stores compact public numerical summaries, generated pilot outputs, figures, and provenance notes under `docs/ash-cosmology/r012-r016-science-remediation/`; this documentation records generated, synthetic, readiness, lock, formal-closure, and compact pilot assets already tracked by repository documentation.
 
 ## Directory Structure
 
@@ -47,13 +47,14 @@ The authoritative data inventory is `data/manifests/data_manifest.json`. It reco
 | Roadmap 014 external-likelihood readiness outputs | `data/ash-cosmology/external-likelihoods/v0.1/`, `figures/ash-cosmology/external-likelihoods/v0.1/`, `validation/external-likelihoods/roadmap-014/outputs/` | Deterministic synthetic likelihood fixtures, covariance summaries, matched baseline comparisons, figure, preregistration lock, and verification outputs generated from tracked source code |
 | Roadmap 015 locked prediction-template outputs | `data/ash-cosmology/locked-predictions/v0.1/`, `figures/ash-cosmology/locked-predictions/v0.1/`, `predictions/locked/`, `validation/locked-predictions/roadmap-015/outputs/` | Immutable prospective prediction templates, lock certificate, generated figures, and validation outputs; these are templates for future held-out comparison, not observed-data results |
 | Roadmap 016 branch-centered closure outputs | `data/ash-cosmology/branch-centered-closure/v0.1/`, `figures/ash-cosmology/branch-centered-closure/v0.1/`, `validation/branch-centered-closure/roadmap-016/outputs/` | Deterministic closure-matrix, falsification-gate, model-card, closure-certificate, runtime verification, and figure outputs generated from tracked source code |
+| R012-R016 science-remediation supplement | `docs/ash-cosmology/r012-r016-science-remediation/` | Supplemental first-pass finite-spectral FRW extension, compact DESI DR2 BAO + compressed Planck pilot fit, DES Y3 S8 proxy calibration, R015 pilot scoring, generated figures, report, reproduction script, and explicit non-validation boundary |
 | Sector-mixing evidence | `data/ash-physics-sector-mixing/` | Project-owner-provided pass 002 finite workbench evidence |
 | Background bridge diagnostics | `validation/background_bridge/pass_003/outputs/` | Pass 003 synthetic diagnostic outputs |
 | Validation status | `validation/status.json` | Repository-maintained validation-status manifest |
 
 ## Provenance
 
-Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, `tools/generate_linear_perturbations.py`, `tools/generate_branch_measure.py`, `tools/generate_observer_commitment.py`, `tools/generate_unit_bridge.py`, `tools/generate_finite_observer_limit.py`, `tools/generate_cosmological_background.py`, `tools/generate_physical_perturbations.py`, `tools/generate_external_likelihoods.py`, `tools/generate_locked_predictions.py`, and `tools/generate_branch_centered_closure.py`. Roadmap and sector-mixing package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
+Core ASH evidence files are produced by repository tools such as `tools/generate_artifacts.py`, `tools/run_proof_suite.py`, `tools/reproduce_sector_mixing.py`, `tools/run_background_bridge_validation.py`, `tools/generate_linear_perturbations.py`, `tools/generate_branch_measure.py`, `tools/generate_observer_commitment.py`, `tools/generate_unit_bridge.py`, `tools/generate_finite_observer_limit.py`, `tools/generate_cosmological_background.py`, `tools/generate_physical_perturbations.py`, `tools/generate_external_likelihoods.py`, `tools/generate_locked_predictions.py`, and `tools/generate_branch_centered_closure.py`. The R012-R016 science-remediation supplement is reproduced by `docs/ash-cosmology/r012-r016-science-remediation/scripts/reproduce_ash_r012_r016_science.py` within its package root. Roadmap, sector-mixing, and science-remediation package files are recorded as project-owner-provided package assets; missing license or provenance details are not inferred beyond what is already present in the repository.
 
 ## Validation
 
@@ -62,6 +63,7 @@ Validate the manifest and referenced files with:
 ```bash
 python3 tools/validate_data_manifest.py --manifest data/manifests/data_manifest.json
 python3 tools/validate_json_assets.py .
+python3 -m pytest tests/test_r012_r016_science_remediation.py
 ```
 
 Run the broader repository evidence checks with:
@@ -75,7 +77,7 @@ python3 tools/verify_repository.py
 
 ## Privacy and Sensitivity
 
-The tracked assets in the manifest are classified as public repository evidence. They are finite-state tables, package metadata, CSV evidence, synthetic diagnostic outputs, and validation manifests. No regulated personal data, credentials, or private user data should be added here.
+The tracked assets in the manifest and the supplemental science-remediation package are classified as public repository evidence. They are finite-state tables, package metadata, compact public numerical summaries, CSV evidence, synthetic diagnostic outputs, generated pilot outputs, and validation manifests. No regulated personal data, credentials, or private user data should be added here.
 
 ## License and Usage Restrictions
 

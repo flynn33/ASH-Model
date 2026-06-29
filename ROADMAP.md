@@ -27,7 +27,7 @@ Use these statuses consistently:
 
 ## Current snapshot
 
-Snapshot date: 2026-06-28
+Snapshot date: 2026-06-29
 
 Current repository posture:
 
@@ -36,9 +36,17 @@ Current repository posture:
 - Roadmap 010, Roadmap 011, Roadmap 012, Roadmap 013, Roadmap 014,
   Roadmap 015, and Roadmap 016 are part of the repository's
   current proof, data-manifest, and validation surfaces.
+- A supplemental R012-R016 science-remediation handoff is now tracked under
+  [`docs/ash-cosmology/r012-r016-science-remediation/`](docs/ash-cosmology/r012-r016-science-remediation/).
+  It performs a compact first-pass finite-spectral FRW extension, DESI DR2
+  BAO + compressed Planck pilot fit, DES Y3 S8 proxy calibration, and R015
+  locked-prediction pilot scoring. This supplement adds observed-data pilot
+  scoring, but it is not a full ASH empirical validation and does not replace
+  official full-survey likelihood products, reviewed physical calibration, or
+  independent replication.
 - Scientific readiness is not complete: reviewed physical calibration,
   differentiable continuum or physical metric interpretation,
-  perturbation-to-survey calibration, observed-data likelihood scoring, and
+  perturbation-to-survey calibration, official observed-data likelihood scoring, and
   external empirical validation remain blocked until their required evidence
   exists in the repository. Roadmap 010 supplies a synthetic unit-bearing bridge workbench,
   Roadmap 011 closes only the finite-observer limit route, Roadmap 012 supplies
@@ -90,6 +98,7 @@ Post-R011 publication state:
 |---|---|
 | Repository roadmap | R-001 through R-016 are complete within their stated finite, readiness, lock-mechanics, formal-contract, or synthetic-workbench scopes. |
 | README and data documentation | Current through the R-016 formal branch-centered closure package. |
+| Science-remediation supplement | A compact first-pass R012-R016 handoff is tracked at `docs/ash-cosmology/r012-r016-science-remediation/`, with manifest-locked artifacts, report, reproduction script, compact public input values, generated figures, and pilot-scoring outputs. |
 | Proof certificate | Covers finite ASH, finite-observer physics, R-010 bridge checks, R-011 finite-observer checks, R-012 background checks, R-013 perturbation workbench checks, R-014 likelihood-readiness evidence, R-015 lock-integrity evidence, and R-016 formal-closure evidence. |
 | Data manifest | Tracks R-007 through R-016 generated CSV/JSON/PNG evidence. |
 | Wiki | Mirrors the current finite-observer state and keeps empirical cosmology boundaries open. |
@@ -125,6 +134,14 @@ Primary roadmap sources:
 | R-015 | Locked prospective or held-out scientific predictions | `complete` | 2026-06-28 | [`src/ash_model/locked_predictions.py`](src/ash_model/locked_predictions.py), [`tests/test_locked_predictions.py`](tests/test_locked_predictions.py), [`tools/generate_locked_predictions.py`](tools/generate_locked_predictions.py), [`config/ash_r015_prediction_lock_contract.json`](config/ash_r015_prediction_lock_contract.json), [`predictions/locked/r015_prediction_ledger.locked.json`](predictions/locked/r015_prediction_ledger.locked.json), [`predictions/locked/r015_lock_certificate.json`](predictions/locked/r015_lock_certificate.json), [`data/ash-cosmology/locked-predictions/v0.1/`](data/ash-cosmology/locked-predictions/v0.1/), [`docs/ash-cosmology/locked-predictions/roadmap-015/README.md`](docs/ash-cosmology/locked-predictions/roadmap-015/README.md), [`validation/locked-predictions/roadmap-015/outputs/verification.json`](validation/locked-predictions/roadmap-015/outputs/verification.json) |
 | R-016 | Branch-centered cosmology model closure | `complete` | 2026-06-28 | [`src/ash_model/branch_centered_closure.py`](src/ash_model/branch_centered_closure.py), [`tests/test_branch_centered_closure.py`](tests/test_branch_centered_closure.py), [`tools/generate_branch_centered_closure.py`](tools/generate_branch_centered_closure.py), [`config/ash_r016_branch_centered_closure_contract.json`](config/ash_r016_branch_centered_closure_contract.json), [`docs/ash-cosmology/branch-centered-closure/roadmap-016/README.md`](docs/ash-cosmology/branch-centered-closure/roadmap-016/README.md), [`data/ash-cosmology/branch-centered-closure/v0.1/`](data/ash-cosmology/branch-centered-closure/v0.1/), [`figures/ash-cosmology/branch-centered-closure/v0.1/`](figures/ash-cosmology/branch-centered-closure/v0.1/), [`validation/branch-centered-closure/roadmap-016/outputs/r016_closure_certificate.json`](validation/branch-centered-closure/roadmap-016/outputs/r016_closure_certificate.json), [`validation/branch-centered-closure/roadmap-016/outputs/runtime_verification.json`](validation/branch-centered-closure/roadmap-016/outputs/runtime_verification.json) |
 
+Supplemental R012-R016 science-remediation evidence:
+
+- [`docs/ash-cosmology/r012-r016-science-remediation/README.md`](docs/ash-cosmology/r012-r016-science-remediation/README.md)
+- [`docs/ash-cosmology/r012-r016-science-remediation/report/ASH_R012_R016_science_remediation_report.md`](docs/ash-cosmology/r012-r016-science-remediation/report/ASH_R012_R016_science_remediation_report.md)
+- [`docs/ash-cosmology/r012-r016-science-remediation/scripts/reproduce_ash_r012_r016_science.py`](docs/ash-cosmology/r012-r016-science-remediation/scripts/reproduce_ash_r012_r016_science.py)
+- [`docs/ash-cosmology/r012-r016-science-remediation/outputs/`](docs/ash-cosmology/r012-r016-science-remediation/outputs/)
+- [`tests/test_r012_r016_science_remediation.py`](tests/test_r012_r016_science_remediation.py)
+
 ## Active priority queue
 
 | Priority | Roadmap item | Required closure evidence |
@@ -138,6 +155,18 @@ Priority interpretation:
   remain outside this tracker state.
 
 ## Completion log
+
+### 2026-06-29
+
+- Added the supplemental R012-R016 science-remediation handoff as repository
+  documentation evidence. Evidence: manifest-locked handoff package, compact
+  DESI DR2 BAO + compressed Planck pilot outputs, DES Y3 S8 proxy calibration,
+  R015 pilot-scoring outputs, generated figures, PDF/Markdown report, and
+  targeted package-integrity tests. Boundary: this is a first-pass compact
+  science execution; it does not validate ASH as observed physical cosmology,
+  does not run official full DESI, supernova, weak-lensing, galaxy-clustering,
+  or map-level CMB likelihoods, and does not close reviewed physical
+  calibration or independent replication.
 
 ### 2026-06-28
 

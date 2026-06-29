@@ -1,0 +1,7 @@
+dataset,quantity,value,sigma,unit
+Planck2018,H0,67.4,0.5,km/s/Mpc
+Planck2018,Omega_m,0.315,0.007,dimensionless
+Planck2018,sigma8,0.811,0.006,dimensionless
+Planck2018-derived,r_d,147.09,0.26,Mpc
+SH0ES2022,H0,73.04,1.04,km/s/Mpc
+DESY3_3x2pt,S8,0.772,0.017,dimensionless
