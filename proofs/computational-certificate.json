@@ -925,7 +925,7 @@
     "tests/test_physics.py": "326df9bb2444304f35c9c201efbe88e8924012698621be1ff799071deba263b8",
     "tests/test_prediction_ledger.py": "99a68a6d997a6f068a59c7c611c2fa63db0e9fc34ce2caeb232ecc0a57b018a3",
     "tests/test_projection_adinkra.py": "690225ebfa30dcd12a80fc4b48005cc1619bcf66e498579d02787015462cfee2",
-    "tests/test_r012_r016_science_remediation.py": "45f13698fa015e4b501f9ec52607643f43f95fcb80a926c3b76525b48ed9b70e",
+    "tests/test_r012_r016_science_remediation.py": "c81aeb4d73a81d7fcb8367cdf5f398f60e904605895bacd2e591965a6a00c4e0",
     "tests/test_repository_claims.py": "a634a52f2bccb766e2a07f6772de77c9dbccb83b4d8ec33df91aa2e5859893c6",
     "tests/test_repository_integrity.py": "793a957c7552e0713097154da2b2ec40d367f73839e1dad2f62367b56c1fdad8",
     "tests/test_sector_mixing.py": "1321dc81f7d5a4a30ba523a85c220ef5c247efee9e0c646e508ebac0d217dc07",
