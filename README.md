@@ -281,6 +281,11 @@ This release proves the finite algebra and validates the executable mapping sema
 
 ## License and citation
 
-See [`LICENSE`](LICENSE) and [`CITATION.cff`](CITATION.cff). For permitted academic use, cite:
+This project is licensed under the Apache License, Version 2.0.
+See [`LICENSE`](LICENSE) for the full terms.
+
+Copyright 2026 James Daley
+
+For citation, see [`CITATION.cff`](CITATION.cff):
 
 Daley, J. (2026). *Adinkra-Stabilized Hypercube Model: Canonical Computational Specification and Reference Implementation*, version 1.1.0.
