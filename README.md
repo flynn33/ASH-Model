@@ -279,6 +279,12 @@ No raw survey-level observational dataset or official full likelihood product is
 
 This release proves the finite algebra and validates the executable mapping semantics. The feature thresholds, branch priors, reconstruction operators, and score weights are versioned reference-design choices rather than uniquely derived physical constants. It does **not** establish ASH as an empirical cosmology result, does not establish that its branching realizes quantum measurement, and does not establish that its code translations uniquely generate Gaussian statistics. Those questions require separately stated falsifiable predictions and external evidence.
 
+## Contributing
+
+This project is open source under Apache License, Version 2.0. You are welcome to use, modify, and redistribute the code under that license.
+
+Outside contributions to this repository are not accepted. Pull requests and collaboration requests will not be reviewed or merged. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License and citation
 
 This project is licensed under the Apache License, Version 2.0.

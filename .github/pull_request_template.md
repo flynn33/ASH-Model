@@ -1,37 +1,9 @@
-## Summary
+# Pull requests are not accepted
 
-Closes #
+This repository is open source under Apache License, Version 2.0 for use, modification, and redistribution.
 
-## Classification
+Outside contributions are not accepted. Pull requests will not be reviewed or merged.
 
-- **Change Class:** feature | bugfix | refactor | docs | governance | release | metadata | breaking-change
-- **Release Impact:** none | patch | minor | major
-- **Breaking Change:** yes | no
+If you want to build on this work, fork the repository under Apache 2.0 and maintain your changes in your own fork or product.
 
-## Mathematical/computational effect
-
-Describe any change to bit ordering, code parameters, decoder policy, feature mapping, branching, operators, scores, or artifacts.
-
-## Evidence
-
-- [ ] Tests added or updated
-- [ ] `pytest` passes
-- [ ] Artifacts regenerated
-- [ ] Proof suite passes
-- [ ] Repository verifier passes
-- [ ] Matched controls added for statistical or quality claims
-- [ ] Documentation and manuscript aligned
-
-## Commands and results
-
-```bash
-python -m pip install -e ".[dev]"
-python tools/generate_artifacts.py
-python tools/run_proof_suite.py
-pytest
-python tools/verify_repository.py
-```
-
-## Assumptions and limitations
-
-State what the change does not establish.
+See [CONTRIBUTING.md](../CONTRIBUTING.md).
