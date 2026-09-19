@@ -262,7 +262,7 @@ No raw survey-level observational dataset or official full likelihood product is
 - `validation/` - finite consistency gates, preregistration surfaces, and external-validation blockers
 - `validation/linear-perturbations/roadmap-007/` - Roadmap 007 finite perturbation validation notes and generated verification JSON
 - `validation/branch-measure/roadmap-008/` - Roadmap 008 finite branch-measure validation notes and generated verification JSON
-- `validation/observer-commitment/roadmap-009/` - Roadmap 009 finite observer-commitment validation notes and generated verification JSON
+- `validation/observer-commitment/roadmap-009/` - Roadmap 009 finite observer-commitment and branch-separation validation notes and generated verification JSON
 - `validation/unit-bridge/roadmap-010/` - Roadmap 010 synthetic unit-bearing bridge validation notes and generated verification JSON
 - `validation/finite-observer-limit/roadmap-011/` - Roadmap 011 finite-observer limit validation notes and generated verification JSON
 - `validation/background-equations/roadmap-012/` - Roadmap 012 background-equation validation notes and generated verification JSON
@@ -281,13 +281,13 @@ This release proves the finite algebra and validates the executable mapping sema
 
 ## Contributing
 
-This project is open source under Apache License, Version 2.0. You are welcome to use, modify, and redistribute the code under that license.
+This project is open source under the MIT License. You are welcome to use, modify, and redistribute the code under that license.
 
 Outside contributions to this repository are not accepted. Pull requests and collaboration requests will not be reviewed or merged. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License and citation
 
-This project is licensed under the Apache License, Version 2.0.
+This project is licensed under the MIT License.
 See [`LICENSE`](LICENSE) for the full terms.
 
 Copyright 2026 James Daley
