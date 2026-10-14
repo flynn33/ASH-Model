@@ -281,13 +281,13 @@ This release proves the finite algebra and validates the executable mapping sema
 
 ## Contributing
 
-This project is dual-licensed. Non-commercial, academic, and personal use is free under [`LICENSE`](LICENSE). Commercial use requires a separate written license from the copyright holder.
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE).
 
 Outside contributions to this repository are not accepted. Pull requests and collaboration requests will not be reviewed or merged. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License and citation
 
-This project is dual-licensed. Non-commercial, academic, and personal use is free. Commercial use requires a separate written license.
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
 See [`LICENSE`](LICENSE) for the full terms.
 
 Copyright 2026 James Daley

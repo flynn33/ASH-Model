@@ -1,8 +1,8 @@
 cff-version: 1.2.0
-message: "Cite this software and its canonical specification when using ASH in permitted academic work."
+message: "Cite this software and its canonical specification when using this software."
 title: "Adinkra-Stabilized Hypercube Model: Canonical Computational Specification and Reference Implementation"
 type: software
-# Dual license is not an SPDX identifier. See LICENSE.
+license: MIT
 authors:
   - family-names: "Daley"
     given-names: "James"
