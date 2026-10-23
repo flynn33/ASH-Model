@@ -1,0 +1,15 @@
+test_01_code_invariants (__main__.BranchModelTests.test_01_code_invariants) ... ok
+test_02_coset_invariance_all_8192_translations (__main__.BranchModelTests.test_02_coset_invariance_all_8192_translations) ... ok
+test_03_local_decoder_bounds (__main__.BranchModelTests.test_03_local_decoder_bounds) ... ok
+test_04_history_enumeration_and_endpoint_entropy (__main__.BranchModelTests.test_04_history_enumeration_and_endpoint_entropy) ... ok
+test_05_history_dependent_probability_consistency (__main__.BranchModelTests.test_05_history_dependent_probability_consistency) ... ok
+test_06_separate_horizon_normalization_counterexample (__main__.BranchModelTests.test_06_separate_horizon_normalization_counterexample) ... ok
+test_07_stack_transition_closure (__main__.BranchModelTests.test_07_stack_transition_closure) ... ok
+test_08_same_local_label_distinct_future_pop_languages (__main__.BranchModelTests.test_08_same_local_label_distinct_future_pop_languages) ... ok
+test_09_recorded_history_isometry (__main__.BranchModelTests.test_09_recorded_history_isometry) ... ok
+test_10_column_normalization_is_not_general_isometry (__main__.BranchModelTests.test_10_column_normalization_is_not_general_isometry) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.177s
+
+OK

@@ -1,0 +1,166 @@
+{
+  "scope": "Independent finite checks of proposed mathematical models; no repository files edited or repository suite executed.",
+  "tests_run": 10,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "observations": {
+    "code": {
+      "basis_left_to_right_coordinates_1_to_9": [
+        "111100000",
+        "110011000",
+        "101010100",
+        "100110001"
+      ],
+      "words": [
+        "000000000",
+        "000011101",
+        "001100101",
+        "001111000",
+        "010101001",
+        "010110100",
+        "011001100",
+        "011010001",
+        "100101100",
+        "100110001",
+        "101001001",
+        "101010100",
+        "110000101",
+        "110011000",
+        "111100000",
+        "111111101"
+      ],
+      "rank_inferred_from_linear_span_size": 4,
+      "size": 16,
+      "minimum_distance": 4,
+      "weight_enumerator": {
+        "0": 1,
+        "4": 14,
+        "8": 1
+      },
+      "coordinate_9_active_and_even_parity": true,
+      "coordinate_8_zero_in_this_presentation": true
+    },
+    "cosets": {
+      "count": 32,
+      "size": 16,
+      "translations_checked": 8192
+    },
+    "local_decoder": {
+      "clean": 16,
+      "single_bit_corrected": 144,
+      "double_bit_rejected": 576
+    },
+    "uniform_code_move_tree": [
+      {
+        "depth": 1,
+        "explicitly_enumerated_histories": 16,
+        "distinct_endpoint_labels": 16,
+        "histories_per_endpoint": 1,
+        "total_probability_exact": "1",
+        "uniform_history_entropy_bits": 4,
+        "endpoint_entropy_bits": 4.0
+      },
+      {
+        "depth": 2,
+        "explicitly_enumerated_histories": 256,
+        "distinct_endpoint_labels": 16,
+        "histories_per_endpoint": 16,
+        "total_probability_exact": "1",
+        "uniform_history_entropy_bits": 8,
+        "endpoint_entropy_bits": 4.0
+      },
+      {
+        "depth": 3,
+        "explicitly_enumerated_histories": 4096,
+        "distinct_endpoint_labels": 16,
+        "histories_per_endpoint": 256,
+        "total_probability_exact": "1",
+        "uniform_history_entropy_bits": 12,
+        "endpoint_entropy_bits": 4.0
+      },
+      {
+        "depth": 4,
+        "explicitly_enumerated_histories": 65536,
+        "distinct_endpoint_labels": 16,
+        "histories_per_endpoint": 4096,
+        "total_probability_exact": "1",
+        "uniform_history_entropy_bits": 16,
+        "endpoint_entropy_bits": 4.0
+      }
+    ],
+    "history_dependent_binary_measure": {
+      "maximum_depth_checked": 8,
+      "leaves_at_maximum_depth": 256,
+      "total_probability_exact": "1",
+      "all_tested_prefix_marginals_consistent": true
+    },
+    "inconsistent_horizon_counterexample": {
+      "depth_one": [
+        "1/2",
+        "1/2"
+      ],
+      "depth_two": [
+        "1/8",
+        "1/8",
+        "3/8",
+        "3/8"
+      ],
+      "first_parent_mass_at_depth_one": "1/2",
+      "first_parent_mass_from_depth_two": "1/4"
+    },
+    "stack_closure": {
+      "states_checked": 4369,
+      "pushes_checked": 69904,
+      "pops_checked": 4368
+    },
+    "future_distinguishability": {
+      "even_stack_lengths_checked": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24
+      ],
+      "distinct_length_pairs_checked": 66,
+      "all_pairs_same_initial_local_label": "000000000",
+      "all_pairs_distinguished_by_further_pop_legality": true
+    },
+    "recorded_history_isometry": {
+      "input_dimension": 16,
+      "output_dimension": 256,
+      "gram_matrix_equals_identity": true,
+      "claim_scope": "One finite embedding with orthogonal history records; not a cosmology or infinite-limit verification."
+    },
+    "nonisometry_counterexample": {
+      "columns": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "each_column_norm_squared": 1,
+      "normalized_equal_superposition_output_norm_squared": 1.9999999999999996
+    }
+  },
+  "not_verified": [
+    "Infinite objects by enumeration",
+    "Physical branch ontology",
+    "Quantum Born-rule derivation",
+    "Spacetime emergence",
+    "Cosmological data fit",
+    "Global fault tolerance",
+    "Repository implementation status"
+  ]
+}

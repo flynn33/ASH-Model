@@ -1,0 +1,376 @@
+{
+  "title": "ASH Leaf Branching Research Evidence Record v0.1",
+  "research_date_cutoff": "2026-10-23",
+  "method": "Project-document retrieval; open-web primary/author-hosted source inspection; explicit mathematical constructions; standalone Python finite verification.",
+  "scope": "Finite-to-infinite branch structures, not a live repository or observational cosmology audit.",
+  "sources": [
+    {
+      "id": "P1",
+      "title": "Cosmology - Branch.txt",
+      "organization": "ASH-Cosmology Project",
+      "file_id": "file_00000000eaac71f5ad9d9bd2f4187fc4",
+      "url": null,
+      "date": null,
+      "access": "Supplied text; opening 240 document lines additionally retrieved with files.read",
+      "locations": [
+        "local-versus-global branch framing",
+        "branch expansion",
+        "branch ontology",
+        "quantum normalization proposal"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "P2",
+      "title": "Review ASH Model Issue.txt",
+      "organization": "ASH-Cosmology Project",
+      "file_id": "file_00000000b21c71f6b74e3b7da08a90f9",
+      "url": null,
+      "date": null,
+      "access": "Relevant generator and parity sections retrieved; supplied context also available",
+      "locations": [
+        "original document lines 44-89, parity-explicit generator presentation"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "S1",
+      "title": "A Kolmogorov Extension Theorem for POVMs",
+      "authors": [
+        "Roderich Tumulka"
+      ],
+      "date": "2007-10-18",
+      "date_note": "arXiv v1 posting; manuscript header gives 2006-10-18",
+      "url": "https://arxiv.org/html/0710.3605",
+      "doi": null,
+      "access": "Relevant full-text HTML sections read",
+      "locations": [
+        "Introduction equations (2)-(3)",
+        "Section 1.1"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "S2",
+      "title": "The Quantum Mechanics of Closed Systems",
+      "authors": [
+        "James B. Hartle"
+      ],
+      "date": "2004-08-16",
+      "date_note": "arXiv v2; text describes 1993 original article",
+      "url": "https://arxiv.org/html/gr-qc/9210006",
+      "doi": null,
+      "access": "Relevant full-text HTML sections read",
+      "locations": [
+        "Section II equations (3)-(4)",
+        "Section IV equations (15)-(23) and discussion"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "S3",
+      "title": "A Classical Sequential Growth Dynamics for Causal Sets",
+      "authors": [
+        "D. P. Rideout",
+        "R. D. Sorkin"
+      ],
+      "date": "1999-12-13",
+      "date_note": "APS publication date; volume 61 issue 2 is dated January 2000",
+      "url": "https://arxiv.org/html/gr-qc/9904062",
+      "doi": "10.1103/PhysRevD.61.024002",
+      "access": "Relevant full-text HTML sections read; publisher metadata inspected",
+      "locations": [
+        "Section 1.1",
+        "Section 3, condition of discrete general covariance"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "S4",
+      "title": "Kolmogorov extension theorem for (quantum) causal modelling and general probabilistic theories",
+      "authors": [
+        "Simon Milz",
+        "Fattah Sakuldee",
+        "Felix A. Pollock",
+        "Kavan Modi"
+      ],
+      "date": "2020-04-20",
+      "date_note": "Journal publication; arXiv v4 dated 2020-04-09",
+      "url": "https://arxiv.org/html/1712.02589v4",
+      "doi": "10.22331/q-2020-04-20-255",
+      "access": "Relevant full-text HTML sections read; publisher-page initial timeout bypassed using arXiv",
+      "locations": [
+        "Introduction",
+        "Sections 3.1 and 3.2",
+        "Section 4.1",
+        "generalized extension discussion"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "S5",
+      "title": "Design and Implementation of the L+C Modeling Language",
+      "authors": [
+        "Radoslaw Karwowski",
+        "Przemyslaw Prusinkiewicz"
+      ],
+      "date": "2003",
+      "url": "https://algorithmicbotany.org/papers/l%2Bc.tcs2003.html",
+      "doi": null,
+      "access": "Author-hosted abstract only; linked paper not inspected",
+      "locations": [
+        "Abstract"
+      ],
+      "used_in_note": true
+    },
+    {
+      "id": "S6",
+      "title": "Aronszajn trees and the Singular Cardinals Hypothesis — Appalachian Set Theory workshop description",
+      "authors": [
+        "Itay Neeman"
+      ],
+      "organization": "Carnegie Mellon University",
+      "date": "2009-02-28",
+      "url": "https://www.math.cmu.edu/~eschimme/Appalachian/Neeman.html",
+      "doi": null,
+      "access": "Event/lecture description read; linked notes not inspected",
+      "locations": [
+        "Description, opening statement of finite-level infinite-tree result"
+      ],
+      "used_in_note": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "LB1",
+      "claim": "The stated parity-explicit candidate spans a doubly-even [9,4,4] code with 16 words, active coordinate 9 and coordinate 8 fixed at zero.",
+      "type": "computed_fact",
+      "support": [
+        "P2",
+        "test_01_code_invariants"
+      ],
+      "confidence": "high for the stated candidate",
+      "gap": "Not a claim about the current live repository."
+    },
+    {
+      "id": "LB2",
+      "claim": "XOR updates by codewords preserve the coset x_0+C, so arbitrarily deep histories do not escape the 16-label sector.",
+      "type": "logical_deduction",
+      "support": [
+        "linearity proof in note Section 3.2",
+        "test_02_coset_invariance_all_8192_translations"
+      ],
+      "confidence": "high under the stated transition law",
+      "gap": null
+    },
+    {
+      "id": "LB3",
+      "claim": "Full C-valued move histories have 16^n depth-n leaves, a countable finite-prefix tree, and continuum-many infinite histories.",
+      "type": "logical_deduction",
+      "support": [
+        "cardinality and endpoint-count arguments in note Sections 3.1-3.2",
+        "S6",
+        "test_04_history_enumeration_and_endpoint_entropy"
+      ],
+      "confidence": "high for the full branching construction",
+      "gap": "Restricted grammars require separate path-count analysis; finite tests are not proofs of infinity."
+    },
+    {
+      "id": "LB4",
+      "claim": "Normalized consistent conditional branch probabilities define a unique cylinder-generated infinite-path probability measure in the finite-alphabet setting.",
+      "type": "theorem_application",
+      "support": [
+        "S1",
+        "note Section 3.4",
+        "test_05_history_dependent_probability_consistency"
+      ],
+      "confidence": "high under the stated consistency and terminal-handling assumptions",
+      "gap": "No claim that arbitrary quantum protocols share such a classical measure."
+    },
+    {
+      "id": "LB5",
+      "claim": "The codeword-stack extension has infinitely many configurations distinguishable by future legal pop sequences despite identical local labels.",
+      "type": "logical_deduction",
+      "support": [
+        "arbitrary-k proof in note Section 3.3",
+        "test_07_stack_transition_closure",
+        "test_08_same_local_label_distinct_future_pop_languages"
+      ],
+      "confidence": "high under the proposed stack semantics",
+      "gap": "An added mathematical construction, not derived cosmological dynamics or a novelty claim."
+    },
+    {
+      "id": "LB6",
+      "claim": "Unit total mass at every independently normalized horizon does not guarantee compatible prefix distributions.",
+      "type": "counterexample",
+      "support": [
+        "test_06_separate_horizon_normalization_counterexample",
+        "note Section 3.4"
+      ],
+      "confidence": "high",
+      "gap": null
+    },
+    {
+      "id": "LB7",
+      "claim": "The specified recorded-history map is an isometry, but per-parent norm conservation alone is not general unitarity or evidence of quantum branching physics.",
+      "type": "logical_deduction_and_counterexample",
+      "support": [
+        "note Section 3.7",
+        "test_09_recorded_history_isometry",
+        "test_10_column_normalization_is_not_general_isometry",
+        "S2",
+        "S4"
+      ],
+      "confidence": "high for the algebra; physical interpretation unverified",
+      "gap": "No closed-system infinite-limit model, interference experiment, or decoherence derivation was supplied."
+    },
+    {
+      "id": "LB8",
+      "claim": "A growing event graph can provide unbounded global configurations with local code closure, but event ordering, covariance and geometry need independent constraints.",
+      "type": "proposal_with_conditional_deductions",
+      "support": [
+        "note Section 3.6",
+        "S3"
+      ],
+      "confidence": "high for algebraic closure and acyclicity of the specified growth candidate; physical relevance unresolved",
+      "gap": "No event-graph simulation, continuum limit, or physical bridge derived."
+    },
+    {
+      "id": "LB9",
+      "claim": "The uniform baseline has 4n bits of history entropy but only 4 bits of endpoint entropy for n>=1.",
+      "type": "logical_deduction_and_finite_check",
+      "support": [
+        "note Section 3.5",
+        "test_04_history_enumeration_and_endpoint_entropy"
+      ],
+      "confidence": "high under uniform independent codeword moves",
+      "gap": "Not a thermodynamic or cosmological entropy claim."
+    },
+    {
+      "id": "LB10",
+      "claim": "Uniform full-code branching counts and endpoint laws are generic to rank-4 binary additive groups rather than ASH-specific advantages.",
+      "type": "logical_deduction",
+      "support": [
+        "group-isomorphism argument in note Section 3.8"
+      ],
+      "confidence": "high for the uniform baseline",
+      "gap": "Comparative geometry-sensitive, decoding-sensitive, and physical-observable experiments not run."
+    }
+  ],
+  "web_search_queries": [
+    {
+      "pass": "discovery",
+      "query": "König infinity lemma finitely branching tree infinite path lecture notes"
+    },
+    {
+      "pass": "discovery",
+      "query": "Kolmogorov extension theorem cylinder sets Markov path measure lecture notes"
+    },
+    {
+      "pass": "discovery",
+      "query": "site.arxiv.org Hartle decoherent histories quantum mechanics cosmology probabilities"
+    },
+    {
+      "pass": "discovery",
+      "query": "site.algorithmicbotany.org Lindenmayer L systems branching developmental models"
+    },
+    {
+      "pass": "targeted",
+      "query": "\"König\" \"lemma\" \"tree\" site:edu"
+    },
+    {
+      "pass": "targeted",
+      "query": "\"Kolmogorov extension\" \"Markov\" \"cylinder\" site:edu"
+    },
+    {
+      "pass": "targeted",
+      "query": "site:algorithmicbotany.org \"L-systems\" \"parallel\""
+    },
+    {
+      "pass": "targeted",
+      "query": "\"Kolmogorov extension theorem\" site:math.mit.edu"
+    },
+    {
+      "pass": "targeted",
+      "query": "\"Kolmogorov extension theorem\" site:math.stanford.edu"
+    },
+    {
+      "pass": "targeted",
+      "query": "\"König's lemma\" \"proof\" site:math.berkeley.edu"
+    },
+    {
+      "pass": "targeted",
+      "query": "\"Kolmogorov extension theorem\" \"pdf\" probability Durrett"
+    },
+    {
+      "pass": "targeted",
+      "query": "\"site:math.stanford.edu/~adembo\" \"Kolmogorov\""
+    },
+    {
+      "pass": "targeted_and_gap",
+      "query": "\"Kolmogorov extension theorem for (quantum) causal modelling\" arxiv"
+    },
+    {
+      "pass": "targeted_and_gap",
+      "query": "\"Classical Sequential Growth Dynamics for Causal Sets\""
+    }
+  ],
+  "project_search_queries": [
+    "ASH Enneahcube leaf branching finite infinite model branch tree probability measure history canonical",
+    "ASH branching L-system branch-state implementation weights leaf invariant audit"
+  ],
+  "challenge_pass": {
+    "method": "Direct counterexamples and proof checks, supplemented by targeted quantum-process and causal-growth source reading. Not an independent reviewer.",
+    "checks": [
+      "Endpoint-label collisions versus history identity",
+      "Independent horizon normalization inconsistency",
+      "Column normalization without orthogonality",
+      "Future-distinguishability versus redundant state labels",
+      "Generic rank-4 group control",
+      "Physical birth-label redundancy"
+    ]
+  },
+  "selected_discovered_not_deeply_inspected": [
+    {
+      "title": "A general solution for classical sequential growth dynamics of Causal Sets",
+      "identifier": "arXiv:gr-qc/0504066",
+      "access": "Search-result abstract only",
+      "cited_in_note": false
+    },
+    {
+      "title": "Observables in causal set cosmology",
+      "identifier": "arXiv:gr-qc/0210061",
+      "access": "Search-result abstract only",
+      "cited_in_note": false
+    },
+    {
+      "title": "On the Growing Universe of Causal Set Theory—An Order-Type Approach",
+      "identifier": "10.1007/s10701-024-00767-5",
+      "access": "Search-result abstract only",
+      "cited_in_note": false
+    }
+  ],
+  "exclusions": [
+    "Secondary encyclopedia and aggregator pages not used as technical evidence",
+    "No claim to exhaustive search or independent replication",
+    "No live repository inspection",
+    "No empirical cosmological data analysis",
+    "No physical interpretation selected solely from mathematical cardinality"
+  ],
+  "open_questions": [
+    "Which branch equivalences are physical rather than representational?",
+    "Which grammar is selected by ASH-specific constraints?",
+    "What observer-record and intervention semantics apply?",
+    "Does an interacting quantum process admit the intended infinite limit?",
+    "Which growing event structures have a relevant continuum limit?",
+    "Which observables distinguish the model from matched controls?"
+  ],
+  "executed_command": "python verify_branch_models.py",
+  "test_report_file": "finite_checks.json",
+  "test_log_file": "test_output.txt",
+  "limitations": [
+    "Relevant sections, not every source in full, were read.",
+    "The infinite claims rely on proof and theorem hypotheses, not finite enumeration.",
+    "None of the finite checks establishes empirical cosmological truth."
+  ]
+}
