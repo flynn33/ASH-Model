@@ -1,0 +1,967 @@
+{
+  "document": "ASH-Network preprint evidence ledger",
+  "version": "0.1",
+  "date_cutoff": "2026-11-24",
+  "question": "How ASH is used in ASH-Network to provide a source-backed, background memory function for AI agents.",
+  "repository": {
+    "name": "flynn33/ash-network",
+    "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+    "commit_time_utc": "2026-11-24T16:41:52Z",
+    "visibility_at_inspection": "private",
+    "access": "authorized GitHub connector",
+    "modified_by_this_task": false
+  },
+  "method": {
+    "source_inspection": "Pinned repository documentation, selected code, criteria, and recorded results through the GitHub connector.",
+    "literature": "Targeted web discovery, primary-method inspection, and gap-directed novelty challenge.",
+    "calculation": "Independent Python reference enumeration and arithmetic, not native application reproduction.",
+    "full_repository_audit": false,
+    "independent_reviewers": 0
+  },
+  "material_assumptions": [
+    {
+      "assumption": "The deliverable is an AI systems/architecture preprint with controlled prototype results, not a cosmology validation paper.",
+      "confidence": "High",
+      "basis": "User request and implemented memory functionality."
+    },
+    {
+      "assumption": "Subconscious is a functional term for background-initiated recollection.",
+      "confidence": "Medium",
+      "basis": "User framing and source-described query-independent pressure behavior; no claim of consciousness."
+    },
+    {
+      "assumption": "The pinned main revision is the intended initial evidence snapshot.",
+      "confidence": "Medium",
+      "basis": "User supplied the repository without another revision; the exact snapshot is reversible and recorded."
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "ASH Canonical Computational Specification",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ASH-Model",
+      "revision": "5b2880d32425f2c84c33a52c5b191c38a66fec55",
+      "resources": [
+        {
+          "path": "docs/canonical-computational-specification.md",
+          "url": "https://github.com/flynn33/ASH-Model/blob/5b2880d32425f2c84c33a52c5b191c38a66fec55/docs/canonical-computational-specification.md"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "Sections 2–6: geometry, parity, code, decoding, code orbits",
+        "Section 9: reference branch grammar",
+        "Scope and remaining specification read for context"
+      ],
+      "supports": [
+        "finite alphabet",
+        "parity subset",
+        "canonical [9,4,4] code",
+        "distinction between mathematical code and application semantics"
+      ],
+      "limitations": null,
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S2",
+      "title": "Recursive ASH addressing and outer growth",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "docs/geometry.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/docs/geometry.md"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "Finite geometry and address contract",
+        "Default placement",
+        "Logical path wire format",
+        "Diminishing returns and expansion",
+        "Measured results"
+      ],
+      "supports": [
+        "recursive sparse addresses",
+        "stable identity",
+        "conditional outer growth",
+        "reported geometry workloads and measurements"
+      ],
+      "limitations": "The original geometry benchmark and underlying machine timings were not rerun.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S3",
+      "title": "Memory record and deterministic ASH routing implementation",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "Sources/ASHPrototype/MemoryRecord.swift",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Sources/ASHPrototype/MemoryRecord.swift"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "MemoryRecord",
+        "MemoryRecord.validate",
+        "ASHRouting.path",
+        "ASHRouting.parityVertex",
+        "ASHRouting.bucket"
+      ],
+      "supports": [
+        "record fields",
+        "code-based domain placement",
+        "parity topic placement",
+        "hash placement is not semantic learning"
+      ],
+      "limitations": null,
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S4",
+      "title": "Recursive address wire format implementation",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "Sources/ASHPrototype/Geometry.swift",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Sources/ASHPrototype/Geometry.swift"
+        }
+      ],
+      "access_level": "relevant_sections_read",
+      "inspected_locations": [
+        "Lines 1–210: CubePath, CubeRecord, CubeLayout, probe and scope types; opening of SparseCubeIndex"
+      ],
+      "supports": [
+        "variable-depth path",
+        "strict canonical encoding",
+        "fixed/deeper/outer physical routes"
+      ],
+      "limitations": "The remaining SparseCubeIndex implementation was not read in full.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S5",
+      "title": "Native associative retrieval implementation",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "Sources/ASHPrototype/AssociativeNetwork.swift",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Sources/ASHPrototype/AssociativeNetwork.swift"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "LearningState",
+        "reinforce",
+        "retract",
+        "AssociativeNetwork.recall",
+        "lexicalScore",
+        "associationScore"
+      ],
+      "supports": [
+        "distinct-origin support",
+        "replay does not add votes",
+        "strongest-cue score",
+        "current-scope tie abstention",
+        "history selects superseded records"
+      ],
+      "limitations": null,
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S6",
+      "title": "Memory pressure design and implementation",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "docs/memory-pressure.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/docs/memory-pressure.md"
+        },
+        {
+          "path": "Sources/ASHPrototype/MemoryPressure.swift",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Sources/ASHPrototype/MemoryPressure.swift"
+        }
+      ],
+      "access_level": "mixed_full_document_and_relevant_code_sections",
+      "inspected_locations": [
+        "Full design document",
+        "Event validation and Run lifecycle",
+        "Run.pattern",
+        "MemoryPressureEngine.observe and journal synchronization",
+        "Implementation lines 350–540 through end: prepare, match, independent, isCurrent"
+      ],
+      "supports": [
+        "observable sequence matching",
+        "historical support gating",
+        "source-linked recollection",
+        "agent retains action choice"
+      ],
+      "limitations": "The first code response was truncated; relevant sections were subsequently expanded. This is not a whole-file audit or concurrency test.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S7",
+      "title": "Caller and memory pressure connector contract",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "docs/connection-usage.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/docs/connection-usage.md"
+        }
+      ],
+      "access_level": "full_returned_document_read",
+      "inspected_locations": [
+        "Reading and writing memories",
+        "Citation resolution",
+        "Delivering a recollection before an action",
+        "Event and notification contract"
+      ],
+      "supports": [
+        "host authorization boundary",
+        "ash-net/observe versus ash_observe",
+        "versioned extension",
+        "pre-dispatch presentation and deduplication"
+      ],
+      "limitations": null,
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S8",
+      "title": "Native qualification methods and declared acceptance criteria",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "docs/qualification.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/docs/qualification.md"
+        },
+        {
+          "path": "Experiments/qualification/criteria.json",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Experiments/qualification/criteria.json"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "All five acceptance gates",
+        "Native comparison design",
+        "Growth and restart report",
+        "Transfer and baseline limitations"
+      ],
+      "supports": [
+        "eight answerable and four unsupported queries",
+        "five reported gates",
+        "fresh CLI process",
+        "scope of learned transfer"
+      ],
+      "limitations": "Criteria content was inspected. The entire pre-result commit chronology was not separately audited; growth details are attributed to the report.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S9",
+      "title": "Native held-out qualification results",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "Experiments/qualification/held-out-results.json",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Experiments/qualification/held-out-results.json"
+        }
+      ],
+      "access_level": "relevant_sections_read",
+      "inspected_locations": [
+        "Lines 1–190, including full six-mode summary and initial ranked results"
+      ],
+      "supports": [
+        "mode-level rank-one and empty-result counts",
+        "MRR",
+        "no forbidden IDs in each mode",
+        "fixture identity"
+      ],
+      "limitations": "The rest of the per-query artifact was not read in full, and the native executable was not rerun.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S10",
+      "title": "Memory pressure replay and action traces",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "Experiments/memory-pressure/README.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Experiments/memory-pressure/README.md"
+        },
+        {
+          "path": "Experiments/memory-pressure/results.json",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Experiments/memory-pressure/results.json"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "Full README",
+        "Results requested in consecutive ranges 1–210, 211–520, and 521–620, ending at file end",
+        "Replay, timings, scripted cases, earlier wording, three earlier pairs, published-build pair, dispatch/answer discrepancy"
+      ],
+      "supports": [
+        "two positive and four negative sequences",
+        "small-store checkpoint timings",
+        "four repeated controlled ledger comparisons",
+        "earlier failed wording",
+        "narrative does not match dispatch"
+      ],
+      "limitations": "These are author-recorded results, not newly reproduced live-model trials. Four pairs concern one task, not four independent task families.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S11",
+      "title": "Historical agent reader report",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "docs/agent-host.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/docs/agent-host.md"
+        }
+      ],
+      "access_level": "full_report_read",
+      "inspected_locations": [
+        "Host boundary",
+        "Experimental conditions",
+        "Frozen reader results",
+        "Paired cue-provenance diagnostic"
+      ],
+      "supports": [
+        "retrieval versus semantic application",
+        "8/8 frozen scorer versus 7/8 semantic reading",
+        "3/6 versus 5/6 diagnostic and missed primary criterion",
+        "metadata differences in host baseline"
+      ],
+      "limitations": "Underlying archived answer files and model dependencies were not independently replayed or fully inspected.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S12",
+      "title": "Host-side association engine and reference integration",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "Integrations/association-engine/README.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/Integrations/association-engine/README.md"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "What gets learned",
+        "Decision/outcome lifecycle",
+        "Agent callbacks",
+        "Integration and testing boundaries"
+      ],
+      "supports": [
+        "automatic source-aware capture",
+        "open decisions and later outcomes",
+        "separate host model-assisted extraction and native matching"
+      ],
+      "limitations": "This is documentation-level inspection of the host extraction component; its full JavaScript implementation was not audited.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "S13",
+      "title": "ASH-Network project overview",
+      "type": "author_supplied_repository_primary_source",
+      "repository": "flynn33/ash-network",
+      "revision": "eef17dc023732c8897193345d1c3e89f56a3a21f",
+      "resources": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/flynn33/ash-network/blob/eef17dc023732c8897193345d1c3e89f56a3a21f/README.md"
+        }
+      ],
+      "access_level": "full_text_read",
+      "inspected_locations": [
+        "Project scope",
+        "Recursive hypercube design",
+        "Responsibilities",
+        "Original roadmap and research starting points"
+      ],
+      "supports": [
+        "overview and relationship between components"
+      ],
+      "limitations": "README fetched from the default branch; its returned blob 7a949de539c9d2cf6e9718ae446cf5ada2c0f64b matches the pinned root listing. Primary claims use the more specific sources above.",
+      "inspection_date": "2026-11-24"
+    },
+    {
+      "id": "L1",
+      "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "type": "external_primary_research",
+      "year": 2023,
+      "authors": [
+        "Joon Sung Park",
+        "Joseph C. O’Brien",
+        "Carrie J. Cai",
+        "Meredith Ringel Morris",
+        "Percy Liang",
+        "Michael S. Bernstein"
+      ],
+      "arxiv_id": "2304.03442",
+      "url": "https://arxiv.org/abs/2304.03442",
+      "access_level": "abstract_read",
+      "inspected_locations": [
+        "Experience, reflection, and planning overview"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    },
+    {
+      "id": "L2",
+      "title": "MemGPT: Towards LLMs as Operating Systems",
+      "type": "external_primary_research",
+      "year": 2023,
+      "authors": [
+        "Charles Packer",
+        "Sarah Wooders",
+        "Kevin Lin",
+        "Vivian Fang",
+        "Shishir G. Patil",
+        "Ion Stoica",
+        "Joseph E. Gonzalez"
+      ],
+      "arxiv_id": "2310.08560",
+      "url": "https://arxiv.org/abs/2310.08560",
+      "access_level": "abstract_and_opening_architecture_read",
+      "inspected_locations": [
+        "Hierarchical context management and control flow"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    },
+    {
+      "id": "L3",
+      "title": "A-MEM: Agentic Memory for LLM Agents",
+      "type": "external_primary_research",
+      "year": 2025,
+      "authors": [
+        "Wujiang Xu",
+        "Zujie Liang",
+        "Kai Mei",
+        "Hang Gao",
+        "Juntao Tan",
+        "Yongfeng Zhang"
+      ],
+      "arxiv_id": "2502.12110",
+      "url": "https://arxiv.org/abs/2502.12110",
+      "access_level": "relevant_sections_read",
+      "inspected_locations": [
+        "Note construction",
+        "Memory linking and evolution"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    },
+    {
+      "id": "L4",
+      "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+      "type": "external_primary_research",
+      "year": 2025,
+      "authors": [
+        "Di Wu",
+        "Hongwei Wang",
+        "Wenhao Yu",
+        "Yuwei Zhang",
+        "Kai-Wei Chang",
+        "Dong Yu"
+      ],
+      "arxiv_id": "2410.10813",
+      "url": "https://arxiv.org/abs/2410.10813",
+      "access_level": "abstract_and_relevant_sections_read",
+      "inspected_locations": [
+        "Benchmark categories",
+        "Indexing, retrieval, and reading"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    },
+    {
+      "id": "L5",
+      "title": "Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents",
+      "type": "external_primary_research",
+      "year": 2026,
+      "authors": [
+        "Yifan Wu",
+        "Lizhu Zhang",
+        "Yuhang Zhou",
+        "Mingyi Wang",
+        "Bo Peng",
+        "Serena Li",
+        "Xiangjun Fan",
+        "Zhuokai Zhao"
+      ],
+      "arxiv_id": "2607.08716",
+      "url": "https://arxiv.org/abs/2607.08716",
+      "access_level": "relevant_sections_read_and_metadata_rechecked",
+      "inspected_locations": [
+        "Introduction",
+        "Separate memory agent and selective intervention method"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    },
+    {
+      "id": "L6",
+      "title": "Proactive Memory for Event-Driven LLM Agents",
+      "type": "external_primary_research",
+      "year": 2026,
+      "authors": [
+        "Jinyang Li",
+        "Zichuan Fu",
+        "Xian Wu",
+        "Wenlin Zhang",
+        "Yimin Deng",
+        "Kaifeng Guo",
+        "Guojing Li",
+        "Junjia Qi",
+        "Xiangyu Zhao"
+      ],
+      "arxiv_id": "2610.36967",
+      "url": "https://arxiv.org/abs/2610.36967",
+      "access_level": "relevant_sections_read_and_metadata_rechecked",
+      "inspected_locations": [
+        "Events",
+        "Source validation of trajectories",
+        "Replay-assessed regularities"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    },
+    {
+      "id": "L7",
+      "title": "Prospective Memory for Proactive LLM Agents",
+      "type": "external_primary_research",
+      "year": 2026,
+      "authors": [
+        "Yuanchen Bei",
+        "Zhining Liu",
+        "Tianxin Wei",
+        "Weizhi Zhang",
+        "Zhichen Zeng",
+        "Philip S. Yu",
+        "Hendrik Hamann",
+        "Jingrui He",
+        "Hanghang Tong"
+      ],
+      "arxiv_id": "2611.05731",
+      "url": "https://arxiv.org/abs/2611.05731",
+      "access_level": "relevant_sections_read_and_metadata_rechecked",
+      "inspected_locations": [
+        "Introduction",
+        "Intention maintenance and realization"
+      ],
+      "inspection_date": "2026-11-24",
+      "limitations": "Not an exhaustive full-paper review; no competitor benchmark result is used to establish ASH-Network performance."
+    }
+  ],
+  "major_claims": [
+    {
+      "id": "C001",
+      "statement": "The canonical ASH code has 16 words, rank 4, minimum distance 4, and weights 0^1 4^14 8^1.",
+      "status": "source_supported_and_independently_calculated",
+      "supporting_sources": [
+        "S1"
+      ],
+      "confidence": "High: exhaustive enumeration of the stated generator.",
+      "limitations": "This does not verify all native code paths or natural-language factual integrity.",
+      "verification": "verify_calculations.py"
+    },
+    {
+      "id": "C002",
+      "statement": "ASH-Network uses variable-depth local Q9 labels with a bounded terminal T4 suffix and stable record IDs.",
+      "status": "implementation_observed",
+      "supporting_sources": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "confidence": "High for the inspected address contract.",
+      "limitations": "Finite runtime resources remain; several records may share a path.",
+      "verification": null
+    },
+    {
+      "id": "C003",
+      "statement": "The union of all finite positive-depth cube paths is countably infinite; the original two-level illustration has 31,719,424 virtual positions.",
+      "status": "logical_deduction_and_calculation",
+      "supporting_sources": [
+        "S2",
+        "S4"
+      ],
+      "confidence": "High under the stated unrestricted mathematical grammar.",
+      "limitations": "Neither figure measures actual memory occupancy or semantic capacity.",
+      "verification": "verify_calculations.py"
+    },
+    {
+      "id": "C004",
+      "statement": "The native associative rule counts distinct origin IDs, requires two for an associative cue edge, and does not reinforce replay of the same origin.",
+      "status": "implementation_observed",
+      "supporting_sources": [
+        "S5"
+      ],
+      "confidence": "High for the inspected code.",
+      "limitations": "Identifier distinctness is not proof of factual truth or statistical independence.",
+      "verification": null
+    },
+    {
+      "id": "C005",
+      "statement": "A bounded event-pattern matcher can construct a sourced recollection before a pending action and the host can defer dispatch for reconsideration.",
+      "status": "implementation_contract_and_recorded_trace",
+      "supporting_sources": [
+        "S6",
+        "S7",
+        "S10"
+      ],
+      "confidence": "High for the documented protocol and recorded cases.",
+      "limitations": "No new live execution in this review; not a general semantic or learned causal policy.",
+      "verification": null
+    },
+    {
+      "id": "C006",
+      "statement": "Native supported association returned correct record and source at rank one on 8/8 answerable queries and empty results on 4/4 unsupported queries.",
+      "status": "reported_result_artifact_inspected",
+      "supporting_sources": [
+        "S8",
+        "S9"
+      ],
+      "confidence": "High that the inspected artifact records these counts.",
+      "limitations": "Small scripted cohort; no fresh native reproduction or universal accuracy estimate.",
+      "verification": null
+    },
+    {
+      "id": "C007",
+      "statement": "The sequence replay signaled on two intended positive cases at event 4 and remained silent on four controls.",
+      "status": "reported_result_artifact_inspected",
+      "supporting_sources": [
+        "S10"
+      ],
+      "confidence": "High that the artifact records these six outcomes.",
+      "limitations": "Six handcrafted sequences after four training runs; no broad trigger-generalization claim.",
+      "verification": null
+    },
+    {
+      "id": "C008",
+      "statement": "Four paired executions of one ledger task recorded two baseline entries and one pressure-condition entry.",
+      "status": "reported_dispatch_trace_inspected",
+      "supporting_sources": [
+        "S10"
+      ],
+      "confidence": "High as a description of the retained traces.",
+      "limitations": "One model and task; earlier attention wording failed; not independent task diversity or a validated population treatment effect.",
+      "verification": null
+    },
+    {
+      "id": "C009",
+      "statement": "All four successful pressure-condition replies incorrectly claimed a retry executed, although dispatch records show inspection instead.",
+      "status": "reported_trace_text_comparison",
+      "supporting_sources": [
+        "S10"
+      ],
+      "confidence": "High from direct comparison of the retained narrative and dispatch arrays.",
+      "limitations": "This establishes a discrepancy in these trials, not its internal model cause.",
+      "verification": null
+    },
+    {
+      "id": "C010",
+      "statement": "The 4,096-record outer layout used 90.14% fewer declared work units than fixed in the reported skewed workload.",
+      "status": "reported_counts_and_independent_arithmetic",
+      "supporting_sources": [
+        "S2"
+      ],
+      "confidence": "High for the arithmetic conditional on the recorded totals.",
+      "limitations": "Not a 90.14% wall-clock speedup; outer used more nodes; direct-key exact lookup was faster than trie lookup.",
+      "verification": "verify_calculations.py"
+    },
+    {
+      "id": "C011",
+      "statement": "The historical reader report distinguishes 8/8 frozen content/source scoring from 7/8 actual question answering.",
+      "status": "inspected_report_not_raw_response_replication",
+      "supporting_sources": [
+        "S11"
+      ],
+      "confidence": "Medium: full report read but archived response corpus not independently replayed.",
+      "limitations": "Comparator metadata differ, and semantic judgments remain report-attributed.",
+      "verification": null
+    },
+    {
+      "id": "C012",
+      "statement": "Proactive memory and timely intervention have close prior art predating this snapshot.",
+      "status": "primary_literature_observed",
+      "supporting_sources": [
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "confidence": "High: relevant primary methods and submission dates inspected.",
+      "limitations": "This is not an exhaustive novelty search; no first-in-field claim is justified.",
+      "verification": null
+    },
+    {
+      "id": "C013",
+      "statement": "The contribution can be framed as the ASH-specific composition of recursive addressing, stable identities, source-supported associations, and pre-dispatch recollection.",
+      "status": "research_framing_inference",
+      "supporting_sources": [
+        "S1",
+        "S2",
+        "S3",
+        "S5",
+        "S6",
+        "S7",
+        "S10"
+      ],
+      "confidence": "Medium: coherent architectural interpretation; comparative advantage remains untested.",
+      "limitations": "Does not establish that ASH geometry caused behavioral gains or outperforms conventional stores.",
+      "verification": null
+    },
+    {
+      "id": "C014",
+      "statement": "Subconscious memory is defined functionally as background, agent-query-independent recollection rather than subjective consciousness.",
+      "status": "operational_definition",
+      "supporting_sources": [
+        "S6",
+        "S7",
+        "S10"
+      ],
+      "confidence": "Definition, not an empirical consciousness claim.",
+      "limitations": "No biological equivalence, hidden-reasoning access, or phenomenological conclusion.",
+      "verification": null
+    }
+  ],
+  "coverage": [
+    {
+      "branch": "ASH foundation and exact algebra",
+      "status": "supported_with_reference_calculations",
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "gap": "Native decoder integration into memory not demonstrated."
+    },
+    {
+      "branch": "Recursive memory representation and finite/unbounded distinction",
+      "status": "supported_with_scoped_source_review",
+      "sources": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "gap": "Not a full sparse-index implementation audit."
+    },
+    {
+      "branch": "Associative learning, corrections, and provenance",
+      "status": "supported_in_native_retrieval_and_host_documentation",
+      "sources": [
+        "S5",
+        "S7",
+        "S12"
+      ],
+      "gap": "Raw-dialogue extraction accuracy and true source independence not established."
+    },
+    {
+      "branch": "Event matching and timely recollection",
+      "status": "supported_by_relevant_code_contract_and_traces",
+      "sources": [
+        "S6",
+        "S7",
+        "S10"
+      ],
+      "gap": "General semantic matching and broad false-trigger rates unknown."
+    },
+    {
+      "branch": "Retrieval, abstention, growth, and restart evidence",
+      "status": "reported_evidence_inspected",
+      "sources": [
+        "S8",
+        "S9",
+        "S2"
+      ],
+      "gap": "No fresh native rerun; some growth evidence report-attributed."
+    },
+    {
+      "branch": "Agent actions and faithful explanations",
+      "status": "positive_and_negative_recorded_cases_inspected",
+      "sources": [
+        "S10",
+        "S11"
+      ],
+      "gap": "Only one live task family; historical raw reader corpus not replayed."
+    },
+    {
+      "branch": "Related work and novelty challenge",
+      "status": "targeted_primary_literature_review",
+      "sources": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "gap": "Not an exhaustive search or independent novelty assessment."
+    },
+    {
+      "branch": "Reproducibility, privacy, and comparative validation",
+      "status": "limitations_and_next_experiment_defined",
+      "sources": [
+        "S7",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "gap": "Public archive, license, author declarations, security tests, and matched-index ablations remain."
+    }
+  ],
+  "search_log": [
+    {
+      "pass": "discovery",
+      "engine": "system2",
+      "query": "proactive memory retrieval agents anticipate memory before action paper"
+    },
+    {
+      "pass": "discovery",
+      "engine": "system2",
+      "query": "MemGPT towards LLMs operating systems arxiv 2310.08560"
+    },
+    {
+      "pass": "discovery",
+      "engine": "system2",
+      "query": "LongMemEval benchmarking chat assistants long term interactive memory 2025"
+    },
+    {
+      "pass": "discovery",
+      "engine": "system2",
+      "query": "A-MEM agentic memory LLM agents arxiv"
+    },
+    {
+      "pass": "targeted_verification",
+      "engine": "system1",
+      "domains": [
+        "arxiv.org"
+      ],
+      "query": "\"Proactive Memory for Event-Driven LLM Agents\""
+    },
+    {
+      "pass": "targeted_verification",
+      "engine": "system1",
+      "domains": [
+        "arxiv.org"
+      ],
+      "query": "\"Remember When It Matters\" \"Proactive Memory\""
+    },
+    {
+      "pass": "targeted_verification",
+      "engine": "system1",
+      "domains": [
+        "arxiv.org"
+      ],
+      "query": "\"Prospective Memory for Proactive LLM Agents\""
+    }
+  ],
+  "additional_inspection_passes": [
+    "Opened primary references and relevant method sections; separated abstract-only access from section reading.",
+    "Checked negative/contradictory cases: earlier wording failure, narrative/dispatch discrepancy, native unsupported hits, failed reader criterion, and geometry controls.",
+    "Reopened the three closest proactive-memory arXiv metadata pages before packaging to confirm titles, authors, and dates."
+  ],
+  "verification": {
+    "executed": [
+      "python3 verify_calculations.py"
+    ],
+    "result_file": "independent_calculations.json",
+    "not_executed": [
+      "Native macOS Swift test suite",
+      "ASH-Network qualification CLI replay",
+      "Geometry benchmark",
+      "Host integration tests",
+      "Live model inference",
+      "Historical reader replay"
+    ],
+    "reason": "This was source-and-artifact manuscript preparation without the full pinned macOS host/model execution setup; no native pass is inferred."
+  },
+  "contradictions_and_negative_evidence": [
+    {
+      "issue": "Correct evidence did not guarantee correct application.",
+      "sources": [
+        "S11"
+      ],
+      "treatment": "Report the semantic 7/8 result and the failed diagnostic criterion."
+    },
+    {
+      "issue": "Successful pressure changed dispatch but not the accuracy of self-report.",
+      "sources": [
+        "S10"
+      ],
+      "treatment": "Score action and narration separately."
+    },
+    {
+      "issue": "An earlier wording delivered cases but did not prevent duplicate writes.",
+      "sources": [
+        "S10"
+      ],
+      "treatment": "Include the negative and acknowledge development/tuning history."
+    },
+    {
+      "issue": "Outer layout is not universally faster or smaller.",
+      "sources": [
+        "S2"
+      ],
+      "treatment": "Include no-promotion controls, added nodes, and faster direct-key exact lookup."
+    },
+    {
+      "issue": "Close proactive-memory prior art exists.",
+      "sources": [
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "treatment": "Claim the studied composition, not first-ever proactive memory."
+    }
+  ],
+  "exclusions": [
+    "Empirical cosmology validation",
+    "Subjective or biological consciousness",
+    "Repository-wide correctness certification",
+    "Public release or licensing decisions",
+    "Claims of universal accuracy or best-in-class performance"
+  ],
+  "publication_gaps": [
+    "Author affiliation and correspondence",
+    "Funding and competing-interest declarations",
+    "CRediT contributions",
+    "Public code/data archive and license decision",
+    "Frozen matched-index and intervention-policy evaluation on new tasks"
+  ],
+  "counts": {
+    "source_groups_inspected_and_cited": 20,
+    "major_claims_recorded": 14,
+    "coverage_branches": 8,
+    "search_queries_logged": 7
+  },
+  "unknowns": {
+    "target_preprint_server": null,
+    "public_archive_doi": null,
+    "funding": null,
+    "competing_interests": null
+  }
+}

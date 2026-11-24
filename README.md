@@ -16,6 +16,10 @@ ASH is an exploratory simulation-theory and computational-ontology framework. Th
 
 The earlier repository overstated self-duality in nine dimensions, error correction in simulations, ASH-specific Gaussian convergence, and branch/Adinkra implementation maturity. Version 1.1.0 resolves those discrepancies and records the evidence in [`docs/audit-resolution.md`](docs/audit-resolution.md).
 
+## ASH-Network research
+
+The ASH-Network preprint describes how an AI agent can use recursive ASH addresses to recall a sourced experience before taking an action. [Read the preprint (PDF)](docs/ash-network/preprint-v0.1/ASH-Network_James_Daley.pdf) or [browse the manuscript, evidence ledger, and reference calculations](docs/ash-network/preprint-v0.1/).
+
 ## Roadmap tracker
 
 The repository-maintained roadmap status log is [`ROADMAP.md`](ROADMAP.md). It tracks identified roadmap items, completion evidence, verification commands, and remaining blockers.

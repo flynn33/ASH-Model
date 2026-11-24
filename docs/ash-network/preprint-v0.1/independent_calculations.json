@@ -1,0 +1,33 @@
+{
+  "kind": "independent_reference_calculations_not_native_runtime_reproduction",
+  "source": "ASH canonical specification revision 5b2880d32425f2c84c33a52c5b191c38a66fec55; ASH-Net docs/geometry.md at eef17dc023732c8897193345d1c3e89f56a3a21f",
+  "ambient_states": 512,
+  "even_parity_states": 256,
+  "code_size": 16,
+  "code_rank_from_cardinality": 4,
+  "minimum_distance": 4,
+  "weight_enumerator": {
+    "0": 1,
+    "4": 14,
+    "8": 1
+  },
+  "strict_reference_decoder_single_bit_cases_correct": 144,
+  "strict_reference_decoder_double_bit_cases_rejected": 576,
+  "strict_reference_decoder_outcomes_over_512_inputs": {
+    "exact": 16,
+    "correctable_nonexact": 144,
+    "uncorrectable": 352
+  },
+  "ternary_depth4_positions_including_internal_nodes": 121,
+  "ternary_depth4_leaves": 81,
+  "two_full_cube_levels_times_ternary_positions": 31719424,
+  "geometry_4096_record_work_fixed": 164626,
+  "geometry_4096_record_work_outer": 16233,
+  "work_reduction_percent": 90.13946764180628,
+  "fixed_to_outer_work_ratio": 10.141440275981026,
+  "retrieval_rank1_lexical_percent": 75.0,
+  "retrieval_rank1_associative_percent": 100.0,
+  "retrieval_rank1_difference_percentage_points": 25.0,
+  "native_swift_tests_run_in_this_review": false,
+  "live_model_trials_run_in_this_review": false
+}
