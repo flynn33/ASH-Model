@@ -18,7 +18,7 @@ The earlier repository overstated self-duality in nine dimensions, error correct
 
 ## ASH-Network research
 
-The ASH-Network preprint describes how an AI agent can use recursive ASH addresses to recall a sourced experience before taking an action. [Read the preprint (PDF)](docs/ash-network/preprint-v0.1/ASH-Network_James_Daley.pdf) or [browse the manuscript, evidence ledger, and reference calculations](docs/ash-network/preprint-v0.1/).
+*ASH-Net and the Timing of Recall in Tool-Using Agents* by **James Daley, AI Engineer** examines how an agent uses cited experience before a tool executes. In four paired repetitions of one simulated ledger task, the baseline agent wrote twice. With ASH-Net’s recollection, it inspected the ledger and left one entry each time. [Read the paper (PDF)](docs/ash-network/preprint-v0.1/ASH-Network_James_Daley.pdf) · [Manuscript and supporting files](docs/ash-network/preprint-v0.1/)
 
 ## Roadmap tracker
 
